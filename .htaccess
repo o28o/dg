@@ -16,7 +16,7 @@ RewriteEngine On
 
 #RewriteCond %{REQUEST_URI} !^/ru/read.php
 RewriteRule ^sc/(.*)$ /read/$1 [R=301,L,QSA]
-RewriteRule ^sc(.*)$ /read/$1 [R=301,L,QSA]
+#RewriteRule ^sc(.*)$ /read/$1 [R=301,L,QSA]
 RewriteRule ^ru/sc/(.*)$ /r/$1 [R=301,L,QSA]
 RewriteRule ^ru/read/(.*)$ /r/$1 [R=301,L,QSA]
 RewriteRule ^th/sc/(.*)$ /th/read/$1 [R=301,L,QSA]
