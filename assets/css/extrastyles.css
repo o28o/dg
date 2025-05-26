@@ -1147,3 +1147,17 @@ video-container { position: relative; padding-bottom: 56.25%; padding-top: 30px;
     width: 100%;
   }
 }
+
+
+
+
+
+
+select.text-center {
+    text-align: center;          /* Центрирует текст по умолчанию */
+    text-align-last: center;     /* Центрирует только выбранный элемент */
+}
+
+select.text-center option {
+    text-align: left;            /* Опции при раскрытии — по левому краю */
+}
