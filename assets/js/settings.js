@@ -729,9 +729,6 @@ document.addEventListener("keydown", function (event) {
   }
 });
 
-
-
-
 let quickModalIsOpen = false;
 let quickOverlay = null;
 let quickModal = null;
@@ -752,7 +749,7 @@ function createQuickModal() {
   const linkColorWarning = "#cb4b16";
   const linkColorDanger = "#dc322f";
 
-  // Оверлей 2c3e50
+  // Оверлей
   quickOverlay = document.createElement("div");
   quickOverlay.className = "quick-overlay-element";
   quickOverlay.style.cssText = `
@@ -768,91 +765,94 @@ function createQuickModal() {
   `;
 
   // Модалка
-  
-  
-  
-
   quickModal = document.createElement("div");
-quickModal.className = "quick-modal-container";
-quickModal.style.cssText = `
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%) scale(0.95);
-  z-index: 10000;
-  opacity: 0;
-  transition: opacity 0.4s ease, transform 0.4s ease;
-  width: 95%;
-  max-width: 600px;
-`;
-
-// После добавляем элемент в DOM, вставляем медиаквери
-const styleTag = document.createElement("style");
-styleTag.textContent = `
-  @media (max-width: 768px) {
-    .quick-modal-container {
-      top: 0 !important;
-      left: 0 !important;
-      transform: none !important;
-      width: 100% !important;
-      height: 100% !important;
-      display: flex !important;
-      align-items: flex-start !important;
-      justify-content: center;
-      padding: 1rem;
-    }
-    .quick-modal-content-wrapper {
-      width: 100% !important;
-      max-width: none !important;
-      height: auto;
-      margin-top: 1.5rem;
-      border-radius: 0.75rem;
-    }
-  }
-`;
-document.head.appendChild(styleTag);
-
-quickModal.innerHTML = `
-  <div class="quick-modal-content-wrapper" style="
-    background-color: ${bgColor};
-    color: ${textColor};
-    padding: 1.5rem;
+  quickModal.className = "quick-modal-container";
+  quickModal.style.cssText = `
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.95);
+    z-index: 10000;
+    opacity: 0;
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    width: 95%;
     max-width: 600px;
-    width: 100%;
-    border-radius: 1rem;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.3);
-    font-family: sans-serif;
-    position: relative;
-  ">
+    max-height: 90vh;
+    overflow-y: auto;
+  `;
 
-    <button id="quickCloseModalBtn" class="quick-close-button" style="
-      position: absolute;
-      top: 12px;
-      right: 12px;
-      background-color: #9e1c19;
-      color: #fff;
-      border: none;
-      width: 28px;
-      height: 28px;
-      border-radius: 50%;
-      font-size: 1.1rem;
-      font-weight: bold;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: all 0.2s ease;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-      z-index: 10;
-    " title="Закрыть">×</button>
+  // Стили для мобильных устройств
+  const styleTag = document.createElement("style");
+  styleTag.textContent = `
+    @media (max-width: 768px) {
+      .quick-modal-container {
+        top: 0 !important;
+        left: 0 !important;
+        transform: none !important;
+        width: 100% !important;
+        height: 100% !important;
+        max-width: none !important;
+        max-height: none !important;
+        border-radius: 0 !important;
+      }
+      .quick-modal-content-wrapper {
+        width: 100% !important;
+        height: 100% !important;
+        border-radius: 0 !important;
+        padding: 1rem !important;
+      }
+      .quick-links-container {
+        flex-direction: column !important;
+        gap: 0.5rem !important;
+      }
+      .quick-links-column {
+        flex: 1 1 100% !important;
+        min-width: 100% !important;
+      }
+    }
+  `;
+  document.head.appendChild(styleTag);
 
-    <h5 class="quick-modal-title" style="
-      text-align:center;
-      margin-bottom: 1.2rem;
-      color: #93a1a1;
-      font-size: 1.2rem;
-      font-weight: 600;
-    ">Cattāri Ariyasaccāni</h5>
+  quickModal.innerHTML = `
+    <div class="quick-modal-content-wrapper" style="
+      background-color: ${bgColor};
+      color: ${textColor};
+      padding: 1.5rem;
+      max-width: 600px;
+      width: 100%;
+      border-radius: 1rem;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+      font-family: sans-serif;
+      position: relative;
+    ">
+      <button id="quickCloseModalBtn" class="quick-close-button" style="
+        position: absolute;
+        top: 12px;
+        right: 12px;
+        background-color: #9e1c19;
+        color: #fff;
+        border: none;
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+        font-size: 1.1rem;
+        font-weight: bold;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.2s ease;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+        z-index: 10;
+      " title="Закрыть">×</button>
+
+      <h5 class="quick-modal-title" style="
+        text-align:center;
+        margin-bottom: 1.2rem;
+        color: #93a1a1;
+        font-size: 1.2rem;
+        font-weight: 600;
+      ">Cattāri Ariyasaccāni</h5>
 
     <div class="quick-links-container" style="display: flex; gap: 1.2rem; flex-wrap: wrap; justify-content: space-between;">
       <!-- Block 1 -->
@@ -924,8 +924,7 @@ quickModal.innerHTML = `
   </div>
 `;
 
-
-
+  // Вставьте здесь остальные блоки ссылок из оригинального кода
 
   document.body.appendChild(quickOverlay);
   document.body.appendChild(quickModal);
@@ -938,25 +937,24 @@ quickModal.innerHTML = `
   });
 
   // Закрытие
-const closeQuickModal = () => {
-  quickOverlay?.style && (quickOverlay.style.opacity = "0");
-  quickModal?.style && (quickModal.style.opacity = "0");
-  quickModal?.style && (quickModal.style.transform = "translate(-50%, -50%) scale(0.95)");
+  const closeQuickModal = () => {
+    quickOverlay?.style && (quickOverlay.style.opacity = "0");
+    quickModal?.style && (quickModal.style.opacity = "0");
+    quickModal?.style && (quickModal.style.transform = "translate(-50%, -50%) scale(0.95)");
 
-  setTimeout(() => {
-    quickOverlay?.remove();
-    quickModal?.remove();
-    quickOverlay = null;
-    quickModal = null;
-    quickModalIsOpen = false; // перемещено сюда
-  }, 300);
+    setTimeout(() => {
+      quickOverlay?.remove();
+      quickModal?.remove();
+      quickOverlay = null;
+      quickModal = null;
+      quickModalIsOpen = false;
+    }, 300);
 
-  if (escHandler) {
-    document.removeEventListener("keydown", escHandler);
-    escHandler = null;
-  }
-};
-
+    if (escHandler) {
+      document.removeEventListener("keydown", escHandler);
+      escHandler = null;
+    }
+  };
 
   quickOverlay.addEventListener("click", (e) => e.target === quickOverlay && closeQuickModal());
   quickModal.querySelector("#quickCloseModalBtn").addEventListener("click", closeQuickModal);
@@ -975,14 +973,14 @@ function toggleQuickModal() {
   }
 }
 
+// Обработчик для Alt+P в любой раскладке
 document.addEventListener("keydown", (event) => {
+  // Проверяем Alt и физическое расположение клавиши P (код KeyP)
   if (event.altKey && event.code === "KeyP") {
     event.preventDefault();
     toggleQuickModal();
   }
 });
-
-
 
 /*
 
