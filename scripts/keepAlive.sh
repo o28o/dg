@@ -7,7 +7,7 @@ timestamp=$(date "+%Y-%m-%d %H:%M:%S")
 cd /var/www/html/  > /dev/null 2>&1
 cd /data/data/com.termux/files/usr/share/apache2/default-site/htdocs > /dev/null 2>&1
 
-words_file="./assets/texts/sutta_words.txt"
+words_file="./assets/texts/sutta_words_forbot.txt"
 if [[ -s "$words_file" ]]; then
     mapfile -t file_terms < "$words_file"
     term="$(echo "${file_terms[RANDOM % ${#file_terms[@]}]}" | tr -d '\r' | xargs)"
