@@ -9,7 +9,7 @@ if ( preg_match('/Android/', $uname)  ) {
 //$mode = 'online';
 
 $basedir = "/data/data/com.termux/files/usr/share/apache2/default-site/htdocs";
-$fontawesomejs = '<script src="/assets/js/fontawesome.6.6.all.js" defer></script>';
+$fontawesomejs = '<script src="/assets/js/fontawesome.6.6.all.js"></script>';
 
 
 //converter.php
@@ -25,8 +25,8 @@ $adapterscriptlocation = '/data/data/com.termux/files/usr/bin/python3.12 /data/d
 $mode = 'offline';
 
 //$mode = 'online';
-#$fontawesomejs = '<script src="/assets/js/fontawesome.6.1.all.js" defer></script>';
-$fontawesomejs = '<script src="https://kit.fontawesome.com/a2bd6cd99e.js" crossorigin="anonymous"></script>';
+$fontawesomejs = '<script src="/assets/js/fontawesome.6.1.all.js" ></script>';
+#$fontawesomejs = '<script src="https://kit.fontawesome.com/a2bd6cd99e.js" crossorigin="anonymous"></script>';
 
 $basedir = "/var/www/html/";
 
@@ -41,8 +41,9 @@ $adapterscriptlocation = '/home/aksharamukha/aksharamukha/bin/python3 /var/www/h
 //
   //preg_match('/rym.from.sh/', $uname) 
   $mode = 'online';
+$fontawesomejs = '<script src="/assets/js/fontawesome.6.1.all.js" ></script>';
 
-$fontawesomejs = '<script src="https://kit.fontawesome.com/a2bd6cd99e.js" crossorigin="anonymous" ></script>';
+#$fontawesomejs = '<script src="https://kit.fontawesome.com/a2bd6cd99e.js" crossorigin="anonymous" ></script>';
 
 $basedir = "/var/www/html/";
 //converter.php
@@ -59,7 +60,10 @@ else if ( preg_match('/.from.sh/', $uname) ) {
   $mode = 'online';
 
 $basedir = '/home/a0902785/domains/dhamma.gift/public_html/';
-$fontawesomejs = '<script src="https://kit.fontawesome.com/a2bd6cd99e.js" crossorigin="anonymous" ></script>';
+
+$fontawesomejs = '<script src="/assets/js/fontawesome.6.1.all.js" ></script>';
+
+#$fontawesomejs = '<script src="https://kit.fontawesome.com/a2bd6cd99e.js" crossorigin="anonymous" ></script>';
 
 $linkforthru = 'https://theravada.ru/Teaching/Canon/Suttanta/Texts/';
 $linkforthai = "https://suttacentral.net/"; 
