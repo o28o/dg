@@ -33,13 +33,12 @@ const siteLanguage = localStorage.getItem('siteLanguage');
 let savedDict = localStorage.getItem('selectedDict');
 
 
-
-    function savePopupState() {
-        localStorage.setItem('popupWidth', popup.style.width);
-        localStorage.setItem('popupHeight', popup.style.height);
-        localStorage.setItem('popupTop', popup.style.top);
-        localStorage.setItem('popupLeft', popup.style.left);
-    }
+function savePopupState() {
+    localStorage.setItem('popupWidth', popup.style.width);
+    localStorage.setItem('popupHeight', popup.style.height);
+    localStorage.setItem('popupTop', popup.style.top);
+    localStorage.setItem('popupLeft', popup.style.left);
+}
 
 
 if (savedDict) {

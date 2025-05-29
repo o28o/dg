@@ -87,20 +87,30 @@ document.addEventListener('DOMContentLoaded', function() {
 		source: function(request, response) {
 			var terms = request.term.split(/[\|\s\*]/);
 			var lastTerm = terms.pop().trim();
-			var minLengthForSearch = 2;
-				  var otherMinLength = 3;
+var minLengthForSearch = 3;
 
-			if (!lastTerm) {
-				var history = JSON.parse(localStorage.getItem("localSearchHistory")) || [];
-				var historyKeys = history.map(([key]) => key);
-				response(historyKeys);
-				return;
-			}  
+// Если терм пустой — показываем всю историю
+if (!lastTerm) {
+    var history = JSON.parse(localStorage.getItem("localSearchHistory")) || [];
+    var historyKeys = history.map(([key]) => key);
+    response(historyKeys);
+    return;
+}
 
-          if (lastTerm.length < otherMinLength) {
-            response([]);
-            return;
-          }
+// Получаем историю для подсказок, даже если терм короткий
+var history = JSON.parse(localStorage.getItem("localSearchHistory")) || [];
+var historyKeys = history.map(([key]) => key);
+
+// Фильтруем историю по введённому началу строки
+var filteredHistory = historyKeys.filter(key => 
+    key.toLowerCase().startsWith(lastTerm.toLowerCase())
+);
+
+// Если длина запроса меньше минимальной — показываем только фильтрованную историю
+if (lastTerm.length < minLengthForSearch) {
+    response(filteredHistory);
+    return;
+}
 
           // Нормализуем введенный термин (убираем диакритику)
           var normalizedTerm = normalize(lastTerm);
