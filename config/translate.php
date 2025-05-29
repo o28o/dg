@@ -753,6 +753,7 @@ $btnsave = 'Set Defaults';
 $btnreset = 'Reset';
 $copyrightnote = 'The materials on this website are distributed under the <a class="text-white text-decoration-none me-0" data-bs-html="true" data-bs-toggle="tooltip" data-bs-placement="top" title="Attribution-NonCommercial-ShareAlike 4.0 International">CC BY-NC-SA 4.0</a> license, but Pali texts and English Translations from SuttaCentra.net, the works of A. Y. Syrkin and TheBuddhasWords.net are subject to different terms. Please check with the copyright holders for their usage conditions.';
 
+$ifRuLitTrn = '';
 $gearbutton = 'extra settings';
 
 $maintitle = 'Precise Search in Buddha Dhamma in Pali Suttas and Vinaya';
