@@ -16,7 +16,7 @@ if [[ "`uname -a`" == *"Android"* ]]; then
 sitename=http://localhost:8080
 nicevalue=1
 mode=offline
-fontawesomejs='src="/assets/js/fontawesome.6.1.all.js" defer'
+fontawesomejs='src="/assets/js/fontawesome.6.1.all.js"'
 apachesitepath=/data/data/com.termux/files/usr/share/apache2/default-site/htdocs
 tmpdir=$apachesitepath/result
 suttapath=$apachesitepath/suttacentral.net/
@@ -69,7 +69,9 @@ apachesitepath=/var/www/html
 tmpdir=$apachesitepath/result
 suttapath=$apachesitepath/suttacentral.net/
 
-fontawesomejs='src="https://kit.fontawesome.com/a2bd6cd99e.js" crossorigin="anonymous"'
+fontawesomejs='src="/assets/js/fontawesome.6.1.all.js"'
+
+#fontawesomejs='src="https://kit.fontawesome.com/a2bd6cd99e.js" crossorigin="anonymous"'
 linkforthsu=https://tipitaka.theravada.su
 linkforthru=https://theravada.ru
 linkforthai=https://suttacentral.net/
@@ -111,7 +113,9 @@ apachesitepath=/var/www/html
 #tmpdir=/tmp
 tmpdir=$apachesitepath/result/
 suttapath=$apachesitepath/suttacentral.net/
-fontawesomejs='src="https://kit.fontawesome.com/a2bd6cd99e.js" crossorigin="anonymous"'
+fontawesomejs='src="/assets/js/fontawesome.6.1.all.js"'
+
+#fontawesomejs='src="https://kit.fontawesome.com/a2bd6cd99e.js" crossorigin="anonymous"'
 linkforthsu=/tipitaka.theravada.su
 linkforthru=/theravada.ru
 linkforthai=/legacy.suttacentral.net/read/th/
@@ -142,7 +146,9 @@ elif [[ "`uname -a`" == *".from.sh"* ]]; then
 sitename=http://f2.dhamma.gift
 mode=online
 nicevalue=19
-fontawesomejs='src="https://kit.fontawesome.com/a2bd6cd99e.js" crossorigin="anonymous"'
+fontawesomejs='src="/assets/js/fontawesome.6.1.all.js"'
+
+#fontawesomejs='src="https://kit.fontawesome.com/a2bd6cd99e.js" crossorigin="anonymous"'
 apachesitepath=/home/a0902785/domains/dhamma.gift/public_html/
 tmpdir=/tmp
 suttapath=/home/a0902785/domains/dhamma.gift/suttacentral.net/
