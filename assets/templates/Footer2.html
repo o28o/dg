@@ -401,19 +401,33 @@ window.addEventListener("load", () => {
     // Проверяем, есть ли элемент с классом "params"
     const paramsElement = document.querySelector(".params");
 
-    // Проверяем, содержит ли URL "history.php" и есть ли paramsElement
+    let finalUrl = window.location.href; // по умолчанию — текущий URL
+
+    // Если есть .params — используем его текст как новый URL
     if (paramsElement) {
-        const newUrl = paramsElement.textContent.trim(); // Берем текст из элемента
+        const newUrl = paramsElement.textContent.trim();
         if (newUrl) {
-            history.replaceState(null, "", newUrl); // Меняем URL
+            history.replaceState(null, "", newUrl);
+            finalUrl = newUrl;
         }
     } else if (oldUrl) {
-        history.replaceState(null, "", oldUrl); // Меняем URL на реферер
-    } else {
-        console.log("Реферер отсутствует. Возможно, страница открыта напрямую.");
+        // Иначе используем реферер
+        history.replaceState(null, "", oldUrl);
+        finalUrl = oldUrl;
+    }
+
+    // Теперь сохраняем финальный URL в историю посещений
+    try {
+        const url = new URL(finalUrl, window.location.origin);
+        const qParam = url.searchParams.get("q");
+
+        if (qParam) {
+            addToSearchHistory(); // твоя уже существующая функция
+        }
+    } catch (e) {
+        console.error("Ошибка при сохранении URL из referrer:", e);
     }
 });
-  
 </script>
 
       <script defer>
