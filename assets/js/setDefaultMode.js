@@ -46,6 +46,7 @@
     try {
       localStorage.removeItem("userPreferences");
       localStorage.removeItem("defaultReader");
+      localStorage.removeItem("localSearchHistory");
 
       document.querySelectorAll("select").forEach(select => {
         select.selectedIndex = 0;

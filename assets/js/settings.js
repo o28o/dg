@@ -19,7 +19,7 @@ function addToSearchHistory() {
 
         // Добавляем новую запись в начало
         history.unshift([key, value]);
-
+		console.log("Сохраняем в историю:", window.location.href);
         // Ограничиваем размер
         if (history.length > MAX_HISTORY) {
             history = history.slice(0, MAX_HISTORY); // оставляем только последние N
@@ -256,6 +256,8 @@ function applySavedDict(dict) {
   localStorage.removeItem("defaultReader");
   localStorage.removeItem('paliToggleRu');
   localStorage.removeItem('viewMode');
+        localStorage.removeItem("localSearchHistory");
+
   localStorage.setItem("variantVisibility", "hidden");
 
 
