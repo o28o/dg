@@ -156,16 +156,17 @@ toggleThemeManually();
 var themeValue = localStorage.theme;
 //console.log("Значение theme:", themeValue);
 
-
-
-// Создаем наблюдатель за изменениями атрибута data-bs-theme
-const themeObserver = new MutationObserver((mutations) => {
+// Проверяем, существует ли уже themeObserver, и создаем новый только если его нет
+const themeObserver = window.themeObserver || new MutationObserver((mutations) => {
   mutations.forEach(mutation => {
     if (mutation.attributeName === 'data-bs-theme') {
       updateDropdownMenus();
     }
   });
 });
+
+// Сохраняем в window для последующих проверок
+window.themeObserver = themeObserver;
 
 // Начинаем наблюдение за <html> элементом
 themeObserver.observe(document.documentElement, {
