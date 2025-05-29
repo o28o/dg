@@ -172,8 +172,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     
                     // Сохраняем в историю
                     var history = JSON.parse(localStorage.getItem("localSearchHistory")) || [];
-                    history.unshift([selectedValue]);
-                    localStorage.setItem("localSearchHistory", JSON.stringify(history));
+                   // history.unshift([selectedValue]);
+                   // localStorage.setItem("localSearchHistory", JSON.stringify(history));
                     
                     return false;
                 }
