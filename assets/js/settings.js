@@ -1,4 +1,36 @@
 
+const MAX_HISTORY = 100;
+
+function addToSearchHistory() {
+    try {
+        const url = new URL(window.location.href);
+        const qParam = url.searchParams.get("q");
+
+        if (!qParam) return;
+
+        const key = qParam;
+        const value = url.pathname + url.search + url.hash;
+
+        let history = JSON.parse(localStorage.getItem("localSearchHistory")) || {};
+
+        // Обновляем
+        history[key] = value;
+
+        // Ограничиваем размер
+        const keys = Object.keys(history);
+        if (keys.length > MAX_HISTORY) {
+            // Удаляем самую старую запись (первый ключ по порядку)
+            delete history[keys[0]];
+        }
+
+        localStorage.setItem("localSearchHistory", JSON.stringify(history));
+    } catch (e) {
+        console.error("Ошибка при сохранении истории поиска:", e);
+    }
+}
+
+
+
 //установка фокуса в инпуте по нажатию / 
 document.addEventListener('keydown', function(event) {
     // Проверяем именно символ / (код 191 или Slash)

@@ -650,6 +650,10 @@ prevName = prevName.replace(/[0-9.]/g, '');
 
     }
     );
+	
+	addToSearchHistory();	
+	
+	
     })
 .catch(error => {
   console.log('error:not found');
