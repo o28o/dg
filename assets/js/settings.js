@@ -121,7 +121,7 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 
 document.addEventListener("keydown", (event) => {
-  if (event.ctrlKey && event.code === "ArrowRight") {
+  if (event.altKey && event.code === "ArrowRight") {
     const nextDiv = document.getElementById("next");
     if (nextDiv) {
       const link = nextDiv.querySelector("a");
@@ -134,7 +134,7 @@ document.addEventListener("keydown", (event) => {
 });
 
 document.addEventListener("keydown", (event) => {
-  if (event.ctrlKey && event.code === "ArrowLeft") {
+  if (event.altKey && event.code === "ArrowLeft") {
     const prevDiv = document.getElementById("previous");
     if (prevDiv) {
       const link = prevDiv.querySelector("a");
