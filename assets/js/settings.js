@@ -7,24 +7,21 @@ function addToSearchHistory() {
 
         if (!qParam) return;
 
-        const key = qParam;
+        // Приводим поисковый запрос к нижнему регистру сразу
+        const key = qParam.toLowerCase();
         const value = url.pathname + url.search + url.hash;
 
-        // Получаем текущую историю или создаём новую
         let history = JSON.parse(localStorage.getItem("localSearchHistory")) || [];
 
-        // Удаляем все существующие записи с таким же ключом
+        // Теперь key уже в нижнем регистре, поэтому просто сравниваем `k !== key`
         history = history.filter(([k]) => k !== key);
 
-        // Добавляем новую запись в начало
         history.unshift([key, value]);
 
-        // Ограничиваем размер
         if (history.length > MAX_HISTORY) {
             history = history.slice(0, MAX_HISTORY);
         }
 
-        // Сохраняем обратно в localStorage
         localStorage.setItem("localSearchHistory", JSON.stringify(history));
     } catch (e) {
         console.error("Ошибка при сохранении истории поиска:", e);
