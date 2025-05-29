@@ -84,10 +84,18 @@ document.addEventListener('DOMContentLoaded', function() {
         },
         minLength: 0,
         multiple: /[\s\*]/, // изменение регулярного выражения для разделения по пробелу или звездочке
-        source: function(request, response) {
-          var terms = request.term.split(/[\|\s\*]/); // изменение регулярного выражения для разделения по пробелу или звездочке или |
-          var lastTerm = terms.pop().trim();
-          var otherMinLength = 3;
+		source: function(request, response) {
+			var terms = request.term.split(/[\|\s\*]/);
+			var lastTerm = terms.pop().trim();
+			var minLengthForSearch = 2;
+				  var otherMinLength = 3;
+
+			if (!lastTerm) {
+				var history = JSON.parse(localStorage.getItem("localSearchHistory")) || [];
+				var historyKeys = history.map(([key]) => key);
+				response(historyKeys);
+				return;
+			}  
 
           if (lastTerm.length < otherMinLength) {
             response([]);
