@@ -7,21 +7,24 @@ function addToSearchHistory() {
 
         if (!qParam) return;
 
-        // Нормализуем ключ: приводим к нижнему регистру, обрезаем пробелы
-        const key = qParam.trim().toLowerCase();
+        const key = qParam;
         const value = url.pathname + url.search + url.hash;
 
+        // Получаем текущую историю или создаём новую
         let history = JSON.parse(localStorage.getItem("localSearchHistory")) || [];
 
-        // Нормализуем сравнение ключей
-        history = history.filter(([k]) => k.trim().toLowerCase() !== key);
+        // Удаляем все существующие записи с таким же ключом
+        history = history.filter(([k]) => k !== key);
 
+        // Добавляем новую запись в начало
         history.unshift([key, value]);
 
+        // Ограничиваем размер
         if (history.length > MAX_HISTORY) {
             history = history.slice(0, MAX_HISTORY);
         }
 
+        // Сохраняем обратно в localStorage
         localStorage.setItem("localSearchHistory", JSON.stringify(history));
     } catch (e) {
         console.error("Ошибка при сохранении истории поиска:", e);
@@ -1071,4 +1074,3 @@ if (!document.getElementById("openQuickModalBtn")) {
 
 
 */
-
