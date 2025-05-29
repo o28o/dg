@@ -19,7 +19,7 @@ function addToSearchHistory() {
 
         // Добавляем новую запись в начало
         history.unshift([key, value]);
-		console.log("Сохраняем в историю:", window.location.href);
+		//console.log("Сохраняем в историю:", window.location.href);
         // Ограничиваем размер
         if (history.length > MAX_HISTORY) {
             history = history.slice(0, MAX_HISTORY); // оставляем только последние N
@@ -244,6 +244,7 @@ function applySavedDict(dict) {
  
  if (resetButton) { 
   resetButton.addEventListener('click', function() {
+	  console.log('reset Button clicked');
   // Удаляем значения из localStorage для всех чекбоксов
   document.querySelectorAll(".setting-checkbox").forEach(checkbox => {
     const key = checkbox.dataset.key; // Берём ключ из data-key
