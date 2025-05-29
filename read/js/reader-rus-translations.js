@@ -290,7 +290,9 @@ const varResponse = fetchVariant();
 //  console.log(rustrnpath);
 Promise.all([rootResponse, translationResponse, htmlResponse, varResponse]).then(responses => {
     const [paliData, transData, htmlData, varData] = responses;
-    Object.keys(htmlData).forEach(segment => {
+		addToSearchHistory();
+ 
+ Object.keys(htmlData).forEach(segment => {
       if (transData[segment] === undefined) {
         transData[segment] = "";
       }

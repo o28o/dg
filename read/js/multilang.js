@@ -284,6 +284,8 @@ const varResponse = fetchVariant();
     
   Promise.all([rootResponse, translationResponse, engtranslationResponse, htmlResponse, varResponse]).then(responses => {
     const [paliData, transData, engTransData, htmlData, varData] = responses;
+	addToSearchHistory();
+
 
     Object.keys(htmlData).forEach(segment => {
       if (transData[segment] === undefined) {
@@ -667,8 +669,6 @@ prevName = prevName.replace(/[0-9.]/g, '');
 
     }
     );
-	
-	addToSearchHistory();
      
     })
 .catch(error => {
