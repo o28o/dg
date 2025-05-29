@@ -14,6 +14,8 @@ $clearaption = 'Очистить';
 $btnsave = 'Сохр. по умолч.';
 $btnreset = 'Сбросить';
 
+$ifRuLitTrn = '(<a href="/assets/common/o.html" class="translation-link">o</a>)';
+
 $gearbutton = 'дополнительные настройки';
 $linksothermat = 'https://drive.google.com/drive/u/1/folders/1UU-y5idRNpfcVTripRUtyTVcOgdwjMGN';
 $linktextbook = "$linktextbookru";
