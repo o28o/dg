@@ -2431,7 +2431,7 @@
 "sn35.114":{"pi":"Paṭhamamārapāsasutta ","en":"Māra’s Snare (1st) ","mtph":"","ru":"Ловушка Мары Первая"},
 "sn35.115":{"pi":"Dutiyamārapāsasutta ","en":"Māra’s Snare (2nd) ","mtph":"","ru":"Ловушка Мары Первая"},
 "sn35.116":{"pi":"Lokantagamanasutta ","en":"Traveling to the End of the World ","mtph":1,"ru":"Локантагамана"},
-"sn35.117":{"pi":"Kāmaguṇasutta ","en":"The Kinds of Sensual Stimulation ","mtph":1,"ru":"Множители Желаний"},
+"sn35.117":{"pi":"Kāmaguṇasutta ","en":"The Kinds of Sensual Stimulation ","mtph":1,"ru":"Множители Желания"},
 "sn35.118":{"pi":"Sakkapañhasutta ","en":"The Question of Sakka ","mtph":"","ru":"Вопрос Сакки"},
 "sn35.119":{"pi":"Pañcasikhasutta ","en":"The Question of Pañcasikha ","mtph":"","ru":"Панчасикха"},
 "sn35.120":{"pi":"Sāriputtasaddhivihārikasutta ","en":"Sāriputta and the Pupil ","mtph":"","ru":"Живущий Вместе Сарипутта"},
