@@ -1,5 +1,4 @@
-
-const MAX_HISTORY = 100;
+const MAX_HISTORY = 28;
 
 function addToSearchHistory() {
     try {
@@ -14,15 +13,15 @@ function addToSearchHistory() {
         // Получаем текущую историю или создаём новую
         let history = JSON.parse(localStorage.getItem("localSearchHistory")) || [];
 
-        // Проверяем, есть ли уже такая запись
+        // Удаляем все существующие записи с таким же ключом
         history = history.filter(([k]) => k !== key);
 
         // Добавляем новую запись в начало
         history.unshift([key, value]);
-		//console.log("Сохраняем в историю:", window.location.href);
+
         // Ограничиваем размер
         if (history.length > MAX_HISTORY) {
-            history = history.slice(0, MAX_HISTORY); // оставляем только последние N
+            history = history.slice(0, MAX_HISTORY);
         }
 
         // Сохраняем обратно в localStorage
