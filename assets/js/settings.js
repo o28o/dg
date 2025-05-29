@@ -11,25 +11,26 @@ function addToSearchHistory() {
         const key = qParam;
         const value = url.pathname + url.search + url.hash;
 
-        let history = JSON.parse(localStorage.getItem("localSearchHistory")) || {};
+        // Получаем текущую историю или создаём новую
+        let history = JSON.parse(localStorage.getItem("localSearchHistory")) || [];
 
-        // Обновляем
-        history[key] = value;
+        // Проверяем, есть ли уже такая запись
+        history = history.filter(([k]) => k !== key);
+
+        // Добавляем новую запись в начало
+        history.unshift([key, value]);
 
         // Ограничиваем размер
-        const keys = Object.keys(history);
-        if (keys.length > MAX_HISTORY) {
-            // Удаляем самую старую запись (первый ключ по порядку)
-            delete history[keys[0]];
+        if (history.length > MAX_HISTORY) {
+            history = history.slice(0, MAX_HISTORY); // оставляем только последние N
         }
 
+        // Сохраняем обратно в localStorage
         localStorage.setItem("localSearchHistory", JSON.stringify(history));
     } catch (e) {
         console.error("Ошибка при сохранении истории поиска:", e);
     }
 }
-
-
 
 //установка фокуса в инпуте по нажатию / 
 document.addEventListener('keydown', function(event) {
