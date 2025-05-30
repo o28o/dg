@@ -427,6 +427,16 @@ if (preg_match('/(-anyd)/', $extra)) {
             // Показываем алерт только если есть содержимое
             if ('$outputnonl' !== '' && '$outputnonl' !== '<br>') {
                 successAlert.style.display = 'block';
+
+                // Удаляем невалидный запрос из истории поиска
+                localStorage.setItem(
+                    'localSearchHistory',
+                    JSON.stringify(
+                        JSON.parse(localStorage.getItem('localSearchHistory') || '[]').filter(
+                            ([k]) => k !== " . json_encode($string) . "
+                        )
+                    )
+                );
             }
         }
     });
