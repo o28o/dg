@@ -10,20 +10,37 @@ function addToSearchHistory() {
         // Приводим поисковый запрос к нижнему регистру сразу
         const key = qParam.toLowerCase();
         const value = url.pathname + url.search + url.hash;
-        const timestamp = new Date().toISOString(); // Добавляем дату и время
+
+        // Получаем текущее время клиента в формате ISO с таймзоной
+        function getClientTimeISO() {
+            const now = new Date();
+            const pad = (n) => n.toString().padStart(2, '0');
+            const offset = -now.getTimezoneOffset(); // Смещение в минутах
+            const offsetSign = offset >= 0 ? '+' : '-';
+            const offsetHours = pad(Math.floor(Math.abs(offset) / 60));
+            const offsetMinutes = pad(Math.abs(offset) % 60);
+
+            return `${now.getFullYear()}-${pad(now.getMonth()+1)}-${pad(now.getDate())}T` +
+                   `${pad(now.getHours())}:${pad(now.getMinutes())}:${pad(now.getSeconds())}` +
+                   `${offsetSign}${offsetHours}:${offsetMinutes}`;
+        }
+
+        const timestamp = getClientTimeISO();
 
         let history = JSON.parse(localStorage.getItem("localSearchHistory")) || [];
 
-        // Теперь key уже в нижнем регистру, поэтому просто сравниваем `k !== key`
+        // Удаляем старую запись с таким же ключом
         history = history.filter(([k]) => k !== key);
 
-        // Добавляем новую запись с датой
+        // Добавляем новую запись: [ключ, значение, время]
         history.unshift([key, value, timestamp]);
 
+        // Ограничиваем историю до MAX_HISTORY записей
         if (history.length > MAX_HISTORY) {
             history = history.slice(0, MAX_HISTORY);
         }
 
+        // Сохраняем обновлённую историю в localStorage
         localStorage.setItem("localSearchHistory", JSON.stringify(history));
     } catch (e) {
         console.error("Ошибка при сохранении истории поиска:", e);
