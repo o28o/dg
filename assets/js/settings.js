@@ -1,14 +1,23 @@
 const MAX_HISTORY = 56;
 
 function addToSearchHistory() {
+
     try {
         const url = new URL(window.location.href);
         const qParam = url.searchParams.get("q");
 
         if (!qParam) return;
 
-        // Приводим поисковый запрос к нижнему регистру сразу
-        const key = qParam.match(/"([^"]*)"/)?.[1]?.toLowerCase() || '';
+        // Обработка кавычек:
+        // 1. Приводим к нижнему регистру
+        // 2. Удаляем кавычки только если они окружают весь запрос
+        let key = qParam.toLowerCase();
+        
+        // Удаляем кавычки в начале и конце, если они есть
+        if (key.startsWith('"') && key.endsWith('"')) {
+            key = key.slice(1, -1);
+        }
+
         const value = url.pathname + url.search + url.hash;
 
         // Получаем текущее время клиента в формате ISO с таймзоной
@@ -29,7 +38,7 @@ function addToSearchHistory() {
 
         let history = JSON.parse(localStorage.getItem("localSearchHistory")) || [];
 
-        // Удаляем старую запись с таким же ключом
+        // Удаляем старую запись с таким же ключом (если есть)
         history = history.filter(([k]) => k !== key);
 
         // Добавляем новую запись: [ключ, значение, время]
@@ -46,6 +55,9 @@ function addToSearchHistory() {
         console.error("Ошибка при сохранении истории поиска:", e);
     }
 }
+
+// Вызываем функцию при загрузке страницы (если нужно)
+addToSearchHistory();
 //установка фокуса в инпуте по нажатию / 
 document.addEventListener('keydown', function(event) {
     // Проверяем именно символ / (код 191 или Slash)
