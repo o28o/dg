@@ -290,14 +290,18 @@ redirectWithAnchor($readerlang, $stringForOpen, $s ?? null, $anchor);
   //open read.php Bu
   $stringForOpen = str_replace (" ", "", $stringForOpen);
 $stringForOpen = strtolower($stringForOpen);
-echo "<script>window.location.href='{$base}read.php#{$stringForOpen}CollapseBu';</script>";
+echo "<script>window.location.href='{$base}read.php#{$stringForOpen}CollapseBu';
+    addToSearchHistory();
+</script>";
   exit();
 } else if  (preg_match("/^bi-(pj|ss|ay|np|pc|pd|sk|as)$/i", $stringForOpen)) {
   //open read.php Bi
   $stringForOpen = str_replace (" ", "", $stringForOpen);
   $stringForOpen = str_replace ("bi-", "", $stringForOpen);
 $stringForOpen = strtolower($stringForOpen);
-echo "<script>window.location.href='{$base}read.php#{$stringForOpen}CollapseBi';</script>";
+echo "<script>window.location.href='{$base}read.php#{$stringForOpen}CollapseBi';
+    addToSearchHistory();
+</script>";
   exit();
 } else if (preg_match("/(bu|bi)-([a-z][a-z])[0-9]*/i", $stringForOpen)) {
  // echo "<script>alert('case 2');</script>";	
@@ -516,6 +520,8 @@ $letterblock = preg_replace("/[0-9]*/i","","$stringForOpen");
 $stringForOpen = strtolower($stringForOpen);
 echo "<script>
 window.location.href='{$base}read.php#{$stringForOpen}Collapse';
+    addToSearchHistory();
+
 </script>";
   exit();
 }
