@@ -1,4 +1,4 @@
-const MAX_HISTORY = 28;
+const MAX_HISTORY = 56;
 
 function addToSearchHistory() {
     try {
@@ -7,8 +7,8 @@ function addToSearchHistory() {
 
         if (!qParam) return;
 
-        // Приводим поисковый запрос к нижнему регистру сразу
-        const key = qParam.toLowerCase();
+        // Приводим поисковый запрос к нижнему регистру и удаляем кавычки
+        const key = qParam.toLowerCase().replace(/^"+|"+$/g, '');
         const value = url.pathname + url.search + url.hash;
 
         // Получаем текущее время клиента в формате ISO с таймзоной
@@ -29,8 +29,11 @@ function addToSearchHistory() {
 
         let history = JSON.parse(localStorage.getItem("localSearchHistory")) || [];
 
-        // Удаляем старую запись с таким же ключом
-        history = history.filter(([k]) => k !== key);
+        // Удаляем старую запись с таким же ключом (очищая ключи от кавычек перед сравнением)
+        history = history.filter(([k]) => {
+            const cleanKey = k.replace(/^"+|"+$/g, '');
+            return cleanKey !== key;
+        });
 
         // Добавляем новую запись: [ключ, значение, время]
         history.unshift([key, value, timestamp]);
