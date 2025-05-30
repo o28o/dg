@@ -8,18 +8,18 @@ function addToSearchHistory() {
 
         if (!qParam) return;
 
-        // Обработка кавычек:
-        // 1. Приводим к нижнему регистру
-        // 2. Удаляем кавычки только если они окружают весь запрос
-		let key = qParam.toLowerCase();
+let key = qParam.toLowerCase();
 
-		// Удаляем URL (всё, что начинается с http://, https:// или www.)
-		key = key.replace(/\s*(https?:\/\/|www\.)\S+/gi, '').trim();
+// Удаляем URL и всё что после него
+key = key.replace(/\s*https?:\/\/\S+/gi, '')
+         .replace(/\s*www\.\S+/gi, '')
+         .trim();
 
-		// Удаляем кавычки в начале/конце, если они есть
-		if (key.startsWith('"') && key.endsWith('"')) {
-			key = key.slice(1, -1);
-		}
+// Удаляем кавычки только если они окружают весь оставшийся текст
+if (key.startsWith('"') && key.endsWith('"')) {
+    key = key.slice(1, -1).trim();
+}
+
         const value = url.pathname + url.search + url.hash;
 
         // Получаем текущее время клиента в формате ISO с таймзоной
