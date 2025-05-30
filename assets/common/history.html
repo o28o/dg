@@ -2,15 +2,18 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8" />
-  <link rel="icon" type="image/png" sizes="32x32" href="https://dhamma.gift/assets/img/favicon-32x32.png"> 
-  <link rel="icon" type="image/png" sizes="56x56" href="https://dhamma.gift/assets/img/favicon-56x56.png"> 
-  <link rel="icon" type="image/png" sizes="128x128" href="https://dhamma.gift/assets/img/icon-128x128.png"> 
+  <link rel="icon" type="image/png" sizes="32x32" href="https://dhamma.gift/assets/img/favicon-32x32.png">  
+  <link rel="icon" type="image/png" sizes="56x56" href="https://dhamma.gift/assets/img/favicon-56x56.png">  
+  <link rel="icon" type="image/png" sizes="128x128" href="https://dhamma.gift/assets/img/icon-128x128.png">  
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="manifest" href="/ru/manifest.php">
   <link href="/assets/css/bootstrap.5.3.1.min.css" rel="stylesheet" />
   <link href="/assets/css/extrastyles.css" rel="stylesheet" />
   <link href="/assets/css/pages.css" rel="stylesheet" />
-
+  
+  <!-- DataTables CSS -->
+  <link rel="stylesheet" type="text/css" href="/assets/js/datatables/datatables.min.css"/>
+  
   <!-- SEO -->
   <title id="page-title">История поиска</title>
   <meta name="description" content="Просмотр истории ваших поисковых запросов на Dhamma.gift." id="meta-description">
@@ -28,9 +31,7 @@
       margin-bottom: 20px;
     }
 
-    table {
-      width: 100%;
-      border-collapse: collapse;
+    .dataTables_wrapper {
       box-shadow: 0 1px 4px rgba(0,0,0,0.1);
       border-radius: 8px;
       overflow: hidden;
@@ -96,6 +97,25 @@
       --link-color: #6ea8ff;
       --muted-text-color: #aaa;
     }
+    
+    /* DataTables pagination styling */
+    .dataTables_paginate .paginate_button {
+      padding: 0.3em 0.8em;
+      margin-left: 2px;
+      border: 1px solid transparent;
+      border-radius: 4px;
+    }
+    
+    .dataTables_paginate .paginate_button.current {
+      background: var(--table-header-bg);
+      color: var(--table-header-color) !important;
+      border: 1px solid var(--table-header-bg);
+    }
+    
+    .dataTables_paginate .paginate_button:hover {
+      background: var(--table-row-hover-bg);
+      border: 1px solid var(--table-row-hover-bg);
+    }
   </style>
 </head>
 <body data-bs-theme="light">
@@ -134,10 +154,11 @@
 <!-- Заголовок страницы -->
 <div class="mt-4 mb-4">
   <h1 id="page-heading">История ваших поисковых запросов</h1>
+  <span id="page-subheading">История ваших поисковых запросов</span>
 </div>
 
 <!-- Вывод истории -->
-<table id="historyTable">
+<table id="historyTable" class="display" style="width:100%">
   <thead>
     <tr>
       <th>#</th>
@@ -154,6 +175,13 @@
 
 <a id="clearHistoryBtn" title="Clear Local History" class="btn btn-clear btn-primary mt-2" style="float: right;">&#10006;</a>
 
+<!-- Подключаем скрипты -->
+<script type="text/javascript" src="/assets/js/jquery-3.7.0.min.js"></script>
+<script type="text/javascript" src="/assets/js/bootstrap.bundle.5.3.1.min.js"></script>
+<script type="text/javascript" src="/assets/js/datatables/datatables.js"></script>
+<script type="text/javascript" src="/assets/js/natural.js"></script>
+<script type="text/javascript" src="/assets/js/strip-html.js"></script>
+
 <script>
   const history = JSON.parse(localStorage.getItem("localSearchHistory")) || [];
   const tbody = document.getElementById("historyBody");
@@ -165,20 +193,31 @@
       'title': 'История поиска',
       'description': 'Просмотр истории ваших поисковых запросов на Dhamma.gift.',
       'heading': 'История ваших поисковых запросов',
+      'subheading': 'Анонимная история, только на этом устройстве',
       'query': 'Запрос',
       'date': 'Дата и время',
       'empty': 'История поиска пуста.',
-	    'button': '<span title="Очистить Историю">&times; очистить</span>'
+      'button': '<span title="Очистить Историю">&times; очистить</span>',
+      'search': 'Поиск:',
+      'info': 'Показаны записи с _START_ по _END_ из _TOTAL_',
+      'infoEmpty': 'Нет записей для отображения',
+      'lengthMenu': 'Показать _MENU_ записей',
+      'zeroRecords': 'Ничего не найдено'
     },
     'en': {
       'title': 'Search History',
       'description': 'View your search history on Dhamma.gift.',
       'heading': 'Your Search History',
+      'subheading': 'Anonymous, only on this device',
       'query': 'Query',
       'date': 'Date and Time',
       'empty': 'Search history is empty.',
-	    'button': '<span title="Clear history">&times; clear</span>'
-
+      'button': '<span title="Clear history">&times; clear</span>',
+      'search': 'Search:',
+      'info': 'Showing _START_ to _END_ of _TOTAL_ entries',
+      'infoEmpty': 'No entries to show',
+      'lengthMenu': 'Show _MENU_ entries',
+      'zeroRecords': 'No matching records found'
     }
   };
 
@@ -197,11 +236,12 @@
     localStorage.setItem('ui-lang', lang);
 
     document.getElementById('page-title').innerText = translations[lang].title;
-	document.getElementById('clearHistoryBtn').innerHTML = translations[lang].button;
+    document.getElementById('clearHistoryBtn').innerHTML = translations[lang].button;
 	
     document.getElementById('meta-description').setAttribute('content', translations[lang].description);
     document.querySelector('html').setAttribute('lang', lang);
     document.getElementById('page-heading').innerText = translations[lang].heading;
+    document.getElementById('page-subheading').innerText = translations[lang].subheading;
     document.getElementById('label-query').innerText = translations[lang].query;
     document.getElementById('label-date').innerText = translations[lang].date;
     document.getElementById('emptyMessage').innerText = translations[lang].empty;
@@ -225,38 +265,71 @@
   // Установка начального языка
   setLanguage(currentLang);
 
-  // Вывод истории
-  if (history.length === 0) {
-    emptyMessage.style.display = "block";
-  } else {
-    history.forEach((entry, index) => {
-      const [key, value, timestamp] = entry;
+  // Подготовка данных для DataTables
+  const tableData = history.map((entry, index) => {
+    const [key, value, timestamp] = entry;
+    
+    let displayDate = "";
+    try {
+      const date = new Date(timestamp);
+      displayDate = date.toLocaleString(); // Отображение в локальном формате
+    } catch (e) {
+      displayDate = timestamp; // Если ошибка парсинга
+    }
 
-      const row = document.createElement("tr");
+    const url = new URL(window.location.origin + value);
+    
+    return {
+      index: index + 1,
+      query: `<a href="${url}" target="_blank" class="query-link">${key}</a>`,
+      date: `<span class="timestamp">${displayDate}</span>`,
+      rawDate: timestamp // Для сортировки
+    };
+  });
 
-      let displayDate = "";
-      try {
-        const date = new Date(timestamp);
-        displayDate = date.toLocaleString(); // Отображение в локальном формате
-      } catch (e) {
-        displayDate = timestamp; // Если ошибка парсинга
-      }
-
-      const url = new URL(window.location.origin + value);
-
-      row.innerHTML = `
-        <td>${index + 1}</td>
-        <td><a href="${url}" target="_blank" class="query-link">${key}</a></td>
-        <td class="timestamp">${displayDate}</td>
-      `;
-
-      tbody.appendChild(row);
-    });
-  }
+  // Инициализация DataTables
+  $(document).ready(function() {
+    if (tableData.length > 0) {
+      $('#historyTable').DataTable({
+        data: tableData,
+        columns: [
+          { data: 'index', width: '5%' },
+          { data: 'query' },
+          { 
+            data: 'date',
+            type: 'date',
+            render: { 
+              _: 'date',
+              sort: 'rawDate'
+            }
+          }
+        ],
+        language: {
+          search: translations[currentLang].search,
+          info: translations[currentLang].info,
+          infoEmpty: translations[currentLang].infoEmpty,
+          lengthMenu: translations[currentLang].lengthMenu,
+          zeroRecords: translations[currentLang].zeroRecords,
+          paginate: {
+            previous: '‹',
+            next: '›'
+          }
+        },
+        pageLength: 10,
+        lengthMenu: [5, 10, 25, 50, 100],
+        order: [[2, 'desc']], // Сортировка по дате по убыванию
+        responsive: true,
+        autoWidth: false
+      });
+    } else {
+      emptyMessage.style.display = "block";
+      $('#historyTable').hide();
+    }
+  });
 
   // Кнопка очистки истории
   document.getElementById('clearHistoryBtn').addEventListener('click', () => {
-    if (confirm('Вы уверены, что хотите очистить историю?')) {
+    if (confirm(currentLang === 'ru' ? 'Вы уверены, что хотите очистить историю?' : 'Are you sure you want to clear history?')) {
       localStorage.removeItem("localSearchHistory");
       location.reload();
     }
