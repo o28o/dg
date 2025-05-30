@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/png" sizes="32x32" href="https://dhamma.gift/assets/img/favicon-32x32.png"> 
+  <link rel="icon" type="image/png" sizes="56x56" href="https://dhamma.gift/assets/img/favicon-56x56.png"> 
+  <link rel="icon" type="image/png" sizes="128x128" href="https://dhamma.gift/assets/img/icon-128x128.png"> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="manifest" href="/ru/manifest.php">
+  <link href="/assets/css/bootstrap.5.3.1.min.css" rel="stylesheet" />
+  <link href="/assets/css/extrastyles.css" rel="stylesheet" />
+  <link href="/assets/css/pages.css" rel="stylesheet" />
+
+  <!-- SEO -->
+  <title id="page-title">История поиска</title>
+  <meta name="description" content="Просмотр истории ваших поисковых запросов на Dhamma.gift." id="meta-description">
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background-color: #f9f9f9;
+      color: #333;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    th, td {
+      padding: 12px 15px;
+      text-align: left;
+    }
+
+    th {
+      background-color: var(--table-header-bg);
+      color: var(--table-header-color);
+    }
+
+    tr:nth-child(even) {
+      background-color: var(--table-row-even-bg);
+    }
+
+    tr:hover {
+      background-color: var(--table-row-hover-bg);
+    }
+
+    a.query-link {
+      color: var(--link-color);
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    a.query-link:hover {
+      text-decoration: underline;
+    }
+
+    .timestamp {
+      color: var(--muted-text-color);
+      font-size: 0.9em;
+    }
+
+    .empty {
+      text-align: center;
+      color: #999;
+      margin-top: 20px;
+    }
+
+    .btn-clear {
+     text-align: center;
+    }
+
+    :root {
+      --table-header-bg: #f1f1f1;
+      --table-header-color: #333;
+      --table-row-even-bg: #fafafa;
+      --table-row-hover-bg: #f1f1f1;
+      --link-color: #007bff;
+      --muted-text-color: #777;
+    }
+
+    [data-bs-theme="dark"] {
+      --table-header-bg: #343a40;
+      --table-header-color: #fff;
+      --table-row-even-bg: #2b3035;
+      --table-row-hover-bg: #3a3f44;
+      --link-color: #6ea8ff;
+      --muted-text-color: #aaa;
+    }
+  </style>
+</head>
+<body data-bs-theme="light">
+
+<!-- НАВИГАЦИОННАЯ ПАНЕЛЬ -->
+<div class="container mt-3">
+  <div class="d-flex align-items-center">
+    <div class="input-group">
+      <a href="/ru/read.php" title="Sutta and Vinaya reading" rel="noreferrer" class="me-1">
+        <svg fill="#979797" version="1.1" xmlns="http://www.w3.org/2000/svg" height="26px" viewBox="0 0 547.596 547.596" stroke="#979797">
+          <g><path d="M540.76,254.788L294.506,38.216c-11.475-10.098-30.064-10.098-41.386,0L6.943,254.788c-11.475,10.098-8.415,18.284,6.885,18.284h75.964v221.773c0,12.087,9.945,22.108,22.108,22.108h92.947V371.067c0-12.087,9.945-22.108,22.109-22.108h93.865c12.239,0,22.108,9.792,22.108,22.108v145.886h92.947c12.24,0,22.108-9.945,22.108-22.108v-221.85h75.965C549.021,272.995,552.081,264.886,540.76,254.788z"></path></g>
+        </svg>
+      </a>
+      <a href="/ru" title="Sutta and Vinaya search" rel="noreferrer" class="me-1">
+        <img width="24px" alt="dhamma.gift icon" src="/assets/img/gray-white.png">
+      </a>
+      <a class="ms-1 toggle-dict-btn">
+        <img src="/assets/svg/comment.svg" class="dictIcon-sitePages">
+      </a>
+      <div class="ms-1 form-check form-switch">
+        <input type="checkbox" class="form-check-input" id="darkSwitch">
+      </div>
+
+	  
+    </div>
+
+    <!--  <a href="/ru/history.php" title="Common Search Histpry" rel="noreferrer"><img width="20px" alt="History icon" src="/assets/svg/clock-rotate-left.svg"></a>
+ btn-danger  Языковой переключатель справа -->
+    <div class="ms-auto d-inline-flex align-items-center">
+      <a id="lang-en" class="btn btn-sm btn-secondary rounded-pill text-decoration-none ms-1" href="#">en</a>
+      <a id="lang-ru" class="btn btn-sm btn-secondary rounded-pill text-decoration-none ms-1" href="#">ru</a>
+    </div>
+  </div>
+</div>
+
+<!-- Заголовок страницы -->
+<div class="mt-4 mb-4">
+  <h1 id="page-heading">История ваших поисковых запросов</h1>
+</div>
+
+<!-- Вывод истории -->
+<table id="historyTable">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th id="label-query">Запрос</th>
+      <th id="label-date">Дата и время</th>
+    </tr>
+  </thead>
+  <tbody id="historyBody"></tbody>
+</table>
+
+<div id="emptyMessage" class="empty" style="display: none;">
+  История поиска пуста.
+</div>
+
+<a id="clearHistoryBtn" title="Clear Local History" class="btn btn-clear btn-primary mt-2" style="float: right;">&#10006;</a>
+
+<script>
+  const history = JSON.parse(localStorage.getItem("localSearchHistory")) || [];
+  const tbody = document.getElementById("historyBody");
+  const emptyMessage = document.getElementById("emptyMessage");
+
+  // Переводы
+  const translations = {
+    'ru': {
+      'title': 'История поиска',
+      'description': 'Просмотр истории ваших поисковых запросов на Dhamma.gift.',
+      'heading': 'История ваших поисковых запросов',
+      'query': 'Запрос',
+      'date': 'Дата и время',
+      'empty': 'История поиска пуста.',
+	    'button': '<span title="Очистить Историю">&times; очистить</span>'
+    },
+    'en': {
+      'title': 'Search History',
+      'description': 'View your search history on Dhamma.gift.',
+      'heading': 'Your Search History',
+      'query': 'Query',
+      'date': 'Date and Time',
+      'empty': 'Search history is empty.',
+	    'button': '<span title="Clear history">&times; clear</span>'
+
+    }
+  };
+
+  let currentLang = localStorage.getItem('ui-lang') || 'en';
+
+  // Определяем язык из URL
+  const path = window.location.pathname;
+  if (/\/(ru|r)\//i.test(path)) {
+    currentLang = 'ru';
+  } else {
+    currentLang = 'en';
+  }
+
+  function setLanguage(lang) {
+    currentLang = lang;
+    localStorage.setItem('ui-lang', lang);
+
+    document.getElementById('page-title').innerText = translations[lang].title;
+	document.getElementById('clearHistoryBtn').innerHTML = translations[lang].button;
+	
+    document.getElementById('meta-description').setAttribute('content', translations[lang].description);
+    document.querySelector('html').setAttribute('lang', lang);
+    document.getElementById('page-heading').innerText = translations[lang].heading;
+    document.getElementById('label-query').innerText = translations[lang].query;
+    document.getElementById('label-date').innerText = translations[lang].date;
+    document.getElementById('emptyMessage').innerText = translations[lang].empty;
+
+    document.getElementById('lang-en').innerText = 'en'; // всегда en
+    document.getElementById('lang-en').style.opacity = lang === 'en' ? '1' : '0.5';
+    document.getElementById('lang-ru').innerText = lang === 'en' ? 'ru' : 'ru';
+    document.getElementById('lang-ru').style.opacity = lang === 'ru' ? '1' : '0.5';
+  }
+
+  document.getElementById('lang-en').addEventListener('click', (e) => {
+    e.preventDefault();
+    if (currentLang !== 'en') setLanguage('en');
+  });
+
+  document.getElementById('lang-ru').addEventListener('click', (e) => {
+    e.preventDefault();
+    if (currentLang !== 'ru') setLanguage('ru');
+  });
+
+  // Установка начального языка
+  setLanguage(currentLang);
+
+  // Вывод истории
+  if (history.length === 0) {
+    emptyMessage.style.display = "block";
+  } else {
+    history.forEach((entry, index) => {
+      const [key, value, timestamp] = entry;
+
+      const row = document.createElement("tr");
+
+      let displayDate = "";
+      try {
+        const date = new Date(timestamp);
+        displayDate = date.toLocaleString(); // Отображение в локальном формате
+      } catch (e) {
+        displayDate = timestamp; // Если ошибка парсинга
+      }
+
+      const url = new URL(window.location.origin + value);
+
+      row.innerHTML = `
+        <td>${index + 1}</td>
+        <td><a href="${url}" target="_blank" class="query-link">${key}</a></td>
+        <td class="timestamp">${displayDate}</td>
+      `;
+
+      tbody.appendChild(row);
+    });
+  }
+
+  // Кнопка очистки истории
+  document.getElementById('clearHistoryBtn').addEventListener('click', () => {
+    if (confirm('Вы уверены, что хотите очистить историю?')) {
+      localStorage.removeItem("localSearchHistory");
+      location.reload();
+    }
+  });
+</script>
+
+<!-- Темная тема -->
+<script src="/assets/js/dark-mode-switch/dark-mode-switch.js"></script>
+<script>
+  const darkSwitch = document.getElementById('darkSwitch');
+  const body = document.body;
+
+  const savedTheme = localStorage.getItem('theme');
+  if (savedTheme === 'dark') {
+    body.setAttribute('data-bs-theme', 'dark');
+    darkSwitch.checked = true;
+  }
+
+  darkSwitch.addEventListener('change', () => {
+    if (darkSwitch.checked) {
+      body.setAttribute('data-bs-theme', 'dark');
+      localStorage.setItem('theme', 'dark');
+    } else {
+      body.setAttribute('data-bs-theme', 'light');
+      localStorage.setItem('theme', 'light');
+    }
+  });
+
+  // Service Worker
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/sw.js')
+      .then(function(registration) {
+        console.log('ServiceWorker registration successful with scope: ', registration.scope);
+      })
+      .catch(function(err) {
+        console.log('ServiceWorker registration failed: ', err);
+      });
+  }
+</script>
+</body>
+</html>
