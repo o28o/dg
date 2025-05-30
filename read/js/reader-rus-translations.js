@@ -20,26 +20,6 @@ homeButton.addEventListener("click", () => {
   document.location.search = "";
 });
 
-form.addEventListener("submit", e => {
-  e.preventDefault();
-  if (citation.value) {
-    const query = citation.value.replace(/\s+/g, " ");
-    
-    // Получаем текущий параметр s, если он есть
-    const currentParams = new URLSearchParams(window.location.search);
-    const sParam = currentParams.get("s");
-
-    // Строим новый URL с учётом параметра s
-    let newUrl = `?q=${encodeURIComponent(query)}`;
-    if (sParam) {
-      newUrl += `&s=${encodeURIComponent(sParam)}`;
-    }
-
-    buildSutta(query);
-    history.pushState({ page: query }, "", newUrl);
-  }
-});
-
 
 function buildSutta(slug) {
   

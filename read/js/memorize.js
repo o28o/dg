@@ -18,15 +18,6 @@ homeButton.addEventListener("click", () => {
   document.location.search = "";
 });
 
-// pressing enter will "submit" the citation and load
-form.addEventListener("submit", e => {
-  e.preventDefault();
-  if (citation.value) {
-    buildSutta(citation.value.replace(/\s+/g, " "));
-  history.pushState({ page: citation.value.replace(/\s+/g, " ") }, "", `?q=${citation.value.replace(/\s+/g, " ")}`);
-  }
-});
-
 function buildSutta(slug) {
   let translator = "";
   let texttype = "sutta";
