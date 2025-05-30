@@ -10,13 +10,15 @@ function addToSearchHistory() {
         // Приводим поисковый запрос к нижнему регистру сразу
         const key = qParam.toLowerCase();
         const value = url.pathname + url.search + url.hash;
+        const timestamp = new Date().toISOString(); // Добавляем дату и время
 
         let history = JSON.parse(localStorage.getItem("localSearchHistory")) || [];
 
-        // Теперь key уже в нижнем регистре, поэтому просто сравниваем `k !== key`
+        // Теперь key уже в нижнем регистру, поэтому просто сравниваем `k !== key`
         history = history.filter(([k]) => k !== key);
 
-        history.unshift([key, value]);
+        // Добавляем новую запись с датой
+        history.unshift([key, value, timestamp]);
 
         if (history.length > MAX_HISTORY) {
             history = history.slice(0, MAX_HISTORY);
@@ -27,7 +29,6 @@ function addToSearchHistory() {
         console.error("Ошибка при сохранении истории поиска:", e);
     }
 }
-
 //установка фокуса в инпуте по нажатию / 
 document.addEventListener('keydown', function(event) {
     // Проверяем именно символ / (код 191 или Slash)
