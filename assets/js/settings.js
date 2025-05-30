@@ -11,13 +11,15 @@ function addToSearchHistory() {
         // Обработка кавычек:
         // 1. Приводим к нижнему регистру
         // 2. Удаляем кавычки только если они окружают весь запрос
-        let key = qParam.toLowerCase();
-        
-        // Удаляем кавычки в начале и конце, если они есть
-        if (key.startsWith('"') && key.endsWith('"')) {
-            key = key.slice(1, -1);
-        }
+		let key = qParam.toLowerCase();
 
+		// Удаляем URL (всё, что начинается с http://, https:// или www.)
+		key = key.replace(/\s*(https?:\/\/|www\.)\S+/gi, '').trim();
+
+		// Удаляем кавычки в начале/конце, если они есть
+		if (key.startsWith('"') && key.endsWith('"')) {
+			key = key.slice(1, -1);
+		}
         const value = url.pathname + url.search + url.hash;
 
         // Получаем текущее время клиента в формате ISO с таймзоной
