@@ -99,6 +99,11 @@ function copyToClipboard(text = "") {
   
   // 4. Добавляем ID сутты и ссылку с дополнительными отступами
   if (suttaId) textToCopy += `\n\n${suttaId}`;
+    
+  if (text.includes('localhost') || text.includes('127.0.0.1')) {
+		text = text.replace(/http:\/\/(localhost|127\.0\.0\.1)(:\d+)?/g, 'https://dhamma.gift');
+    }
+
   textToCopy += `\n${text}`;
 
   console.log('Копируемый текст:', textToCopy);
