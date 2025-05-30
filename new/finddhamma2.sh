@@ -1383,9 +1383,6 @@ linescount=$(wc -l < "$basefile")
 if (( linescount == 0 )); then
 pattern="`echo $pattern | sed 's/\[ёе\]/е/g'`"
 	Erresponse
-	echo '<script>
-  localStorage.setItem("localSearchHistory", JSON.stringify(JSON.parse(localStorage.getItem("localSearchHistory") || "[]").filter(([k]) => k !== "'$pattern'")));
-</script>'
 
 	#Clarification
      rm $basefile
