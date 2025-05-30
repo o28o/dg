@@ -406,9 +406,13 @@ if (strpos($outputnonl, 'script') !== false || strpos($outputnonl, 'location.hre
     $finaloutput = implode("\n", $matches[0]);
 
     // Добавляем скрытие страницы перед выполнением скриптов
-    echo '<script>document.body.style.display = "none";</script>';
+    echo '<script>document.body.style.display = "none";
+	  addToSearchHistory();
+	</script>';
 if (preg_match('/(-anyd)/', $extra)) {
-  echo "<script>window.location.href='/result/r.html';</script>";
+  echo "<script>window.location.href='/result/r.html';
+    addToSearchHistory();
+  </script>";
 }
 
     // Выполняем найденные скрипты
@@ -427,16 +431,6 @@ if (preg_match('/(-anyd)/', $extra)) {
             // Показываем алерт только если есть содержимое
             if ('$outputnonl' !== '' && '$outputnonl' !== '<br>') {
                 successAlert.style.display = 'block';
-
-                // Удаляем невалидный запрос из истории поиска
-                localStorage.setItem(
-                    'localSearchHistory',
-                    JSON.stringify(
-                        JSON.parse(localStorage.getItem('localSearchHistory') || '[]').filter(
-                            ([k]) => k !== " . json_encode($string) . "
-                        )
-                    )
-                );
             }
         }
     });

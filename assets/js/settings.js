@@ -116,7 +116,6 @@ function loadModal(modalId, modalFile) {
 //sett8ngs management
 document.addEventListener('DOMContentLoaded', function() {
   
-  addToSearchHistory();
   const scriptSelect = document.getElementById('script-select');
   const dictSelect = document.getElementById('dict-select');
 
