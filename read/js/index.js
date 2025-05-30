@@ -24,7 +24,7 @@ form.addEventListener("submit", e => {
   if (citation.value) {
     buildSutta(citation.value.replace(/\s+/g, " "));
    history.pushState({ page: citation.value.replace(/\s+/g, " ") }, "", `?q=${citation.value.replace(/\s+/g, " ")}`);
-     addToSearchHistory(); /
+     addToSearchHistory(); 
   }
 });
 
