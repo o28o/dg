@@ -97,6 +97,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Заменяем пробел между цифрами на точку (например, "an3 70" → "an3.70")
     if (/(\d+)\s+(\d+)/.test(lastTerm)) {
         lastTerm = lastTerm.replace(/(\d+)\s+(\d+)/, '$1.$2');
+		console.log("заменили .")
     }
 	
                     // Если терм пустой — показываем всю историю
