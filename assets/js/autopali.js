@@ -156,6 +156,14 @@ document.addEventListener('DOMContentLoaded', function() {
                         selectedValue = selectedValue.split(/\s+/)[0];
                     }
                     
+                    if (/\d+\s+/.test(selectedValue)) {
+                        selectedValue = selectedValue.split(/\s+/)[0];
+                    }
+                    
+                    if (/b[ui]pm|b[ui]-pm|pm/.test(selectedValue)) {
+                        selectedValue = selectedValue.split(/\s+/)[0];
+                    }
+                    
                     terms.push(selectedValue);
 
                     for (var i = 1; i < terms.length; i += 2) {

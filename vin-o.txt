@@ -1,8 +1,0 @@
-./pli-tv-bi-pm_translation-ru-o.json
-./pli-tv-bu-pm_translation-ru-o.json
-./pli-tv-bu-vb/pli-tv-bu-vb-sk/pli-tv-bu-vb-sk3_translation-ru-o.json
-./pli-tv-bu-vb/pli-tv-bu-vb-sk/pli-tv-bu-vb-sk4_translation-ru-o.json
-./pli-tv-bu-vb/pli-tv-bu-vb-sk/pli-tv-bu-vb-sk5_translation-ru-o.json
-./pli-tv-bu-vb/pli-tv-bu-vb-sk/pli-tv-bu-vb-sk74_translation-ru-o.json
-./pli-tv-bu-vb/pli-tv-bu-vb-sk/pli-tv-bu-vb-sk7_translation-ru-o.json
-./pli-tv-bu-vb/pli-tv-bu-vb-sk/pli-tv-bu-vb-sk8_translation-ru-o.json
