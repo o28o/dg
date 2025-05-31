@@ -92,14 +92,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 source: function(request, response) {
                     var terms = request.term.split(/[\|\s\*]/);
                     var lastTerm = terms.pop().trim();
+					lastTerm = lastTerm.replace(/(\d+)\s+(\d+)/g, "$1.$2");
                     var minLengthForSearch = 3;
 
-    // Заменяем пробел между цифрами на точку (например, "an3 70" → "an3.70")
-    if (/(\d+)\s+(\d+)/.test(lastTerm)) {
-        lastTerm = lastTerm.replace(/(\d+)\s+(\d+)/, '$1.$2');
-		console.log("заменили .")
-    }
-	
                     // Если терм пустой — показываем всю историю
                     if (!lastTerm) {
                         var history = JSON.parse(localStorage.getItem("localSearchHistory")) || [];
