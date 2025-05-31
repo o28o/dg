@@ -92,7 +92,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 source: function(request, response) {
                     var terms = request.term.split(/[\|\s\*]/);
                     var lastTerm = terms.pop().trim();
-					lastTerm = lastTerm.replace(/(\d+)\s+(\d+)/g, "$1.$2");
                     var minLengthForSearch = 3;
 
                     // Если терм пустой — показываем всю историю
