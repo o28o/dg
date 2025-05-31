@@ -84672,62 +84672,62 @@ an8
 an9
 an10
 an11
-sn1
-sn2
-sn3
-sn4
-sn5
-sn6
-sn7
-sn8
-sn9
-sn10
-sn11
-sn12
-sn13
-sn14
-sn15
-sn16
-sn17
-sn18
-sn19
-sn20
-sn21
-sn22
-sn23
-sn24
-sn25
-sn26
-sn27
-sn28
-sn29
-sn30
-sn31
-sn32
-sn33
-sn34
-sn35
-sn36
-sn37
-sn38
-sn39
-sn40
-sn41
-sn42
-sn43
-sn44
-sn45
-sn46
-sn47
-sn48
-sn49
-sn50
-sn51
-sn52
-sn53
-sn54
-sn55
-sn56
+sn1 Devatāsaṁyutta
+sn2 Devaputtasaṁyutta
+sn3 Kosalasaṁyutta
+sn4 Mārasaṁyutta
+sn5 Bhikkhunīsaṁyutta
+sn6 Brahmasaṁyutta
+sn7 Brāhmaṇasaṁyutta
+sn8 Vaṅgīsasaṁyutta
+sn9 Vanasaṁyutta
+sn10 Yakkhasaṁyutta
+sn11 Sakkasaṁyutta
+sn12 Nidānasaṁyutta
+sn13 Abhisamayasaṁyutta
+sn14 Dhātusaṁyutta
+sn15 Anamataggasaṁyutta
+sn16 Kassapasaṁyutta
+sn17 Lābhasakkārasaṁyutta
+sn18 Rāhulasaṁyutta
+sn19 Lakkhaṇasaṁyutta
+sn20 Opammasaṁyutta
+sn21 Bhikkhusaṁyutta
+sn22 Khandhasaṁyutta
+sn23 Rādhasaṁyutta
+sn24 Diṭṭhisaṁyutta
+sn25 Okkantasaṁyutta
+sn26 Uppādasaṁyutta
+sn27 Kilesasaṁyutta
+sn28 Sāriputtasaṁyutta
+sn29 Nāgasaṁyutta
+sn30 Supaṇṇasaṁyutta
+sn31 Gandhabbakāyasaṁyutta
+sn32 Valāhakasaṁyutta
+sn33 Vacchagottasaṁyutta
+sn34 Jhānasaṁyutta
+sn35 Saḷāyatanasaṁyutta
+sn36 Vedanāsaṁyutta
+sn37 Mātugāmasaṁyutta
+sn38 Jambukhādakasaṁyutta
+sn39 Sāmaṇḍakasaṁyutta
+sn40 Moggallānasaṁyutta
+sn41 Cittasaṁyutta
+sn42 Gāmaṇisaṁyutta
+sn43 Asaṅkhatasaṁyutta
+sn44 Abyākatasaṁyutta
+sn45 Maggasaṁyutta
+sn46 Bojjhaṅgasaṁyutta
+sn47 Satipaṭṭhānasaṁyutta
+sn48 Indriyasaṁyutta
+sn49 Sammappadhānasaṁyutta
+sn50 Balasaṁyutta
+sn51 Iddhipādasaṁyutta
+sn52 Anuruddhasaṁyutta
+sn53 Jhānasaṁyutta
+sn54 Ānāpānasaṁyutta
+sn55 Sotāpattisaṁyutta
+sn56 Saccasaṁyutta
 mn
 dn
 an
@@ -88804,207 +88804,207 @@ bu-ss12 Dubbacasikkhāpada
 bu-ss13 Kuladūsakasikkhāpada
 bu-ay1 Paṭhamaaniyatasikkhāpada
 bu-ay2 Dutiyaaniyatasikkhāpada
-bu-np1
-bu-np2
-bu-np3
-bu-np4
-bu-np5
-bu-np6
-bu-np7
-bu-np8
-bu-np9
-bu-np10
-bu-np11
-bu-np12
-bu-np13
-bu-np14
-bu-np15
-bu-np16
-bu-np17
-bu-np18
-bu-np19
-bu-np20
-bu-np21
-bu-np22
-bu-np23
-bu-np24
-bu-np25
-bu-np26
-bu-np27
-bu-np28
-bu-np29
-bu-np30
-bu-pc1
-bu-pc2
-bu-pc3
-bu-pc4
-bu-pc5
-bu-pc6
-bu-pc7
-bu-pc8
-bu-pc9
-bu-pc10
-bu-pc11
-bu-pc12
-bu-pc13
-bu-pc14
-bu-pc15
-bu-pc16
-bu-pc17
-bu-pc18
-bu-pc19
-bu-pc20
-bu-pc21
-bu-pc22
-bu-pc23
-bu-pc24
-bu-pc25
-bu-pc26
-bu-pc27
-bu-pc28
-bu-pc29
-bu-pc30
-bu-pc31
-bu-pc32
-bu-pc33
-bu-pc34
-bu-pc35
-bu-pc36
-bu-pc37
-bu-pc38
-bu-pc39
-bu-pc40
-bu-pc41
-bu-pc42
-bu-pc43
-bu-pc44
-bu-pc45
-bu-pc46
-bu-pc47
-bu-pc48
-bu-pc49
-bu-pc50
-bu-pc51
-bu-pc52
-bu-pc53
-bu-pc54
-bu-pc55
-bu-pc56
-bu-pc57
-bu-pc58
-bu-pc59
-bu-pc60
-bu-pc61
-bu-pc62
-bu-pc63
-bu-pc64
-bu-pc65
-bu-pc66
-bu-pc67
-bu-pc68
-bu-pc69
-bu-pc70
-bu-pc71
-bu-pc72
-bu-pc73
-bu-pc74
-bu-pc75
-bu-pc76
-bu-pc77
-bu-pc78
-bu-pc79
-bu-pc80
-bu-pc81
-bu-pc82
-bu-pc83
-bu-pc84
-bu-pc85
-bu-pc86
-bu-pc87
-bu-pc88
-bu-pc89
-bu-pc90
-bu-pc91
-bu-pc92
+bu-np1 Kathinasikkhāpada
+bu-np2 Udosita(dutiyakathina)sikkhāpada
+bu-np3 Tatiyakathinasikkhāpada
+bu-np4 Purāṇacīvarasikkhāpada
+bu-np5 Cīvarapaṭiggahaṇasikkhāpada
+bu-np6 Aññātakaviññattisikkhāpada
+bu-np7 Tatuttarisikkhāpada
+bu-np8 Upakkhaṭasikkhāpada
+bu-np9 Dutiyaupakkhaṭasikkhāpada
+bu-np10 Rājasikkhāpada
+bu-np11 Kosiyasikkhāpada
+bu-np12 Suddhakāḷakasikkhāpada
+bu-np13 Dvebhāgasikkhāpada
+bu-np14 Chabbassasikkhāpada
+bu-np15 Nisīdanasanthatasikkhāpada
+bu-np16 Eḷakalomasikkhāpada
+bu-np17 Eḷakalomadhovāpanasikkhāpada
+bu-np18 Rūpiyasikkhāpada
+bu-np19 Rūpiyasaṁvohārasikkhāpada
+bu-np20 Kayavikkayasikkhāpada
+bu-np21 Pattasikkhāpada
+bu-np22 Ūnapañcabandhanasikkhāpada
+bu-np23 Bhesajjasikkhāpada
+bu-np24 Vassikasāṭikasikkhāpada
+bu-np25 Cīvaraacchindanasikkhāpada
+bu-np26 Suttaviññattisikkhāpada
+bu-np27 Mahāpesakārasikkhāpada
+bu-np28 Accekacīvarasikkhāpada
+bu-np29 Sāsaṅkasikkhāpada
+bu-np30 Pariṇatasikkhāpada
+bu-pc1 Musāvādasikkhāpada
+bu-pc2 Omasavādasikkhāpada
+bu-pc3 Pesuññasikkhāpada
+bu-pc4 Padasodhammasikkhāpada
+bu-pc5 Sahaseyyasikkhāpada
+bu-pc6 Dutiyasahaseyyasikkhāpada
+bu-pc7 Dhammadesanāsikkhāpada
+bu-pc8 Bhūtārocanasikkhāpada
+bu-pc9 Duṭṭhullārocanasikkhāpada
+bu-pc10 Pathavīkhaṇanasikkhāpada
+bu-pc11 Bhūtagāmasikkhāpada
+bu-pc12 Aññavādakasikkhāpada
+bu-pc13 Ujjhāpanakasikkhāpada
+bu-pc14 Senāsanasikkhāpada
+bu-pc15 Dutiyasenāsanasikkhāpada
+bu-pc16 Anupakhajjasikkhāpada
+bu-pc17 Nikkaḍḍhanasikkhāpada
+bu-pc18 Vehāsakuṭisikkhāpada
+bu-pc19 Mahallakavihārasikkhāpada
+bu-pc20 Sappāṇakasikkhāpada
+bu-pc21 Ovādasikkhāpada
+bu-pc22 Atthaṅgatasikkhāpada
+bu-pc23 Bhikkhunupassayasikkhāpada
+bu-pc24 Āmisasikkhāpada
+bu-pc25 Cīvaradānasikkhāpada
+bu-pc26 Cīvarasibbanasikkhāpada
+bu-pc27 Saṁvidhānasikkhāpada
+bu-pc28 Nāvābhiruhanasikkhāpada
+bu-pc29 Paripācitasikkhāpada
+bu-pc30 Rahonisajjasikkhāpada
+bu-pc31 Āvasathapiṇḍasikkhāpada
+bu-pc32 Gaṇabhojanasikkhāpada
+bu-pc33 Paramparabhojanasikkhāpada
+bu-pc34 Kāṇamātusikkhāpada
+bu-pc35 Pavāraṇāsikkhāpada
+bu-pc36 Dutiyapavāraṇāsikkhāpada
+bu-pc37 Vikālabhojanasikkhāpada
+bu-pc38 Sannidhikārakasikkhāpada
+bu-pc39 Paṇītabhojanasikkhāpada
+bu-pc40 Dantaponasikkhāpada
+bu-pc41 Acelakasikkhāpada
+bu-pc42 Uyyojanasikkhāpada
+bu-pc43 Sabhojanasikkhāpada
+bu-pc44 Rahopaṭicchannasikkhāpada
+bu-pc45 Rahonisajjasikkhāpada
+bu-pc46 Cārittasikkhāpada
+bu-pc47 Mahānāmasikkhāpada
+bu-pc48 Uyyuttasenāsikkhāpada
+bu-pc49 Senāvāsasikkhāpada
+bu-pc50 Uyyodhikasikkhāpada
+bu-pc51 Surāpānasikkhāpada
+bu-pc52 Aṅgulipatodakasikkhāpada
+bu-pc53 Hasadhammasikkhāpada
+bu-pc54 Anādariyasikkhāpada
+bu-pc55 Bhiṁsāpanasikkhāpada
+bu-pc56 Jotikasikkhāpada
+bu-pc57 Nahānasikkhāpada
+bu-pc58 Dubbaṇṇakaraṇasikkhāpada
+bu-pc59 Vikappanasikkhāpada
+bu-pc60 Cīvaraapanidhānasikkhāpada
+bu-pc61 Sañciccasikkhāpada
+bu-pc62 Sappāṇakasikkhāpada
+bu-pc63 Ukkoṭanasikkhāpada
+bu-pc64 Duṭṭhullasikkhāpada
+bu-pc65 Ūnavīsativassasikkhāpada
+bu-pc66 Theyyasatthasikkhāpada
+bu-pc67 Saṁvidhānasikkhāpada
+bu-pc68 Ariṭṭhasikkhāpada
+bu-pc69 Ukkhittasambhogasikkhāpada
+bu-pc70 Kaṇṭakasikkhāpada
+bu-pc71 Sahadhammikasikkhāpada
+bu-pc72 Vilekhanasikkhāpada
+bu-pc73 Mohanasikkhāpada
+bu-pc74 Pahārasikkhāpada
+bu-pc75 Talasattikasikkhāpada
+bu-pc76 Amūlakasikkhāpada
+bu-pc77 Sañciccasikkhāpada
+bu-pc78 Upassutisikkhāpada
+bu-pc79 Kammapaṭibāhanasikkhāpada
+bu-pc80 Chandaṁadatvāgamanasikkhāpada
+bu-pc81 Dubbalasikkhāpada
+bu-pc82 Pariṇāmanasikkhāpada
+bu-pc83 Antepurasikkhāpada
+bu-pc84 Ratanasikkhāpada
+bu-pc85 Vikālagāmappavisanasikkhāpada
+bu-pc86 Sūcigharasikkhāpada
+bu-pc87 Mañcapīṭhasikkhāpada
+bu-pc88 Tūlonaddhasikkhāpada
+bu-pc89 Nisīdanasikkhāpada
+bu-pc90 Kaṇḍuppaṭicchādisikkhāpada
+bu-pc91 Vassikasāṭikāsikkhāpada
+bu-pc92 Nandasikkhāpada
 bu-pd1 Paṭhamapāṭidesanīyasikkhāpada
 bu-pd2 Dutiyapāṭidesanīyasikkhāpada
 bu-pd3 Tatiyapāṭidesanīyasikkhāpada
 bu-pd4 Catutthapāṭidesanīyasikkhāpada
-bu-sk1
-bu-sk2
-bu-sk3
-bu-sk4
-bu-sk5
-bu-sk6
-bu-sk7
-bu-sk8
-bu-sk9
-bu-sk10
-bu-sk11
-bu-sk12
-bu-sk13
-bu-sk14
-bu-sk15
-bu-sk16
-bu-sk17
-bu-sk18
-bu-sk19
-bu-sk20
-bu-sk21
-bu-sk22
-bu-sk23
-bu-sk24
-bu-sk25
-bu-sk26
-bu-sk27
-bu-sk28
-bu-sk29
-bu-sk30
-bu-sk31
-bu-sk32
-bu-sk33
-bu-sk34
-bu-sk35
-bu-sk36
-bu-sk37
-bu-sk38
-bu-sk39
-bu-sk40
-bu-sk41
-bu-sk42
-bu-sk43
-bu-sk44
-bu-sk45
-bu-sk46
-bu-sk47
-bu-sk48
-bu-sk49
-bu-sk50
-bu-sk51
-bu-sk52
-bu-sk53
-bu-sk54
-bu-sk55
-bu-sk56
-bu-sk57
-bu-sk58
-bu-sk59
-bu-sk60
-bu-sk61
-bu-sk62
-bu-sk63
-bu-sk64
-bu-sk65
-bu-sk66
-bu-sk67
-bu-sk68
-bu-sk69
-bu-sk70
-bu-sk71
-bu-sk72
-bu-sk73
-bu-sk74
-bu-sk75
+bu-sk1 Parimaṇḍalasikkhāpada
+bu-sk2 Dutiyaparimaṇḍalasikkhāpada
+bu-sk3 Suppaṭicchannasikkhāpada
+bu-sk4 Dutiyasuppaṭicchannasikkhāpada
+bu-sk5 Susaṁvutasikkhāpada
+bu-sk6 Dutiyasusaṁvutasikkhāpada
+bu-sk7 Okkhittacakkhusikkhāpada
+bu-sk8 Dutiyaokkhittacakkhusikkhāpada
+bu-sk9 Ukkhittakasikkhāpada
+bu-sk10 Dutiyaukkhittakasikkhāpada
+bu-sk11 Ujjagghikasikkhāpada
+bu-sk12 Dutiyaujjagghikasikkhāpada
+bu-sk13 Uccasaddasikkhāpada
+bu-sk14 Dutiyauccasaddasikkhāpada
+bu-sk15 Kāyappacālakasikkhāpada
+bu-sk16 Dutiyakāyappacālakasikkhāpada
+bu-sk17 Bāhuppacālakasikkhāpada
+bu-sk18 Dutiyabāhuppacālakasikkhāpada
+bu-sk19 Sīsappacālakasikkhāpada
+bu-sk20 Dutiyasīsappacālakasikkhāpada
+bu-sk21 Khambhakatasikkhāpada
+bu-sk22 Dutiyakhambhakatasikkhāpada
+bu-sk23 Oguṇṭhitasikkhāpada
+bu-sk24 Dutiyaoguṇṭhitasikkhāpada
+bu-sk25 Ukkuṭikasikkhāpada
+bu-sk26 Pallatthikasikkhāpada
+bu-sk27 Sakkaccapaṭiggahaṇasikkhāpada
+bu-sk28 Pattasaññīpaṭiggahaṇasikkhāpada
+bu-sk29 Samasūpakapaṭiggahaṇasikkhāpada
+bu-sk30 Samatittikasikkhāpada
+bu-sk31 Sakkaccasikkhāpada
+bu-sk32 Pattasaññīsikkhāpada
+bu-sk33 Sapadānasikkhāpada
+bu-sk34 Samasūpakasikkhāpada
+bu-sk35 Thūpakatasikkhāpada
+bu-sk36 Odanappaṭicchādanasikkhāpada
+bu-sk37 Sūpodanaviññattisikkhāpada
+bu-sk38 Ujjhānasaññīsikkhāpada
+bu-sk39 Kabaḷasikkhāpada
+bu-sk40 Ālopasikkhāpada
+bu-sk41 Anāhaṭasikkhāpada
+bu-sk42 Dutiyaanāhaṭasikkhāpada
+bu-sk43 Sakabaḷasikkhāpada
+bu-sk44 Piṇḍukkhepakasikkhāpada
+bu-sk45 Kabaḷāvacchedakasikkhāpada
+bu-sk46 Avagaṇḍakārakasikkhāpada
+bu-sk47 Hatthaniddhunakasikkhāpada
+bu-sk48 Sitthāvakārakasikkhāpada
+bu-sk49 Jivhānicchārakasikkhāpada
+bu-sk50 Capucapukārakasikkhāpada
+bu-sk51 Surusurukārakasikkhāpada
+bu-sk52 Hatthanillehakasikkhāpada
+bu-sk53 Pattanillehakasikkhāpada
+bu-sk54 Oṭṭhanillehakasikkhāpada
+bu-sk55 Sāmisasikkhāpada
+bu-sk56 Sasitthakasikkhāpada
+bu-sk57 Chattapāṇisikkhāpada
+bu-sk58 Daṇḍapāṇisikkhāpada
+bu-sk59 Satthapāṇisikkhāpada
+bu-sk60 Āvudhapāṇisikkhāpada
+bu-sk61 Pādukasikkhāpada
+bu-sk62 Upāhanāruḷhasikkhāpada
+bu-sk63 Yānasikkhāpada
+bu-sk64 Sayanasikkhāpada
+bu-sk65 Pallatthikasikkhāpada
+bu-sk66 Veṭhitasikkhāpada
+bu-sk67 Oguṇṭhitasikkhāpada
+bu-sk68 Chamāsikkhāpada
+bu-sk69 Nīcāsanasikkhāpada
+bu-sk70 Ṭhitasikkhāpada
+bu-sk71 Pacchatogamanasikkhāpada
+bu-sk72 Uppathenagamanasikkhāpada
+bu-sk73 Ṭhitouccārasikkhāpada
+bu-sk74 Hariteuccārasikkhāpada
+bu-sk75 Udakeuccārasikkhāpada
 bu-as1-7 Adhikaraṇasamathā
 bi-pj1-4 
 bi-pj5 Ubbhajāṇumaṇḍalikāsikkhāpada
@@ -89021,117 +89021,116 @@ bi-ss10 Sikkhaṁpaccācikkhaṇasikkhāpada
 bi-ss11 Adhikaraṇakupitasikkhāpada
 bi-ss12 Pāpasamācārasikkhāpada
 bi-ss13 Dutiyapāpasamācārasikkhāpada
-
-bi-np1
-bi-np2
-bi-np3
-bi-np4
-bi-np5
-bi-np6
-bi-np7
-bi-np8
-bi-np9
-bi-np10
-bi-np11
-bi-np12
-bi-pc1
-bi-pc2
-bi-pc3
-bi-pc4
-bi-pc5
-bi-pc6
-bi-pc7
-bi-pc8
-bi-pc9
-bi-pc10
-bi-pc11
-bi-pc12
-bi-pc13
-bi-pc14
-bi-pc15
-bi-pc16
-bi-pc17
-bi-pc18
-bi-pc19
-bi-pc20
-bi-pc21
-bi-pc22
-bi-pc23
-bi-pc24
-bi-pc25
-bi-pc26
-bi-pc27
-bi-pc28
-bi-pc29
-bi-pc30
-bi-pc31
-bi-pc32
-bi-pc33
-bi-pc34
-bi-pc35
-bi-pc36
-bi-pc37
-bi-pc38
-bi-pc39
-bi-pc40
-bi-pc41
-bi-pc42
-bi-pc43
-bi-pc44
-bi-pc45
-bi-pc46
-bi-pc47
-bi-pc48
-bi-pc49
-bi-pc50
-bi-pc51
-bi-pc52
-bi-pc53
-bi-pc54
-bi-pc55
-bi-pc56
-bi-pc57
-bi-pc58
-bi-pc59
-bi-pc60
-bi-pc61
-bi-pc62
-bi-pc63
-bi-pc64
-bi-pc65
-bi-pc66
-bi-pc67
-bi-pc68
-bi-pc69
-bi-pc70
-bi-pc71
-bi-pc72
-bi-pc73
-bi-pc74
-bi-pc75
-bi-pc76
-bi-pc77
-bi-pc78
-bi-pc79
-bi-pc80
-bi-pc81
-bi-pc82
-bi-pc83
-bi-pc84
-bi-pc85
-bi-pc86
-bi-pc87
-bi-pc88
-bi-pc89
-bi-pc90
-bi-pc91-93
-bi-pc94
-bi-pc95
-bi-pc96
+bi-np1 Pattasannicayasikkhāpada
+bi-np2 Akālacīvarabhājanasikkhāpada
+bi-np3 Cīvaraparivattanasikkhāpada
+bi-np4 Aññaviññāpanasikkhāpada
+bi-np5 Aññacetāpanasikkhāpada
+bi-np6 Saṅghikacetapanasikkhāpada
+bi-np7 Dutiyasaṅghikacetāpanasikkhāpada
+bi-np8 Gaṇikacetāpanasikkhāpada
+bi-np9 Dutiyagaṇikacetāpanasikkhāpada
+bi-np10 Puggalikacetāpanasikkhāpada
+bi-np11 Garupāvuraṇasikkhāpada
+bi-np12 Lahupāvuraṇasikkhāpada
+bi-pc1 Lasuṇasikkhāpada
+bi-pc2 Sambādhalomasikkhāpada
+bi-pc3 Talaghātakasikkhāpada
+bi-pc4 Jatumaṭṭhakasikkhāpada
+bi-pc5 Udakasuddhikasikkhāpada
+bi-pc6 Upatiṭṭhanasikkhāpada
+bi-pc7 Āmakadhaññasikkhāpada
+bi-pc8 Uccārachaḍḍanasikkhāpada
+bi-pc9 Dutiyauccārachaḍḍanasikkhāpada
+bi-pc10 Naccagītasikkhāpada
+bi-pc11 Rattandhakārasikkhāpada
+bi-pc12 Paṭicchannokāsasikkhāpada
+bi-pc13 Ajjhokāsasallapanasikkhāpada
+bi-pc14 Dutiyikauyyojanasikkhāpada
+bi-pc15 Anāpucchāpakkamanasikkhāpada
+bi-pc16 Anāpucchāabhinisīdanasikkhāpada
+bi-pc17 Anāpucchāsantharaṇasikkhāpada
+bi-pc18 Paraujjhāpanakasikkhāpada
+bi-pc19 Paraabhisapanasikkhāpada
+bi-pc20 Rodanasikkhāpada
+bi-pc21 Naggasikkhāpada
+bi-pc22 Udakasāṭikasikkhāpada
+bi-pc23 Cīvarasibbanasikkhāpada
+bi-pc24 Saṅghāṭicārasikkhāpada
+bi-pc25 Cīvarasaṅkamanīyasikkhāpada
+bi-pc26 Gaṇacīvarasikkhāpada
+bi-pc27 Paṭibāhanasikkhāpada
+bi-pc28 Cīvaradānasikkhāpada
+bi-pc29 Kālaatikkamanasikkhāpada
+bi-pc30 Kathinuddhārasikkhāpada
+bi-pc31 Ekamañcatuvaṭṭanasikkhāpada
+bi-pc32 Ekattharaṇatuvaṭṭanasikkhāpada
+bi-pc33 Aphāsukaraṇasikkhāpada
+bi-pc34 Naupaṭṭhāpanasikkhāpada
+bi-pc35 Nikkaḍḍhanasikkhāpada
+bi-pc36 Saṁsaṭṭhasikkhāpada
+bi-pc37 Antoraṭṭhasikkhāpada
+bi-pc38 Tiroraṭṭhasikkhāpada
+bi-pc39 Antovassasikkhāpada
+bi-pc40 Cārikanapakkamanasikkhāpada
+bi-pc41 Rājāgārasikkhāpada
+bi-pc42 Āsandiparibhuñjanasikkhāpada
+bi-pc43 Suttakantanasikkhāpada
+bi-pc44 Gihiveyyāvaccasikkhāpada
+bi-pc45 Adhikaraṇasikkhāpada
+bi-pc46 Bhojanadānasikkhāpada
+bi-pc47 Āvasathacīvarasikkhāpada
+bi-pc48 Āvasathavihārasikkhāpada
+bi-pc49 Tiracchānavijjāpariyāpuṇanasikkhāpada
+bi-pc50 Tiracchānavijjāvācanasikkhāpada
+bi-pc51 Ārāmapavisanasikkhāpada
+bi-pc52 Bhikkhuakkosanasikkhāpada
+bi-pc53 Gaṇaparibhāsanasikkhāpada
+bi-pc54 Pavāritasikkhāpada
+bi-pc55 Kulamaccharinīsikkhāpada
+bi-pc56 Abhikkhukāvāsasikkhāpada
+bi-pc57 Apavāraṇāsikkhāpada
+bi-pc58 Ovādasikkhāpada
+bi-pc59 Ovādūpasaṅkamanasikkhāpada
+bi-pc60 Pasākhejātasikkhāpada
+bi-pc61 Gabbhinisikkhāpada
+bi-pc62 Pāyantisikkhāpada
+bi-pc63 Sikkhamānasikkhāpada
+bi-pc64 Dutiyasikkhamānasikkhāpada
+bi-pc65 Gihigatasikkhāpada
+bi-pc66 Dutiyagihigatasikkhāpada
+bi-pc67 Tatiyagihigatasikkhāpada
+bi-pc68 Sahajīvinīsikkhāpada
+bi-pc69 Pavattinīnānubandhanasikkhāpada
+bi-pc70 Dutiyasahajīvinīsikkhāpada
+bi-pc71 Kumāribhūtasikkhāpada
+bi-pc72 Dutiyakumāribhūtasikkhāpada
+bi-pc73 Tatiyakumāribhūtasikkhāpada
+bi-pc74 Ūnadvādasavassasikkhāpada
+bi-pc75 Paripuṇṇadvādasavassasikkhāpada
+bi-pc76 Khīyanadhammasikkhāpada
+bi-pc77 Sikkhamāna-navuṭṭhāpanasikkhāpada
+bi-pc78 Dutiyasikkhamāna-navuṭṭhāpanasikkhāpada
+bi-pc79 Sokāvāsasikkhāpada
+bi-pc80 Ananuññātasikkhāpada
+bi-pc81 Pārivāsikasikkhāpada
+bi-pc82 Anuvassasikkhāpada
+bi-pc83 Ekavassasikkhāpada
+bi-pc84 Chattupāhanasikkhāpada
+bi-pc85 Yānasikkhāpada
+bi-pc86 Saṅghāṇisikkhāpada
+bi-pc87 Itthālaṅkārasikkhāpada
+bi-pc88 Gandhavaṇṇakasikkhāpada
+bi-pc89 Vāsitakasikkhāpada
+bi-pc90 Bhikkhuniummaddāpanasikkhāpada
+bi-pc91-93 Sikkhamāna-sāmaṇerī-gihiniummaddāpanasikkhāpada
+bi-pc94 Anāpucchāsikkhāpada
+bi-pc95 Pañhāpucchanasikkhāpada
+bi-pc96 Asaṅkaccikasikkhāpada
 bi-pd1 Sappiviññāpanasikkhāpada
 bi-pd2-8 Tela-madhu-phāṇita-maccha-maṁsa-khīra-dadhiviññāpanasikkhāpada
-bi-sk1
-bi-sk75
+bi-sk1 Parimaṇḍalasikkhāpada
+bi-sk75 Udakeuccārasikkhāpada
 bi-as1-7 Adhikaraṇasamathā
 bu-pm Bhikkhupātimokkha
 bi-pm Bhikkhunīpātimokkha
