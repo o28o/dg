@@ -1,13 +1,13 @@
 #!/bin/bash
 
 # Файл, от которого сравниваем время изменения
-REFERENCE_FILE="assets/texts/lastupdate_state_file"
+REFERENCE_FILE="assets/texts/lastupdate_readPHP_file"
 
 # Проверяем, существует ли он
 if [ ! -f "$REFERENCE_FILE" ]; then
 newer=""
 else
-echo "newer case"
+#echo "newer case"
 newer="-newer $REFERENCE_FILE"
 fi
 
@@ -22,9 +22,19 @@ find "assets/texts/sutta" -type f \
   
 #grep level5 read.php | grep "$i\""  ; 
 sed -i '/class="level5"/ { /href=.*?q='$i'"/ { /<?php echo \$ifRuLitTrn;?>/! s/<\/span>/ <?php echo \$ifRuLitTrn;?><\/span>/; } }' read.php
-done 
- 
 
+
+
+ if [[ $? != 0 ]]; then
+    echo "</br>error in $i"
+    error_found=1  # Устанавливаем флаг ошибки
+  fi
+done
+
+# Если не было ошибок, создаем/обновляем state_file
+if [[ $error_found -eq 0 ]]; then
+  touch $state_file
+fi
 
 
 

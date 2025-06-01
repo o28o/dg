@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Файл, от которого сравниваем время изменения
-REFERENCE_FILE="assets/texts/lastupdate_state_file"
+REFERENCE_FILE="assets/texts/lastupdate_stateTextInfo_file"
 
 # Проверяем, существует ли он
 if [ ! -f "$REFERENCE_FILE" ]; then
@@ -41,6 +41,18 @@ jq -c --slurpfile keys "$keys_json" '
 ' "$input_file" > "$output_file"
 
 sed -i 's/},/},\n/g' "$output_file"
+
+ if [[ $? != 0 ]]; then
+    echo "</br>error in $i"
+    error_found=1  # Устанавливаем флаг ошибки
+  fi
+
+
+
+# Если не было ошибок, создаем/обновляем state_file
+if [[ $error_found -eq 0 ]]; then
+  touch $state_file
+fi
 
 if ! cmp -s "$output_file" "$input_file"; then
     cp "$input_file" "$backup_file"
