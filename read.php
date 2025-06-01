@@ -9145,7 +9145,8 @@ clearBtn.style.display = 'block';
 
 		 
 		 <div class="mt-3">
- <span class="level5"><a class="setReader" href="<?php echo $readerPage;?>/?q=sn46.57">sn46.57</a> Aṭṭhikamahapphalasutta</span>
+ <span class="level5"><a class="setReader" href="<?php echo $readerPage;?>/?q=sn46.57">sn46.57</a> Aṭṭhikamahapphalasutta
+<?php echo $ifRuLitTrn;?></span>
  </div>
 
 		 
@@ -9854,7 +9855,7 @@ clearBtn.style.display = 'block';
 
 		 
 		 <div class="mt-3">
- <span class="level5"><a class="setReader" href="<?php echo $readerPage;?>/?q=sn48.39">sn48.39</a> Kaṭṭhopamasutta</span>
+ <span class="level5"><a class="setReader" href="<?php echo $readerPage;?>/?q=sn48.39">sn48.39</a> Kaṭṭhopamasutta<?php echo $ifRuLitTrn;?></span>
  </div>
 
 		 
