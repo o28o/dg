@@ -21,10 +21,6 @@ if ( $updateReadAndTextInfo == "" ) {
 }
 
 
-
-
-
-
 //apply styles for suttacentral.net 
 $styleforsc = shell_exec("bash $basedir/scripts/styleforsc.sh 2>&1");
 echo "<p style='text-align: center;'>$styleforsc</p>";
