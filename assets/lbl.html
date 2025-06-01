@@ -219,6 +219,11 @@ button:hover {
                     <img width="24px" alt="dhamma.gift icon" src="/assets/img/gray-white.png">
                 </a>
   <a class="ms-1 toggle-dict-btn">  <img src="/assets/svg/comment.svg" class="dictIcon-sitePages"></img></a>
+  
+  <a title="Настройки (Alt+S)" id="settingsButton" data-bs-toggle="modal" data-bs-target="#settings" href="javascript:void(0);" class="toggle-icon text-decoration-none text-muted">
+<img id="gearRead" alt="Настройки" src="/assets/svg/gear.svg" class="ms-1 common-size-icon4"></img>
+</a>   
+
                 <div class="ms-1 form-check form-switch">
                     <input type="checkbox" class="form-check-input" id="darkSwitch">
                 </div>
@@ -413,9 +418,9 @@ button:hover {
   </div>
 
   <div class="form-check">
-    <input class="form-check-input" title="Добавить +edited+o в название файла"  type="checkbox" id="customTranslatorName">
+    <input class="form-check-input" title="Заменить +edited+o в название файла на o"  type="checkbox" id="customTranslatorName">
     <label class="form-check-label" for="customTranslatorName">
-      +edited+o
+      пер. o
     </label>
   </div>
 </div>  
@@ -603,28 +608,8 @@ button:hover {
 </div>
 
 
-<div id="settings" class="modal">
-  <div class="modal-content">
-    <div id="modalHeader" class="modal-header">
-      <span class="close">&times;</span>
-      <h3>Настройки</h3>
-    </div>
-    <div class="modal-body">
-      <!-- Ваше содержимое модального окна -->
-           <label for="translator">Переводчик:</label>
-      <input type="text" id="translator">
-    
-           <br><br>
-      <button class="mb-1 btn btn-primary" id="saveSettings">Сохранить</button>
-      <button  class="mb-1 btn btn-primary" id="resetSettings">Сбросить</button>
-      <button class="mb-1 btn btn-primary" id="closeBtn">Отмена</button>
-    </div>
-  </div>
-</div>
 </div>
 
-
- 
 
 <button style="display: none;" class="btn btn-primary" title="Эмулировать клавишу Ctrl" id="ctrlEnterButton">Ctrl + Enter</button>
   
@@ -872,9 +857,9 @@ console.log('url:', url);
       const a = document.createElement('a');
       a.href = url;
 	  
-      let translatorName = 'sv';
+      let translatorName = 'sv+edited+o';
       if (document.getElementById('customTranslatorName').checked) {
-        translatorName = 'sv+edited+o';
+        translatorName = 'o';
       }
 	  
       a.download = indexValue + '_translation-ru-' + translatorName + '.json';
@@ -2310,7 +2295,9 @@ document.addEventListener("DOMContentLoaded", function() {
 
 //конец
 </script>
-<script src="/assets/js/paliLookup.js"></script>
+<!-- <script src="/assets/js/settings.js"></script>
+ -->
+ <script src="/assets/js/paliLookup.js"></script>
 
 </body>
 </html>
