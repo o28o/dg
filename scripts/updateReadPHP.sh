@@ -1,4 +1,15 @@
-for i in ` find assets/texts/sutta/ -name "*.json" | grep -iE "(ru-o.json|experiment|progres)"  | awk -F'/' '{print $NF}' | awk -F'_' '{print $1}' | sort -V`; 
+#!/bin/bash
+
+# Файл, от которого сравниваем время изменения
+REFERENCE_FILE="assets/texts/lastupdate_state_file"
+
+# Проверяем, существует ли он
+if [ ! -f "$REFERENCE_FILE" ]; then
+  echo "Файл $REFERENCE_FILE не найден!"
+  exit 1
+fi
+
+for i in ` find assets/texts/sutta/ -name "*.json" -newer "$REFERENCE_FILE" | grep -iE "(ru-o.json|experiment|progres)"  | awk -F'/' '{print $NF}' | awk -F'_' '{print $1}' | sort -V`; 
 do  
 echo $i
 #grep level5 read.php | grep "$i\""  ; 
