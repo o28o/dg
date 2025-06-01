@@ -59,11 +59,10 @@ if ! cmp -s "$output_file" "$input_file"; then
     mv "$output_file" "$input_file"
 fi
 
+# Проверяем, не пуст ли массив
+if [ "${#keys_to_modify[@]}" -gt 0 ]; then
+  echo "new texts added to textinfo.js [ ${#keys_to_modify[@]} ]"
 
-if [ -s "$keys_json" ]; then
-    echo -n "new texts added to textinfo.js "
-    cat "$keys_json"
-    echo
 fi
 
 rm "$keys_json"
