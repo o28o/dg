@@ -1,3 +1,77 @@
+#!/bin/bash
+
+# Файл, от которого сравниваем время изменения
+REFERENCE_FILE="assets/texts/lastupdate_state_file"
+
+# Проверяем, существует ли он
+if [ ! -f "$REFERENCE_FILE" ]; then
+newer=""
+else
+echo "newer case"
+newer="-newer $REFERENCE_FILE"
+fi
+
+
+# Полная команда для создания массива
+mapfile -t keys_to_modify < <(
+  find assets/texts/sutta/ -name "*.json" $newer \
+    | grep -iE "(ru-o.json|experiment|progres)" \
+    | awk -F'/' '{print $NF}' \
+    | awk -F'_' '{print $1}' \
+    | sort -V
+)
+ 
+input_file="assets/js/textinfo.js"
+backup_file="assets/js/textinfoBak.js"
+output_file="assets/js/textinfo.js"  # Файл с результатом
+
+cp $input_file $backup_file
+
+
+# Создаем временный файл с ключами в формате JSON
+keys_json="/tmp/keys.json"
+printf '%s\n' "${keys_to_modify[@]}" | jq -R . | jq -s . > "$keys_json"
+
+jq -c --slurpfile keys "$keys_json" '
+  with_entries(
+    if .key as $k | ($keys[0] | index($k)) and (.value | has("ru")) and (.value.ru | contains(" (o)") | not)
+    then .value.ru |= . + " (o)"
+    else .
+    end
+  )
+' "$backup_file" > "$output_file"
+
+# Очистка временного файла
+rm "$keys_json"
+
+echo "Обработка завершена. Результат сохранен в $output_file"
+
+
+
+exit 0 
+
+# Полная команда для создания массива
+mapfile -t keys_array < <(
+  find assets/texts/sutta/ -name "*.json" \
+    | grep -iE "(ru-o.json|experiment|progres)" \
+    | awk -F'/' '{print $NF}' \
+    | awk -F'_' '{print $1}' \
+    | sort -V
+)
+
+# Вывод в формате Bash массива
+#declare -p keys_array
+
+# ИЛИ вывод в формате JavaScript массива
+printf "[\n"
+printf "  \"%s\"\n" "${keys_array[@]}"
+printf "]\n"
+
+
+exit 0
+
+
+
 # Список ключей для модификации
 keys_to_modify=(
   "an3.76"
@@ -535,51 +609,3 @@ keys_to_modify=(
   "ud3.6"
 )
 
-
-
-input_file="assets/js/textinfo.js"
-output_file="output.json"  # Файл с результатом
-
-# Создаем временный файл с ключами в формате JSON
-keys_json="/tmp/keys.json"
-printf '%s\n' "${keys_to_modify[@]}" | jq -R . | jq -s . > "$keys_json"
-
-# Основная обработка с jq
-jq -c --slurpfile keys "$keys_json" '
-  with_entries(
-    if .key as $k | ($keys[0] | index($k)) and (.value | has("ru"))
-    then .value.ru |= . + " (o)"
-    else .
-    end
-  )
-' "$input_file" > "$output_file"
-
-# Очистка временного файла
-rm "$keys_json"
-
-echo "Обработка завершена. Результат сохранен в $output_file"
-
-
-
-exit 0 
-
-# Полная команда для создания массива
-mapfile -t keys_array < <(
-  find assets/texts/sutta/ -name "*.json" \
-    | grep -iE "(ru-o.json|experiment|progres)" \
-    | awk -F'/' '{print $NF}' \
-    | awk -F'_' '{print $1}' \
-    | sort -V
-)
-
-# Вывод в формате Bash массива
-declare -p keys_array
-
-# ИЛИ вывод в формате JavaScript массива
-printf "[\n"
-printf "  \"%s\"\n" "${keys_array[@]}"
-printf "]\n"
-#!/bin/bash
-
-
-exit 0
