@@ -33,7 +33,7 @@ done
 
 echo -n "new texts added to read.php" 
 find assets/texts/sutta/ -name "*.json" $newer | grep -iE "(ru-o.json|experiment|progres)"  | awk -F'/' '{print $NF}' | awk -F'_' '{print $1}' | sort -V
-
+echo 
 
 # Если не было ошибок, создаем/обновляем state_file
 if [[ $error_found -eq 0 ]]; then

@@ -64,6 +64,7 @@ fi
 # Очистка временного файла
 echo -n "new texts added to textinfo.js "
 cat "$keys_json"
+echo 
 rm "$keys_json"
 
 #echo "Обработка завершена. Результат сохранен в $output_file"

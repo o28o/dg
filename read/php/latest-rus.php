@@ -15,7 +15,6 @@ $updateReadAndTextInfo = shell_exec("cd $basedir ; bash scripts/updateReadPHP.sh
 
 if ( $updateReadAndTextInfo == "" ) {
   echo " </br><h2 style='text-align: center;'>empry response Read.php and TextInfo.js. </h2>";
-  exit(" </br><h2 style='text-align: center;'>please fix errors</h2>");
 } else {
   echo "</br><p style='text-align: center;'>$updateReadAndTextInfo</p>";
 }
