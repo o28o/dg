@@ -2,7 +2,7 @@
 include_once('../../config/config.php');
 
 // validate all json files
-$validatejson = shell_exec("bash $basedir/scripts/validatejson.sh 2>&1 && cd $basedir && bash scripts/updateReadPHP.sh 2>&1 && bash scripts/updateTextInfoJS.sh 2>&1 ");
+$validatejson = shell_exec("bash $basedir/scripts/validatejson.sh 2>&1 ");
 
 if ( $validatejson == "" ) {
   echo " </br><h2 style='text-align: center;'>validated successfully</h2>";
@@ -10,6 +10,20 @@ if ( $validatejson == "" ) {
   echo "</br><p style='text-align: center;'>$validatejson</p>";
   exit(" </br><h2 style='text-align: center;'>please fix errors</h2>");
 }
+
+$updateReadAndTextInfo = shell_exec("cd $basedir ; bash scripts/updateReadPHP.sh 2>&1 ; bash scripts/updateTextInfoJS.sh 2>&1 ");
+
+if ( $updateReadAndTextInfo == "" ) {
+  echo " </br><h2 style='text-align: center;'>updated Read.php and TextInfo.js</h2>";
+} else {
+  echo "</br><p style='text-align: center;'>$updateReadAndTextInfo</p>";
+  exit(" </br><h2 style='text-align: center;'>please fix errors</h2>");
+}
+
+
+
+
+
 
 //apply styles for suttacentral.net 
 $styleforsc = shell_exec("bash $basedir/scripts/styleforsc.sh 2>&1");
