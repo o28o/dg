@@ -69,9 +69,15 @@ RewriteRule ^/$ / [L,R=302]
 
 <IfModule mod_headers.c>
     # Для статики (CSS, JS, шрифты, картинки) — кэшировать очень долго и без проверки
-    <FilesMatch "\.(css|js|jpg|jpeg|png|gif|svg|woff2?)$">
-        Header set Cache-Control "public, max-age=31536000, immutable"
+    <FilesMatch "\.(css|jpg|jpeg|png|gif|svg|woff2?)$">
+        Header set Cache-Control "public, max-age=31536000"
     </FilesMatch>
+
+    # Для (JS, JSON) — кэшировать очень долго и без проверки
+    <FilesMatch "\.(js)$">
+        Header set Cache-Control "public, max-age=604800"
+    </FilesMatch>
+
 
     # Для HTML, JSON — кэшировать умеренно, но всё равно дать контроль
     <FilesMatch "\.(html|json)$">
