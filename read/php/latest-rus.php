@@ -11,18 +11,19 @@ if ( $validatejson == "" ) {
   exit(" </br><h2 style='text-align: center;'>please fix errors</h2>");
 }
 
+//apply styles for suttacentral.net 
+$styleforsc = shell_exec("bash $basedir/scripts/styleforsc.sh 2>&1");
+echo "<p style='text-align: center;'>$styleforsc</p>";
+
+
 $updateReadAndTextInfo = shell_exec("cd $basedir ; bash scripts/updateReadPHP.sh 2>&1 ; bash scripts/updateTextInfoJS.sh 2>&1 ");
 
 if ( $updateReadAndTextInfo == "" ) {
-  echo " </br><h2 style='text-align: center;'>empry response Read.php and TextInfo.js. </h2>";
+  echo " </br><p style='text-align: center;'>no new translations by o:-(</p>";
 } else {
   echo "</br><p style='text-align: center;'>$updateReadAndTextInfo</p>";
 }
 
-
-//apply styles for suttacentral.net 
-$styleforsc = shell_exec("bash $basedir/scripts/styleforsc.sh 2>&1");
-echo "<p style='text-align: center;'>$styleforsc</p>";
 
 //mn
 /*
