@@ -2,7 +2,7 @@
 include_once('../../config/config.php');
 
 // validate all json files
-$validatejson = shell_exec("bash $basedir/scripts/validatejson.sh 2>&1 && bash $basedir/scripts/updateReadPHP.sh 2>&1 && bash $basedir/scripts/scripts/updateTextInfoJS.sh 2>&1");
+$validatejson = shell_exec("bash $basedir/scripts/validatejson.sh 2>&1 && bash $basedir/scripts/updateReadPHP.sh 2>&1 && bash $basedir/scripts/updateTextInfoJS.sh 2>&1");
 
 if ( $validatejson == "" ) {
   echo " </br><h2 style='text-align: center;'>validated successfully</h2>";
