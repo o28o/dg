@@ -7,6 +7,7 @@ REFERENCE_FILE="assets/texts/lastupdate_state_file"
 if [ ! -f "$REFERENCE_FILE" ]; then
 newer=""
 else
+echo "newer case"
 newer="-newer $REFERENCE_FILE"
 fi
 
