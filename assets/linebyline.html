@@ -1696,12 +1696,13 @@ document.addEventListener('keydown', function(event) {
     }
 });
 
-
+const customTranslatorCheckbox = document.getElementById('customTranslatorName');
 
 // Функция для сохранения значений
 function saveInputs() {
   localStorage.setItem('indexValue', indexInput.value);
   localStorage.setItem('translationValue', translationInput.value);
+localStorage.setItem('customTranslatorCheckboxState', customTranslatorCheckbox.checked);
  // localStorage.setItem('lineBreakCheckboxState', lineBreakCheckbox.checked);
  // Сохраняем состояние чекбокса как булево значение
 }
@@ -1712,11 +1713,14 @@ translationInput.addEventListener('input', function() {
   localStorage.setItem('translationValue', translationInput.value);
 });
 
-
+customTranslatorCheckbox.addEventListener('change', saveInputs);
 
 // Функция для загрузки сохраненных значений
 function loadInputs() {
 
+  if (savedCheckboxState !== null) {
+      customTranslatorCheckbox.checked = savedCheckboxState === 'true';
+    }
   if (localStorage.getItem('indexValue')) { // Исправлено условие
     indexInput.value = localStorage.getItem('indexValue');
   } else {
