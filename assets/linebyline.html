@@ -1718,9 +1718,11 @@ customTranslatorCheckbox.addEventListener('change', saveInputs);
 // Функция для загрузки сохраненных значений
 function loadInputs() {
 
-  if (savedCheckboxState !== null) {
+ const savedCheckboxState = localStorage.getItem('customTranslatorCheckboxState');
+    if (savedCheckboxState !== null) {
       customTranslatorCheckbox.checked = savedCheckboxState === 'true';
     }
+	
   if (localStorage.getItem('indexValue')) { // Исправлено условие
     indexInput.value = localStorage.getItem('indexValue');
   } else {
