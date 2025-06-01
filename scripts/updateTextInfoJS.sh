@@ -41,6 +41,8 @@ jq -c --slurpfile keys "$keys_json" '
   )
 ' "$backup_file" > "$output_file"
 
+sed -i 's/},/},\n/g' "$output_file"
+
 # Очистка временного файла
 rm "$keys_json"
 
