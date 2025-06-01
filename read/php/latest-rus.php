@@ -14,10 +14,10 @@ if ( $validatejson == "" ) {
 $updateReadAndTextInfo = shell_exec("cd $basedir ; bash scripts/updateReadPHP.sh 2>&1 ; bash scripts/updateTextInfoJS.sh 2>&1 ");
 
 if ( $updateReadAndTextInfo == "" ) {
-  echo " </br><h2 style='text-align: center;'>updated Read.php and TextInfo.js</h2>";
+  echo " </br><h2 style='text-align: center;'>empry response Read.php and TextInfo.js. </h2>";
+  exit(" </br><h2 style='text-align: center;'>please fix errors</h2>");
 } else {
   echo "</br><p style='text-align: center;'>$updateReadAndTextInfo</p>";
-  exit(" </br><h2 style='text-align: center;'>please fix errors</h2>");
 }
 
 
