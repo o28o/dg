@@ -219,6 +219,11 @@ button:hover {
                     <img width="24px" alt="dhamma.gift icon" src="/assets/img/gray-white.png">
                 </a>
   <a class="ms-1 toggle-dict-btn">  <img src="/assets/svg/comment.svg" class="dictIcon-sitePages"></img></a>
+  
+  <a title="Настройки (Alt+S)" id="settingsButton" data-bs-toggle="modal" data-bs-target="#settings" href="javascript:void(0);" class="toggle-icon text-decoration-none text-muted">
+<img id="gearRead" alt="Настройки" src="/assets/svg/gear.svg" class="ms-1 common-size-icon4"></img>
+</a>   
+
                 <div class="ms-1 form-check form-switch">
                     <input type="checkbox" class="form-check-input" id="darkSwitch">
                 </div>
@@ -415,7 +420,7 @@ button:hover {
   <div class="form-check">
     <input class="form-check-input" title="Добавить +edited+o в название файла"  type="checkbox" id="customTranslatorName">
     <label class="form-check-label" for="customTranslatorName">
-      +edited+o
+      пер. o
     </label>
   </div>
 </div>  
@@ -872,9 +877,9 @@ console.log('url:', url);
       const a = document.createElement('a');
       a.href = url;
 	  
-      let translatorName = 'sv';
+      let translatorName = 'sv+edited+o';
       if (document.getElementById('customTranslatorName').checked) {
-        translatorName = 'sv+edited+o';
+        translatorName = 'o';
       }
 	  
       a.download = indexValue + '_translation-ru-' + translatorName + '.json';
