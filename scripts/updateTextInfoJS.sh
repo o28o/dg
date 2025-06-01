@@ -60,11 +60,12 @@ if ! cmp -s "$output_file" "$input_file"; then
 fi
 
 
+if [ -s "$keys_json" ]; then
+    echo -n "new texts added to textinfo.js "
+    cat "$keys_json"
+    echo
+fi
 
-# Очистка временного файла
-echo -n "new texts added to textinfo.js "
-cat "$keys_json"
-echo 
 rm "$keys_json"
 
 #echo "Обработка завершена. Результат сохранен в $output_file"

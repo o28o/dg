@@ -11,6 +11,13 @@ else
 newer="-newer $REFERENCE_FILE"
 fi
 
+# Сохраняем результат в переменную
+result=$(find assets/texts/sutta/ -name "*.json" $newer | \
+  grep -iE "(ru-o.json|experiment|progres)" | \
+  awk -F'/' '{print $NF}' | \
+  awk -F'_' '{print $1}' | \
+  sort -V)
+
 for i in ` find assets/texts/sutta/ -name "*.json" $newer | grep -iE "(ru-o.json|experiment|progres)"  | awk -F'/' '{print $NF}' | awk -F'_' '{print $1}' | sort -V`; 
 do  
 echo $i
@@ -31,9 +38,13 @@ sed -i '/class="level5"/ { /href=.*?q='$i'"/ { /<?php echo \$ifRuLitTrn;?>/! s/<
   fi
 done
 
-echo -n "new texts added to read.php" 
-find assets/texts/sutta/ -name "*.json" $newer | grep -iE "(ru-o.json|experiment|progres)"  | awk -F'/' '{print $NF}' | awk -F'_' '{print $1}' | sort -V
-echo 
+
+
+# Проверяем, не пуст ли результат
+if [ -n "$result" ]; then
+  echo -n "new texts added to read.php "
+  echo "$result"
+fi
 
 # Если не было ошибок, создаем/обновляем state_file
 if [[ $error_found -eq 0 ]]; then
