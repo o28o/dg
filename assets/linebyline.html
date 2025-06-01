@@ -182,11 +182,7 @@ button:hover {
                 <a href="/ru" title="Sutta and Vinaya search" rel="noreferrer" class="me-1">
                     <img width="24px" alt="dhamma.gift icon" src="/assets/img/gray-white.png">
                 </a>
-   <a class="ms-1 toggle-dict-btn">  <img src="/assets/svg/comment.svg" class="dictIcon-sitePages"></img></a> 
-
-<a title="Настройки (Alt+S)" id="settingsButton" data-bs-toggle="modal" data-bs-target="#settings" href="javascript:void(0);" class="toggle-icon text-decoration-none text-muted">
-<img id="gearRead" alt="Настройки" src="/assets/svg/gear.svg" class="ms-1 common-size-icon4"></img>
-</a>   
+   <a class="ms-1 toggle-dict-btn">  <img src="/assets/svg/comment.svg" class="dictIcon-sitePages"></img></a>               
                 <div class="ms-1 form-check form-switch">
                     <input type="checkbox" class="form-check-input" id="darkSwitch">
                 </div>
@@ -495,62 +491,25 @@ button:hover {
   </div>
 </div>
 
-</div>
-<!-- Модальное окно "Настройки" -->
-<div class="modal fade" style="z-index:10000;" id="settings" tabindex="-1" aria-labelledby="settingsLabel" aria-hidden="true" data-bs-focus="false">
-<div class="modal-dialog modal-dialog-centered">
-<div class="modal-content">
-<div class="modal-header">
-<h2 class="modal-title" id="settingsLabel">Настройки</h2>
-<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
-</div>
-<div class="modal-body">
-
-<div class="mb-2">
-<!-- Дропдаун для выбора системы письма -->
-<label for="dict-select"><h5 style="text-align: left;">Словарь по клику:</h5></label>
-<select class="dropdown droponmain rounded-pill text-black border-2 border-secondary text-center input-group-append" id="dict-select">
-<option value="standalonebwru">DPD Встроенный</option>
-<option value="standalonebw">DPD Встроенный Англ</option>
-<option value="dpdFullRu">DPD Онлайн</option>
-<option value="dpdFull">DPD Онлайн Англ</option>
-<option value="dpdCompactRu">DPD Онлайн мини</option>
-<option value="dpdCompact">DPD Онлайн мини Англ</option>
-<option value="searchonly">Только Поиск</option>
-<option value="dictTango">DictTango Android</option>
-<option value="mdict">Mdict IOS</option>
-</select> <a href="/assets/common/dictHelpRu.html">?</a>
-</div>
-
-
-<div class="mb-2">
-<div class="d-flex">
-<label class="form-check-label me-2" for="removePunctCheckbox">
-<h5 class="mb-0">Убрать пунктуацию из Пали</h5>
-</label>
-<input class="form-check-input setting-checkbox" type="checkbox" id="removePunctCheckbox" data-key="removePunct">
-&nbsp;  <strong>Alt+.</strong>
-
-</div>
-
-</div>
-
-
-</div>
-<div class="modal-footer">
-
-<!-- Кнопки "Применить" и "Сбросить" -->
-<div class="text-end">
-<button type="button" class="btn btn-sm  rounded-pill btn-secondary " id="reset-button">Сбросить</button>
-<button type="button" class="btn btn-sm btn-light border-secondary rounded-pill" id="apply-button">Применить</button>
-<button type="button" class="btn-sm  btn-secondary rounded-pill" data-bs-dismiss="modal">Закрыть</button>
-</div>
-
+<div id="settings" class="modal">
+  <div class="modal-content">
+    <div id="modalHeader" class="modal-header">
+	<button class="mb-1 btn btn-link text-decoration-none close closeBtn" id="">&times;</button>
+      <h3>Настройки</h3>
+    </div>
+    <div class="modal-body">
+      <!-- Ваше содержимое модального окна -->
+           <label for="translator">Переводчик:</label>
+      <input type="text" id="translator">
+    
+           <br><br>
+      <button class="mb-1 btn btn-primary" id="saveSettings">Сохранить</button>
+      <button  class="mb-1 btn btn-primary" id="resetSettings">Сбросить</button>
+      <button class="mb-1 btn btn-primary" id="closeBtn">Отмена</button>
+    </div>
+  </div>
 </div>
 </div>
-</div>
-</div>
-
 
 
 <div class="d-flex align-items-center">
@@ -561,15 +520,13 @@ button:hover {
     </label>
   </div>
 
+
   <div class="form-check">
     <input class="form-check-input" title="Заменить +edited+o в название файла на o"  type="checkbox" id="customTranslatorName">
     <label class="form-check-label" for="customTranslatorName">
       пер. o
     </label>
-  </div>
-  
-
-  
+  </div>  
  
 </div>
 
@@ -2321,7 +2278,6 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 </script>
-<!-- <script src="/assets/js/settings.js"></script> -->
 <script src="/assets/js/paliLookup.js"></script>
 </body>
 </html>
