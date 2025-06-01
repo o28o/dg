@@ -13406,7 +13406,7 @@ clearBtn.style.display = 'block';
 </div>
  
 <div class="mt-3">
-<span class="level5"><a class="setReader" href="<?php echo $readerPage;?>/?q=an4.107">an4.107</a> Mūsikasutta</span>
+<span class="level5"><a class="setReader" href="<?php echo $readerPage;?>/?q=an4.107">an4.107</a> Mūsikasutta <?php echo $ifRuLitTrn;?></span>
 </div>
  
 <div class="mt-3">
