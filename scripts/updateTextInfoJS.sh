@@ -51,7 +51,7 @@ sed -i 's/},/},\n/g' "$output_file"
 
 # Если не было ошибок, создаем/обновляем state_file
 if [[ $error_found -eq 0 ]]; then
-  touch $state_file
+  touch $REFERENCE_FILE
 fi
 
 if ! cmp -s "$output_file" "$input_file"; then
