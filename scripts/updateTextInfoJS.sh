@@ -23,9 +23,8 @@ mapfile -t keys_to_modify < <(
  
 input_file="assets/js/textinfo.js"
 backup_file="assets/js/textinfoBak.js"
-output_file="assets/js/textinfo.js"  # Файл с результатом
+output_file="/tmp/textinfo.js" # Файл с результатом
 
-cp $input_file $backup_file
 
 
 # Создаем временный файл с ключами в формате JSON
@@ -39,16 +38,19 @@ jq -c --slurpfile keys "$keys_json" '
     else .
     end
   )
-' "$backup_file" > "$output_file"
+' "$input_file" > "$output_file"
 
 sed -i 's/},/},\n/g' "$output_file"
+
+if ! cmp -s "$output_file" "$input_file"; then
+    cp "$input_file" "$backup_file"
+    mv "$output_file" "$input_file"
+fi
 
 # Очистка временного файла
 rm "$keys_json"
 
-echo "Обработка завершена. Результат сохранен в $output_file"
-
-
+#echo "Обработка завершена. Результат сохранен в $output_file"
 
 exit 0 
 
