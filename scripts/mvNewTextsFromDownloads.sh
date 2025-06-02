@@ -1,11 +1,11 @@
 source ./config/script_config.sh --source-only
 
-#downloaddir=/media/c/Users/o28o/Downloads
-#trndir=/media/c/soft/fdg/assets/texts/sutta/
+downloaddir=/media/c/Users/o28o/Downloads
+trndir=/media/c/soft/fdg/assets/texts/sutta/
 thtrndir=/data/data/com.termux/files/usr/share/apache2/default-site/htdocs/assets/texts/th/translation/sutta/
 
 cd $downloaddir
-for file in `find .  -maxdepth 1 -type f -size +0 -name "*root-pli-ms.json"`
+for file in `find . -maxdepth 1 -type f -size +0 -name "*root-pli-ms.json" 2>/dev/null`
 do
 newname=$(echo $file | sed 's@root-pli-ms@translation-ru-o@g')
 echo renamed $file $newname
@@ -17,7 +17,7 @@ cd - 2>&1 >/dev/null
 #find "$downloaddir" -maxdepth 1 -type f -size 0 -name "*translation*.json" | xargs rm
 
 #ru trn 
-for file in `find "$downloaddir" "$downloaddir/Telegram" -maxdepth 1 -type f -size +0 -name "*translation-ru-*.json"`
+for file in `find "$downloaddir" "$downloaddir/Telegram" -maxdepth 1 -type f -size +0 -name "*translation-ru-*.json" 2>/dev/null`
 do 
 suttaname=$(echo $file | sed -E 's/_translation.*//' | awk -F'/' '{print $NF}')
 
@@ -44,7 +44,7 @@ echo "moved $suttaname to ./$nikaya/$booknumber"
 done
 
 #thai trn
-for file in `find "$downloaddir" "$downloaddir/Telegram" -maxdepth 1 -type f -size +0 -name "*translation-th-*.json"`
+for file in `find "$downloaddir" "$downloaddir/Telegram" -maxdepth 1 -type f -size +0 -name "*translation-th-*.json" 2>/dev/null`
 do 
 suttaname=$(echo $file | sed -E 's/_translation.*//' | awk -F'/' '{print $NF}')
 
@@ -94,7 +94,7 @@ fi
 
 
 dirs="$audioSrcdir $audioSrcdir2"
-find "$dirs" -maxdepth 1 -size +0 -type f -name "*_*" | while IFS= read -r file 
+find "$dirs" -maxdepth 1 -size +0 -type f -name "*_*" 2>/dev/null | while IFS= read -r file 
 do
 suttaname=$(echo "$file" | sed -E 's/_.*//' | awk -F'/' '{print $NF}')
 
