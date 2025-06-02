@@ -193,7 +193,7 @@ do
 textindex=`echo $i | awk -F'/' '{print $NF}' | awk -F'-' '{print $1}'  | sed 's/.htm.*//g' | sed 's@_@.@g' | sed 's@dhm@dhp@g' | sed 's@\.volovsky@@g' | sed 's@\.sv@@g'`
 
 echo $textindex
-sed -i '/&#1645;<\/span>/s/<\/span>/<\/span> <a href="\/?q='$textindex'">DG<\/a> <a href="https:\/\/suttacentral.net\/'$textindex'">SC<\/a> /' $i
+sed -i '/&#1645;<\/span>/s/<\/span>/<\/span> <a href="\/ru\/?q='$textindex'">DG<\/a> <a href="https:\/\/suttacentral.net\/'$textindex'">SC<\/a> /' $i
 done 
 
 

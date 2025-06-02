@@ -1,4 +1,4 @@
-<?php
+r<?php
 header("Cache-Control: public, max-age=3600"); // Кэшировать на 1 час
 header("Expires: " . gmdate("D, d M Y H:i:s", time() + 3600) . " GMT");
 ?>
@@ -205,7 +205,7 @@ function updateURL(params) {
 <li class="nav-item mb-3 mx-lg-2"><a class="nav-link py-3 px-0 px-lg-0 rounded" href="<?php echo $mainreadlink;?>"><?php echo $menuread;?></a></li>
 <li class="nav-item mb-3 mx-lg-2"><a class="nav-link py-3 px-0 px-lg-0 rounded" href="<?php echo $mainpagenoslash;?>/history.php"><?php echo $menuhist;?></a></li>
 <li class="nav-item mb-3 mx-lg-2"><a class="nav-link py-3 px-0 px-lg-0 rounded" href="#help"><?php echo $menuhowto;?></a></li>
-<li class="nav-item mb-3 mx-lg-2"><a class="nav-link py-3 px-0 px-lg-0 rounded" href="#project"><?php echo $menuabout;?></a></li>             
+<li class="nav-item mb-3 mx-lg-2"><a class="nav-link py-3 px-0 px-lg-0 rounded" href="#about"><?php echo $menuabout;?></a></li>             
 <li class="nav-item mb-3 mx-lg-2"><a class="nav-link py-3 px-0 px-lg-0 rounded" href="#<?php echo $menuuseful;?>"><?php echo $menulinks;?></a></li>
 <li class="nav-item mb-3 mx-lg-2"><a class="nav-link py-3 px-0 px-lg-0 rounded" href="#contacts"><?php echo $menucontact;?></a></li>
 <li class="nav-item mb-0 mx-lg-2"><p><a class="py-1 text-decoration-none px-0 px-lg-1 rounded link-light" href="/" onclick="localStorage.siteLanguage = 'en';">En</a> 
@@ -830,7 +830,7 @@ foreach ($slides as $index => $slide) {
 </div>
         </section>
         <!-- About Section-->
-        <section class="page-section bg-primary text-white mb-0" id="project">
+        <section class="page-section bg-primary text-white mb-0" id="about">
             <div class="container">
                 <!-- About Section Heading-->
                 <h2 class="page-section-heading text-center text-uppercase text-white"><?php echo $aboutheader; ?></h2>

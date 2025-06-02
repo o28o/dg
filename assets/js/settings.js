@@ -742,6 +742,8 @@ document.addEventListener('keydown', (event) => {
 document.addEventListener("keydown", function (event) {
   const isCtrlPressed = event.ctrlKey || event.metaKey;
   const currentPath = window.location.pathname;
+  const currentSearch = window.location.search;
+  const currentHash = window.location.hash;
   const baseUrl = window.location.origin;
 
   const key = "preferredLanguage";
@@ -749,16 +751,23 @@ document.addEventListener("keydown", function (event) {
   const isRuCurrent = currentPath.includes("/ru/") || currentPath.includes("/r/");
 
   // Функция: получить URL для заданного языка и страницы
-  function makeUrl(lang, isHomepage) {
+  function makeUrl(lang, isHomepage, keepParams = false) {
+    let url;
     if (isHomepage) {
-      return lang === "ru" ? `${baseUrl}/ru/` : `${baseUrl}/`;
+      url = lang === "ru" ? `${baseUrl}/ru/` : `${baseUrl}/`;
     } else {
-      return lang === "ru" ? `${baseUrl}/ru/read.php` : `${baseUrl}/read.php`;
+      url = lang === "ru" ? `${baseUrl}/ru/read.php` : `${baseUrl}/read.php`;
     }
+    
+    if (keepParams) {
+      url += currentSearch + currentHash;
+    }
+    
+    return url;
   }
 
   // Функция: определить, нужно ли переключать язык или использовать сохранённый
-  function determineTargetUrl(isHomepage) {
+  function determineTargetUrl(isHomepage, keepParams = false) {
     const isCurrentTarget =
       (isHomepage && (currentPath === "/" || currentPath === "/ru/")) ||
       (!isHomepage && (currentPath === "/read.php" || currentPath === "/ru/read.php"));
@@ -775,18 +784,26 @@ document.addEventListener("keydown", function (event) {
       if (!savedLang) localStorage.setItem(key, nextLang); // сохранить при первом запуске
     }
 
-    return makeUrl(nextLang, isHomepage);
+    return makeUrl(nextLang, isHomepage, keepParams);
   }
 
   // === Ctrl + 1: Переход на домашнюю страницу ===
-  if (isCtrlPressed && event.key === "1") {
+  if (isCtrlPressed && event.key === "1" && !event.shiftKey) {
     event.preventDefault();
     const targetUrl = determineTargetUrl(true);
     window.location.href = targetUrl;
   }
 
+  // === Ctrl + Shift + 1: Переключение языка с сохранением параметров ===
+  if (isCtrlPressed && event.shiftKey && event.key === "1") {
+    event.preventDefault();
+    const isHomepage = currentPath === "/" || currentPath === "/ru/";
+    const targetUrl = determineTargetUrl(isHomepage, true);
+    window.location.href = targetUrl;
+  }
+
   // === Ctrl + 2: Переход на read.php ===
-  if (isCtrlPressed && event.key === "2") {
+  if (isCtrlPressed && event.key === "2" && !event.shiftKey) {
     event.preventDefault();
     const targetUrl = determineTargetUrl(false);
     window.location.href = targetUrl;
