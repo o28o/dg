@@ -794,11 +794,17 @@ document.addEventListener("keydown", function (event) {
 });
 
 document.addEventListener("keydown", function (event) {
+  console.log("Нажата клавиша:", event.key);
+  console.log("Ctrl:", event.ctrlKey, "Shift:", event.shiftKey);
+
   if (event.ctrlKey && event.shiftKey && event.key === "1") {
     event.preventDefault();
+    console.log("Сочетание Ctrl+Shift+1 поймано!");
 
     const url = new URL(window.location.href);
     let path = url.pathname;
+
+    console.log("Текущий путь:", path);
 
     let newUrlStr;
 
@@ -806,12 +812,16 @@ document.addEventListener("keydown", function (event) {
       // Убираем /ru/
       path = path.replace("/ru/", "/");
       newUrlStr = url.origin + path + url.search + url.hash;
+      console.log("Убираем /ru/, новый путь:", newUrlStr);
     } else {
       // Добавляем /ru/
       path = "/ru" + path;
       newUrlStr = url.origin + path + url.search + url.hash;
+      console.log("Добавляем /ru/, новый путь:", newUrlStr);
     }
 
+    // Переход
+    console.log("Переходим по:", newUrlStr);
     window.location.href = newUrlStr;
   }
 });
