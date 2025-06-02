@@ -794,10 +794,11 @@ document.addEventListener("keydown", function (event) {
 });
 
 document.addEventListener("keydown", function (event) {
-  console.log("Нажата клавиша:", event.key);
+  console.log("event.key:", event.key);
+  console.log("event.code:", event.code);
   console.log("Ctrl:", event.ctrlKey, "Shift:", event.shiftKey);
 
-  if (event.ctrlKey && event.shiftKey && event.key === "1") {
+  if (event.ctrlKey && event.shiftKey && event.code === "Digit1") {
     event.preventDefault();
     console.log("Сочетание Ctrl+Shift+1 поймано!");
 
@@ -820,12 +821,10 @@ document.addEventListener("keydown", function (event) {
       console.log("Добавляем /ru/, новый путь:", newUrlStr);
     }
 
-    // Переход
     console.log("Переходим по:", newUrlStr);
     window.location.href = newUrlStr;
   }
 });
-
 
 let quickModalIsOpen = false;
 let quickOverlay = null;
