@@ -1,7 +1,7 @@
 source ./config/script_config.sh --source-only
 
-downloaddir=/media/c/Users/o28o/Downloads
-trndir=/media/c/soft/fdg/assets/texts/sutta/
+#downloaddir=/media/c/Users/o28o/Downloads
+#trndir=/media/c/soft/fdg/assets/texts/sutta/
 thtrndir=/data/data/com.termux/files/usr/share/apache2/default-site/htdocs/assets/texts/th/translation/sutta/
 
 cd $downloaddir
