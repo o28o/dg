@@ -1,4 +1,4 @@
-r<?php
+<?php
 header("Cache-Control: public, max-age=3600"); // Кэшировать на 1 час
 header("Expires: " . gmdate("D, d M Y H:i:s", time() + 3600) . " GMT");
 ?>

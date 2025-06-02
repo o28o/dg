@@ -737,8 +737,6 @@ document.addEventListener('keydown', (event) => {
   }
 });
 
-
-
 document.addEventListener("keydown", function (event) {
   const isCtrlPressed = event.ctrlKey || event.metaKey;
   const currentPath = window.location.pathname;
@@ -748,67 +746,50 @@ document.addEventListener("keydown", function (event) {
 
   const key = "preferredLanguage";
   const savedLang = localStorage.getItem(key);
-  const isRuCurrent = currentPath.includes("/ru/") || currentPath.includes("/r/");
+  const isRuCurrent = currentPath.startsWith("/ru");
 
-  // Функция: получить URL для заданного языка и страницы
-  function makeUrl(lang, isHomepage, keepParams = false) {
-    let url;
-    if (isHomepage) {
-      url = lang === "ru" ? `${baseUrl}/ru/` : `${baseUrl}/`;
+  // Функция для переключения языка с сохранением параметров
+  function toggleLanguageWithParams() {
+    let newPath;
+    
+    if (isRuCurrent) {
+      // Переключаем с /ru/ на /
+      newPath = currentPath.replace(/^\/ru/, '');
     } else {
-      url = lang === "ru" ? `${baseUrl}/ru/read.php` : `${baseUrl}/read.php`;
+      // Переключаем с / на /ru/
+      newPath = "/ru" + (currentPath === "/" ? "" : currentPath);
     }
     
-    if (keepParams) {
-      url += currentSearch + currentHash;
-    }
+    // Сохраняем язык в localStorage
+    const newLang = isRuCurrent ? "en" : "ru";
+    localStorage.setItem(key, newLang);
     
-    return url;
-  }
-
-  // Функция: определить, нужно ли переключать язык или использовать сохранённый
-  function determineTargetUrl(isHomepage, keepParams = false) {
-    const isCurrentTarget =
-      (isHomepage && (currentPath === "/" || currentPath === "/ru/")) ||
-      (!isHomepage && (currentPath === "/read.php" || currentPath === "/ru/read.php"));
-
-    let nextLang;
-
-    if (isCurrentTarget) {
-      // Уже на целевой странице — делаем toggle
-      nextLang = isRuCurrent ? "en" : "ru";
-      localStorage.setItem(key, nextLang);
-    } else {
-      // С других страниц — просто используем сохранённое предпочтение
-      nextLang = savedLang || (isRuCurrent ? "ru" : "en");
-      if (!savedLang) localStorage.setItem(key, nextLang); // сохранить при первом запуске
-    }
-
-    return makeUrl(nextLang, isHomepage, keepParams);
+    // Собираем новый URL с сохранением параметров и хэша
+    return baseUrl + newPath + currentSearch + currentHash;
   }
 
   // === Ctrl + 1: Переход на домашнюю страницу ===
   if (isCtrlPressed && event.key === "1" && !event.shiftKey) {
     event.preventDefault();
-    const targetUrl = determineTargetUrl(true);
+    const targetUrl = isRuCurrent ? `${baseUrl}/ru/` : `${baseUrl}/`;
     window.location.href = targetUrl;
   }
 
   // === Ctrl + Shift + 1: Переключение языка с сохранением параметров ===
   if (isCtrlPressed && event.shiftKey && event.key === "1") {
     event.preventDefault();
-    const isHomepage = currentPath === "/" || currentPath === "/ru/";
-    const targetUrl = determineTargetUrl(isHomepage, true);
+    const targetUrl = toggleLanguageWithParams();
     window.location.href = targetUrl;
   }
 
   // === Ctrl + 2: Переход на read.php ===
   if (isCtrlPressed && event.key === "2" && !event.shiftKey) {
     event.preventDefault();
-    const targetUrl = determineTargetUrl(false);
+    const targetUrl = isRuCurrent ? `${baseUrl}/ru/read.php` : `${baseUrl}/read.php`;
     window.location.href = targetUrl;
   }
 });
+
 
 let quickModalIsOpen = false;
 let quickOverlay = null;
