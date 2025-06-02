@@ -793,40 +793,31 @@ document.addEventListener("keydown", function (event) {
   }
 });
 
+  document.addEventListener('keydown', function (e) {
+    // Проверяем сочетание Ctrl + Shift + 1
+    if (e.ctrlKey && e.shiftKey && e.key === '1') {
+      e.preventDefault(); // отключаем стандартное поведение
 
-// ==UserScript==
-// @name         Toggle RU Shortcut
-// @namespace    http://tampermonkey.net/
-// @version      1.0
-// @description  Переключает между /ru/ и корнем по Ctrl+Shift+1
-// @author       You
-// @match        http://localhost/*
-// @grant        none
-// ==UserScript==
+      const url = new URL(window.location.href);
+      let path = url.pathname;
 
-(function() {
-    'use strict';
+      let newPath;
+      if (path.startsWith('/ru/')) {
+        newPath = path.replace('/ru/', '/');
+      } else if (path === '/' || path === '') {
+        newPath = '/ru/';
+      } else {
+        console.log("Неизвестный путь:", path);
+        return;
+      }
 
-    document.addEventListener('keydown', function(e) {
-        if (e.ctrlKey && e.shiftKey && e.key === '1') {
-            e.preventDefault();
+      const newUrl = url.origin + newPath + url.search + url.hash;
 
-            let url = new URL(window.location.href);
-            let path = url.pathname;
+      // Перенаправляем
+      window.location.replace(newUrl);
+    }
+  });
 
-            if (path.startsWith('/ru/')) {
-                path = path.replace('/ru/', '/');
-            } else if (path === '/' || path === '') {
-                path = '/ru/';
-            } else {
-                return;
-            }
-
-            const newUrl = url.origin + path + url.search + url.hash;
-            window.location.href = newUrl;
-        }
-    });
-})();
 
 let quickModalIsOpen = false;
 let quickOverlay = null;
