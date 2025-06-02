@@ -737,59 +737,96 @@ document.addEventListener('keydown', (event) => {
   }
 });
 
+
+
 document.addEventListener("keydown", function (event) {
   const isCtrlPressed = event.ctrlKey || event.metaKey;
   const currentPath = window.location.pathname;
-  const currentSearch = window.location.search;
-  const currentHash = window.location.hash;
   const baseUrl = window.location.origin;
 
   const key = "preferredLanguage";
   const savedLang = localStorage.getItem(key);
-  const isRuCurrent = currentPath.startsWith("/ru");
+  const isRuCurrent = currentPath.includes("/ru/") || currentPath.includes("/r/");
 
-  // Функция для переключения языка с сохранением параметров
-  function toggleLanguageWithParams() {
-    let newPath;
-    
-    if (isRuCurrent) {
-      // Переключаем с /ru/ на /
-      newPath = currentPath.replace(/^\/ru/, '');
+  // Функция: получить URL для заданного языка и страницы
+  function makeUrl(lang, isHomepage) {
+    if (isHomepage) {
+      return lang === "ru" ? `${baseUrl}/ru/` : `${baseUrl}/`;
     } else {
-      // Переключаем с / на /ru/
-      newPath = "/ru" + (currentPath === "/" ? "" : currentPath);
+      return lang === "ru" ? `${baseUrl}/ru/read.php` : `${baseUrl}/read.php`;
     }
-    
-    // Сохраняем язык в localStorage
-    const newLang = isRuCurrent ? "en" : "ru";
-    localStorage.setItem(key, newLang);
-    
-    // Собираем новый URL с сохранением параметров и хэша
-    return baseUrl + newPath + currentSearch + currentHash;
+  }
+
+  // Функция: определить, нужно ли переключать язык или использовать сохранённый
+  function determineTargetUrl(isHomepage) {
+    const isCurrentTarget =
+      (isHomepage && (currentPath === "/" || currentPath === "/ru/")) ||
+      (!isHomepage && (currentPath === "/read.php" || currentPath === "/ru/read.php"));
+
+    let nextLang;
+
+    if (isCurrentTarget) {
+      // Уже на целевой странице — делаем toggle
+      nextLang = isRuCurrent ? "en" : "ru";
+      localStorage.setItem(key, nextLang);
+    } else {
+      // С других страниц — просто используем сохранённое предпочтение
+      nextLang = savedLang || (isRuCurrent ? "ru" : "en");
+      if (!savedLang) localStorage.setItem(key, nextLang); // сохранить при первом запуске
+    }
+
+    return makeUrl(nextLang, isHomepage);
   }
 
   // === Ctrl + 1: Переход на домашнюю страницу ===
-  if (isCtrlPressed && event.key === "1" && !event.shiftKey) {
+  if (isCtrlPressed && event.key === "1") {
     event.preventDefault();
-    const targetUrl = isRuCurrent ? `${baseUrl}/ru/` : `${baseUrl}/`;
-    window.location.href = targetUrl;
-  }
-
-  // === Ctrl + Shift + 1: Переключение языка с сохранением параметров ===
-  if (isCtrlPressed && event.shiftKey && event.key === "1") {
-    event.preventDefault();
-    const targetUrl = toggleLanguageWithParams();
+    const targetUrl = determineTargetUrl(true);
     window.location.href = targetUrl;
   }
 
   // === Ctrl + 2: Переход на read.php ===
-  if (isCtrlPressed && event.key === "2" && !event.shiftKey) {
+  if (isCtrlPressed && event.key === "2") {
     event.preventDefault();
-    const targetUrl = isRuCurrent ? `${baseUrl}/ru/read.php` : `${baseUrl}/read.php`;
+    const targetUrl = determineTargetUrl(false);
     window.location.href = targetUrl;
   }
 });
 
+
+// ==UserScript==
+// @name         Toggle RU Shortcut
+// @namespace    http://tampermonkey.net/
+// @version      1.0
+// @description  Переключает между /ru/ и корнем по Ctrl+Shift+1
+// @author       You
+// @match        http://localhost/*
+// @grant        none
+// ==UserScript==
+
+(function() {
+    'use strict';
+
+    document.addEventListener('keydown', function(e) {
+        if (e.ctrlKey && e.shiftKey && e.key === '1') {
+            e.preventDefault();
+
+            let url = new URL(window.location.href);
+            let path = url.pathname;
+
+            if (path.startsWith('/ru/')) {
+                path = path.replace('/ru/', '/');
+            } else if (path === '/' || path === '') {
+                path = '/ru/';
+            } else {
+                return;
+            }
+
+            const newUrl = url.origin + path + url.search + url.hash;
+            window.location.href = newUrl;
+        }
+    });
+})();
 
 let quickModalIsOpen = false;
 let quickOverlay = null;
