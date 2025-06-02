@@ -793,30 +793,28 @@ document.addEventListener("keydown", function (event) {
   }
 });
 
-  document.addEventListener('keydown', function (e) {
-    // Проверяем сочетание Ctrl + Shift + 1
-    if (e.ctrlKey && e.shiftKey && e.key === '1') {
-      e.preventDefault(); // отключаем стандартное поведение
+document.addEventListener("keydown", function (event) {
+  if (event.ctrlKey && event.shiftKey && event.key === "1") {
+    event.preventDefault();
 
-      const url = new URL(window.location.href);
-      let path = url.pathname;
+    const url = new URL(window.location.href);
+    let path = url.pathname;
 
-      let newPath;
-      if (path.startsWith('/ru/')) {
-        newPath = path.replace('/ru/', '/');
-      } else if (path === '/' || path === '') {
-        newPath = '/ru/';
-      } else {
-        console.log("Неизвестный путь:", path);
-        return;
-      }
+    let newUrlStr;
 
-      const newUrl = url.origin + newPath + url.search + url.hash;
-
-      // Перенаправляем
-      window.location.replace(newUrl);
+    if (path.startsWith("/ru/")) {
+      // Убираем /ru/
+      path = path.replace("/ru/", "/");
+      newUrlStr = url.origin + path + url.search + url.hash;
+    } else {
+      // Добавляем /ru/
+      path = "/ru" + path;
+      newUrlStr = url.origin + path + url.search + url.hash;
     }
-  });
+
+    window.location.href = newUrlStr;
+  }
+});
 
 
 let quickModalIsOpen = false;
