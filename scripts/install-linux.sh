@@ -16,6 +16,17 @@ chown -R www-data:www-data /var/www/html
 mkdir suttacentral.net && cd suttacentral.net
 git clone https://github.com/suttacentral/sc-data.git 
 
+echo "downloading offline data"
+cd ..
+git@github.com:o28o/dg-offline-data.git
+mv dg-offline-data offline-data
+
+echo "optionally you can donwload pali audio sc-voice data
+cd to the dhamma.gift project folder (apache default folder)
+git clone https://github.com/o28o/dg.audio ./assets/audio
+"
+
+
 chown -R apache:apache /var/www/suttacentral.net
 chown -R www-data:www-data /var/www/suttacentral.net
 
