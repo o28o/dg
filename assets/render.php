@@ -1,7 +1,29 @@
 <?php
-$title = htmlspecialchars($_POST['title'] ?? 'TTS Page');
-$content = $_POST['content'] ?? '';
-$lang = ($_POST['lang'] ?? 'ru') === 'pi' ? 'pi' : 'ru';
+// Параметры запроса
+$slug = $_GET['q'] ?? '';
+$type = $_GET['type'] ?? ''; // 'pali' или 'trn' (translation)
+$lang = ($type === 'pali') ? 'pi' : 'ru';
+
+// Заголовок страницы
+$title = htmlspecialchars(
+    $slug 
+    ? ucfirst(str_replace(['-', '_'], ' ', $slug)) . ' (' . ($type === 'pali' ? 'Pali' : 'Translation') . ')'
+    : 'TTS Page'
+);
+
+// Загрузка контента по slug (замените на вашу логику)
+function loadContent($slug, $type) {
+    // Пример: загрузка из базы данных или файлов
+    // Здесь должна быть ваша реализация!
+    if ($type === 'pali') {
+        return "Это палийский текст для: $slug";
+    } else {
+        return "Это перевод для: $slug";
+    }
+}
+
+// Если передан slug, загружаем контент автоматически
+$content = $slug ? loadContent($slug, $type) : htmlspecialchars($_POST['content'] ?? '');
 ?>
 <!DOCTYPE html>
 <html lang="<?= $lang ?>">
@@ -28,4 +50,5 @@ $lang = ($_POST['lang'] ?? 'ru') === 'pi' ? 'pi' : 'ru';
   <div class="text-content"><?= htmlspecialchars($content) ?></div>
 </body>
 </html>
+
 
