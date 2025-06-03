@@ -78,24 +78,15 @@ mkdir suttacentral.net
 cd suttacentral.net 
 git clone https://github.com/suttacentral/sc-data.git 
 
-#accesstoinsight.org 
+echo "downloading offline data"
 cd ..
-echo "downloading accesstoinsight.org"
-rm -rf accesstoinsight.org 
-wget http://accesstoinsight.org/tech/download/ati.zip
-echo "unzipping"
-unzip ati.zip 
-mv ati ./accesstoinsight.org
-rm ati.zip
+git@github.com:o28o/dg-offline-data.git
+mv dg-offline-data offline-data
 
-#legacy suttacentral.net 
-echo "downloading legacy.suttacentral.net"
-rm -rf legacy.suttacentral.net
-wget https://legacy.suttacentral.net/exports/sc-offline-2016-11-30_16:03:42.zip
-echo "unzipping"
-unzip sc-offline-2016-11-30_16\:03\:42.zip 
-mv sc-offline-2016-11-30_16\:03\:42/ legacy.suttacentral.net  
-rm sc-offline-2016-11-30_16\:03\:42.zip 
+echo "optionally you can donwload pali audio sc-voice data
+cd to the dhamma.gift project folder (apache default folder)
+git clone https://github.com/o28o/dg.audio ./assets/audio
+"
 
 #test run
 echo "test run"
@@ -320,6 +311,29 @@ wget --recursive --no-clobber --page-requisites --html-extension --convert-links
 
 
 sox /data/data/com.termux/files/usr/share/apache2/default-site/htdocs/assets/audio/mn/mn54_*.ogg /storage/emulated/0/Download/out.ogg pitch -350 speed 0.8 bass +5                
+
+#old offilne data 
+
+
+#accesstoinsight.org 
+cd ..
+echo "downloading accesstoinsight.org"
+rm -rf accesstoinsight.org 
+wget http://accesstoinsight.org/tech/download/ati.zip
+echo "unzipping"
+unzip ati.zip 
+mv ati ./accesstoinsight.org
+rm ati.zip
+
+#legacy suttacentral.net 
+echo "downloading legacy.suttacentral.net"
+rm -rf legacy.suttacentral.net
+wget https://legacy.suttacentral.net/exports/sc-offline-2016-11-30_16:03:42.zip
+echo "unzipping"
+unzip sc-offline-2016-11-30_16\:03\:42.zip 
+mv sc-offline-2016-11-30_16\:03\:42/ legacy.suttacentral.net  
+rm sc-offline-2016-11-30_16\:03\:42.zip 
+
                  
                  
                  
