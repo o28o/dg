@@ -58,8 +58,6 @@ if (key.startsWith('"') && key.endsWith('"')) {
     }
 }
 
-// Вызываем функцию при загрузке страницы (если нужно)
-addToSearchHistory();
 //установка фокуса в инпуте по нажатию / 
 document.addEventListener('keydown', function(event) {
     // Проверяем именно символ / (код 191 или Slash)
