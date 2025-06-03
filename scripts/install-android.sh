@@ -80,11 +80,11 @@ git clone https://github.com/suttacentral/sc-data.git
 
 echo "downloading offline data"
 cd ..
-git@github.com:o28o/dg-offline-data.git
-mv dg-offline-data offline-data
+git clone git@github.com:o28o/dg-offline-data.git offline-data
 
 echo "optionally you can donwload pali audio sc-voice data
 cd to the dhamma.gift project folder (apache default folder)
+run
 git clone https://github.com/o28o/dg.audio ./assets/audio
 "
 
