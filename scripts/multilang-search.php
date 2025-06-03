@@ -407,7 +407,6 @@ if (strpos($outputnonl, 'script') !== false || strpos($outputnonl, 'location.hre
 
     // Добавляем скрытие страницы перед выполнением скриптов
     echo '<script>document.body.style.display = "none";
-	  addToSearchHistory();
 	</script>';
 if (preg_match('/(-anyd)/', $extra)) {
   echo "<script>window.location.href='/result/r.html';
@@ -416,6 +415,7 @@ if (preg_match('/(-anyd)/', $extra)) {
 }
 
     // Выполняем найденные скрипты
+    echo '<script>addToSearchHistory();</script>';
     echo $finaloutput;
     exit;
 } else {
