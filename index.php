@@ -281,8 +281,6 @@ if (isset($_GET['q'])) {
 </button>
 </div>
  <div class="text-start text-muted form-check-inline" data-bs-toggle="tooltip" data-bs-placement="bottom" title="<?php echo $tooltipsearchbar;?>">*</div>
-
-
 </div>
 
 <div class="d-flex align-items-center flex-nowrap">

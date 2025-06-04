@@ -231,7 +231,7 @@ if (isset($_GET['q'])) {
   <span class="visually-hidden"><?php echo $searchcaption;?></span>
   </div> 
 </div>
- <div class="text-start text-muted form-check-inline ms-2" data-bs-toggle="tooltip" data-bs-placement="bottom" title="<?php echo $tooltipsearchbar;?>">*</div>
+ <div class="text-start text-muted form-check-inline" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true" title="<?php echo $tooltipsearchbar;?>">*</div>
 
 
 </div>
