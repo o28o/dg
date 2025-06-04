@@ -90,7 +90,33 @@ document.addEventListener('DOMContentLoaded', function() {
                 minLength: 0,
                 multiple: /[\s\*]/,
                 source: function(request, response) {
-                    var terms = request.term.split(/[\|\s\*]/);
+					
+					
+					function normalizeTerm(term) {
+    // Словарь замены русских букв на английские (неправильная раскладка)
+    const ruToEn = {
+        'а': 'f', 'в': 'd', 'е': 't', 'к': 'r', 'м': 'v',
+        'н': 'y', 'о': 'j', 'п': 'g', 'р': 'h', 'с': 'c',
+        'т': 'n', 'у': 'e', 'х': '[', 'ъ': ']', 'ы': 's',
+        'ь': 'm', 'э': "'", 'ё': '`', 'я': 'z', 'ж': ';',
+        'з': 'p', 'и': 'b', 'й': 'q', 'л': 'k', 'д': 'l',
+        'г': 'u', 'ф': 'a', 'ц': 'w', 'ч': 'x', 'ш': 'i',
+        'щ': 'o', 'б': ',', 'ю': '.', ' ': ' '
+    };
+
+    return term.trim()
+        // Преобразуем возможную русскую раскладку в английскую
+        .replace(/[а-яё]/g, char => ruToEn[char] || char)
+        // Нормализация форматов
+        .replace(/([a-zA-Z]+)\s+(\d+)\s+(\d+)/g, "$1$2.$3")    // an 3 70 → an3.70
+        .replace(/([a-zA-Z]+)(\d+)\s+(\d+)/g, "$1$2.$3")       // an3 70 → an3.70
+        .replace(/([a-zA-Z]+)\s+(\d+)\.(\d+)/g, "$1$2.$3")     // an 3.70 → an3.70
+        .replace(/([a-zA-Z]+)\s+(\d+)/g, "$1$2");              // dn 1 → dn1
+}
+
+var normalizedTerm = normalizeTerm(request.term);
+                    
+                    var terms = normalizedTerm.split(/[\|\s\*]/);
                     var lastTerm = terms.pop().trim();
                     var minLengthForSearch = 3;
 
@@ -189,4 +215,5 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
+
 
