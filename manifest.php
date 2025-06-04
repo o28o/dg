@@ -195,7 +195,7 @@ echo json_encode([
         ],
         [
             "name" => "Aksharamukha.com",
-            "url" => $mainpagenoslash . "/assets/openDDG.html?url=https://www.aksharamukha.com/converter",
+            "url" => $mainpagenoslash . "assets/openDDG.html?url=https://www.aksharamukha.com/converter",
             "icons" => [
                 [
                     "src" => "/assets/img/maniIcon.png",
