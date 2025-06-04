@@ -192,6 +192,17 @@ echo json_encode([
                     "sizes" => "192x192"
                 ]
             ]
+        ],
+        [
+            "name" => "Aksharamukha.com",
+            "url" => $mainpagenoslash . "/static/openDDG.html?url=https://www.aksharamukha.com/converter",
+            "icons" => [
+                [
+                    "src" => "/assets/img/maniIcon.png",
+                    "type" => "image/png",
+                    "sizes" => "192x192"
+                ]
+            ]
         ]
     ]
 ], JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT);

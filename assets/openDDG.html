@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Redirect to Dict.Dhamma.gift</title>
+    <title>Перенаправление</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -70,13 +70,12 @@
 </head>
 <body>
     <div class="container">
-        <h1>Redirecting to Dict.Dhamma.gift...</h1>
+        <h1>Redirecting...</h1>
         <div class="loader"></div>
         <div class="links" style="display: none;">
             <p>If it didn't work click:</p>
             <a href="https://dict.dhamma.gift/">English</a>
-                        <a href="https://dict.dhamma.gift/ru/">Russian</a>
-
+            <a href="https://dict.dhamma.gift/ru/">Russian</a>
         </div>
     </div>
 
@@ -85,13 +84,28 @@
         setTimeout(() => {
             document.body.classList.add('show');
         }, 100);
-        
-        // Проверяем, есть ли /ru/ в текущем URL
-        const shouldRedirectToRU = window.location.href.includes('/ru/');
-        const redirectUrl = shouldRedirectToRU 
-            ? "https://dict.dhamma.gift/ru/" 
-            : "https://dict.dhamma.gift/";
-        
+
+        // Функция для получения GET-параметров
+        function getQueryParam(name) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(name);
+        }
+
+        // Определяем URL для редиректа
+        let redirectUrl;
+        const customUrl = getQueryParam('url');
+
+        if (customUrl) {
+            // Если есть параметр url=..., перенаправляем туда
+            redirectUrl = decodeURIComponent(customUrl);
+        } else {
+            // Иначе перенаправляем на dict.dhamma.gift (с учётом /ru/)
+            const shouldRedirectToRU = window.location.href.includes('/ru/');
+            redirectUrl = shouldRedirectToRU 
+                ? "https://dict.dhamma.gift/ru/" 
+                : "https://dict.dhamma.gift/";
+        }
+
         // Пытаемся перенаправить
         window.location.href = redirectUrl;
         
