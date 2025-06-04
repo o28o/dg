@@ -52,6 +52,20 @@ $radiodef = 'Опр';
 $tooltipsml = 'Поиск сравнений, метафор, символов понятия на Пали в 4 Никаях. Работает только для определений данных стандартными фразами.';
 $radiosml = 'Пдб';
 
+$tooltipsearchbar = '
+<strong>Автоподсказки</strong>: начните вводить от 3 символов — будут появляться подсказки из слов Редакции Mahasangiti Четырёх Никай (DN, MN, SN, AN), а также части KN (Dhp, Iti, Ud, Snp) и всех разделов Винаи. Без учета вариантов из других редакций.
+<br><br>
+<strong>Количество совпадений</strong> (например, "mettā 27") показывает, сколько раз слово встречается в указанных текстах. Для более широких результатов ищите слова в базовой форме, без приставок и падежных и др. окончаний.
+<br><br>
+<strong>Ошиблись раскладкой?</strong> Даже "фвршссфыфьгзз" преобразуется в правильное "adhiccasamuppann".
+<br><br>
+<strong>Переход к текстам</strong>: введите ссылку (например, "sn56.11", "DN 22", "Sn 12 2", "an10.46" или даже "фн10ю46", "mn141") — в подсказке отобразится палийское название текста, и вы сможете перейти к нему напрямую.
+<br><br>
+<strong>История поиска и чтения</strong>: кликните по пустому полю или нажмите пробел. История хранится только на этом вашем устройстве.
+<br><br>
+<strong>Поиск по истории</strong>: при вводе до 2 символов будут отображаться отфильтрованная истории поиска (ваша).
+';
+
 $tooltiptextype = '<strong>Pāḷi*</strong> - 4 Никаи + 6 книг КН Удана (Ud), Дхаммапада (Dhp), Итивутака (Iti), Суттанипата (Snp), Тхерагатха (Thag), Тхеригатха (Thig)<br><br>
 <strong>4 Никаи</strong> - 4 Основные Никаи: Ангутара Никаи (АН), Саньютта Никаи (СН), Маджжхима Никаи (МН), Дигха Никаи (ДН). В коренных текстах (Мула). <br><br>
 <strong>Виная*</strong> - Поиск в Вибхангах Винаи и Патимоккхах на Пали и Английском. <br><br>
@@ -788,6 +802,20 @@ $radiodef = 'Def';
 
 $tooltipsml = 'Search for similes, metaphors, and symbols related to the search term in four main Pali Nikayas. Requires standard phrasing for definitions.';
 $radiosml = 'Sml';
+
+$tooltipsearchbar = '
+<strong>Autosuggestions</strong>: Start typing at least 3 characters - suggestions will appear from words in the Mahasangiti Edition of the Four Nikāyas (DN, MN, SN, AN), as well as KN sections (Dhp, Iti, Ud, Snp) and all Vinaya divisions. Does not include variants from other editions.
+<br><br>
+<strong>Match count</strong> (e.g., "mettā 27") shows how many times the word appears in these texts. For broader results, search for words in their base form without prefixes or case endings.
+<br><br>
+<strong>Wrong keyboard layout?</strong> Even "фвршссфыфьгзз" will convert to correct "adhiccasamuppann".
+<br><br>
+<strong>Jump to texts</strong>: Enter a reference (e.g., "sn56.11", "DN 22", "Sn 12 2", "an10.46" or even "фн10ю46", "mn141") - the Pāli text name will appear in suggestions, allowing direct navigation.
+<br><br>
+<strong>Search and reading history</strong>: Click the empty field or press space. History is stored only on this device.
+<br><br>
+<strong>History search</strong>: When entering 1-2 characters, your filtered search history will be shown.
+';
 
 $tooltiptextype = '<strong>Pāḷi*</strong> - 4 Nikayas + 6 KN books: Udana (Ud), Dhammapada (Dhp), Itivuttaka (Iti), Suttanipāta (Snp), Theragāthā (Thag), Therigatha (Thig)<br><br>
 <strong>4 Nikayas</strong> - Anguttara Nikaya (AN), Samyutta Nikaya (SN), Majjhimma Nikaya (MN), Digha Nikaya (DN). Search in Root texts (Mula)

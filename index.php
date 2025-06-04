@@ -269,7 +269,8 @@ if (isset($_GET['q'])) {
     <i class="fas fa-times" aria-hidden="true"></i>
     <span class="visually-hidden"><?php echo $clearaption;?></span>
   </button>
-</div>
+</div>    
+ <div class="text-start text-muted form-check-inline ms-2" data-bs-toggle="tooltip" data-bs-placement="bottom" title="<?php echo $tooltipsearchbar;?>">*</div>
 
 <!-- submit button -->
 <div class="input-group-append">

@@ -220,6 +220,9 @@ if (isset($_GET['q'])) {
   </button>
 </div>
 
+ <div class="text-start text-muted form-check-inline ms-2" data-bs-toggle="tooltip" data-bs-placement="bottom" title="<?php echo $tooltipsearchbar;?>">*</div>
+
+
 <div class="input-group-append">
 <button onclick="document.getElementById( 'spinner' ).style.display = 'block'" type="submit" id="searchbtn" class="btn btn-primary mainbutton ms-1 me-1 rounded-pill ">
 <i class="fas fa-search fa-flip-horizontal" aria-hidden="true"></i>
