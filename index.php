@@ -279,8 +279,9 @@ if (isset($_GET['q'])) {
 <i class="fas fa-search fa-flip-horizontal" aria-hidden="true"></i>
     <span class="visually-hidden"><?php echo $searchcaption;?></span>
 </button>
-</div>
  <div class="text-start text-muted form-check-inline" data-bs-toggle="tooltip" data-bs-placement="bottom" title="<?php echo $tooltipsearchbar;?>">*</div>
+</div>
+
 </div>
 
 <div class="d-flex align-items-center flex-nowrap">

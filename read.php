@@ -230,8 +230,9 @@ if (isset($_GET['q'])) {
   <i class="fa-solid fa-gear fa-lg" aria-hidden="true"></i>
   <span class="visually-hidden"><?php echo $searchcaption;?></span>
   </div> 
-</div>
+
  <div class="text-start text-muted form-check-inline" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true" title="<?php echo $tooltipsearchbar;?>">*</div>
+</div>
 
 
 </div>
