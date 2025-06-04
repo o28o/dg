@@ -213,7 +213,7 @@ if (isset($_GET['q'])) {
 ?>
 
 <div class="searchinputdiv">
-  <input name="q" type="text" style="min-width:230px;" class="form-control rounded-pill searchinput" id="paliauto" placeholder="e.g. Kāyagat or sn56.11" value="<?php echo $q; ?>" multiple>
+  <input name="q" type="text" style="min-width:200px;" class="form-control rounded-pill searchinput" id="paliauto" placeholder="e.g. Kāyagat or sn56.11" value="<?php echo $q; ?>" multiple>
   <button type="button" id="clearbtn" class="btn btn-sm ms-1 me-1 rounded-pill">
     <i class="fas fa-times" aria-hidden="true"></i>
     <span class="visually-hidden"><?php echo $clearaption;?></span>
