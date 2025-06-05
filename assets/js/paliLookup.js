@@ -33,6 +33,21 @@ const siteLanguage = localStorage.getItem('siteLanguage');
 let savedDict = localStorage.getItem('selectedDict');
 
 
+// Добавь это в начало файла, после других функций
+function getSelectedText() {
+    const selection = window.getSelection();
+    return selection ? selection.toString().trim() : '';
+}
+
+function isSelectionWithinElement(element) {
+    const selection = window.getSelection();
+    if (!selection.rangeCount) return false;
+    
+    const range = selection.getRangeAt(0);
+    return element.contains(range.commonAncestorContainer);
+}
+
+
 function savePopupState() {
     localStorage.setItem('popupWidth', popup.style.width);
     localStorage.setItem('popupHeight', popup.style.height);
@@ -250,7 +265,7 @@ function lookupWordInStandaloneDict(word) {
 const dictSearchUrl = `https://dict.dhamma.gift/${savedDict.includes("ru") ? "ru/" : ""}search_html?q=${encodeURIComponent(word)}`;
 
 if (word in dpd_i2h) {
-    out += `<a href="${dictSearchUrl}" target="_blank" rel="noopener noreferrer" style="text-decoration: none; color: inherit;"><strong>${word}</strong></a><br><ul style="line-height: 1em; padding-left: 15px;">`;
+    out += `<a href="${dictSearchUrl}" target="_blank" rel="noopener noreferrer" style="text-decoration: none; color: inherit;"><strong>${word}</strong></a><br><ul class="pli-lang" lang="pi" style="line-height: 1em; padding-left: 15px;">`;
     for (const headword of dpd_i2h[word]) {
         if (headword in dpd_ebts) {
             out += '<li>' + headword + '. ' + dpd_ebts[headword] + '</li>';
@@ -260,7 +275,7 @@ if (word in dpd_i2h) {
 }
 
 if (word in dpd_deconstructor) {
-    out += `<a href="${dictSearchUrl}" target="_blank" rel="noopener noreferrer" style="text-decoration: none; color: inherit;"><strong>${word}</strong></a><br><ul style="line-height: 1em; padding-left: 15px;">`;
+    out += `<a href="${dictSearchUrl}" target="_blank" rel="noopener noreferrer" style="text-decoration: none; color: inherit;"><strong>${word}</strong></a><br><ul class="pli-lang" lang="pi" style="line-height: 1em; padding-left: 15px;">`;
     out += "<li>" + dpd_deconstructor[word] + "</li>";
     out += "</ul>";
 }
@@ -601,9 +616,179 @@ toggleBtn.addEventListener('click', () => {
   });  
 
 // Перехватчик кликов по слову
+// Перехватчик кликов по слову и выделенного текста
 document.addEventListener('click', function(event) {
-    if (event.target.closest('.pli-lang, [lang="pi"]')) {
-   // if (event.target.closest('.pli-lang, .rus-lang, .eng-lang, [lang="pi"], [lang="en"], [lang="ru"]')) {
+    // Проверяем, есть ли выделенный текст внутри элемента с пали
+    const pliElement = event.target.closest('.pli-lang, [lang="pi"]');
+    const selectedText = getSelectedText();
+    
+    if (pliElement && selectedText && isSelectionWithinElement(pliElement)) {
+        // Обрабатываем выделенный текст
+        if (event.target.closest('a, button, input, textarea, select')) {
+            return;
+        }
+
+        let cleanedText = cleanWord(selectedText);
+        console.log('Выделенный текст:', cleanedText);
+
+        if (dictionaryVisible) {
+            let translation = "";
+            
+            if (dictUrl === "standalonebw" || dictUrl === "standalonebwru") {
+                translation = lookupWordInStandaloneDict(cleanedText);
+            } 
+            else if (dictUrl.includes('dicttango') || dictUrl.includes('mdict')) {
+                const tempLink = document.createElement('a');
+                tempLink.href = 'javascript:void(0)';
+                tempLink.onclick = function() {
+                    window.location.href = `${dictUrl}${encodeURIComponent(cleanedText)}`;
+                    return false;
+                };
+                tempLink.click();
+                translation = "";
+                popup.style.display = 'none';
+                overlay.style.display = 'none';
+            }
+            else {
+                const url = `${dictUrl}${encodeURIComponent(cleanedText)}`;
+                iframe.src = url;
+            }
+
+            if (translation) {
+                const isDarkMode = document.body.classList.contains('dark') || document.documentElement.getAttribute('data-theme') === 'dark';
+                const themeClass = isDarkMode ? 'dark' : '';
+                
+                const tempDiv = document.createElement('div');
+                tempDiv.style.position = 'absolute';
+                tempDiv.style.visibility = 'hidden';
+                tempDiv.style.width = 'calc(100% - 20px)';
+                tempDiv.innerHTML = translation;
+                document.body.appendChild(tempDiv);
+                
+                const contentHeight = tempDiv.offsetHeight;
+                document.body.removeChild(tempDiv);
+                
+                let minHeight = 100;
+                const maxHeight = window.innerHeight * 0.95; 
+                
+                if (dictUrl === "standalonebw" || dictUrl === "standalonebwru") {
+                    minHeight = 100;
+                } else {
+                    const screenHeight = window.innerHeight;
+                    minHeight = (screenHeight * 0.8 < 600) ? screenHeight * 0.8 : 600;
+                }
+
+                let finalHeight = Math.min(Math.max(contentHeight + 20, minHeight), maxHeight);
+                
+                iframe.srcdoc = `  
+                    <!DOCTYPE html>  
+                    <html lang="en" class="${themeClass}">  
+                    <head>  
+                        <meta charset="UTF-8">  
+                        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                        <style>  
+                            body {  
+                                font-family: Arial, sans-serif;  
+                                padding: 10px;  
+                                margin: 0;
+                                overflow: hidden;
+                            }  
+                            body.dark {  
+                                background: #07021D !important;  
+                                color: #E1EAED !important;  
+                            }  
+                            strong {  
+                                font-size: 1.2em;  
+                            }  
+                            ul {  
+                                list-style-type: none;  
+                                padding-left: 0;  
+                            }  
+                            li {  
+                                margin-bottom: 10px;  
+                            }  
+                        </style>  
+                    </head>  
+                    <body class="${themeClass}">  
+                        ${translation}  
+                    </body>  
+                    </html>  
+                `;
+                
+                popup.style.height = `${finalHeight}px`;
+                popup.style.display = 'block';  
+                overlay.style.display = 'block';
+                
+                iframe.onload = function() {
+                    try {
+                        const iframeBody = iframe.contentDocument.body;
+                        const scrollHeight = iframeBody.scrollHeight;
+                        const adjustedHeight = Math.min(Math.max(scrollHeight + 20, minHeight), maxHeight);
+                        popup.style.height = `${adjustedHeight}px`;
+                    } catch(e) {
+                        console.error('Error adjusting iframe height:', e);
+                    }
+                };
+            }
+            
+            const openBtn = document.querySelector('.open-btn');
+            const textForSearch = cleanedText.replace(/'ti/, '');
+            openBtn.href = `${dhammaGift}${encodeURIComponent(textForSearch)}${dgParams}`;
+
+            const dictBtn = document.querySelector('.dict-btn');
+            const dictSearchUrl = `https://dict.dhamma.gift/${savedDict.includes("ru") ? "ru/" : ""}search_html?q=${encodeURIComponent(textForSearch)}`;
+            dictBtn.href = dictSearchUrl;
+
+            function showSearchButton() {
+                const textForSearch = cleanedText.replace(/'ti/, '');
+                const searchBtn = document.createElement('a');
+                searchBtn.href = `${dhammaGift}${encodeURIComponent(textForSearch)}${dgParams}`;
+                searchBtn.classList.add('open-btn');
+                searchBtn.style.position = 'fixed';
+                searchBtn.style.border = 'none';
+                searchBtn.style.background = '#2D3E50';
+                searchBtn.style.color = 'white';
+                searchBtn.style.cursor = 'pointer';
+                searchBtn.style.width = '30px';
+                searchBtn.style.height = '30px';
+                searchBtn.style.borderRadius = '50%';
+                searchBtn.style.display = 'flex';
+                searchBtn.style.alignItems = 'center';
+                searchBtn.style.justifyContent = 'center';
+                searchBtn.style.textDecoration = 'none';
+                searchBtn.target = '_blank';
+                searchBtn.style.top = `${event.clientY - 10}px`;
+                searchBtn.style.left = `${event.clientX - 10}px`;
+                searchBtn.style.zIndex = '10000';
+                searchBtn.innerHTML = `
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="16" height="16" fill="white" style="transform: scaleX(-1);">
+                        <path d="M505 442.7l-99.7-99.7c28.4-35.3 45.7-79.8 45.7-128C451 98.8 352.2 0 224 0S-3 98.8-3 224s98.8 224 224 224c48.2 0 92.7-17.3 128-45.7l99.7 99.7c6.2 6.2 14.4 9.4 22.6 9.4s16.4-3.1 22.6-9.4c12.5-12.5 12.5-32.8 0-45.3zM224 384c-88.4 0-160-71.6-160-160S135.6 64 224 64s160 71.6 160 160-71.6 160-160 160z"/>
+                    </svg>
+                `;
+                document.body.appendChild(searchBtn);
+                searchBtn.addEventListener('click', () => {
+                    searchBtn.remove();
+                });
+                setTimeout(() => {
+                    searchBtn.remove();
+                }, 1500);
+            }
+
+            if (dictUrl.includes('dicttango') || dictUrl.includes('mdict')) {
+                popup.style.display = 'none';
+                overlay.style.display = 'none';
+                showSearchButton();
+            } else if (dictUrl.includes('searchonly')) {
+                popup.style.display = 'none';
+                overlay.style.display = 'none';
+                showSearchButton();
+            } else {
+                popup.style.display = 'block';
+                overlay.style.display = 'block';
+            }
+        }
+    } else if (event.target.closest('.pli-lang, [lang="pi"]')) {
+        // Обработка клика по одному слову (оригинальная логика)
         const clickedWord = getClickedWordWithHTML(event.target, event.clientX, event.clientY);
 
         if (event.target.closest('a, button, input, textarea, select')) {
@@ -612,207 +797,150 @@ document.addEventListener('click', function(event) {
 
         if (clickedWord) {
             let cleanedWord = cleanWord(clickedWord);
-        //    console.log('Клик по слову:', cleanedWord);
+            console.log('Клик по слову:', cleanedWord);
 
             if (dictionaryVisible) {
                 let translation = "";
                 
- /*               
-        // Если есть необходимость в транслитерации, вызываем функцию
-        transliterateWord(cleanedWord)
-            .then(transliteratedText => {
-                // Вставляем транслитерированное слово в перевод
-                translation = transliteratedText;
+                if (dictUrl === "standalonebw" || dictUrl === "standalonebwru") {
+                    translation = lookupWordInStandaloneDict(cleanedWord);
+                } 
+                else if (dictUrl.includes('dicttango') || dictUrl.includes('mdict')) {
+                    const tempLink = document.createElement('a');
+                    tempLink.href = 'javascript:void(0)';
+                    tempLink.onclick = function() {
+                        window.location.href = `${dictUrl}${encodeURIComponent(cleanedWord)}`;
+                        return false;
+                    };
+                    tempLink.click();
+                    translation = "";
+                    popup.style.display = 'none';
+                    overlay.style.display = 'none';
+                }
+                else {
+                    const url = `${dictUrl}${encodeURIComponent(cleanedWord)}`;
+                    iframe.src = url;
+                }
 
-                // Далее, можно обновить отображение перевода или выполнить другие действия
-                console.log('Транслитерированное слово:', translation);
-                // Например, обновить элемент на странице с переводом:
-                // document.getElementById("translation-element").innerText = translation;
-            })
-            .catch(error => {
-                console.error('Ошибка при транслитерации:', error);
-            });
-    
-*/
+                if (translation) {
+                    const isDarkMode = document.body.classList.contains('dark') || document.documentElement.getAttribute('data-theme') === 'dark';
+                    const themeClass = isDarkMode ? 'dark' : '';
+                    
+                    const tempDiv = document.createElement('div');
+                    tempDiv.style.position = 'absolute';
+                    tempDiv.style.visibility = 'hidden';
+                    tempDiv.style.width = 'calc(100% - 20px)';
+                    tempDiv.innerHTML = translation;
+                    document.body.appendChild(tempDiv);
+                    
+                    const contentHeight = tempDiv.offsetHeight;
+                    document.body.removeChild(tempDiv);
+                    
+                    let minHeight = 100;
+                    const maxHeight = window.innerHeight * 0.95; 
+                    
+                    if (dictUrl === "standalonebw" || dictUrl === "standalonebwru") {
+                        minHeight = 100;
+                    } else {
+                        const screenHeight = window.innerHeight;
+                        minHeight = (screenHeight * 0.8 < 600) ? screenHeight * 0.8 : 600;
+                    }
 
-// Если выбран standalone-словарь
-if (dictUrl === "standalonebw" || dictUrl === "standalonebwru") {
-    translation = lookupWordInStandaloneDict(cleanedWord);
-} 
-else if (dictUrl.includes('dicttango') || dictUrl.includes('mdict')) {
-    // Создаем временную кнопку для открытия в приложении dictUrl.includes("dicttango") ||
-    const tempLink = document.createElement('a');
-    tempLink.href = 'javascript:void(0)';
-    tempLink.onclick = function() {
-        window.location.href = `${dictUrl}${encodeURIComponent(cleanedWord)}`;
-        return false;
-    };
-    
-    // Имитируем клик (для iOS это должно быть инициировано пользователем)
-    // На практике лучше показать реальную кнопку пользователю
-    tempLink.click();
-    
-    // В этом случае translation остается пустым, так как мы перенаправляем в приложение
-    translation = "";
-    
-    // Скрываем popup, так как он не нужен для этих словарей
-    popup.style.display = 'none';
-    overlay.style.display = 'none';
-}
-else {
-    // Иначе используем текущую логику с dictUrl
-    const url = `${dictUrl}${encodeURIComponent(cleanedWord)}`;
-    iframe.src = url;
-}
-
-
-                // Если перевод найден, отображаем его в iframe
-// Если перевод найден, отображаем его в iframe  
-if (translation) {
-    const isDarkMode = document.body.classList.contains('dark') || document.documentElement.getAttribute('data-theme') === 'dark';
-    const themeClass = isDarkMode ? 'dark' : '';
-    
-    // Создаем временный div для измерения высоты содержимого
-    const tempDiv = document.createElement('div');
-    tempDiv.style.position = 'absolute';
-    tempDiv.style.visibility = 'hidden';
-    tempDiv.style.width = 'calc(100% - 20px)'; // Ширина как у iframe (с учетом padding)
-    tempDiv.innerHTML = translation;
-    document.body.appendChild(tempDiv);
-    
-    // Получаем высоту содержимого
-    const contentHeight = tempDiv.offsetHeight;
-    document.body.removeChild(tempDiv);
-    
-    // Устанавливаем минимальную и максимальную высоту
-    let minHeight = 100; // Минимальная высота popup
-    const maxHeight = window.innerHeight * 0.95; 
-    
-   if (dictUrl === "standalonebw" || dictUrl === "standalonebwru") {
-        minHeight = 100; // Минимальная высота для standalone
-    } else {
-const screenHeight = window.innerHeight;
-minHeight = (screenHeight * 0.8 < 600) ? screenHeight * 0.8 : 600;
-
-    }
-
-    // Вычисляем конечную высоту
-    let finalHeight = Math.min(Math.max(contentHeight + 20, minHeight), maxHeight);
-    
-    iframe.srcdoc = `  
-        <!DOCTYPE html>  
-        <html lang="en" class="${themeClass}">  
-        <head>  
-            <meta charset="UTF-8">  
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <style>  
-                body {  
-                    font-family: Arial, sans-serif;  
-                    padding: 10px;  
-                    margin: 0;
-                    overflow: hidden;
-                }  
-                body.dark {  
-                    background: #07021D !important;  
-                    color: #E1EAED !important;  
-                }  
-                strong {  
-                    font-size: 1.2em;  
-                }  
-                ul {  
-                    list-style-type: none;  
-                    padding-left: 0;  
-                }  
-                li {  
-                    margin-bottom: 10px;  
-                }  
-            </style>  
-        </head>  
-        <body class="${themeClass}">  
-            ${translation}  
-        </body>  
-        </html>  
-    `;
-    
-    // Устанавливаем высоту popup
-    popup.style.height = `${finalHeight}px`;
-    popup.style.display = 'block';  
-    overlay.style.display = 'block';
-    
-    // Добавляем обработчик для изменения размера после загрузки iframe
-    iframe.onload = function() {
-        try {
-            // Получаем высоту содержимого iframe
-            const iframeBody = iframe.contentDocument.body;
-            const scrollHeight = iframeBody.scrollHeight;
-            
-            // Корректируем высоту popup
-            const adjustedHeight = Math.min(Math.max(scrollHeight + 20, minHeight), maxHeight);
-            popup.style.height = `${adjustedHeight}px`;
-        } catch(e) {
-            console.error('Error adjusting iframe height:', e);
-        }
-    };
-}
-                // Обновляем ссылку в кнопке openBtn
+                    let finalHeight = Math.min(Math.max(contentHeight + 20, minHeight), maxHeight);
+                    
+                    iframe.srcdoc = `  
+                        <!DOCTYPE html>  
+                        <html lang="en" class="${themeClass}">  
+                        <head>  
+                            <meta charset="UTF-8">  
+                            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                            <style>  
+                                body {  
+                                    font-family: Arial, sans-serif;  
+                                    padding: 10px;  
+                                    margin: 0;
+                                    overflow: hidden;
+                                }  
+                                body.dark {  
+                                    background: #07021D !important;  
+                                    color: #E1EAED !important;  
+                                }  
+                                strong {  
+                                    font-size: 1.2em;  
+                                }  
+                                ul {  
+                                    list-style-type: none;  
+                                    padding-left: 0;  
+                                }  
+                                li {  
+                                    margin-bottom: 10px;  
+                                }  
+                            </style>  
+                        </head>  
+                        <body class="${themeClass}">  
+                            ${translation}  
+                        </body>  
+                        </html>  
+                    `;
+                    
+                    popup.style.height = `${finalHeight}px`;
+                    popup.style.display = 'block';  
+                    overlay.style.display = 'block';
+                    
+                    iframe.onload = function() {
+                        try {
+                            const iframeBody = iframe.contentDocument.body;
+                            const scrollHeight = iframeBody.scrollHeight;
+                            const adjustedHeight = Math.min(Math.max(scrollHeight + 20, minHeight), maxHeight);
+                            popup.style.height = `${adjustedHeight}px`;
+                        } catch(e) {
+                            console.error('Error adjusting iframe height:', e);
+                        }
+                    };
+                }
+                
                 const openBtn = document.querySelector('.open-btn');
-                const wordForSearch = cleanedWord.replace(/'ti/, ''); 
-
-if (window.location.href.includes('/r/') || (localStorage.siteLanguage && localStorage.siteLanguage === 'ru')) {
-   dhammaGift += '/ru';
-}
-
+                const wordForSearch = cleanedWord.replace(/'ti/, '');
                 openBtn.href = `${dhammaGift}${encodeURIComponent(wordForSearch)}${dgParams}`;
 
                 const dictBtn = document.querySelector('.dict-btn');
                 const dictSearchUrl = `https://dict.dhamma.gift/${savedDict.includes("ru") ? "ru/" : ""}search_html?q=${encodeURIComponent(wordForSearch)}`;
                 dictBtn.href = dictSearchUrl;
 
-
-function showSearchButton() {
-      const wordForSearch = cleanedWord.replace(/'ti/, ''); // Исправил на replace
-// Создаем кнопку "Search with dhamma.gift"
-const searchBtn = document.createElement('a');
-searchBtn.href = `${dhammaGift}${encodeURIComponent(wordForSearch)}${dgParams}`;
-
-searchBtn.classList.add('open-btn');
-searchBtn.style.position = 'fixed';
-searchBtn.style.border = 'none';
-searchBtn.style.background = '#2D3E50';
-searchBtn.style.color = 'white';
-searchBtn.style.cursor = 'pointer';
-searchBtn.style.width = '30px';
-searchBtn.style.height = '30px';
-searchBtn.style.borderRadius = '50%';
-searchBtn.style.display = 'flex';
-searchBtn.style.alignItems = 'center';
-searchBtn.style.justifyContent = 'center';
-searchBtn.style.textDecoration = 'none';
-searchBtn.target = '_blank'; // Открывать ссылку в новой вкладке
-searchBtn.style.top = `${event.clientY - 10}px`; // Позиция по Y минус 10 пикселей
-searchBtn.style.left = `${event.clientX - 10}px`; // Позиция по X
-searchBtn.style.zIndex = '10000'; // Убедимся, что кнопка поверх других элементов
-    
-
-// Иконка лупы (аналогичная иконке закрытия)
-searchBtn.innerHTML = `
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="16" height="16" fill="white" style="transform: scaleX(-1);">
-        <path d="M505 442.7l-99.7-99.7c28.4-35.3 45.7-79.8 45.7-128C451 98.8 352.2 0 224 0S-3 98.8-3 224s98.8 224 224 224c48.2 0 92.7-17.3 128-45.7l99.7 99.7c6.2 6.2 14.4 9.4 22.6 9.4s16.4-3.1 22.6-9.4c12.5-12.5 12.5-32.8 0-45.3zM224 384c-88.4 0-160-71.6-160-160S135.6 64 224 64s160 71.6 160 160-71.6 160-160 160z"/>
-    </svg>
-`;
-
-    // Добавляем кнопку в DOM
-    document.body.appendChild(searchBtn);
-
-searchBtn.addEventListener('click', () => {
-    searchBtn.remove(); // Удаляем кнопку после клика
-});
-    // Удаляем кнопку через несколько секунд (опционально)
-    setTimeout(() => {
-        searchBtn.remove();
-    }, 1500); // Удалить через 5 секунд
-
-}
+                function showSearchButton() {
+                    const wordForSearch = cleanedWord.replace(/'ti/, '');
+                    const searchBtn = document.createElement('a');
+                    searchBtn.href = `${dhammaGift}${encodeURIComponent(wordForSearch)}${dgParams}`;
+                    searchBtn.classList.add('open-btn');
+                    searchBtn.style.position = 'fixed';
+                    searchBtn.style.border = 'none';
+                    searchBtn.style.background = '#2D3E50';
+                    searchBtn.style.color = 'white';
+                    searchBtn.style.cursor = 'pointer';
+                    searchBtn.style.width = '30px';
+                    searchBtn.style.height = '30px';
+                    searchBtn.style.borderRadius = '50%';
+                    searchBtn.style.display = 'flex';
+                    searchBtn.style.alignItems = 'center';
+                    searchBtn.style.justifyContent = 'center';
+                    searchBtn.style.textDecoration = 'none';
+                    searchBtn.target = '_blank';
+                    searchBtn.style.top = `${event.clientY - 10}px`;
+                    searchBtn.style.left = `${event.clientX - 10}px`;
+                    searchBtn.style.zIndex = '10000';
+                    searchBtn.innerHTML = `
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="16" height="16" fill="white" style="transform: scaleX(-1);">
+                            <path d="M505 442.7l-99.7-99.7c28.4-35.3 45.7-79.8 45.7-128C451 98.8 352.2 0 224 0S-3 98.8-3 224s98.8 224 224 224c48.2 0 92.7-17.3 128-45.7l99.7 99.7c6.2 6.2 14.4 9.4 22.6 9.4s16.4-3.1 22.6-9.4c12.5-12.5 12.5-32.8 0-45.3zM224 384c-88.4 0-160-71.6-160-160S135.6 64 224 64s160 71.6 160 160-71.6 160-160 160z"/>
+                        </svg>
+                    `;
+                    document.body.appendChild(searchBtn);
+                    searchBtn.addEventListener('click', () => {
+                        searchBtn.remove();
+                    });
+                    setTimeout(() => {
+                        searchBtn.remove();
+                    }, 1500);
+                }
 
                 if (dictUrl.includes('dicttango') || dictUrl.includes('mdict')) {
                     popup.style.display = 'none';
@@ -954,5 +1082,6 @@ function transliterateWord(word) {
     });
 }
 */
+
 
 
