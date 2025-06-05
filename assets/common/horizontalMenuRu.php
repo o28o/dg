@@ -187,7 +187,7 @@ echo '<!--
                <li>
          <div class="dropdown-item ">
                       <i class="' . $iconimportant . '"></i>        <a class="text-reset" target="_blank"  href="https://dict.dhamma.gift/ru/">Digital Pāḷi Dict</a> 
-         <a class="text-reset" target="_blank"   href="https://digitalpalidictionary.github.io/">Оффлайн</a>
+         <a class="text-reset" target="_blank"   href="https://devamitta.github.io/dpd.rus/">Оффлайн</a>
        <a class="text-reset" target="_blank"  href="https://github.com/o28o/dictPlugin/tree/main?tab=readme-ov-file#for-end-users-requires-installing-browser-extention-orand-setup">Расширения</a>     
        </div>
          </li>   
