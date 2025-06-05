@@ -615,7 +615,6 @@ toggleBtn.addEventListener('click', () => {
     }
   });  
 
-// Перехватчик кликов по слову
 // Перехватчик кликов по слову и выделенного текста
 document.addEventListener('click', function(event) {
     // Проверяем, есть ли выделенный текст внутри элемента с пали
