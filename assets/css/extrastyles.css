@@ -203,6 +203,11 @@ margin-top: -10px;
 transform: rotate(180deg);
 }
 
+.tooltip-inner {
+  max-width: 400px; /* Максимальная ширина */
+ }
+
+
 	hr {	
   background-color: currentColor;	
 }
@@ -1165,3 +1170,4 @@ select.text-center {
 select.text-center option {
     text-align: left;            /* Опции при раскрытии — по левому краю */
 }
+
