@@ -792,9 +792,9 @@ document.addEventListener("keydown", function (event) {
 });
 
 document.addEventListener("keydown", function (event) {
-  console.log("event.key:", event.key);
-  console.log("event.code:", event.code);
-  console.log("Ctrl:", event.ctrlKey, "Shift:", event.shiftKey);
+//  console.log("event.key:", event.key);
+//  console.log("event.code:", event.code);
+//  console.log("Ctrl:", event.ctrlKey, "Shift:", event.shiftKey);
 
   if (event.ctrlKey && event.shiftKey && event.code === "Digit1") {
     event.preventDefault();

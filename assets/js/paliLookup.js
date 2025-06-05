@@ -1036,15 +1036,6 @@ function getFullTextFromElement(element) {
     return textNodes.join(' ').replace(/\s+/g, ' ').trim(); // Удаляем лишние пробелы
 }
 
-// Пример обработки клика на элемент
-document.addEventListener('click', (event) => {
-    const clickedWord = getClickedWordWithHTML(event.target, event.clientX, event.clientY);
-    if (clickedWord) {
-      //  console.log('Слово по клику:', clickedWord);
-    } else {
-     //   console.log('Слово не определено');
-    }
-});
 
 // Функция для очистки слова от лишних символов
 function cleanWord(word) {
