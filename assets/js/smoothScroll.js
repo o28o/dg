@@ -133,22 +133,52 @@ function highlightById(elementId) {
     const element = document.getElementById(elementId);
     if (!element) return;
 
-    // Подсветка самого элемента
+    // Сохраняем оригинальные стили
+    const originalTransition = element.style.transition;
+    const originalBorderRadius = element.style.borderRadius;
+    const originalBoxShadow = element.style.boxShadow;
+
+    // Настройки анимации
+    element.style.borderRadius = '10px';
     element.style.transition = 'box-shadow 0.3s ease-in-out';
-    element.style.boxShadow = '0 0 10px 5px rgba(255, 165, 0, 0.7)';
+    let blinkCount = 0;
+    const maxBlinks = 6; // 3 мерцания (вкл/выкл)
+    let isWide = false;
 
-    // Подсветка всех дочерних иконок (если есть)
+    // Находим все дочерние иконки
     const icons = element.querySelectorAll('.menu-icon, i.fa-solid, img');
-    icons.forEach(icon => {
-        icon.style.transition = 'box-shadow 0.3s ease-in-out';
-        icon.style.boxShadow = '0 0 10px 5px rgba(255, 165, 0, 0.7)';
-    });
 
-    // Убрать подсветку через 3 секунды
-    setTimeout(() => {
-        element.style.boxShadow = '';
-        icons.forEach(icon => icon.style.boxShadow = '');
-    }, 3000);
+    // Функция для мерцания
+    const blinkInterval = setInterval(function() {
+        // Подсветка основного элемента
+        element.style.boxShadow = isWide ? '0 0 0 2px grey' : '0 0 0 4px grey';
+        
+        // Подсветка иконок
+        icons.forEach(icon => {
+            icon.style.transition = 'box-shadow 0.3s ease-in-out';
+            icon.style.boxShadow = isWide ? '0 0 0 2px grey' : '0 0 0 4px grey';
+        });
+
+        isWide = !isWide;
+        blinkCount++;
+
+        // Останавливаем после 3 мерцаний (6 изменений состояния)
+        if (blinkCount >= maxBlinks) {
+            clearInterval(blinkInterval);
+            
+            // Возвращаем оригинальные стили
+            setTimeout(() => {
+                element.style.boxShadow = originalBoxShadow;
+                element.style.transition = originalTransition;
+                element.style.borderRadius = originalBorderRadius;
+                
+                icons.forEach(icon => {
+                    icon.style.boxShadow = '';
+                    icon.style.transition = '';
+                });
+            }, 300);
+        }
+    }, 500);
 }
 
 // Функция для выделения нескольких элементов по массиву ID
@@ -267,5 +297,7 @@ window.addEventListener('hashchange', checkHashAndHighlight);
 document.addEventListener("DOMContentLoaded", function () {
     checkHashAndHighlight(); // Вызываем функцию при загрузке страницы
 });
+
+
 
 
