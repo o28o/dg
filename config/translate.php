@@ -65,7 +65,14 @@ $tooltipsearchbar = '
 <br><br>
 <strong>Поиск по истории</strong>: при вводе до 2 символов будут отображаться отфильтрованная истории поиска (ваша).
 <br><br>
+<strong>Горячие клавиши:</strong><br>
 <strong>Нажмите /</strong>, чтобы активировать поле поиска.
+<br>
+<strong>Ctrl + 1</strong> Главная Поиска Рус / Англ.
+<br>
+<strong>Ctrl + 2</strong> Главная Чтения Оглавление Рус / Англ.
+<br>
+<strong>Alt + 1</strong> Интерфейс для чтения Рус / Англ.
 ';
 
 $tooltiptextype = '<strong>Pāḷi*</strong> - 4 Никаи + 6 книг КН Удана (Ud), Дхаммапада (Dhp), Итивутака (Iti), Суттанипата (Snp), Тхерагатха (Thag), Тхеригатха (Thig)<br><br>
@@ -815,7 +822,14 @@ $tooltipsearchbar = '<strong>Autosuggestions</strong>: Start typing at least 3 c
 <br><br>
 <strong>History search</strong>: When entering 1-2 characters, your filtered search history will be shown.
 <br><br>
-<strong>Press /</strong> to activate the search bar.
+<strong>Hotkeys:</strong><br>
+<strong>Press /</strong> to activate the search field.
+<br>
+<strong>Ctrl + 1</strong> Main Search Page (En / Ru).
+<br>
+<strong>Ctrl + 2</strong> Main Reading Page Table of Contents (En / Ru).
+<br>
+<strong>Alt + 1</strong> Reading Interface (En / Ru).
 ';
 
 $tooltiptextype = '<strong>Pāḷi*</strong> - 4 Nikayas + 6 KN books: Udana (Ud), Dhammapada (Dhp), Itivuttaka (Iti), Suttanipāta (Snp), Theragāthā (Thag), Therigatha (Thig)<br><br>
