@@ -131,32 +131,24 @@ document.addEventListener("DOMContentLoaded", function() {
 // Функция для выделения элемента по ID
 function highlightById(elementId) {
     const element = document.getElementById(elementId);
-    if (element) {
-        // Прокручиваем к элементу
-      //  element.scrollIntoView({ behavior: 'smooth' });
+    if (!element) return;
 
-        // Начальные стили
-        element.style.borderRadius = '10px';
-        element.style.transition = 'box-shadow 0.3s ease-in-out';
-        let isWide = false;
+    // Подсветка самого элемента
+    element.style.transition = 'box-shadow 0.3s ease-in-out';
+    element.style.boxShadow = '0 0 10px 5px rgba(255, 165, 0, 0.7)';
 
-        // Функция для мигания
-        const blinkInterval = setInterval(function () {
-            element.style.boxShadow = isWide ? '0 0 0 2px grey' : '0 0 0 4px grey';
-            isWide = !isWide;
-        }, 500);
+    // Подсветка всех дочерних иконок (если есть)
+    const icons = element.querySelectorAll('.menu-icon, i.fa-solid, img');
+    icons.forEach(icon => {
+        icon.style.transition = 'box-shadow 0.3s ease-in-out';
+        icon.style.boxShadow = '0 0 10px 5px rgba(255, 165, 0, 0.7)';
+    });
 
-        // Убираем выделение через 3 секунды
-        setTimeout(function () {
-            clearInterval(blinkInterval);
-            element.style.boxShadow = '0 0 0 0 grey';
-
-            setTimeout(function () {
-                element.style.transition = '';
-                element.style.borderRadius = '';
-            }, 300);
-        }, 3000);
-    }
+    // Убрать подсветку через 3 секунды
+    setTimeout(() => {
+        element.style.boxShadow = '';
+        icons.forEach(icon => icon.style.boxShadow = '');
+    }, 3000);
 }
 
 // Функция для выделения нескольких элементов по массиву ID
