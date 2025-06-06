@@ -20,7 +20,8 @@ if (key.startsWith('"') && key.endsWith('"')) {
     key = key.slice(1, -1).trim();
 }
 
-//добавить название сутты из textinfo.js
+// добавить название сутты из textinfo.js
+// или из url: "/assets/texts/sutta_words.txt",
 
         const value = url.pathname + url.search + url.hash;
 
