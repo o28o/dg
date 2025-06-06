@@ -348,6 +348,28 @@ let linkWithDataSet = `<a class="text-decoration-none copyLink" style="cursor: p
 
 if (paliData[segment] !== undefined && transData[segment] !== undefined && varData[segment] !== undefined) {
         html += `${openHtml}<span id="${anchor}">
+      <span class="pli-lang " lang="pi">${paliData[segment].trim()}<a class="text-decoration-none copyLink" style="cursor: pointer;" onclick="copyToClipboard('${fullUrlWithAnchor}')">&nbsp;</a><br>
+<font class="variant">
+${varData[segment].trim()}${linkToCopy}   
+</font>     
+      </span>
+      <span class="rus-lang" lang="ru">${transData[segment].trim()}${linkToCopy}
+<br></span>
+      </span>${closeHtml}\n\n`;
+} else if (paliData[segment] !== undefined && transData[segment] !== undefined ) {
+        html += `${openHtml}<span id="${anchor}">
+      <span class="pli-lang " lang="pi">${paliData[segment].trim()}<a class="text-decoration-none copyLink" style="cursor: pointer;" onclick="copyToClipboard('${fullUrlWithAnchor}')">&nbsp;</a></span>
+      <span class="rus-lang" lang="ru">${transData[segment].trim()}${linkToCopy}<br></span>
+      </span>${closeHtml}\n\n`;
+} else if (paliData[segment] !== undefined) {
+  html += openHtml + '<span id="' + anchor + '"><span class="pli-lang inputscript-ISOPali" lang="pi">' + paliData[segment].trim() + linkToCopy + '</span></span>' + closeHtml + '\n\n';
+} else if (transData[segment] !== undefined) {
+  html += openHtml + '<span id="' + anchor + '"><span class="rus-lang" lang="ru">' + transData[segment].trim() + linkToCopy + '</span></span>' + closeHtml + '\n\n';
+}
+
+/*  Mystical bug-feature for variants in two-column mode
+if (paliData[segment] !== undefined && transData[segment] !== undefined && varData[segment] !== undefined) {
+        html += `${openHtml}<span id="${anchor}">
       <span class="pli-lang inputscript-ISOPali" lang="pi">${paliData[segment].trim()}${linkToCopy}<br>
 <font class="variant">
 ${varData[segment].trim()}${linkToCopy}   
@@ -363,6 +385,9 @@ html += `${openHtml}<span id="${anchor}"><span class="pli-lang inputscript-ISOPa
 } else if (transData[segment] !== undefined) {
   html += openHtml + '<span id="' + anchor + '"><span class="rus-lang" lang="ru">' + transData[segment].trim() + linkToCopy + '</span></span>' + closeHtml + '\n\n';
 }
+*/
+
+
     });
 
 //console.log('before ' + translator) ;
