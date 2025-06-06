@@ -1,66 +1,127 @@
 const MAX_HISTORY = 84;
+let textinfoCache = null; // Кеш для данных сутт
 
-function addToSearchHistory() {
-
+async function addToSearchHistory() {
     try {
         const url = new URL(window.location.href);
         const qParam = url.searchParams.get("q");
-
         if (!qParam) return;
 
-let key = qParam.toLowerCase();
+        let key = processSearchQuery(qParam);
 
-// Удаляем URL и всё что после него
-key = key.replace(/\s*https?:\/\/\S+/gi, '')
-         .replace(/\s*www\.\S+/gi, '')
-         .trim();
+        // Основное сохранение (оригинальный ключ)
+        await saveToHistory(key, url);
 
-// Удаляем кавычки только если они окружают весь оставшийся текст
-if (key.startsWith('"') && key.endsWith('"')) {
-    key = key.slice(1, -1).trim();
-}
-
-// добавить название сутты из textinfo.js
-// или из url: "/assets/texts/sutta_words.txt",
-
-        const value = url.pathname + url.search + url.hash;
-
-        // Получаем текущее время клиента в формате ISO с таймзоной
-        function getClientTimeISO() {
-            const now = new Date();
-            const pad = (n) => n.toString().padStart(2, '0');
-            const offset = -now.getTimezoneOffset(); // Смещение в минутах
-            const offsetSign = offset >= 0 ? '+' : '-';
-            const offsetHours = pad(Math.floor(Math.abs(offset) / 60));
-            const offsetMinutes = pad(Math.abs(offset) % 60);
-
-            return `${now.getFullYear()}-${pad(now.getMonth()+1)}-${pad(now.getDate())}T` +
-                   `${pad(now.getHours())}:${pad(now.getMinutes())}:${pad(now.getSeconds())}` +
-                   `${offsetSign}${offsetHours}:${offsetMinutes}`;
+        // Попытка улучшить ключ (асинхронно)
+        if (/\d/.test(key) && !key.includes(' ')) {
+            try {
+                const enhancedKey = await tryEnhanceKey(key);
+                if (enhancedKey !== key) {
+                    await saveToHistory(enhancedKey, url);
+                }
+            } catch (e) {
+                console.debug("Не удалось добавить название:", e);
+            }
         }
-
-        const timestamp = getClientTimeISO();
-
-        let history = JSON.parse(localStorage.getItem("localSearchHistory")) || [];
-
-        // Удаляем старую запись с таким же ключом (если есть)
-        history = history.filter(([k]) => k !== key);
-
-        // Добавляем новую запись: [ключ, значение, время]
-        history.unshift([key, value, timestamp]);
-
-        // Ограничиваем историю до MAX_HISTORY записей
-        if (history.length > MAX_HISTORY) {
-            history = history.slice(0, MAX_HISTORY);
-        }
-
-        // Сохраняем обновлённую историю в localStorage
-        localStorage.setItem("localSearchHistory", JSON.stringify(history));
     } catch (e) {
-        console.error("Ошибка при сохранении истории поиска:", e);
+        console.error("Ошибка сохранения истории:", e);
     }
 }
 
+function processSearchQuery(query) {
+    return query.toLowerCase()
+        .replace(/\s*https?:\/\/\S+/gi, '')
+        .replace(/\s*www\.\S+/gi, '')
+        .replace(/^"|"$/g, '')
+        .trim();
+}
+
+async function tryEnhanceKey(key) {
+    const textinfo = await loadTextData();
+    const baseKey = key.split(/\s+/)[0];
+    const suttaName = textinfo[baseKey]?.pi;
+    return suttaName ? `${baseKey} ${suttaName}` : key;
+}
+
+async function loadTextData() {
+    if (textinfoCache) return textinfoCache;
+    
+    // 1. Проверяем глобальную переменную
+    if (typeof textinfo !== 'undefined') {
+        textinfoCache = textinfo;
+        return textinfo;
+    }
+
+    // 2. Пробуем загрузить как модуль
+    try {
+        const module = await import('/assets/js/textinfo.js?update=' + Date.now());
+        if (module.textinfo) {
+            textinfoCache = module.textinfo;
+            return module.textinfo;
+        }
+    } catch {}
+
+    // 3. Пробуем загрузить как сырой текст
+    try {
+        const response = await fetch('/assets/js/textinfo.js?update=' + Date.now());
+        const text = await response.text();
+        
+        // Пытаемся разобрать разными способами
+        const data = parseTextInfo(text);
+        if (data) {
+            textinfoCache = data;
+            return data;
+        }
+    } catch (e) {
+        console.error("Ошибка загрузки textinfo:", e);
+    }
+
+    return {};
+}
+
+function parseTextInfo(text) {
+    try {
+        // Вариант 1: Чистый JSON
+        return JSON.parse(text);
+    } catch {
+        try {
+            // Вариант 2: JS-объект с присваиванием
+            const match = text.match(/var\s+\w+\s*=\s*({[\s\S]+?});/);
+            if (match) return JSON.parse(match[1]);
+
+            // Вариант 3: Самовыполняющаяся функция
+            return (new Function(text + '; return textinfo || window.textinfo;'))();
+        } catch {
+            return null;
+        }
+    }
+}
+
+async function saveToHistory(key, url) {
+    const value = url.pathname + url.search + url.hash;
+    const timestamp = new Date().toISOString();
+    
+    let history = JSON.parse(localStorage.getItem("localSearchHistory")) || [];
+    
+    // Определяем базовый ключ для сравнения
+    const baseKey = /\d/.test(key) ? key.split(/\s+/)[0] : key;
+    
+    // Удаляем все старые записи с таким же базовым ключом
+    history = history.filter(([k]) => {
+        if (k === key) return false; // Точное совпадение
+        if (!/\d/.test(key)) return true; // Для не-сутт оставляем другие
+        
+        const kBase = k.split(/\s+/)[0];
+        return kBase !== baseKey;
+    });
+    
+    // Добавляем новую запись в начало
+    history.unshift([key, value, timestamp]);
+    
+    // Ограничиваем историю
+    localStorage.setItem("localSearchHistory", 
+        JSON.stringify(history.slice(0, MAX_HISTORY)));
+}
 //установка фокуса в инпуте по нажатию / 
 document.addEventListener('keydown', function(event) {
     // Проверяем именно символ / (код 191 или Slash)
@@ -1136,3 +1197,5 @@ if (!document.getElementById("openQuickModalBtn")) {
 
 
 */
+
+
