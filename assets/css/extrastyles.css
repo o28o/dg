@@ -165,6 +165,12 @@ display: none;
  margin-right: 0rem !important; 
 }
 
+.toggle-button {
+	 margin-right: 0.5rem !important;
+}
+
+
+
 .svgarrow {
   color: #D5D5D5;
 }
@@ -1170,4 +1176,5 @@ select.text-center {
 select.text-center option {
     text-align: left;            /* Опции при раскрытии — по левому краю */
 }
+
 
