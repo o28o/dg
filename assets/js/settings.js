@@ -1,4 +1,4 @@
-const MAX_HISTORY = 56;
+const MAX_HISTORY = 84;
 
 function addToSearchHistory() {
 
@@ -19,6 +19,8 @@ key = key.replace(/\s*https?:\/\/\S+/gi, '')
 if (key.startsWith('"') && key.endsWith('"')) {
     key = key.slice(1, -1).trim();
 }
+
+//добавить название сутты из textinfo.js
 
         const value = url.pathname + url.search + url.hash;
 

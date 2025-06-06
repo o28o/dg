@@ -2,6 +2,10 @@ const CACHE_NAME = 'pwa-fdg-v1';
 const urlsToCache = [
     '/assets/js/paliLookup.js',
     '/assets/js/autopali.js',
+    '/assets/js/textinfo.js',
+    '/assets/js/linksbw.js',
+    '/assets/js/linksdpr.js',
+    '/assets/js/linksru.js',
     '/ru/index.php',
     '/read.php',
     '/ru/read.php',
