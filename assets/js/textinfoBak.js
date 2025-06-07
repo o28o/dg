@@ -1016,7 +1016,7 @@
 "an9.12":{"pi":"Saupādisesasutta","en":"With Something Left Over","mtph":"","ru":"С остатком"},
 "an9.13":{"pi":"Koṭṭhikasutta","en":"With Koṭṭhita","mtph":"","ru":"Коттхита"},
 "an9.14":{"pi":"Samiddhisutta","en":"With Samiddhi","mtph":"","ru":"Самиддхи"},
-"an9.15":{"pi":"Gaṇḍasutta","en":"The Simile of the Boil","mtph":2,"ru":"Нарыв"},
+"an9.15":{"pi":"Gaṇḍasutta","en":"The Simile of the Boil","mtph":2,"ru":"Нарыв (o)"},
 "an9.16":{"pi":"Saññāsutta","en":"Perceptions","mtph":"","ru":"Сознавания Восприятия"},
 "an9.17":{"pi":"Kulasutta","en":"Families","mtph":"","ru":"Семьи"},
 "an9.18":{"pi":"Navaṅguposathasutta","en":"The Sabbath with Nine Factors","mtph":"","ru":"Доброжелательность"},
