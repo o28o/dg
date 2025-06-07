@@ -190,8 +190,12 @@ var normalizedTerm = normalizeTerm(request.term);
                         selectedValue = selectedValue.split(/\s+/)[0];
                     }
                     
-                    terms.push(selectedValue);
-
+if (/\d/.test(selectedValue)) {
+        this.value = selectedValue.split(/\s+/)[0]; // Берём только первую часть (sn35.236)
+        return false;
+    } else {
+	 terms.push(selectedValue);
+	}
                     for (var i = 1; i < terms.length; i += 2) {
                         if (terms[i] === "*") {
                             terms[i] = "*";
@@ -205,7 +209,7 @@ var normalizedTerm = normalizeTerm(request.term);
                     this.value = terms.join("");
                     
                     // Сохраняем в историю
-                    var history = JSON.parse(localStorage.getItem("localSearchHistory")) || [];
+                   // var history = JSON.parse(localStorage.getItem("localSearchHistory")) || [];
                    // history.unshift([selectedValue]);
                    // localStorage.setItem("localSearchHistory", JSON.stringify(history));
                     
