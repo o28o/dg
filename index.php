@@ -271,8 +271,6 @@ if (isset($_GET['q'])) {
   </button>
 </div>    
 
-
-
 <!-- submit button -->
 <div class="input-group-append">
 <button onclick="document.getElementById( 'spinner' ).style.display = 'block'" type="submit" id="searchbtn" class="btn btn-primary mainbutton ms-2 mt-0 rounded-pill ">
