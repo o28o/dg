@@ -2525,7 +2525,7 @@
 "sn35.242":{"pi":"Dutiyadārukkhandhopamasutta ","en":"The Simile of the Tree Trunk (2nd) ","mtph":1,"ru":"Подобно Стволу Дерева Вторая"},
 "sn35.243":{"pi":"Avassutapariyāyasutta ","en":"The Explanation on the Corrupt ","mtph":2,"ru":"Объяснение об Испорченности"},
 "sn35.244":{"pi":"Dukkhadhammasutta ","en":"Entailing Suffering ","mtph":4,"ru":"Болезненные Явления"},
-"sn35.245":{"pi":"Kiṁsukopamasutta ","en":"The Simile of the Parrot Tree ","mtph":15,"ru":"Подобно Кимсуке"},
+"sn35.245":{"pi":"Kiṁsukopamasutta ","en":"The Simile of the Parrot Tree ","mtph":15,"ru":"Подобно Кимсуке (o)"},
 "sn35.246":{"pi":"Vīṇopamasutta ","en":"The Simile of the Harp ","mtph":4,"ru":"Подобно Вине"},
 "sn35.247":{"pi":"Chappāṇakopamasutta ","en":"The Simile of Six Animals ","mtph":5,"ru":"Подобно Шести Животным"},
 "sn35.248":{"pi":"Yavakalāpisutta ","en":"The Sheaf of Barley ","mtph":2,"ru":"Связка Ячменя"},
