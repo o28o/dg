@@ -59,14 +59,14 @@ $tooltipsearchbar = '
 <br><br>
 <strong>Переход к текстам</strong>: введите например, sn56.11, DN 22, Sn 12 2, an10.46 или даже фн10ю46, mn141.—В подсказке будет название текста на пали, и можно открыть текст напрямую.
 <br><br>
-<strong>История поиска и чтения</strong> - открывается при клике по пустому полю поиска или по пробелу. История хранится только на этом вашем устройстве.
+<strong>История поиска и чтения</strong> - открывается при клике по пустому полю поиска или по пробелу. Эта история хранится только на данном устройстве.
 <br><br>
-<strong>Поиск по истории</strong>: при вводе до 2 символов будут отображаться отфильтрованная истории поиска (ваша).
+<strong>Поиск по истории</strong>: при вводе до 2 символов будет отображаться отфильтрованная локальная история поиска и чтения.
 <br><br>
 <strong>Горячие клавиши:</strong><br>
 <strong>Нажмите /</strong>, чтобы активировать поле поиска.
 <br>
-<strong>Ctrl + 1</strong> Главная Поиска Рус / Англ.
+<strong>Ctrl + 1</strong> Главная Поиска Рус / Англ (переключатель).
 <br>
 <strong>Ctrl + 2</strong> Главная Чтения Оглавление Рус / Англ.
 <br>
@@ -195,7 +195,7 @@ $mainscrollmodal = '<p class="">Из <a href=/r/?s=va%E1%B9%87%E1%B9%87a&q=an2.1
 </br>
 <h4 class="pli-lang">Imehi kho, bhikkhave, dvīhi dhammehi samannāgato bālo abyatto asappuriso khataṁ upahataṁ attānaṁ pariharati, sāvajjo ca hoti sānuvajjo ca viññūnaṁ, bahuñca apuññaṁ pasavatīti.  </h4>
 </br>
-Обладая этими двумя качествами, глупый, несведущий, несичтый человек держит себя в изувеченном и искалеченном состоянии. Он достоин порицания и упрёков со стороны мудрых, и он порождает множество неблага.</br>
+Обладая этими двумя качествами, глупый, несведущий, нечистый человек держит себя в изувеченном и искалеченном состоянии. Он достоин порицания и упрёков со стороны мудрых, и он порождает множество неблага.</br>
 </br>
 ';
 } else {
@@ -821,12 +821,12 @@ $tooltipsearchbar = '<strong>Autosuggestions</strong>: Start typing at least 3 c
 <br><br>
 <strong>Search and reading history</strong>: Click the empty search bar or press space. This history is stored on this device only.
 <br><br>
-<strong>History search</strong>: When entering 1-2 characters, your filtered search history will be shown.
+<strong>History search</strong>: When entering 1-2 characters, your filtered search & reading history will be shown.
 <br><br>
 <strong>Hotkeys:</strong><br>
 <strong>Press /</strong> to activate the search field.
 <br>
-<strong>Ctrl + 1</strong> Main Search Page (En / Ru).
+<strong>Ctrl + 1</strong> Main Search Page toggle (En / Ru).
 <br>
 <strong>Ctrl + 2</strong> Main Reading Page Table of Contents (En / Ru).
 <br>
