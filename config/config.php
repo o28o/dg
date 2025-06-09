@@ -207,15 +207,17 @@ $ctaButtons =' <div class="d-flex flex-column flex-md-row justify-content-center
 	<button class="ms-2 mb-2" id="installPWA" style="background: none; border: none; padding: 0; cursor: pointer;">
         <img src="/assets/img/buttons/pwa-cta.png" style="width: 200px;" alt="Install Dhamma.gift as progressive web app - adds shortcuts and sharing with the DG App option">
     </button>
-	
-	<a class="ms-2 mb-2" href="https://play.google.com/store/apps/details?id=gift.dhamma.twa">
-        <img src="/assets/img/buttons/google-play-cta.png" style="width: 200px;" alt="Download from Google Play. Mini app with shortcuts and sharing like PWA">
-    </a>
-	
+		
     <a class="ms-2 mb-2" href="https://t.me/dgift_bot">
         <img src="/assets/img/buttons/telegram-cta.png" style="width: 200px;" alt="Open DGift_bot - inline bot in any Telegram chat or Group">
     </a>
-    <a class="ms-2 mb-2" href="https://chromewebstore.google.com/detail/dhammagift-search-and-wor/dnnogjdcmhbiobpnkhdbfnfjnjlikabd">
+
+<!--    	<a class="ms-2 mb-2" href="https://play.google.com/store/apps/details?id=gift.dhamma.twa">
+        <img src="/assets/img/buttons/google-play-cta.png" style="width: 200px;" alt="Download from Google Play. Mini app with shortcuts and sharing like PWA">
+    </a>
+	-->
+	
+	<a class="ms-2 mb-2" href="https://chromewebstore.google.com/detail/dhammagift-search-and-wor/dnnogjdcmhbiobpnkhdbfnfjnjlikabd">
         <img src="/assets/img/buttons/chrome-cta.png" style="width: 200px;" alt="Download from Chrome Web Store">
     </a>
     <a class="ms-2 mb-2" href="https://microsoftedge.microsoft.com/addons/detail/dhammagift-search-and-wo/aokegkhdaijkikbdocanadeghllhfmhj">
