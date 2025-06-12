@@ -233,6 +233,11 @@ $carouseltitle = 'Интересные Запросы';
 
 $slides = [
           [
+        'title' => 'Татхагата не признавал, что Пробудился в наивысшее, пока не...',
+        'desc' => 'Список для самопроверки ищущим Пробуждение',
+        'link' => '/ru/?q=y%C4%81vak%C4%ABva%C3%B1.%2AAnuttara%E1%B9%81+samm%C4%81sambodh&p=-kn',
+    ],
+          [
         'title' => 'Крайние сроки на Пробуждение для монахов и мирян от Будды',
         'desc' => 'Максимум 7 и 10 лет, соответственно',
         'link' => '/assets/example/(viharanto-yathaa-mayaanusi.t.tha.m-eva.m-bhaaveyya)_suttanta_pali-ru_3-16.html',
@@ -934,6 +939,11 @@ $titledeschowtovideo = 'How to search in Pali Suttas and Vinaya with dhamma.gift
 $carouseltitle = 'Top Interesting Queries';
 
 $slides = [
+           [
+        'title' => 'Tathagata didn\'t claim the Highest Awakening as long as...',
+        'desc' => 'For all those aspiring for Liberation',
+        'link' => '/?q=y%C4%81vak%C4%ABva%C3%B1.%2AAnuttara%E1%B9%81+samm%C4%81sambodh&p=-kn',
+    ], 
            [
         'title' => 'Deadlines for Awakening for monks and layity from Buddha.',
         'desc' => 'up to 7 or 10 years, accordingly',
