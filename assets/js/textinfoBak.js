@@ -1434,7 +1434,7 @@
 "mn134":{"pi":"Lomasakaṅgiyabhaddekarattasutta ","en":"Lomasakaṅgiya and One Fine Night ","mtph":"","ru":"Ломасакангия и одна прекрасная ночь  "},
 "mn135":{"pi":"Cūḷakammavibhaṅgasutta ","en":"The Shorter Analysis of Deeds ","mtph":1,"ru":"Чула Камма Вибханга "},
 "mn136":{"pi":"Mahākammavibhaṅgasutta ","en":"The Longer Analysis of Deeds ","mtph":"","ru":"Большое разъяснение поступка  "},
-"mn137":{"pi":"Saḷāyatanavibhaṅgasutta ","en":"The Analysis of the Six Sense Fields ","mtph":"","ru":"Разъяснение шести сфер  "},
+"mn137":{"pi":"Saḷāyatanavibhaṅgasutta ","en":"The Analysis of the Six Sense Fields ","mtph":"","ru":"Разъяснение шести сфер   (o)"},
 "mn138":{"pi":"Uddesavibhaṅgasutta ","en":"The Analysis of a Recitation Passage ","mtph":1,"ru":"Разъяснение и сводка  "},
 "mn139":{"pi":"Araṇavibhaṅgasutta ","en":"The Analysis of Non-Conflict ","mtph":"","ru":"Разъяснение о не-конфликте "},
 "mn140":{"pi":"Dhātuvibhaṅgasutta ","en":"The Analysis of the Elements ","mtph":3,"ru":"Разъяснение элементов "},

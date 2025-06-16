@@ -1,0 +1,35 @@
+duḥkha [duḥkh]
+samudaya [samudi]
+	tṛṣṇā [tṛṣ]
+nirodha [nirudh]
+tyāga [tyaj]
+pratiniḥsṛjya [pratiniḥsṛj]
+mukti [muc]
+anālayana [ālī]
+mārga [mārg]
+pratipad
+
+
+
+
+ucchādana
+parimaddana
+nhāpana
+sambāhanaṁ
+
+anicc
+ucchādana
+parimaddanalp
+
+bhedana
+viddhaṁsana
+dhammassa
+
+
+
+Idha brāhmaṇa ekacco samaṇo vā brāhmaṇo vā sammā brahmacārī paṭijānamāno na heva kho mātugāmena saddhiṁ dvayaṁdvayasamāpattiṁ samāpaспасибо jjati 
+api ca kho mātugāmassa ucchādanaparimaddananhāpanasambāhanaṁ sādiyati | 
+
+
+
+tar -zcf /storage/emulated/0/Download/termux-backup.tar.gz -C /в Тай получил data/data/com.termux/files ./home ./usr
