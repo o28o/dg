@@ -1175,20 +1175,43 @@ select.text-center option {
 
 
 
-/* Стили скроллбара для тёмной темы Bootstrap */
-[data-bs-theme="dark"] {
-  scrollbar-color: rgba(160, 160, 160, 0.6) rgba(30, 30, 30, 0.4);
-}
-
-[data-bs-theme="dark"] ::-webkit-scrollbar {
+/* Общие стили скроллбара (по умолчанию - светлая тема) */
+::-webkit-scrollbar {
   width: 8px;
   height: 8px;
 }
 
-[data-bs-theme="dark"] ::-webkit-scrollbar-thumb {
-  background: rgba(160, 160, 160, 0.6);
+::-webkit-scrollbar-thumb {
+  background: rgba(100, 100, 100, 0.5);
   border-radius: 4px;
   transition: background 0.2s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(100, 100, 100, 0.7);
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(240, 240, 240, 0.5);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+html {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(100, 100, 100, 0.5) rgba(240, 240, 240, 0.5);
+}
+
+/* Стили для темной темы Bootstrap */
+[data-bs-theme="dark"] {
+  scrollbar-color: rgba(160, 160, 160, 0.6) rgba(30, 30, 30, 0.4);
+}
+
+[data-bs-theme="dark"] ::-webkit-scrollbar-thumb {
+  background: rgba(160, 160, 160, 0.6);
 }
 
 [data-bs-theme="dark"] ::-webkit-scrollbar-thumb:hover {
@@ -1197,27 +1220,4 @@ select.text-center option {
 
 [data-bs-theme="dark"] ::-webkit-scrollbar-track {
   background: rgba(30, 30, 30, 0.4);
-  border-radius: 4px;
-}
-
-[data-bs-theme="dark"] ::-webkit-scrollbar-corner {
-  background: transparent;
-}
-
-
-/* Стили для светлой темы */
-[data-bs-theme="light"] {
-  scrollbar-color: rgba(100, 100, 100, 0.5) rgba(240, 240, 240, 0.5);
-}
-
-[data-bs-theme="light"] ::-webkit-scrollbar-thumb {
-  background: rgba(100, 100, 100, 0.5);
-}
-
-[data-bs-theme="light"] ::-webkit-scrollbar-thumb:hover {
-  background: rgba(100, 100, 100, 0.7);
-}
-
-[data-bs-theme="light"] ::-webkit-scrollbar-track {
-  background: rgba(240, 240, 240, 0.5);
 }
