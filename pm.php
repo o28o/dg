@@ -233,6 +233,8 @@ document.addEventListener('DOMContentLoaded', function() {
     </script>
 <!-- Audio Player JS -->
 <script  src="/assets/js/jsPlayer.js"></script>  
+          <script src="/assets/js/smoothScroll.js" defer></script>
+
 </body>
 
 </html>
