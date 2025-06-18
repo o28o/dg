@@ -628,7 +628,7 @@ document.addEventListener('click', function(event) {
         }
 
         let cleanedText = cleanWord(selectedText);
-        console.log('Выделенный текст:', cleanedText);
+       // console.log('Выделенный текст:', cleanedText);
 
         if (dictionaryVisible) {
             let translation = "";
@@ -796,7 +796,7 @@ document.addEventListener('click', function(event) {
 
         if (clickedWord) {
             let cleanedWord = cleanWord(clickedWord);
-            console.log('Клик по слову:', cleanedWord);
+          //  console.log('Клик по слову:', cleanedWord);
 
             if (dictionaryVisible) {
                 let translation = "";
@@ -1002,7 +1002,7 @@ function getClickedWordWithHTML(element, x, y) {
         }
     }
 
-    console.log('Слово не найдено');
+    // console.log('Слово не найдено');
     return null;
 }
 
