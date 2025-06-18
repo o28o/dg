@@ -1164,6 +1164,10 @@ video-container { position: relative; padding-bottom: 56.25%; padding-top: 30px;
 }
 
 
+
+
+
+
 select.text-center {
     text-align: center;          /* Центрирует текст по умолчанию */
     text-align-last: center;     /* Центрирует только выбранный элемент */
@@ -1175,49 +1179,39 @@ select.text-center option {
 
 
 
-/* Общие стили скроллбара (по умолчанию - светлая тема) */
+
+
+/* Основной скроллбар */
 ::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+  width: 8px; /* Толщина скроллбара */
+  height: 8px; /* Для горизонтального (если нужно) */
 }
 
+/* Ползунок (thumb) */
 ::-webkit-scrollbar-thumb {
-  background: rgba(100, 100, 100, 0.5);
-  border-radius: 4px;
-  transition: background 0.2s ease;
+  background: rgba(100, 100, 100, 0.5); /* Полупрозрачный серый */
+  border-radius: 4px; /* Закругление углов */
+  transition: background 0.2s ease; /* Плавное изменение цвета */
 }
 
+/* Ползунок при наведении */
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(100, 100, 100, 0.7);
+  background: rgba(100, 100, 100, 0.7); /* Становится темнее */
 }
 
+/* Дорожка (track) */
 ::-webkit-scrollbar-track {
-  background: rgba(240, 240, 240, 0.5);
-  border-radius: 4px;
+  background: rgba(240, 240, 240, 0.5); /* Светлая подложка */
+  border-radius: 4px; /* Закругление углов */
 }
 
+/* Угол скроллбара (если есть горизонтальный и вертикальный) */
 ::-webkit-scrollbar-corner {
-  background: transparent;
+  background: transparent; /* Прозрачный угол */
 }
+
 
 html {
-  scrollbar-width: thin;
-  scrollbar-color: rgba(100, 100, 100, 0.5) rgba(240, 240, 240, 0.5);
-}
-
-/* Стили для темной темы Bootstrap */
-[data-bs-theme="dark"] {
-  scrollbar-color: rgba(160, 160, 160, 0.6) rgba(30, 30, 30, 0.4);
-}
-
-[data-bs-theme="dark"] ::-webkit-scrollbar-thumb {
-  background: rgba(160, 160, 160, 0.6);
-}
-
-[data-bs-theme="dark"] ::-webkit-scrollbar-thumb:hover {
-  background: rgba(180, 180, 180, 0.8);
-}
-
-[data-bs-theme="dark"] ::-webkit-scrollbar-track {
-  background: rgba(30, 30, 30, 0.4);
+  scrollbar-width: thin; /* "auto" | "thin" | "none" */
+  scrollbar-color: rgba(100, 100, 100, 0.5) rgba(240, 240, 240, 0.5); /* thumb track */
 }
