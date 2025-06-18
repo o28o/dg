@@ -1178,3 +1178,40 @@ select.text-center option {
 }
 
 
+
+
+
+/* Основной скроллбар */
+::-webkit-scrollbar {
+  width: 8px; /* Толщина скроллбара */
+  height: 8px; /* Для горизонтального (если нужно) */
+}
+
+/* Ползунок (thumb) */
+::-webkit-scrollbar-thumb {
+  background: rgba(100, 100, 100, 0.5); /* Полупрозрачный серый */
+  border-radius: 4px; /* Закругление углов */
+  transition: background 0.2s ease; /* Плавное изменение цвета */
+}
+
+/* Ползунок при наведении */
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(100, 100, 100, 0.7); /* Становится темнее */
+}
+
+/* Дорожка (track) */
+::-webkit-scrollbar-track {
+  background: rgba(240, 240, 240, 0.5); /* Светлая подложка */
+  border-radius: 4px; /* Закругление углов */
+}
+
+/* Угол скроллбара (если есть горизонтальный и вертикальный) */
+::-webkit-scrollbar-corner {
+  background: transparent; /* Прозрачный угол */
+}
+
+
+html {
+  scrollbar-width: thin; /* "auto" | "thin" | "none" */
+  scrollbar-color: rgba(100, 100, 100, 0.5) rgba(240, 240, 240, 0.5); /* thumb track */
+}
