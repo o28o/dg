@@ -1234,14 +1234,15 @@ html {
 
 /* Для WebKit (Chrome, Safari, Edge) */
 [data-bs-theme="dark"] ::-webkit-scrollbar-thumb {
-  background: rgba(38, 38, 38, 0.5); /* Как первый цвет в Firefox */
+  background: rgba(100, 100, 100, 0.9); /* Более контрастный серый */
+  border: 1px solid rgba(200, 200, 200, 0.3); /* Добавляем границу */
 }
 
 [data-bs-theme="dark"] ::-webkit-scrollbar-track {
-  background: rgba(240, 240, 240, 0.5); /* Как второй цвет в Firefox */
+  background: rgba(30, 30, 30, 0.9); /* Темный фон трека */
 }
 
 /* Для Firefox */
 [data-bs-theme="dark"] {
-  scrollbar-color: rgba(38, 38, 38, 0.5) rgba(240, 240, 240, 0.5);
+  scrollbar-color: rgba(100, 100, 100, 0.9) rgba(30, 30, 30, 0.9);
 }
