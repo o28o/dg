@@ -1190,7 +1190,7 @@ select.text-center option {
 
 [data-bs-theme="dark"]
 ::-webkit-scrollbar {
-  background: rgba(180, 180, 180, 0.9); /* Полупрозрачный серый */
+  background: rgb(38, 38, 38, 0,9); /* Полупрозрачный серый */
   width: 8px; /* Толщина скроллбара */
   height: 8px; /* Для горизонтального (если нужно) */
 }
@@ -1210,12 +1210,12 @@ select.text-center option {
 
 /* Ползунок (thumb) - темная тема Bootstrap */
 [data-bs-theme="dark"] ::-webkit-scrollbar-thumb {
-  background: rgba(38, 38, 38, 0.5); /* Более светлый серый для контраста */
+  background: rgba(180, 180, 180, 0.9); /* Более светлый серый для контраста */
 }
 
 /* Ползунок при наведении - темная тема */
 [data-bs-theme="dark"] ::-webkit-scrollbar-thumb:hover {
-  background: rgba(200, 200, 200, 0.7); /* Ярче при наведении */
+  background: rgba(220, 220, 220, 0.7); /* Ярче при наведении */
 }
 
 /* Дорожка (track) */
