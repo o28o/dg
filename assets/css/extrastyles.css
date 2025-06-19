@@ -1187,6 +1187,15 @@ select.text-center option {
   height: 8px; /* Для горизонтального (если нужно) */
 }
 
+
+[data-bs-theme="dark"]
+::-webkit-scrollbar {
+  background: rgba(180, 180, 180, 0.9); /* Полупрозрачный серый */
+  width: 8px; /* Толщина скроллбара */
+  height: 8px; /* Для горизонтального (если нужно) */
+}
+
+
 /* Ползунок (thumb) */
 ::-webkit-scrollbar-thumb {
   background: rgba(100, 100, 100, 0.5); /* Полупрозрачный серый */
@@ -1201,7 +1210,7 @@ select.text-center option {
 
 /* Ползунок (thumb) - темная тема Bootstrap */
 [data-bs-theme="dark"] ::-webkit-scrollbar-thumb {
-  background: rgba(180, 180, 180, 0.5); /* Более светлый серый для контраста */
+  background: rgba(38, 38, 38, 0.5); /* Более светлый серый для контраста */
 }
 
 /* Ползунок при наведении - темная тема */
