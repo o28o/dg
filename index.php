@@ -44,6 +44,7 @@ include 'scripts/search-handler.php';
 <link rel="canonical" href="<?php echo $canonicalPage;?>">
 <link rel="alternate" href="https://dhamma.gift/ru/" hreflang="ru">
 <link rel="alternate" href="https://dhamma.gift/" hreflang="en">
+<link rel="alternate" href="https://dhamma.gift/" hreflang="x-default">
 
 <!-- для PWA где нет адресной строки, но нужно установить язык по умолчанию. --> 
 <script>
