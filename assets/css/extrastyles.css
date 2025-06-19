@@ -1234,3 +1234,8 @@ html {
   scrollbar-width: thin; /* "auto" | "thin" | "none" */
   scrollbar-color: rgba(100, 100, 100, 0.5) rgba(240, 240, 240, 0.5); /* thumb track */
 }
+
+[data-bs-theme="dark"] html {
+  scrollbar-width: thin; /* "auto" | "thin" | "none" */
+  scrollbar-color: rgba(38, 38, 38, 0.5) rgba(240, 240, 240, 0.5); /* thumb track */
+}
