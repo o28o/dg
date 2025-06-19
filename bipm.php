@@ -21,12 +21,12 @@ include './scripts/opentexts.php';
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link href="/assets/css/styles.css" rel="stylesheet" />
-<link href="/assets/css/extrastyles.css" rel="stylesheet" />
 <!-- Favicon-->
 <link rel="icon" type="image/png" href="/assets/img/favico-noglass.png" />
     <!-- Style CSS -->
     <link rel="stylesheet" href="/assets/css/playerStyle.css">
     <link rel="stylesheet" href="/assets/css/paliLookup.css">
+<link href="/assets/css/extrastyles.css" rel="stylesheet" />
 
   <!-- Загрузка иконки для iOS -->
   <link rel="apple-touch-icon" sizes="152x152" href="/assets/img/favico-noglass.png">
