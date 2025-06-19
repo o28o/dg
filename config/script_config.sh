@@ -191,7 +191,7 @@ elif uname -a | grep -iq CYGWIN; then
 #elif [[ "`uname -a`" == *"Cygwin"* ]]; then
 suttapath=/media/c/soft/suttacentral.net/
 downloaddir=/media/c/Users/o28o/Downloads
-trndir=/media/c/soft/fdg/assets/texts/sutta/
+trndir=/media/c/soft/dg/assets/texts/sutta/
 fi
 
 #common vars
