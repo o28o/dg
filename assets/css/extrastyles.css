@@ -1233,16 +1233,27 @@ html {
 
 
 /* Для WebKit (Chrome, Safari, Edge) */
+[data-bs-theme="dark"] ::-webkit-scrollbar {
+  width: 12px !important;
+}
+
 [data-bs-theme="dark"] ::-webkit-scrollbar-thumb {
-  background: rgba(100, 100, 100, 0.9); /* Более контрастный серый */
-  border: 1px solid rgba(200, 200, 200, 0.3); /* Добавляем границу */
+  background: #555 !important;
+  border-radius: 6px !important;
+  border: 2px solid #333 !important;
 }
 
 [data-bs-theme="dark"] ::-webkit-scrollbar-track {
-  background: rgba(30, 30, 30, 0.9); /* Темный фон трека */
+  background: #222 !important;
+  border-radius: 6px !important;
+}
+
+[data-bs-theme="dark"] ::-webkit-scrollbar-thumb:hover {
+  background: #666 !important;
 }
 
 /* Для Firefox */
 [data-bs-theme="dark"] {
-  scrollbar-color: rgba(100, 100, 100, 0.9) rgba(30, 30, 30, 0.9);
+  scrollbar-width: thin !important;
+  scrollbar-color: #555 #222 !important;
 }
