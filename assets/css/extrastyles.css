@@ -1198,7 +1198,7 @@ select.text-center option {
 
 /* Ползунок (thumb) */
 ::-webkit-scrollbar-thumb {
-  background: rgba(100, 100, 100, 0.5); /* Полупрозрачный серый */
+  background: rgba(100, 100, 100, 0.9); /* Полупрозрачный серый */
   border-radius: 4px; /* Закругление углов */
   transition: background 0.2s ease; /* Плавное изменение цвета */
 }
@@ -1206,11 +1206,6 @@ select.text-center option {
 /* Ползунок при наведении */
 ::-webkit-scrollbar-thumb:hover {
   background: rgba(100, 100, 100, 0.7); /* Становится темнее */
-}
-
-/* Ползунок (thumb) - темная тема Bootstrap */
-[data-bs-theme="dark"] ::-webkit-scrollbar-thumb {
-  background: rgba(180, 180, 180, 0.9); /* Более светлый серый для контраста */
 }
 
 /* Ползунок при наведении - темная тема */
@@ -1238,4 +1233,19 @@ html {
 [data-bs-theme="dark"] html {
   scrollbar-width: thin; /* "auto" | "thin" | "none" */
   scrollbar-color: rgba(38, 38, 38, 0.5) rgba(240, 240, 240, 0.5); /* thumb track */
+}
+
+
+/* Для WebKit (Chrome, Safari, Edge) */
+[data-bs-theme="dark"] ::-webkit-scrollbar-thumb {
+  background: rgba(38, 38, 38, 0.5); /* Как первый цвет в Firefox */
+}
+
+[data-bs-theme="dark"] ::-webkit-scrollbar-track {
+  background: rgba(240, 240, 240, 0.5); /* Как второй цвет в Firefox */
+}
+
+/* Для Firefox */
+[data-bs-theme="dark"] {
+  scrollbar-color: rgba(38, 38, 38, 0.5) rgba(240, 240, 240, 0.5);
 }
