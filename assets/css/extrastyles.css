@@ -1199,6 +1199,16 @@ select.text-center option {
   background: rgba(100, 100, 100, 0.7); /* Становится темнее */
 }
 
+/* Ползунок (thumb) - темная тема Bootstrap */
+[data-bs-theme="dark"] ::-webkit-scrollbar-thumb {
+  background: rgba(180, 180, 180, 0.5); /* Более светлый серый для контраста */
+}
+
+/* Ползунок при наведении - темная тема */
+[data-bs-theme="dark"] ::-webkit-scrollbar-thumb:hover {
+  background: rgba(200, 200, 200, 0.7); /* Ярче при наведении */
+}
+
 /* Дорожка (track) */
 ::-webkit-scrollbar-track {
   background: rgba(240, 240, 240, 0.5); /* Светлая подложка */
