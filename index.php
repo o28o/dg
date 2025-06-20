@@ -448,8 +448,8 @@ Add <strong>Dhamma.gift</strong> to your Home Screen?
 </a> 
 
 <script>
-if (!document.getElementById("openQuickModalBtn")) {
-  const openQuickModalBtn = document.getElementById("openQuickModalBtn");
+const openQuickModalBtn = document.getElementById("openQuickModalBtn");
+if (openQuickModalBtn) { // Проверяем, что элемент существует
   openQuickModalBtn.addEventListener("click", toggleQuickModal);
 }
 </script>

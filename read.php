@@ -372,9 +372,8 @@ $(document).ready(function() {
 		
 <script>
 
-
-if (!document.getElementById("openQuickModalBtn")) {
-  const openQuickModalBtn = document.getElementById("openQuickModalBtn");
+const openQuickModalBtn = document.getElementById("openQuickModalBtn");
+if (openQuickModalBtn) { // Проверяем, что элемент существует
   openQuickModalBtn.addEventListener("click", toggleQuickModal);
 }
 </script>
