@@ -171,14 +171,14 @@ if (newUrl !== window.location.href) {
 }
 
 function updateURL(params) {
-    console.log("Before update:", location.href);
+  //  console.log("Before update:", location.href);
     
     const updatedParams = new URLSearchParams();
     if (params.q) updatedParams.set("q", params.q);
     if (params.s) updatedParams.set("s", params.s);
     
     history.replaceState(null, "", `?${updatedParams.toString()}${window.location.hash}`);
-    console.log("After update:", location.href);
+   // console.log("After update:", location.href);
 }
 
 </script>
@@ -1177,7 +1177,7 @@ foreach ($slides as $index => $slide) {
   if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('/sw.js')
       .then(function(registration) {
-        console.log('ServiceWorker registration successful with scope: ', registration.scope);
+    //    console.log('ServiceWorker registration successful with scope: ', registration.scope);
       })
       .catch(function(err) {
         console.log('ServiceWorker registration failed: ', err);
@@ -1391,7 +1391,7 @@ var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
 <script defer>
   randCallToAction();
   randPlaceholderOnMain();
-  console.log(window.location.href);
+ // console.log(window.location.href);
 
 </script>
 
@@ -1431,7 +1431,7 @@ const resources = [...commonResources, langSpecific];
                 cache: 'force-cache'
             });
         });
-        console.log('fetching dict');
+    //    console.log('fetching dict');
     }, 5000);
 });
 </script>

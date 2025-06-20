@@ -21944,7 +21944,7 @@ include $basedir . "/assets/texts/bipm.php";
   if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('/sw.js')
       .then(function(registration) {
-        console.log('ServiceWorker registration successful with scope: ', registration.scope);
+       // console.log('ServiceWorker registration successful with scope: ', registration.scope);
       })
       .catch(function(err) {
         console.log('ServiceWorker registration failed: ', err);
@@ -21971,7 +21971,7 @@ include $basedir . "/assets/texts/bipm.php";
         deferredPrompt.prompt();
         deferredPrompt.userChoice.then((choiceResult) => {
           if (choiceResult.outcome === 'accepted') {
-            console.log('Пользователь принял предложение установки');
+         console.log('Пользователь принял предложение установки');
           } else {
             console.log('Пользователь отклонил предложение установки');
           }
@@ -22157,7 +22157,7 @@ $(function () {
 <script defer>
   randCallToAction();
   randPlaceholderOnMain();
-  console.log(window.location.href);
+ // console.log(window.location.href);
 
 </script>
 <script src="/assets/js/openFdg.js"></script>
@@ -22193,7 +22193,7 @@ const resources = [...commonResources, langSpecific];
                 cache: 'force-cache'
             });
         });
-        console.log('fetching dict');
+      //  console.log('fetching dict');
     }, 2000);
 });
 </script>

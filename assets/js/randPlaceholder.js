@@ -8,7 +8,7 @@ function randPlaceholder(theLanguage) {
           }
 
 const random = Math.floor(Math.random() * tasks.length);
-console.log(random, tasks[random]);
+// console.log(random, tasks[random]);
 document.getElementById('paliauto').placeholder = tasks[random];
 }
 
@@ -16,14 +16,14 @@ function randCallToAction() {
    var theLanguage = $('html').attr("lang");
  
   if(theLanguage == "en"){
-    console.log("your html contains en");
+  //  console.log("your html contains en");
     var tasks = ["The 1st is Sn56.11", "Read sn22.87", "Ponder on mn28", "Dukkha in Suttas is?", "How many Jhanas in Suttas?",  "Real meaning of Pañña is?", "Dukkha is defined in dn22", "Saṅkhārā in mn44", "Why Tathagata is like ocean?", "Why Dhamma is like Ocean?", "Why Tathagata is like elephant?", "What is the ocean?", "What is the all?", "Difference between dukkha and dukkha ariyasacca?", "Cow in Suttas symbolizes - ..."];
 }  else if  ( theLanguage == "ru") {
-  console.log("your html contains ru");
+ //  console.log("your html contains ru");
     var tasks = ["1ая - это Sn56.11", "Прочти sn22.87", "Подумай над mn28", "Dukkha в Суттах - это?", "Сколько джхан в Суттах?", "Pañña на самом деле - это ...?", "Определение dukkha есть в dn22", "Saṅkhārā в mn44", "Почему Татхагата, как слон?", "Почему Дхамма, как Океан?", "Почему Татхагата, как Океан?", "Что такое океан?", "Что такое 'всё'?", "Разница между dukkha и dukkha ariyasacca", "Корова в суттах символизирует - ...?"];
           }
 const random = Math.floor(Math.random() * tasks.length);
-console.log(random, tasks[random]);
+// console.log(random, tasks[random]);
 let defaultTitle = document.title
 window.onblur = () => {
    //change title, blink title, whatever
@@ -51,6 +51,6 @@ function randPlaceholderOnMain() {
           }
 const randomW = Math.floor(Math.random() * words.length);
 const randomS = Math.floor(Math.random() * suttas.length);
-console.log(words[randomW], suttas[randomS]);
+// console.log(words[randomW], suttas[randomS]);
 document.getElementById('paliauto').placeholder = example + words[randomW] + or + suttas[randomS];
 }
