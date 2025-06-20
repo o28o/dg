@@ -450,9 +450,6 @@ if (openQuickModalBtn) { // Проверяем, что элемент сущес
   });
 </script>
 
-
-<script src="/assets/js/uihelp.js"></script>
-
 	  <script src="/assets/js/smoothScroll.js" defer></script>
 
 <script>
