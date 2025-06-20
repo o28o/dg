@@ -161,7 +161,7 @@ echo json_encode([
             ]
         ],    
         [
-            "name" => "Dict.Dhamma.gift",
+            "name" => "Dict.Dhamma.Gift",
             "url" => $mainpagenoslash . "/assets/openDDG.html",
             "icons" => [
                 [
