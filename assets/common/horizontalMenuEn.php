@@ -183,7 +183,7 @@ echo '<!--
 
       <li>
          <div class="dropdown-item "> Skr
-        <a class="text-reset" target="_blank"   href="https://www.sanskrit-lexicon.uni-koeln.de/">Many Skr dicts</a>
+        <a class="text-reset" target="_blank"   href="https://www.sanskrit-lexicon.uni-koeln.de/">Many dicts</a>
 		<a class="text-reset" target="_blank"   href="https://sanskritdictionary.com/?iencoding=iast&q=&lang=sans&action=Search">link 2</a>
 		<a class="text-reset" target="_blank"  href="https://www.learnsanskrit.cc/translate?search=&dir=au">Learnskr</a>  
        </div>

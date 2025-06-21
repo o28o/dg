@@ -199,7 +199,7 @@ echo '<!--
 
    <li>
          <div class="dropdown-item "> Skr
-        <a class="text-reset" target="_blank"   href="https://www.sanskrit-lexicon.uni-koeln.de">разные Скр словари</a>
+        <a class="text-reset" target="_blank"   href="https://www.sanskrit-lexicon.uni-koeln.de">разные словари</a>
 		<a class="text-reset" target="_blank"   href="https://sanskritdictionary.com/?iencoding=iast&q=&lang=sans&action=Search">ссылка 2</a>
 		<a class="text-reset" target="_blank"  href="https://www.learnsanskrit.cc/translate?search=&dir=au">Learnskr</a>  
        </div>
