@@ -681,7 +681,7 @@ function downloadJson() {
   // Извлечение всех символов до точки
   let beforeDot = indexValue.split('.')[0];
   
-let firstNumberOnly = beforeDot.match(/[0-9]+/)[0];
+let firstNumberOnly = beforeDot.match(/[0-9]+/)?.[0] ?? null;
 //let lettersOnly = beforeDot.replace(/[0-9]/g, '');  // Удаление всех цифр, если требуется
 
 // Проверка, содержит ли строка 'snp', 'ud' или 'dhp'
@@ -710,9 +710,10 @@ if (indexValue.includes('bu-') || indexValue.includes('bi-')) {
   let lawIndex = indexValue.split('-')[1]; 
   let lawType = lawIndex.match(/[a-z]+/)[0];
   
-  
-  let fileNameBlock = 'pli-tv-' + buOrbi + '-vb-' + lawType + '/pli-tv-' + buOrbi + '-vb-' + lawIndex;
-  
+    
+    let fileNameBlock = 'pli-tv-' + buOrbi + '-vb/pli-tv-' + buOrbi + '-vb-' + lawType + '/pli-tv-' + buOrbi + '-vb-' + lawIndex;
+
+
   
     //for other laws or patimolkha
  if (indexValue.includes('-pm')) {
@@ -722,10 +723,10 @@ if (indexValue.includes('bu-') || indexValue.includes('bi-')) {
 console.log('fileNameBlock ' + fileNameBlock) ;
   
 if (language === 'pli') {
-  url = `/suttacentral.net/sc-data/sc_bilara_data/root/pli/ms/vinaya/pli-tv-${buOrbi}-vb/${fileNameBlock}_root-pli-ms.json`;    
+  url = `/suttacentral.net/sc-data/sc_bilara_data/root/pli/ms/vinaya/${fileNameBlock}_root-pli-ms.json`;    
 }
 else if (language === 'en') {
-  url = `/suttacentral.net/sc-data/sc_bilara_data/translation/en/brahmali/vinaya/pli-tv-${buOrbi}-vb/${fileNameBlock}_translation-en-brahmali.json`;
+  url = `/suttacentral.net/sc-data/sc_bilara_data/translation/en/brahmali/vinaya/${fileNameBlock}_translation-en-brahmali.json`;
   }
   
 } else if (language === 'pli') {
@@ -843,9 +844,6 @@ let cleanedTranslation = translation;
 
 
 
-cleanedTranslation = cleanedTranslation.replace(/\([А-Я]* [0-9]*\.[0-9]*\)/g, '');
-cleanedTranslation = cleanedTranslation.replace(/ {2,}/g, ' ');
-  
 
 
 if (document.getElementById('lineBreakCheckbox').checked) {
@@ -857,6 +855,12 @@ if (document.getElementById('lineBreakCheckbox').checked) {
     return match;
   });
  
+
+ cleanedTranslation = cleanedTranslation.replace(/\([А-Я]* [0-9]*\.[0-9]*\)/g, '');
+cleanedTranslation = cleanedTranslation.replace(/ {2,}/g, ' ');
+  
+
+
 cleanedTranslation = cleanedTranslation.replace(/АН\s[0-9]+\.[0-9]+\s+[\s\S]*?Anguttara Nikaya.*$/gm, '');
 cleanedTranslation = cleanedTranslation.replace(/СН\s[0-9]+\.[0-9]+\s+[\s\S]*?Samyutta Nikaya.*$/gm, '');
 
@@ -893,14 +897,13 @@ cleanedTranslation = cleanedTranslation.replace(/\(II\)/g, 'Вторая');
 cleanedTranslation = cleanedTranslation.replace(/\(III\)/g, 'Третья');
 cleanedTranslation = cleanedTranslation.replace(/\(IV\)/g, 'Четвёртая');
 
-  
-}
+
+
 
 cleanedTranslation = cleanedTranslation.replace(/^\*\s+/gm, '');
 cleanedTranslation = cleanedTranslation.replace(/[0-9]*"/g, '');
 cleanedTranslation = cleanedTranslation.replace(/^–\s+/gm, '');
 
-if (document.getElementById('lineBreakCheckbox').checked) {
 
 cleanedTranslation = cleanedTranslation.replace(/\([1-9][0-9]?\) /g, '');
 cleanedTranslation = cleanedTranslation.replace(/\([1-9][0-9]?-[1-9][0-9]?\) /g, '');
@@ -960,11 +963,10 @@ if (/sn[0-9]/.test(indexValue)) {
     let lettersOnly = indexValue.match(/[a-z]+/)[0];
 
   // Извлечение всех символов до точки
-  let beforeDot = indexValue.split('.')[0];
+let beforeDot = indexValue.split('.')[0];
   
-let firstNumberOnly = beforeDot.match(/[0-9]+/)[0];
+let firstNumberOnly = beforeDot.match(/[0-9]+/)?.[0] ?? null;
 //let lettersOnly = beforeDot.replace(/[0-9]/g, '');  // Удаление всех цифр, если требуется
-
 
 
 
@@ -993,22 +995,20 @@ if ( indexValue.includes('iti')) {
   let lawIndex = indexValue.split('-')[1]; 
   let lawType = lawIndex.match(/[a-z]+/)[0];
   
-     fileNameBlock = 'pli-tv-' + buOrbi + '-vb-' + lawType + '/pli-tv-' + buOrbi + '-vb-' + lawIndex;
+ fileNameBlock = 'pli-tv-' + buOrbi + '-vb/pli-tv-' + buOrbi + '-vb-' + lawType + '/pli-tv-' + buOrbi + '-vb-' + lawIndex;
    
     //for other laws or patimolkha
  if (indexValue.includes('-pm')) {
   fileNameBlock = 'pli-tv-' + buOrbi + '-pm';
- } else {
-   fileNameBlock = 'pli-tv-' + buOrbi + '-vb-' + lawType + '/pli-tv-' + buOrbi + '-vb-' + lawIndex;
- }
+ } 
   
 console.log('fileNameBlock ' + fileNameBlock) ;
   
 if (language === 'pli') {
-  url = `/suttacentral.net/sc-data/sc_bilara_data/root/pli/ms/vinaya/pli-tv-${buOrbi}-vb/${fileNameBlock}_root-pli-ms.json`;    
+  url = `/suttacentral.net/sc-data/sc_bilara_data/root/pli/ms/vinaya/${fileNameBlock}_root-pli-ms.json`;    
 }
 else if (language === 'en') {
-  url = `/suttacentral.net/sc-data/sc_bilara_data/translation/en/brahmali/vinaya/pli-tv-${buOrbi}-vb/${fileNameBlock}_translation-en-brahmali.json`;
+  url = `/suttacentral.net/sc-data/sc_bilara_data/translation/en/brahmali/vinaya/${fileNameBlock}_translation-en-brahmali.json`;
   }
   
 } else if (language === 'pli') {
