@@ -613,6 +613,7 @@ align-items: center;
 #mainNav .navbar-nav {
     margin-top: 0;
     text-align: center;
+    white-space: nowrap;
 }
  
 .page-section {
