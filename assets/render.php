@@ -5,8 +5,9 @@ $type = $_GET['type'] ?? 'pali'; // 'pali' или 'trn' (translation)
 
 // Определяем язык по URL (новая логика)
 $is_ru_url = (strpos($_SERVER['REQUEST_URI'], '/ru/') !== false) || 
-             (strpos($_SERVER['REQUEST_URI'], '/r/') !== false);
-             
+             (strpos($_SERVER['REQUEST_URI'], '/r/') !== false) || 
+             (strpos($_SERVER['REQUEST_URI'], '/ml/') !== false);
+
 // Совмещаем старую и новую логику определения языка
 if ($type === 'pali') {
     $lang = 'pi';
