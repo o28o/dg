@@ -1530,7 +1530,7 @@ clearBtn.style.display = 'block';
 </div>
  
 <div class="mt-3">
-<span class="level5"><a class="setReader" href="<?php echo $readerPage;?>/?q=mn152">mn152</a> Indriyabhāvanāsutta</span>
+<span class="level5"><a class="setReader" href="<?php echo $readerPage;?>/?q=mn152">mn152</a> Indriyabhāvanāsutta <?php echo $ifRuLitTrn;?></span>
 </div>
  
 </div> <!-- Nikaya collapse -->

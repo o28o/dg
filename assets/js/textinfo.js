@@ -1449,7 +1449,7 @@
 "mn149":{"pi":"Mahāsaḷāyatanikasutta ","en":"The Great Discourse on the Six Sense Fields ","mtph":"","ru":"Великая сфера шести "},
 "mn150":{"pi":"Nagaravindeyyasutta ","en":"With the People of Nagaravinda ","mtph":1,"ru":"К Нагаравинданам "},
 "mn151":{"pi":"Piṇḍapātapārisuddhisutta ","en":"The Purification of Alms ","mtph":"","ru":"Очищение еды, полученной с подаяний "},
-"mn152":{"pi":"Indriyabhāvanāsutta ","en":"The Development of the Faculties ","mtph":6,"ru":"Развитие способностей "},
+"mn152":{"pi":"Indriyabhāvanāsutta ","en":"The Development of the Faculties ","mtph":6,"ru":"Развитие способностей  (o)"},
 "dn1":{"pi":"Brahmajālasutta ","en":"The Divine Net ","mtph":2,"ru":"Брахмаджала "},
 "dn2":{"pi":"Sāmaññaphalasutta ","en":"The Fruits of the Ascetic Life ","mtph":30,"ru":"Самана Пхала "},
 "dn3":{"pi":"Ambaṭṭhasutta ","en":"With Ambaṭṭha ","mtph":7,"ru":"Амбаттха "},
