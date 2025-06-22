@@ -2892,7 +2892,7 @@
 "sn47.17":{"pi":"Ariyasutta ","en":"Noble ","mtph":"","ru":"Благородный"},
 "sn47.18":{"pi":"Brahmasutta ","en":"With Brahmā ","mtph":1,"ru":"Брахма"},
 "sn47.19":{"pi":"Sedakasutta ","en":"At Sedaka ","mtph":"","ru":"Седака"},
-"sn47.20":{"pi":"Janapadakalyāṇīsutta ","en":"The Finest Lady in the Land ","mtph":2,"ru":"Красавица Страны"},
+"sn47.20":{"pi":"Janapadakalyāṇīsutta ","en":"The Finest Lady in the Land ","mtph":2,"ru":"Красавица Страны (o)"},
 "sn47.21":{"pi":"Sīlasutta ","en":"Ethics ","mtph":"","ru":"Нравственность"},
 "sn47.22":{"pi":"Ciraṭṭhitisutta ","en":"Long Lasting ","mtph":"","ru":"Продолжительность"},
 "sn47.23":{"pi":"Parihānasutta ","en":"Decline ","mtph":"","ru":"Упадок"},

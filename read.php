@@ -9449,7 +9449,7 @@ clearBtn.style.display = 'block';
 
 		 
 		 <div class="mt-3">
- <span class="level5"><a class="setReader" href="<?php echo $readerPage;?>/?q=sn47.20">sn47.20</a> Janapadakalyāṇīsutta</span>
+ <span class="level5"><a class="setReader" href="<?php echo $readerPage;?>/?q=sn47.20">sn47.20</a> Janapadakalyāṇīsutta <?php echo $ifRuLitTrn;?></span>
  </div>
 <div class="level4 my-3">
 		 <h5>3. Sīlaṭṭhitivagga</h5>
