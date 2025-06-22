@@ -84,8 +84,8 @@ $playerHtml = "<span class='voice-dropdown'>
             <source src='$voicefile' type='$mimeType'>
             Your browser does not support the audio element.
         </audio><br>
-            Pali <a href='javascript:void(0)' title='Copy Pali' class='copy-pali'>Copy</a> <a href='javascript:void(0)' title='Open Pali' class='open-pali'>Open</a> |
-            Trn <a href='javascript:void(0)' title='Copy Translation' class='copy-translation'>Copy</a> <a href='javascript:void(0)' title='Open Translation'  class='open-translation'>Open</a> |
+            Pali <a href='javascript:void(0)' title='Copy Pali' class='copy-pali'>Copy</a> <a href='/assets/render.php?q=$fromjs' title='Open Pali'>Open</a> |
+            Trn <a href='javascript:void(0)' title='Copy Translation' class='copy-translation'>Copy</a> <a href='/assets/render.php?q=$fromjs&type=trn' title='Open Translation' >Open</a> |
             <a title='sc-voice.net' href='https://www.sc-voice.net/?src=sc#/sutta/$fromjs'>Voice.SC</a> |
             <a title='TTS help' href='/assets/common/ttsHelp.html'>?</a> 
     </span>
@@ -124,8 +124,8 @@ $playerHtml = "<span class='voice-dropdown'>
             <source src='$voicefile' type='$mimeType'>
             Your browser does not support the audio element.
         </audio><br>
-            Pali <a href='javascript:void(0)' title='Copy Pali' class='copy-pali'>Copy</a> <a href='javascript:void(0)' title='Open Pali' class='open-pali'>Open</a> |
-            Trn <a href='javascript:void(0)' title='Copy Translation' class='copy-translation'>Copy</a> <a href='javascript:void(0)' title='Open Translation'  class='open-translation'>Open</a> |
+            Pali <a href='javascript:void(0)' title='Copy Pali' class='copy-pali'>Copy</a> <a href='/assets/render.php?q=$fromjs' title='Open Pali'>Open</a> |
+            Trn <a href='javascript:void(0)' title='Copy Translation' class='copy-translation'>Copy</a> <a href='/assets/render.php?q=$fromjs&type=trn' title='Open Translation' >Open</a> |
             <a title='sc-voice.net' href='https://www.sc-voice.net/?src=sc#/sutta/$fromjs'>Voice.SC</a> |
             <a title='TTS help' href='/assets/common/ttsHelp.html'>?</a> 
     </span>
@@ -139,8 +139,8 @@ $playerHtml = "<span class='voice-dropdown'>
 $playerHtml = "<span class='voice-dropdown'>
     <a href='javascript:void(0)' class='voice-link' title='Text-to-Speech Options' >Voice</a>
     <span class='voice-player'>
-            Pali <a href='javascript:void(0)' title='Copy Pali' class='copy-pali'>Copy</a> <a href='javascript:void(0)' title='Open Pali' class='open-pali'>Open</a> |
-            Trn <a href='javascript:void(0)' title='Copy Translation' class='copy-translation'>Copy</a> <a href='javascript:void(0)' title='Open Translation'  class='open-translation'>Open</a> |
+            Pali <a href='javascript:void(0)' title='Copy Pali' class='copy-pali'>Copy</a> <a href='/assets/render.php?q=$fromjs' title='Open Pali'>Open</a> |
+            Trn <a href='javascript:void(0)' title='Copy Translation' class='copy-translation'>Copy</a> <a href='/assets/render.php?q=$fromjs&type=trn' title='Open Translation' >Open</a> |
             <a title='sc-voice.net' href='https://www.sc-voice.net/?src=sc#/sutta/$fromjs'>Voice.SC</a> |
             <a title='TTS help' href='/assets/common/ttsHelp.html'>?</a> 
     </span>
@@ -215,3 +215,4 @@ $playerHtml = "<span class='voice-dropdown'>
 
 echo extraLinks($_GET['fromjs']);
 ?>
+
