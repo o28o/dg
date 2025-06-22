@@ -203,6 +203,17 @@ echo json_encode([
                     "sizes" => "192x192"
                 ]
             ]
+        ],
+                [
+            "name" => "Dharmamitra.org",
+            "url" => $mainpagenoslash . "/assets/openDDG.html?url=https://dharmamitra.org/",
+            "icons" => [
+                [
+                    "src" => "/assets/img/maniIcon.png",
+                    "type" => "image/png",
+                    "sizes" => "192x192"
+                ]
+            ]
         ]
     ]
 ], JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT);
