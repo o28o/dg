@@ -125,6 +125,180 @@ const scriptCache = new Map();
 const requestIdleCallback = window.requestIdleCallback || 
     function(cb) { return setTimeout(() => { cb({ didTimeout: false }); }, 0); };
 
+function handleWordLookup(word, event) {
+
+     if (!dictionaryVisible) return;
+
+    let cleanedWord = cleanWord(word);
+    //console.log('Обрабатываем:', cleanedWord);
+
+
+    let translation = "";
+    
+    // Для standalone-режима обрабатываем ВСЕ слова
+    if (dictUrl === "standalonebw" || dictUrl === "standalonebwru") {
+        const words = word.split(/\s+/)
+                         .map(w => cleanWord(w))
+                         .filter(w => w.length > 0);
+        
+        for (const singleWord of words) {
+            translation += lookupWordInStandaloneDict(singleWord);
+       }
+    }
+    // Для остальных режимов — старый код без изменений
+    else if (dictUrl.includes('dicttango') || dictUrl.includes('mdict')) {
+        const tempLink = document.createElement('a');
+        tempLink.href = 'javascript:void(0)';
+        tempLink.onclick = function() {
+            window.location.href = `${dictUrl}${encodeURIComponent(cleanedWord)}`;
+            return false;
+        };
+        tempLink.click();
+        translation = "";
+        popup.style.display = 'none';
+        overlay.style.display = 'none';
+    }
+    else {
+        const url = `${dictUrl}${encodeURIComponent(cleanedWord)}`;
+        iframe.src = url;
+    }
+    //console.log('обработали:', cleanedWord);
+
+    if (translation) {
+        const isDarkMode = document.body.classList.contains('dark') || document.documentElement.getAttribute('data-theme') === 'dark';
+        const themeClass = isDarkMode ? 'dark' : '';
+        
+        const tempDiv = document.createElement('div');
+        tempDiv.style.position = 'absolute';
+        tempDiv.style.visibility = 'hidden';
+        tempDiv.style.width = 'calc(100% - 20px)';
+        tempDiv.innerHTML = translation;
+        document.body.appendChild(tempDiv);
+        
+        const contentHeight = tempDiv.offsetHeight;
+        document.body.removeChild(tempDiv);
+        
+        let minHeight = 100;
+        const maxHeight = window.innerHeight * 0.95; 
+        
+        if (dictUrl === "standalonebw" || dictUrl === "standalonebwru") {
+            minHeight = 100;
+        } else {
+            const screenHeight = window.innerHeight;
+            minHeight = (screenHeight * 0.8 < 600) ? screenHeight * 0.8 : 600;
+        }
+
+        let finalHeight = Math.min(Math.max(contentHeight + 20, minHeight), maxHeight);
+        
+        iframe.srcdoc = `  
+            <!DOCTYPE html>  
+            <html lang="en" class="${themeClass}">  
+            <head>  
+                <meta charset="UTF-8">  
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <style>  
+                    body {  
+                        font-family: Arial, sans-serif;  
+                        padding: 10px;  
+                        margin: 0;
+                        overflow: hidden;
+                    }  
+                    body.dark {  
+                        background: #07021D !important;  
+                        color: #E1EAED !important;  
+                    }  
+                    strong {  
+                        font-size: 1.2em;  
+                    }  
+                    ul {  
+                        list-style-type: none;  
+                        padding-left: 0;  
+                    }  
+                    li {  
+                        margin-bottom: 10px;  
+                    }  
+                </style>  
+            </head>  
+            <body class="${themeClass}">  
+                ${translation}  
+            </body>  
+            </html>  
+        `;
+        
+        popup.style.height = `${finalHeight}px`;
+        popup.style.display = 'block';  
+        overlay.style.display = 'block';
+        
+        iframe.onload = function() {
+            try {
+                const iframeBody = iframe.contentDocument.body;
+                const scrollHeight = iframeBody.scrollHeight;
+                const adjustedHeight = Math.min(Math.max(scrollHeight + 20, minHeight), maxHeight);
+                popup.style.height = `${adjustedHeight}px`;
+            } catch(e) {
+                console.error('Error adjusting iframe height:', e);
+            }
+        };
+    }
+    
+    const openBtn = document.querySelector('.open-btn');
+    const wordForSearch = cleanedWord.replace(/'ti/, '');
+    openBtn.href = `${dhammaGift}${encodeURIComponent(wordForSearch)}${dgParams}`;
+
+    const dictBtn = document.querySelector('.dict-btn');
+    const dictSearchUrl = `https://dict.dhamma.gift/${savedDict.includes("ru") ? "ru/" : ""}search_html?q=${encodeURIComponent(wordForSearch)}`;
+    dictBtn.href = dictSearchUrl;
+
+    function showSearchButton() {
+        const wordForSearch = cleanedWord.replace(/'ti/, '');
+        const searchBtn = document.createElement('a');
+        searchBtn.href = `${dhammaGift}${encodeURIComponent(wordForSearch)}${dgParams}`;
+        searchBtn.classList.add('open-btn');
+        searchBtn.style.position = 'fixed';
+        searchBtn.style.border = 'none';
+        searchBtn.style.background = '#2D3E50';
+        searchBtn.style.color = 'white';
+        searchBtn.style.cursor = 'pointer';
+        searchBtn.style.width = '30px';
+        searchBtn.style.height = '30px';
+        searchBtn.style.borderRadius = '50%';
+        searchBtn.style.display = 'flex';
+        searchBtn.style.alignItems = 'center';
+        searchBtn.style.justifyContent = 'center';
+        searchBtn.style.textDecoration = 'none';
+        searchBtn.target = '_blank';
+        searchBtn.style.top = `${event.clientY - 10}px`;
+        searchBtn.style.left = `${event.clientX - 10}px`;
+        searchBtn.style.zIndex = '10000';
+        searchBtn.innerHTML = `
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="16" height="16" fill="white" style="transform: scaleX(-1);">
+                <path d="M505 442.7l-99.7-99.7c28.4-35.3 45.7-79.8 45.7-128C451 98.8 352.2 0 224 0S-3 98.8-3 224s98.8 224 224 224c48.2 0 92.7-17.3 128-45.7l99.7 99.7c6.2 6.2 14.4 9.4 22.6 9.4s16.4-3.1 22.6-9.4c12.5-12.5 12.5-32.8 0-45.3zM224 384c-88.4 0-160-71.6-160-160S135.6 64 224 64s160 71.6 160 160-71.6 160-160 160z"/>
+            </svg>
+        `;
+        document.body.appendChild(searchBtn);
+        searchBtn.addEventListener('click', () => {
+            searchBtn.remove();
+        });
+        setTimeout(() => {
+            searchBtn.remove();
+        }, 1500);
+    }
+
+    if (dictUrl.includes('dicttango') || dictUrl.includes('mdict')) {
+        popup.style.display = 'none';
+        overlay.style.display = 'none';
+        showSearchButton();
+    } else if (dictUrl.includes('searchonly')) {
+        popup.style.display = 'none';
+        overlay.style.display = 'none';
+        showSearchButton();
+    } else {
+        popup.style.display = 'block';
+        overlay.style.display = 'block';
+    }
+}
+
+
 function lazyLoadStandaloneScripts(lang = 'en') {
     return new Promise((resolve, reject) => {
         const loadScripts = () => {
@@ -254,35 +428,87 @@ document.addEventListener('DOMContentLoaded', function() {
     }, 1000); // Небольшая задержка для гарантированного рендеринга
 });
 
-function lookupWordInStandaloneDict(word) {
+
+function lookupWordInStandaloneDict(originalPhrase) {
+    if (!originalPhrase) return "";
+
+    const original = originalPhrase.trim();
+
+    // Для поиска очищаем от кавычек и заменяем ṁ → ṃ
+    let phrase = original.replace(/[’”'"]/g, "").replace(/ṁ/g, "ṃ");
+
+    const dictSearchUrl = `https://dict.dhamma.gift/${   
+        savedDict.includes("ru") ? "ru/" : ""
+    }search_html?q=${encodeURIComponent(original)}`;
+
     let out = "";
-   // console.log("---");
- //   console.log("before: ", word);
-    word = word.replace(/[’”'"]/g, "").replace(/ṁ/g, "ṃ");
-   // console.log("after: ", word);
 
-// Создаем URL для поиска слова в словаре
-const dictSearchUrl = `https://dict.dhamma.gift/${savedDict.includes("ru") ? "ru/" : ""}search_html?q=${encodeURIComponent(word)}`;
+    // 1. Ищем всё словосочетание целиком
+    if (phrase in dpd_i2h) {
+        out += `<div class="dict-result">
+            <a href="${dictSearchUrl}" target="_blank" style="text-decoration:none;color:inherit">
+                <strong>${original}</strong>
+            </a>
+            <ul class="pli-lang" lang="pi" style="line-height:1em; padding-left:15px;">`;
 
-if (word in dpd_i2h) {
-    out += `<a href="${dictSearchUrl}" target="_blank" rel="noopener noreferrer" style="text-decoration: none; color: inherit;"><strong>${word}</strong></a><br><ul class="pli-lang" lang="pi" style="line-height: 1em; padding-left: 15px;">`;
-    for (const headword of dpd_i2h[word]) {
-        if (headword in dpd_ebts) {
-            out += '<li>' + headword + '. ' + dpd_ebts[headword] + '</li>';
+        for (const headword of dpd_i2h[phrase]) {
+            if (headword in dpd_ebts) {
+                out += `<li>${headword}. ${dpd_ebts[headword]}</li>`;
+            }
+        }
+        out += "</ul></div>";
+    }
+
+    if (phrase in dpd_deconstructor) {
+        out += `<div class="dict-result">
+            <a href="${dictSearchUrl}" target="_blank" style="text-decoration:none;color:inherit">
+                <strong>${original}</strong>
+            </a>
+            <ul class="pli-lang" lang="pi" style="line-height:1em; padding-left:15px;">
+                <li>${dpd_deconstructor[phrase]}</li>
+            </ul>
+        </div>`;
+    }
+
+    // 2. Если не нашли фразу — ищем каждое слово отдельно
+    if (!out) {
+        const words = phrase.split(/\s+/);
+        const originalWords = original.split(/\s+/);
+
+        for (let i = 0; i < words.length; i++) {
+            const word = words[i];
+            const originalWord = originalWords[i];
+
+            if (word in dpd_i2h) {
+                out += `<div class="dict-result">
+                    <a href="${dictSearchUrl}" target="_blank" style="text-decoration:none;color:inherit">
+                        <strong>${originalWord}</strong>
+                    </a>
+                    <ul class="pli-lang" lang="pi" style="line-height:1em; padding-left:15px;">`;
+
+                for (const headword of dpd_i2h[word]) {
+                    if (headword in dpd_ebts) {
+                        out += `<li>${headword}. ${dpd_ebts[headword]}</li>`;
+                    }
+                }
+                out += "</ul></div>";
+            }
+
+            if (word in dpd_deconstructor) {
+                out += `<div class="dict-result">
+                    <a href="${dictSearchUrl}" target="_blank" style="text-decoration:none;color:inherit">
+                        <strong>${originalWord}</strong>
+                    </a>
+                    <ul class="pli-lang" lang="pi" style="line-height:1em; padding-left:15px;">
+                        <li>${dpd_deconstructor[word]}</li>
+                    </ul>
+                </div>`;
+            }
         }
     }
-    out += "</ul>";
-}
-
-if (word in dpd_deconstructor) {
-    out += `<a href="${dictSearchUrl}" target="_blank" rel="noopener noreferrer" style="text-decoration: none; color: inherit;"><strong>${word}</strong></a><br><ul class="pli-lang" lang="pi" style="line-height: 1em; padding-left: 15px;">`;
-    out += "<li>" + dpd_deconstructor[word] + "</li>";
-    out += "</ul>";
-}
 
     return out.replace(/ṃ/g, "ṁ");
 }
-
 
 function clearParams() {
     const keys = ['popupWidth', 'popupHeight', 'popupTop', 'popupLeft', 'windowWidth', 'windowHeight', 'isFirstDrag'];
@@ -615,348 +841,24 @@ toggleBtn.addEventListener('click', () => {
     }
   });  
 
-// Перехватчик кликов по слову и выделенного текста
 document.addEventListener('click', function(event) {
     // Проверяем, есть ли выделенный текст внутри элемента с пали
     const pliElement = event.target.closest('.pli-lang, [lang="pi"]');
     const selectedText = getSelectedText();
     
+    // Для выделенного текста
     if (pliElement && selectedText && isSelectionWithinElement(pliElement)) {
-        // Обрабатываем выделенный текст
-        if (event.target.closest('a, button, input, textarea, select')) {
-            return;
-        }
-
-        let cleanedText = cleanWord(selectedText);
-       // console.log('Выделенный текст:', cleanedText);
-
-        if (dictionaryVisible) {
-            let translation = "";
-            
-            if (dictUrl === "standalonebw" || dictUrl === "standalonebwru") {
-                translation = lookupWordInStandaloneDict(cleanedText);
-            } 
-            else if (dictUrl.includes('dicttango') || dictUrl.includes('mdict')) {
-                const tempLink = document.createElement('a');
-                tempLink.href = 'javascript:void(0)';
-                tempLink.onclick = function() {
-                    window.location.href = `${dictUrl}${encodeURIComponent(cleanedText)}`;
-                    return false;
-                };
-                tempLink.click();
-                translation = "";
-                popup.style.display = 'none';
-                overlay.style.display = 'none';
-            }
-            else {
-                const url = `${dictUrl}${encodeURIComponent(cleanedText)}`;
-                iframe.src = url;
-            }
-
-            if (translation) {
-                const isDarkMode = document.body.classList.contains('dark') || document.documentElement.getAttribute('data-theme') === 'dark';
-                const themeClass = isDarkMode ? 'dark' : '';
-                
-                const tempDiv = document.createElement('div');
-                tempDiv.style.position = 'absolute';
-                tempDiv.style.visibility = 'hidden';
-                tempDiv.style.width = 'calc(100% - 20px)';
-                tempDiv.innerHTML = translation;
-                document.body.appendChild(tempDiv);
-                
-                const contentHeight = tempDiv.offsetHeight;
-                document.body.removeChild(tempDiv);
-                
-                let minHeight = 100;
-                const maxHeight = window.innerHeight * 0.95; 
-                
-                if (dictUrl === "standalonebw" || dictUrl === "standalonebwru") {
-                    minHeight = 100;
-                } else {
-                    const screenHeight = window.innerHeight;
-                    minHeight = (screenHeight * 0.8 < 600) ? screenHeight * 0.8 : 600;
-                }
-
-                let finalHeight = Math.min(Math.max(contentHeight + 20, minHeight), maxHeight);
-                
-                iframe.srcdoc = `  
-                    <!DOCTYPE html>  
-                    <html lang="en" class="${themeClass}">  
-                    <head>  
-                        <meta charset="UTF-8">  
-                        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                        <style>  
-                            body {  
-                                font-family: Arial, sans-serif;  
-                                padding: 10px;  
-                                margin: 0;
-                                overflow: hidden;
-                            }  
-                            body.dark {  
-                                background: #07021D !important;  
-                                color: #E1EAED !important;  
-                            }  
-                            strong {  
-                                font-size: 1.2em;  
-                            }  
-                            ul {  
-                                list-style-type: none;  
-                                padding-left: 0;  
-                            }  
-                            li {  
-                                margin-bottom: 10px;  
-                            }  
-                        </style>  
-                    </head>  
-                    <body class="${themeClass}">  
-                        ${translation}  
-                    </body>  
-                    </html>  
-                `;
-                
-                popup.style.height = `${finalHeight}px`;
-                popup.style.display = 'block';  
-                overlay.style.display = 'block';
-                
-                iframe.onload = function() {
-                    try {
-                        const iframeBody = iframe.contentDocument.body;
-                        const scrollHeight = iframeBody.scrollHeight;
-                        const adjustedHeight = Math.min(Math.max(scrollHeight + 20, minHeight), maxHeight);
-                        popup.style.height = `${adjustedHeight}px`;
-                    } catch(e) {
-                        console.error('Error adjusting iframe height:', e);
-                    }
-                };
-            }
-            
-            const openBtn = document.querySelector('.open-btn');
-            const textForSearch = cleanedText.replace(/'ti/, '');
-            openBtn.href = `${dhammaGift}${encodeURIComponent(textForSearch)}${dgParams}`;
-
-            const dictBtn = document.querySelector('.dict-btn');
-            const dictSearchUrl = `https://dict.dhamma.gift/${savedDict.includes("ru") ? "ru/" : ""}search_html?q=${encodeURIComponent(textForSearch)}`;
-            dictBtn.href = dictSearchUrl;
-
-            function showSearchButton() {
-                const textForSearch = cleanedText.replace(/'ti/, '');
-                const searchBtn = document.createElement('a');
-                searchBtn.href = `${dhammaGift}${encodeURIComponent(textForSearch)}${dgParams}`;
-                searchBtn.classList.add('open-btn');
-                searchBtn.style.position = 'fixed';
-                searchBtn.style.border = 'none';
-                searchBtn.style.background = '#2D3E50';
-                searchBtn.style.color = 'white';
-                searchBtn.style.cursor = 'pointer';
-                searchBtn.style.width = '30px';
-                searchBtn.style.height = '30px';
-                searchBtn.style.borderRadius = '50%';
-                searchBtn.style.display = 'flex';
-                searchBtn.style.alignItems = 'center';
-                searchBtn.style.justifyContent = 'center';
-                searchBtn.style.textDecoration = 'none';
-                searchBtn.target = '_blank';
-                searchBtn.style.top = `${event.clientY - 10}px`;
-                searchBtn.style.left = `${event.clientX - 10}px`;
-                searchBtn.style.zIndex = '10000';
-                searchBtn.innerHTML = `
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="16" height="16" fill="white" style="transform: scaleX(-1);">
-                        <path d="M505 442.7l-99.7-99.7c28.4-35.3 45.7-79.8 45.7-128C451 98.8 352.2 0 224 0S-3 98.8-3 224s98.8 224 224 224c48.2 0 92.7-17.3 128-45.7l99.7 99.7c6.2 6.2 14.4 9.4 22.6 9.4s16.4-3.1 22.6-9.4c12.5-12.5 12.5-32.8 0-45.3zM224 384c-88.4 0-160-71.6-160-160S135.6 64 224 64s160 71.6 160 160-71.6 160-160 160z"/>
-                    </svg>
-                `;
-                document.body.appendChild(searchBtn);
-                searchBtn.addEventListener('click', () => {
-                    searchBtn.remove();
-                });
-                setTimeout(() => {
-                    searchBtn.remove();
-                }, 1500);
-            }
-
-            if (dictUrl.includes('dicttango') || dictUrl.includes('mdict')) {
-                popup.style.display = 'none';
-                overlay.style.display = 'none';
-                showSearchButton();
-            } else if (dictUrl.includes('searchonly')) {
-                popup.style.display = 'none';
-                overlay.style.display = 'none';
-                showSearchButton();
-            } else {
-                popup.style.display = 'block';
-                overlay.style.display = 'block';
-            }
-        }
-    } else if (event.target.closest('.pli-lang, [lang="pi"]')) {
-        // Обработка клика по одному слову (оригинальная логика)
+        if (event.target.closest('a, button, input, textarea, select')) return;
+        handleWordLookup(selectedText, event);
+    } 
+    // Для клика по слову
+    else if (pliElement) {
+        if (event.target.closest('a, button, input, textarea, select')) return;
         const clickedWord = getClickedWordWithHTML(event.target, event.clientX, event.clientY);
-
-        if (event.target.closest('a, button, input, textarea, select')) {
-            return;
-        }
-
-        if (clickedWord) {
-            let cleanedWord = cleanWord(clickedWord);
-          //  console.log('Клик по слову:', cleanedWord);
-
-            if (dictionaryVisible) {
-                let translation = "";
-                
-                if (dictUrl === "standalonebw" || dictUrl === "standalonebwru") {
-                    translation = lookupWordInStandaloneDict(cleanedWord);
-                } 
-                else if (dictUrl.includes('dicttango') || dictUrl.includes('mdict')) {
-                    const tempLink = document.createElement('a');
-                    tempLink.href = 'javascript:void(0)';
-                    tempLink.onclick = function() {
-                        window.location.href = `${dictUrl}${encodeURIComponent(cleanedWord)}`;
-                        return false;
-                    };
-                    tempLink.click();
-                    translation = "";
-                    popup.style.display = 'none';
-                    overlay.style.display = 'none';
-                }
-                else {
-                    const url = `${dictUrl}${encodeURIComponent(cleanedWord)}`;
-                    iframe.src = url;
-                }
-
-                if (translation) {
-                    const isDarkMode = document.body.classList.contains('dark') || document.documentElement.getAttribute('data-theme') === 'dark';
-                    const themeClass = isDarkMode ? 'dark' : '';
-                    
-                    const tempDiv = document.createElement('div');
-                    tempDiv.style.position = 'absolute';
-                    tempDiv.style.visibility = 'hidden';
-                    tempDiv.style.width = 'calc(100% - 20px)';
-                    tempDiv.innerHTML = translation;
-                    document.body.appendChild(tempDiv);
-                    
-                    const contentHeight = tempDiv.offsetHeight;
-                    document.body.removeChild(tempDiv);
-                    
-                    let minHeight = 100;
-                    const maxHeight = window.innerHeight * 0.95; 
-                    
-                    if (dictUrl === "standalonebw" || dictUrl === "standalonebwru") {
-                        minHeight = 100;
-                    } else {
-                        const screenHeight = window.innerHeight;
-                        minHeight = (screenHeight * 0.8 < 600) ? screenHeight * 0.8 : 600;
-                    }
-
-                    let finalHeight = Math.min(Math.max(contentHeight + 20, minHeight), maxHeight);
-                    
-                    iframe.srcdoc = `  
-                        <!DOCTYPE html>  
-                        <html lang="en" class="${themeClass}">  
-                        <head>  
-                            <meta charset="UTF-8">  
-                            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                            <style>  
-                                body {  
-                                    font-family: Arial, sans-serif;  
-                                    padding: 10px;  
-                                    margin: 0;
-                                    overflow: hidden;
-                                }  
-                                body.dark {  
-                                    background: #07021D !important;  
-                                    color: #E1EAED !important;  
-                                }  
-                                strong {  
-                                    font-size: 1.2em;  
-                                }  
-                                ul {  
-                                    list-style-type: none;  
-                                    padding-left: 0;  
-                                }  
-                                li {  
-                                    margin-bottom: 10px;  
-                                }  
-                            </style>  
-                        </head>  
-                        <body class="${themeClass}">  
-                            ${translation}  
-                        </body>  
-                        </html>  
-                    `;
-                    
-                    popup.style.height = `${finalHeight}px`;
-                    popup.style.display = 'block';  
-                    overlay.style.display = 'block';
-                    
-                    iframe.onload = function() {
-                        try {
-                            const iframeBody = iframe.contentDocument.body;
-                            const scrollHeight = iframeBody.scrollHeight;
-                            const adjustedHeight = Math.min(Math.max(scrollHeight + 20, minHeight), maxHeight);
-                            popup.style.height = `${adjustedHeight}px`;
-                        } catch(e) {
-                            console.error('Error adjusting iframe height:', e);
-                        }
-                    };
-                }
-                
-                const openBtn = document.querySelector('.open-btn');
-                const wordForSearch = cleanedWord.replace(/'ti/, '');
-                openBtn.href = `${dhammaGift}${encodeURIComponent(wordForSearch)}${dgParams}`;
-
-                const dictBtn = document.querySelector('.dict-btn');
-                const dictSearchUrl = `https://dict.dhamma.gift/${savedDict.includes("ru") ? "ru/" : ""}search_html?q=${encodeURIComponent(wordForSearch)}`;
-                dictBtn.href = dictSearchUrl;
-
-                function showSearchButton() {
-                    const wordForSearch = cleanedWord.replace(/'ti/, '');
-                    const searchBtn = document.createElement('a');
-                    searchBtn.href = `${dhammaGift}${encodeURIComponent(wordForSearch)}${dgParams}`;
-                    searchBtn.classList.add('open-btn');
-                    searchBtn.style.position = 'fixed';
-                    searchBtn.style.border = 'none';
-                    searchBtn.style.background = '#2D3E50';
-                    searchBtn.style.color = 'white';
-                    searchBtn.style.cursor = 'pointer';
-                    searchBtn.style.width = '30px';
-                    searchBtn.style.height = '30px';
-                    searchBtn.style.borderRadius = '50%';
-                    searchBtn.style.display = 'flex';
-                    searchBtn.style.alignItems = 'center';
-                    searchBtn.style.justifyContent = 'center';
-                    searchBtn.style.textDecoration = 'none';
-                    searchBtn.target = '_blank';
-                    searchBtn.style.top = `${event.clientY - 10}px`;
-                    searchBtn.style.left = `${event.clientX - 10}px`;
-                    searchBtn.style.zIndex = '10000';
-                    searchBtn.innerHTML = `
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="16" height="16" fill="white" style="transform: scaleX(-1);">
-                            <path d="M505 442.7l-99.7-99.7c28.4-35.3 45.7-79.8 45.7-128C451 98.8 352.2 0 224 0S-3 98.8-3 224s98.8 224 224 224c48.2 0 92.7-17.3 128-45.7l99.7 99.7c6.2 6.2 14.4 9.4 22.6 9.4s16.4-3.1 22.6-9.4c12.5-12.5 12.5-32.8 0-45.3zM224 384c-88.4 0-160-71.6-160-160S135.6 64 224 64s160 71.6 160 160-71.6 160-160 160z"/>
-                        </svg>
-                    `;
-                    document.body.appendChild(searchBtn);
-                    searchBtn.addEventListener('click', () => {
-                        searchBtn.remove();
-                    });
-                    setTimeout(() => {
-                        searchBtn.remove();
-                    }, 1500);
-                }
-
-                if (dictUrl.includes('dicttango') || dictUrl.includes('mdict')) {
-                    popup.style.display = 'none';
-                    overlay.style.display = 'none';
-                    showSearchButton();
-                } else if (dictUrl.includes('searchonly')) {
-                    popup.style.display = 'none';
-                    overlay.style.display = 'none';
-                    showSearchButton();
-                } else {
-                    popup.style.display = 'block';
-                    overlay.style.display = 'block';
-                }
-            }
-        }
+        if (clickedWord) handleWordLookup(clickedWord, event);
     }
 });
+
 
 function getClickedWordWithHTML(element, x, y) {
     let range;
