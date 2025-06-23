@@ -1130,6 +1130,9 @@ link=`echo $filenameblock |  awk -v lkru="$linkforru" -v ext="$linkforruext" '{p
 htmlpattern=$(echo "$pattern" | sed 's/\\.//g' | sed 's/ /%20/g')
 
 linkgeneral=`echo $filenameblock | awk '{print "'${pagelang}'/read/?s='${htmlpattern}'&q="$0}' ` 
+elif  [[ "$fortitle" == *"Abhidhamma"* ]] 
+then 
+linkgeneral=`echo $filenameblock |  awk '{print "https://suttacentral.net/"$0}' ` 
 else
 linkgeneral=`echo $filenameblock |  awk '{print "'${pagelang}'/read/?q="$0}' ` 
 fi
