@@ -312,7 +312,7 @@ $transwarning = ' <i class="fa-solid fa-triangle-exclamation "></i> <b>Пожа�
  Самое важное в Учении Будды лучше изучить <strong>самостоятельно по Суттам на Пали</strong>. Хорошей отправной точной будет Серединная Практика и Четыре Благородные Истины. Например, несколько абзацев из <strong>sn56.11</strong>.';
 
 $anamemlearnpali = 'Learn Pali Переводы';
-$anamelearnsanskrit = 'Джеймс Велан. Пали, Санскрит';
+$anamelearnsanskrit = 'Джеймс Велан. Пали и Санскрит';
 
 $anamemolds = 'Переводы Майкла Олдса'; 
 $anameasc = 'Статьи на Dhammadana.org';
@@ -1045,7 +1045,7 @@ $transwarning = '<i class="fa-solid fa-triangle-exclamation "></i> <b>Please Rem
 
 
 $anamemlearnpali = 'Learn Pali Guides';
-$anamelearnsanskrit = 'James Whelan. Pali, Sanskrit';
+$anamelearnsanskrit = 'James Whelan. Pali & Sanskrit';
 
 $anamemolds = 'Translations by M. Olds';
 $anameasc = 'Articles at Dhammadana.org';
