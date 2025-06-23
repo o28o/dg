@@ -240,7 +240,8 @@ echo '<!--
 <li>
 
 <div class="dropdown-item ">
-<a target="_blank" class="text-reset" href="https://www.thebuddhistsociety.org/page/sanskrit-and-pali-study-resources-guide-by-james-whelan">' . $anamelearnsanskrit . '</a> <a class="text-reset" target="_blank" href="https://drive.google.com/drive/folders/1jAy_xD6qkrnIkmXO9e4KtI_--nDMySSn">gd</a>
+<a target="_blank" class="text-reset" href="https://www.thebuddhistsociety.org/page/sanskrit-and-pali-study-resources-guide-by-james-whelan">' . $anamelearnsanskrit . '</a> <a class="text-reset" target="_blank" href="https://drive.google.com/drive/folders/1jAy_xD6qkrnIkmXO9e4KtI_--nDMySSn">gd</a> <a class="text-reset" target="_blank" href="https://www.youtube.com/@jameswhelan2381">yt</a>
+
        </div>
 
 
