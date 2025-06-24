@@ -33,7 +33,6 @@ const siteLanguage = localStorage.getItem('siteLanguage');
 let savedDict = localStorage.getItem('selectedDict');
 
 
-// Добавь это в начало файла, после других функций
 function getSelectedText() {
     const selection = window.getSelection();
     return selection ? selection.toString().trim() : '';
