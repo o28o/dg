@@ -132,19 +132,28 @@ function handleWordLookup(word, event) {
     let cleanedWord = cleanWord(word);
     //console.log('Обрабатываем:', cleanedWord);
 
-
     let translation = "";
     
-    // Для standalone-режима обрабатываем ВСЕ слова
-    if (dictUrl === "standalonebw" || dictUrl === "standalonebwru") {
-        const words = word.split(/\s+/)
-                         .map(w => cleanWord(w))
-                         .filter(w => w.length > 0);
+// Для standalone-режима обрабатываем ВСЕ слова
+if (dictUrl === "standalonebw" || dictUrl === "standalonebwru") {
+    // Пытаемся найти перевод для всего словосочетания
+    const phraseTranslation = lookupWordInStandaloneDict(cleanedWord);
+    
+    // Если перевод для словосочетания есть — выводим его
+    if (phraseTranslation.trim() !== "") {
+        translation += phraseTranslation;
+    } 
+    // Если перевода нет — разбиваем на слова и ищем их по отдельности
+    else {
+        const words = cleanedWord.split(/\s+/)
+                                .map(w => cleanWord(w))
+                                .filter(w => w.length > 0);
         
         for (const singleWord of words) {
             translation += lookupWordInStandaloneDict(singleWord);
-       }
+        }
     }
+}
     // Для остальных режимов — старый код без изменений
     else if (dictUrl.includes('dicttango') || dictUrl.includes('mdict')) {
         const tempLink = document.createElement('a');
@@ -200,8 +209,8 @@ function handleWordLookup(word, event) {
                     body {  
                         font-family: Arial, sans-serif;  
                         padding: 10px;  
-                        margin: 0;
-                        overflow: hidden;
+                        margin: 0;  
+                        overflow: auto;
                     }  
                     body.dark {  
                         background: #07021D !important;  
@@ -429,87 +438,56 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 
-function lookupWordInStandaloneDict(originalPhrase) {
-    if (!originalPhrase) return "";
-
-    const original = originalPhrase.trim();
-
-    // Для поиска очищаем от кавычек и заменяем ṁ → ṃ
-    let phrase = original.replace(/[’”'"]/g, "").replace(/ṁ/g, "ṃ");
-
-    const dictSearchUrl = `https://dict.dhamma.gift/${   
-        savedDict.includes("ru") ? "ru/" : ""
-    }search_html?q=${encodeURIComponent(original)}`;
-
+function lookupWordInStandaloneDict(word) {
     let out = "";
+    word = word.replace(/[’”'"]/g, "").replace(/ṁ/g, "ṃ");
 
-    // 1. Ищем всё словосочетание целиком
-    if (phrase in dpd_i2h) {
-        out += `<div class="dict-result">
-            <a href="${dictSearchUrl}" target="_blank" style="text-decoration:none;color:inherit">
-                <strong>${original}</strong>
-            </a>
-            <ul class="pli-lang" lang="pi" style="line-height:1em; padding-left:15px;">`;
+    // Создаем URL для поиска слова в словаре
+    const dictSearchUrl = `https://dict.dhamma.gift/${savedDict.includes("ru") ? "ru/" : ""}search_html?q=${encodeURIComponent(word)}`;
 
-        for (const headword of dpd_i2h[phrase]) {
+    // Проверяем, есть ли слово как ключ в dpd_i2h
+    if (word in dpd_i2h) {
+        out += `<a href="${dictSearchUrl}" target="_blank" rel="noopener noreferrer" style="text-decoration: none; color: inherit;"><strong>${word}</strong></a><br><ul style="line-height: 1em; padding-left: 15px;">`;
+        for (const headword of dpd_i2h[word]) {
             if (headword in dpd_ebts) {
-                out += `<li>${headword}. ${dpd_ebts[headword]}</li>`;
+                out += '<li>' + headword + '. ' + dpd_ebts[headword] + '</li>';
             }
         }
-        out += "</ul></div>";
+        out += "</ul>";
     }
-
-    if (phrase in dpd_deconstructor) {
-        out += `<div class="dict-result">
-            <a href="${dictSearchUrl}" target="_blank" style="text-decoration:none;color:inherit">
-                <strong>${original}</strong>
-            </a>
-            <ul class="pli-lang" lang="pi" style="line-height:1em; padding-left:15px;">
-                <li>${dpd_deconstructor[phrase]}</li>
-            </ul>
-        </div>`;
-    }
-
-    // 2. Если не нашли фразу — ищем каждое слово отдельно
-    if (!out) {
-        const words = phrase.split(/\s+/);
-        const originalWords = original.split(/\s+/);
-
-        for (let i = 0; i < words.length; i++) {
-            const word = words[i];
-            const originalWord = originalWords[i];
-
-            if (word in dpd_i2h) {
-                out += `<div class="dict-result">
-                    <a href="${dictSearchUrl}" target="_blank" style="text-decoration:none;color:inherit">
-                        <strong>${originalWord}</strong>
-                    </a>
-                    <ul class="pli-lang" lang="pi" style="line-height:1em; padding-left:15px;">`;
-
-                for (const headword of dpd_i2h[word]) {
-                    if (headword in dpd_ebts) {
-                        out += `<li>${headword}. ${dpd_ebts[headword]}</li>`;
+    // Если слово не ключ, но есть в значениях (особенно в ключе ""), ищем его в dpd_ebts
+    else {
+        let foundInValues = false;
+        // Проверяем все ключи, где слово может быть в значениях
+        for (const key in dpd_i2h) {
+            if (dpd_i2h[key].includes(word)) {
+                foundInValues = true;
+                // Если слово есть в dpd_ebts, выводим его перевод
+                if (word in dpd_ebts) {
+                    if (!out.includes(`<strong>${word}</strong>`)) {
+                        out += `<a href="${dictSearchUrl}" target="_blank" rel="noopener noreferrer" style="text-decoration: none; color: inherit;"><strong>${word}</strong></a><br><ul style="line-height: 1em; padding-left: 15px;">`;
                     }
+                    out += '<li>' + word + '. ' + dpd_ebts[word] + '</li>';
+                    out += "</ul>";
                 }
-                out += "</ul></div>";
-            }
-
-            if (word in dpd_deconstructor) {
-                out += `<div class="dict-result">
-                    <a href="${dictSearchUrl}" target="_blank" style="text-decoration:none;color:inherit">
-                        <strong>${originalWord}</strong>
-                    </a>
-                    <ul class="pli-lang" lang="pi" style="line-height:1em; padding-left:15px;">
-                        <li>${dpd_deconstructor[word]}</li>
-                    </ul>
-                </div>`;
+                break; // Достаточно найти хотя бы один случай
             }
         }
+    }
+
+    // Проверяем, есть ли слово в dpd_deconstructor
+    if (word in dpd_deconstructor) {
+        if (!out.includes(`<strong>${word}</strong>`)) {
+            out += `<a href="${dictSearchUrl}" target="_blank" rel="noopener noreferrer" style="text-decoration: none; color: inherit;"><strong>${word}</strong></a><br><ul style="line-height: 1em; padding-left: 15px;">`;
+        } else {
+            out += "<ul style='line-height: 1em; padding-left: 15px;'>";
+        }
+        out += "<li>" + dpd_deconstructor[word] + "</li>";
+        out += "</ul>";
     }
 
     return out.replace(/ṃ/g, "ṁ");
 }
-
 function clearParams() {
     const keys = ['popupWidth', 'popupHeight', 'popupTop', 'popupLeft', 'windowWidth', 'windowHeight', 'isFirstDrag'];
     keys.forEach(key => localStorage.removeItem(key));
