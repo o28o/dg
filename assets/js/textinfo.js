@@ -2305,7 +2305,7 @@
 "sn33.36-40":{"pi":"Rūpaappaccupalakkhaṇādisuttapañcaka ","en":"Five Discourses on Not Differentiating Form, Etc. ","mtph":"","ru":"Пятерка Сутт Начинающихся с Неохарактеризовывание Материи"},
 "sn33.41-45":{"pi":"Rūpaasamapekkhaṇādisuttapañcaka ","en":"Five Discourses on Not Examining Form, Etc. ","mtph":"","ru":"Пятерка Сутт Начинающихся с Неравностного Видения Материи"},
 "sn33.46-50":{"pi":"Rūpaappaccupekkhaṇādisuttapañcaka ","en":"Five Discourses on Not Scrutinizing Form, Etc. ","mtph":"","ru":"Пятерка Сутт Начинающихся с Неосматривания Материи"},
-"sn33.51-54":{"pi":"Rūpaappaccakkhakammādisuttacatukka ","en":"Four Discourses on Not Directly Experiencing Form, Etc. ","mtph":""},
+"sn33.51-54":{"pi":"Rūpaappaccakkhakammādisuttacatukka ","en":"Four Discourses on Not Directly Experiencing Form, Etc. ","mtph":"","ru":"Пятерка Сутт Начинающихся с Непрояснения Материи"},
 "sn33.55":{"pi":"Viññāṇaappaccakkhakammasutta ","en":"Not Directly Experiencing Consciousness ","mtph":"","ru":"Пятерка Сутт Начинающихся с Непрояснения Внимания"},
 "sn34.1":{"pi":"Samādhimūlakasamāpattisutta ","en":"Entering Immersion ","mtph":1,"ru":"Самадхи Мулака Самапатти"},
 "sn34.2":{"pi":"Samādhimūlakaṭhitisutta ","en":"Remaining in Immersion ","mtph":1,"ru":"Самадхи Мулака Тхити"},
