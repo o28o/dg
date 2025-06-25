@@ -45,7 +45,7 @@ function loadContent($slug, $type) {
     // Новая логика загрузки из файлов
     if ($type === 'pali') {
         //$cmd = "find ../suttacentral.net/sc-data/sc_bilara_data/root/pli/ms/ -name \"${slug}_*\" -print -quit";
-        $cmd = "find ../assets/texts/devanagari/root/pli/ms/ -name \"${slug}_*\" -print -quit";
+        $cmd = "find ./assets/texts/devanagari/root/pli/ms/ -name \"${slug}_*\" -print -quit";
         $file = trim(shell_exec($cmd));
         return $file ? shell_exec("cat ".escapeshellarg($file)." | jq -r '.[]'") : "Pali text not found for: $slug";
     }
@@ -55,7 +55,7 @@ function loadContent($slug, $type) {
         return $file ? shell_exec("cat ".escapeshellarg($file)." | jq -r '.[]'") : "Russian translation not found for: $slug";
     }
     else { // en
-        $cmd = "find ../suttacentral.net/sc-data/sc_bilara_data/translation/en/ -name \"${slug}_*\" -print -quit";
+        $cmd = "find ./suttacentral.net/sc-data/sc_bilara_data/translation/en/ -name \"${slug}_*\" -print -quit";
         $file = trim(shell_exec($cmd));
         return $file ? shell_exec("cat ".escapeshellarg($file)." | jq -r '.[]'") : "English translation not found for: $slug";
     }
