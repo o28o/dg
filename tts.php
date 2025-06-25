@@ -1,6 +1,6 @@
 <?php
 // Параметры запроса
-$slug = $_GET['q'] ?? '';
+$slug = strtolower($_GET['q'] ?? '');
 $type = $_GET['type'] ?? 'pali'; // 'pali' или 'trn' (translation)
 
 // Определяем язык по URL (новая логика)
@@ -45,17 +45,25 @@ function loadContent($slug, $type) {
     // Новая логика загрузки из файлов
     if ($type === 'pali') {
         //$cmd = "find ../suttacentral.net/sc-data/sc_bilara_data/root/pli/ms/ -name \"${slug}_*\" -print -quit";
-        $cmd = "find ./assets/texts/devanagari/root/pli/ms/ -name \"${slug}_*\" -print -quit";
-        $file = trim(shell_exec($cmd));
+        
+   $script = $_GET['script'] ?? 'dev'; // по умолчанию деванагари
+
+if ($script === 'lat') {
+    $cmd = "find ./suttacentral.net/sc-data/sc_bilara_data/root/pli/ms/ -name \"{$slug}_*\" -print -quit";
+} else {
+    $cmd = "find ./assets/texts/devanagari/root/pli/ms/ -name \"{$slug}_*\" -print -quit";
+}     
+
+$file = trim(shell_exec($cmd));
         return $file ? shell_exec("cat ".escapeshellarg($file)." | jq -r '.[]'") : "Pali text not found for: $slug";
     }
     elseif ($type === 'ru') {
-        $cmd = "find ../assets/texts/sutta ../assets/texts/vinaya -name \"${slug}_*\" -print -quit";
+        $cmd = "find ../assets/texts/sutta ../assets/texts/vinaya -name \"{$slug}_*\" -print -quit";
         $file = trim(shell_exec($cmd));
         return $file ? shell_exec("cat ".escapeshellarg($file)." | jq -r '.[]'") : "Russian translation not found for: $slug";
     }
     else { // en
-        $cmd = "find ./suttacentral.net/sc-data/sc_bilara_data/translation/en/ -name \"${slug}_*\" -print -quit";
+        $cmd = "find ./suttacentral.net/sc-data/sc_bilara_data/translation/en/ -name \"{$slug}_*\" -print -quit";
         $file = trim(shell_exec($cmd));
         return $file ? shell_exec("cat ".escapeshellarg($file)." | jq -r '.[]'") : "English translation not found for: $slug";
     }
@@ -133,29 +141,45 @@ function setLanguage(lang) {
     location.reload(); // теперь безопасно
 }
 
+function togglePaliScript() {
+    const current = localStorage.getItem('paliScript') || 'dev';
+    const next = current === 'dev' ? 'lat' : 'dev';
+    localStorage.setItem('paliScript', next);
+
+    const url = new URL(window.location.href);
+    if (next === 'dev') {
+        url.searchParams.delete('script');
+    } else {
+        url.searchParams.set('script', 'lat');
+    }
+
+    window.location.href = url.toString();
+}
 
 function updateLanguageSwitcher(lang) {
     const switcher = document.querySelector('.lang-switcher');
-    
+
     if (lang === 'ru') {
         switcher.innerHTML = `
+             <a class="btn btn-sm btn-outline-secondary rounded-pill text-decoration-none ms-1" href="#" onclick="setLanguage('pi'); return false;">pi</a>
             <a class="btn btn-sm btn-outline-secondary rounded-pill text-decoration-none" href="#" onclick="setLanguage('en'); return false;">en</a>
             <span class="btn btn-sm btn-primary rounded-pill ms-1">ru</span>
-            <a class="btn btn-sm btn-outline-secondary rounded-pill text-decoration-none ms-1" href="#" onclick="setLanguage('pi'); return false;">pi</a>
         `;
     } 
+    
     else if (lang === 'pi') {
         switcher.innerHTML = `
+       <!-- <span class="btn btn-sm btn-primary rounded-pill ms-1">pi</span> -->
+        <a class="btn btn-sm btn-primary rounded-pill ms-1" href="#" onclick="togglePaliScript(); return false;">pi</a>
             <a class="btn btn-sm btn-outline-secondary rounded-pill text-decoration-none" href="#" onclick="setLanguage('en'); return false;">en</a>
             <a class="btn btn-sm btn-outline-secondary rounded-pill text-decoration-none ms-1" href="#" onclick="setLanguage('ru'); return false;">ru</a>
-            <span class="btn btn-sm btn-primary rounded-pill ms-1">pi</span>
         `;
     }
     else {
         switcher.innerHTML = `
+            <a class="btn btn-sm btn-outline-secondary rounded-pill text-decoration-none ms-1" href="#" onclick="setLanguage('pi'); return false;">pi</a> 
             <span class="btn btn-sm btn-primary rounded-pill">en</span>
             <a class="btn btn-sm btn-outline-secondary rounded-pill text-decoration-none ms-1" href="#" onclick="setLanguage('ru'); return false;">ru</a>
-            <a class="btn btn-sm btn-outline-secondary rounded-pill text-decoration-none ms-1" href="#" onclick="setLanguage('pi'); return false;">pi</a>
         `;
     }
 }
@@ -198,7 +222,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-
 </script>
 <div class="container mt-3">
   <div class="d-flex flex-wrap align-items-center justify-content-between">
@@ -218,7 +241,7 @@ document.addEventListener('DOMContentLoaded', function() {
       <div class="ms-1 form-check form-switch">
         <input type="checkbox" class="form-check-input" id="darkSwitch">
       </div>
-      <a href="/assets/common/ttsHelp.html" class="text-reset text-decoration-none text-muted ms-2">?</a>
+      <a href="/assets/common/ttsHelp.html" class="text-decoration-none text-muted ms-2">?</a>
     </div>
 
     <!-- Lang (order 2 на моб, order 3 на десктопе) -->
