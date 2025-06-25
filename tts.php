@@ -90,6 +90,7 @@ $content = $slug ? loadContent($slug, $content_type) : htmlspecialchars($_POST['
   <link href="/assets/css/pages.css" rel="stylesheet" />
 <link rel="stylesheet" href="/assets/css/jquery-ui.min.css">
 <!-- -->
+<link href="/assets/css/paliLookup.css" rel="stylesheet" />
 
 <script src="/assets/js/jquery-3.7.0.min.js"></script>
 <script src="/assets/js/jquery-ui.min.js"></script>
@@ -240,8 +241,13 @@ document.addEventListener('DOMContentLoaded', function() {
       </a>
 
       <a id="homeLink" href="/ru" title="Sutta and Vinaya search" rel="noreferrer" class="me-1">
-        <img width="24px" alt="dhamma.gift icon" src="/assets/img/gray-white.png">
+        <img width="24px" alt="dhamma.gift icon" class="me-1" src="/assets/img/gray-white.png">
       </a>
+
+    <!-- Dictionary OnClick Popup -->
+    <a alt="Onclick popup dictionary" title="Onclick popup dictionary (Alt+A)" class="toggle-dict-btn text-decoration-none text-black me-1">
+      <img src="/assets/svg/comment.svg" class="dictIcon">
+    </a>
 
       <div class="ms-1 form-check form-switch">
         <input type="checkbox" class="form-check-input" id="darkSwitch">
@@ -271,12 +277,9 @@ document.addEventListener('DOMContentLoaded', function() {
   </div>
 </div>
 
-
-
-  <div class="text-content mt-3"><?= htmlspecialchars($content) ?></div>
+  <div class="text-content mt-3 pli-lang" lang="pi"><?= htmlspecialchars($content) ?></div>
 
   <script src="/assets/js/dark-mode-switch/dark-mode-switch.js"></script>
-
 
   <script>
     function goToSlug() {
@@ -303,5 +306,9 @@ document.addEventListener('DOMContentLoaded', function() {
   </script>
   <script src="/assets/js/autopali.js" defer></script>
 	  <script src="/assets/js/smoothScroll.js" defer></script>
+      <script src="/assets/js/paliLookup.js"></script>
+      <script src="/assets/js/settings.js"></script>
+
+
 </body>
 </html>
