@@ -26,7 +26,7 @@ $is_ru_referer = false;
   }
   
   // Формируем ссылки в зависимости от языка
-  $pali_link = '/tts.php.php?q='.$fromjs;
+  $pali_link = '/tts.php?q='.$fromjs;
   $trn_link = $is_ru_referer ? '/ru/tts.php?q='.$fromjs.'&type=trn' : '/tts.php?q='.$fromjs.'&type=trn';
 
   //th.ru and th.su part
