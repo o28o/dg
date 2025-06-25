@@ -34,6 +34,8 @@ $title = htmlspecialchars(
 
 // Загрузка контента по slug (обновленная версия)
 function loadContent($slug, $type) {
+  include_once('config/config.php');
+  
     // Старая логика (для демонстрации)
     if (!in_array($type, ['pali', 'ru', 'en'])) {
         if ($type === 'trn') {
@@ -49,21 +51,24 @@ function loadContent($slug, $type) {
    $script = $_GET['script'] ?? 'dev'; // по умолчанию деванагари
 
 if ($script === 'lat') {
-    $cmd = "find ./suttacentral.net/sc-data/sc_bilara_data/root/pli/ms/ -name \"{$slug}_*\" -print -quit";
+    $cmd = "find $basedir/suttacentral.net/sc-data/sc_bilara_data/root/pli/ms/ -name \"{$slug}_*\" -print -quit";
 } else {
-    $cmd = "find ./assets/texts/devanagari/root/pli/ms/ -name \"{$slug}_*\" -print -quit";
-}     
-
-$file = trim(shell_exec($cmd));
-        return $file ? shell_exec("cat ".escapeshellarg($file)." | jq -r '.[]'") : "Pali text not found for: $slug";
+    $cmd = "find $basedir/assets/texts/devanagari/root/pli/ms/ -name \"{$slug}_*\" -print -quit";
+}    
+//echo $cmd;
+$file = shell_exec($cmd);
+$file = is_string($file) ? trim($file) : '';
+return $file
+    ? shell_exec("cat " . escapeshellarg($file) . " | jq -r '.[]'")
+    : "Pali text not found for: $slug";
     }
     elseif ($type === 'ru') {
-        $cmd = "find ../assets/texts/sutta ../assets/texts/vinaya -name \"{$slug}_*\" -print -quit";
+        $cmd = "find $basedir/assets/texts/sutta ../assets/texts/vinaya -name \"{$slug}_*\" -print -quit";
         $file = trim(shell_exec($cmd));
         return $file ? shell_exec("cat ".escapeshellarg($file)." | jq -r '.[]'") : "Russian translation not found for: $slug";
     }
     else { // en
-        $cmd = "find ./suttacentral.net/sc-data/sc_bilara_data/translation/en/ -name \"{$slug}_*\" -print -quit";
+        $cmd = "find $basedir/suttacentral.net/sc-data/sc_bilara_data/translation/en/ -name \"{$slug}_*\" -print -quit";
         $file = trim(shell_exec($cmd));
         return $file ? shell_exec("cat ".escapeshellarg($file)." | jq -r '.[]'") : "English translation not found for: $slug";
     }
@@ -296,6 +301,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
   </script>
   <script src="/assets/js/autopali.js" defer></script>
-
+	  <script src="/assets/js/smoothScroll.js" defer></script>
 </body>
 </html>
