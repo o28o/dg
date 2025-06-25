@@ -267,7 +267,7 @@ document.addEventListener('DOMContentLoaded', function() {
 <form id="slugForm" class="d-flex align-items-center flex-nowrap order-3 order-sm-2 mx-auto flex-grow-0" onsubmit="return goToSlug();" style="min-width: 140px; max-width: 250px;">
   <input type="text" class="form-control form-control-sm rounded-pill me-1 flex-grow-1" 
          id="paliauto" name="q" value="<?= htmlspecialchars($slug) ?>" 
-         placeholder="e.g. an3.76" style="min-width: 100px;">
+         placeholder="e.g. an3.76" style="min-width: 100px;" autofocus>
   <button type="submit" class="btn btn-sm btn-outline-secondary rounded-circle p-1 flex-shrink-0">
     Go
   </button>
