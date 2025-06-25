@@ -313,10 +313,10 @@ echo '<!--
   
          <li>
          <div class="dropdown-item ">
-          <a class="text-reset" target="" onclick="localStorage.setItem(\'siteLanguage\', \'th\');" href="/th/?q=">Fdg</a> 
+          <a class="text-reset" target="" onclick="localStorage.setItem(\'siteLanguage\', \'th\');" href="/th/?q=">DG</a> 
          <a class="text-reset" target=""  href="/old.php">old</a> 
-         <a class="text-reset" target="" href="/new/">new</a> 
-                  <a class="text-reset" target="" href="' . $readerPage . '"> индекс</a>   
+        <a class="text-reset" target=""   href="/ru/tts.php">TTS</a>  
+       <!--  <a class="text-reset" target=""  href="/new/">new</a> -->                   <a class="text-reset" target="" href="' . $readerPage . '"> индекс</a>   
             <a class="text-reset" target="" href="/ru/assets/texts/sutta.php">sutta</a>        
       <a class="text-reset" target="" href="/ru/pm.php?expand=true">bupm</a>        
       <a class="text-reset" target="" href="/ru/bipm.php?expand=true">bipm</a> 

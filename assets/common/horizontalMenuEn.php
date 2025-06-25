@@ -287,9 +287,10 @@ echo '<!--
    
          <li>
          <div class="dropdown-item ">
-          <a class="text-reset" target=""  onclick="localStorage.setItem(\'siteLanguage\', \'th\');" href="/th/?q=">Fdg</a> 
-          <a class="text-reset" target=""   href="/old.php">old</a> 
-         <a class="text-reset" target=""  href="/new/">new</a> 
+          <a class="text-reset" target=""  onclick="localStorage.setItem(\'siteLanguage\', \'th\');" href="/th/?q=">DG</a> 
+          <a class="text-reset" target=""   href="/old.php">old</a>
+        <a class="text-reset" target=""   href="/tts.php">TTS</a>  
+       <!--  <a class="text-reset" target=""  href="/new/">new</a> --> 
                   <a class="text-reset" target=""  href="' . $readerPage . '">index</a>  
 <a class="text-reset" target=""  href="/assets/texts/sutta.php">sutta</a>                       
       <a class="text-reset" target=""  href="/pm.php?expand=true">bupm</a>        
