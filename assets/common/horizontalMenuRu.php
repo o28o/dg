@@ -56,7 +56,7 @@ echo '<!--
 <a title="Пали Тексты и Зарубежные Ресурсы" class="dropup text-decoration-none mx-1 d-md-inline-block" id="MenuEnglish" data-bs-toggle="dropdown" aria-expanded="false" href="#">
 <figure class="figure dropup d-md-inline-block">
     <i class="menu-icon icon-item fa-solid fa-book"></i>
-<figcaption class="horiz-menu-item figure-caption text-center">Английские</figcaption>   
+<figcaption class="horiz-menu-item figure-caption text-center">на Английском</figcaption>   
 </figure>	  
 </a>
   <ul class="dropdown-menu" aria-labelledby="MenuEnglish">
@@ -125,7 +125,7 @@ echo '<!--
 <a title="Ресурсы на Русском" class="dropup text-decoration-none mx-1 d-md-inline-block" id="MenuRussian" data-bs-toggle="dropdown" aria-expanded="false" href="#">
 <figure class="figure dropup">
   <i class="menu-icon icon-item fa-solid fa-book"></i>
-<figcaption class="horiz-menu-item figure-caption text-center">Русские</figcaption>   
+<figcaption class="horiz-menu-item figure-caption text-center">на Русском</figcaption>   
 </figure>	  
 </a>
   <ul class="dropdown-menu" aria-labelledby="MenuRussian">
