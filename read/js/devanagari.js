@@ -58,7 +58,7 @@ function buildSutta(slug) {
   let html = `<div class="button-area"><button title="Switch language (Atl+Z or Alt+Space)" id="language-button" class="hide-button">Pāḷi Рус</button></div>`;
   
   const slugReady = parseSlug(slug);
-  console.log("slugReady is " + slugReady + " slug is " + slug); 
+ // console.log("slugReady is " + slugReady + " slug is " + slug); 
 
 
 
@@ -67,7 +67,7 @@ $.ajax({
     }).done(function(data) {
       const trnsResp = data.split(" ");
       let translator = trnsResp[0];
-      console.log('inside', translator);
+    //  console.log('inside', translator);
 
 //if (slug.match(/^mn([1-9]|1[0-9]|2[0-1])$/)) {
  
@@ -103,7 +103,6 @@ if ( texttype === "vinaya")
 //var engtrnpath = `${Sccopy}/sc-data/sc_bilara_data/translation/${pathLang}/${translator}/${texttype}/${slugReady}_translation-${pathLang}-${translator}.json`;
   var engtrnpath = `${Sccopy}/sc-data/sc_bilara_data/translation/en/sujato/${texttype}/${slugReady}_translation-en-sujato.json`;
 }
-console.log('engtrnpath line108', engtrnpath);
 
 var htmlpath = `${Sccopy}/sc-data/sc_bilara_data/html/pli/ms/${texttype}/${slugReady}_html.json`;
 
@@ -128,23 +127,23 @@ if (slug.includes("mn"))  {
  var trnpath = rustrnpath; 
  let language = "pli-rus";
 // scLink += ifRus; 
-  console.log(trnpath);
+ // console.log(trnpath);
 } else if (slug.includes("sn")) { 
   var trnpath = rustrnpath; 
-  console.log(trnpath);
+ // console.log(trnpath);
 //  scLink += ifRus; 
 } else if (slug.includes("an")) { 
   var trnpath = rustrnpath; 
-  console.log(trnpath);
+//  console.log(trnpath);
 //  scLink += ifRus; 
 } else if (slug.includes("dn")) { 
   var trnpath = rustrnpath; 
  // scLink += ifRus; 
-  console.log(trnpath);
+//  console.log(trnpath);
 } else if (knranges.indexOf(slug) !== -1) { 
   var trnpath = rustrnpath; 
  // scLink += ifRus; 
-  console.log(trnpath);
+//  console.log(trnpath);
 } else if (slug.match(/ja/)) {
   let language = "pli";
   let slugNumber = parseInt(slug.replace(/\D/g, ''), 10); // Извлекаем число из slug
@@ -162,7 +161,7 @@ if (slug.includes("mn"))  {
   var trnpath = `${Sccopy}/sc-data/sc_bilara_data/translation/${pathLang}/${translator}/${texttype}/${slugReady}_translation-${pathLang}-${translator}.json`;
 } else if (slug.match(/bu-pm|bi-pm/)) {
   let translator = "o";
-    var rootpath = `/assets/texts/${texttype}/${slug}_root-pli-ms.json`;
+var rootpath = `${Sccopy}/sc-data/sc_bilara_data/root/pli/ms/${texttype}/${slug}_root-pli-ms.json`
 
  if (( script === "devanagari" ) || ( savedScript === "Devanagari" ) ) {
 var rootDevanagaripath = `/assets/texts/devanagari/root/pli/ms/${texttype}/${slug}_rootd-pli-ms.json`;
@@ -189,12 +188,12 @@ if (vinayaranges.indexOf(slug) !== -1) {
   const pathLang = "en";
   var trnpath = `${Sccopy}/sc-data/sc_bilara_data/translation/${pathLang}/${translator}/${texttype}/${slugReady}_translation-${pathLang}-${translator}.json`;
 }
-  console.log('vinaya case');
-  console.log(trnpath);
-  console.log(engtrnpath);
+  //console.log('vinaya case');
+  //console.log(trnpath);
+  //console.log(engtrnpath);
 
 }  
-console.log(rootDevanagaripath, rootpath, trnpath, htmlpath);
+//console.log(rootDevanagaripath, rootpath, trnpath, htmlpath);
 var varpath = `${Sccopy}/sc-data/sc_bilara_data/variant/pli/ms/${texttype}/${slugReady}_variant-pli-ms.json`
 var varpathLocal = `/assets/texts/variant/${texttype}/${slugReady}_variant-pli-ms.json`
   const rootResponse = fetch(rootpath).then(response => response.json());
@@ -212,7 +211,7 @@ async function fetchVariant() {
       if (response.ok) {
         return await response.json();
       }
-      console.log(`note: no var found at ${path}`);
+   //   console.log(`note: no var found at ${path}`);
     } catch (error) {
       console.log(`note: error fetching var ${path}`);
     }
@@ -480,7 +479,7 @@ function findTextUrl(nikaya, subdivision, textnum) {
 }
 
 let textUrl = getTextUrl(slug);
-console.log("Ссылка на", slug + ":", textUrl);
+//console.log("Ссылка на", slug + ":", textUrl);
 if (textUrl) {
 scLink += `<a target="" href="${textUrl}">DPR</a>&nbsp;`;
 }
@@ -497,7 +496,7 @@ if ((translator === 'sujato') || (translator === 'brahmali')) {
 //<a href="/legacy.suttacentral.net/read/pi/${slug}.html">legacy.SC</a>&nbsp; <a target="" href="https://voice.suttacentral.net/scv/index.html?#/sutta?search=${slug}">Voice.SC</a>
       if (linksArray[0].length >= 4) {
         scLink += linksArray[0];
-            console.log("extralinks " + linksArray[0]);
+          //  console.log("extralinks " + linksArray[0]);
       } 
       scLink += "</p>"; 
 
@@ -643,7 +642,7 @@ prevName = prevName.replace(/[0-9.]/g, '');
 
 // Отправка запроса по адресу http://localhost:8080/ru/?q= с использованием значения slug
 var xhr = new XMLHttpRequest();
-xhr.open("GET", "/?q=" + encodeURIComponent(slug), true);
+xhr.open("GET", "/d/?q=" + encodeURIComponent(slug), true);
 xhr.send();
 
 xhr.onreadystatechange = function() {
@@ -655,7 +654,7 @@ xhr.onreadystatechange = function() {
           !xhr.responseText.includes("404") &&
           xhr.responseText.trim().length > 0) {
         console.log(xhr.responseText);
-        window.location.href = "/?q=" + encodeURIComponent(slug);
+        window.location.href = "/d/?q=" + encodeURIComponent(slug);
       } else {
         console.log('Page not found or empty response');
       }
@@ -695,11 +694,11 @@ if (document.location.search) {
 
  if (lang) {
     language = lang;
-    console.log("in the initializing " + lang);
+ //   console.log("in the initializing " + lang);
     setLanguage(lang);
   } else if  (localStorage.paliToggleSpecial) {
     	language = localStorage.paliToggleSpecial; 
-		  console.log('read from ls ' + language);
+		//  console.log('read from ls ' + language);
 setLanguage(language);
   }
 } else {
@@ -851,7 +850,7 @@ function showRussian() {
   suttaArea.classList.remove('column-view'); // Отключаем двухколоночный режим
 }
 function showPali() {
-  console.log("showing pali ");
+//  console.log("showing pali ");
   suttaArea.classList.remove("hide-pali");
   suttaArea.classList.add("hide-english");
   suttaArea.classList.add("hide-russian");
@@ -902,7 +901,7 @@ if (
   slug === 'pli-tv-bi-vb-as1-7'
 ) {
   const slugParts = slug.match(/^([a-z]+)-([a-z]+)-([a-z]+)-([a-z]+)-([a-z]+)*(\d*)/);
-  console.log('as case');
+ // console.log('as case');
   const fixforbivb = slug.replace(/(\d+)-(\d+)/g, '');
   const bookWithoutNumber = fixforbivb.replace(/(\d+)/g, '');
   const fixforbivb2 = slug.replace(/-([a-z]+)\d+/g, '');
