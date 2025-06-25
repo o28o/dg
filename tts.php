@@ -201,10 +201,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
 </script>
 <div class="container mt-3">
-  <div class="d-flex align-items-center justify-content-between">
+  <div class="d-flex flex-wrap align-items-center justify-content-between">
 
-    <!-- Левая группа кнопок -->
-    <div class="d-flex align-items-center">
+    <!-- Nav (order 1 всегда) -->
+    <div class="d-flex align-items-center order-1 mb-2 mb-sm-0">
       <a id="readLink" href="/ru/read.php" title="Sutta and Vinaya reading" rel="noreferrer" class="me-1">
         <svg fill="#979797" xmlns="http://www.w3.org/2000/svg" height="26px" viewBox="0 0 547.596 547.596" stroke="#979797">
           <g><path d="M540.76,254.788L294.506,38.216c-11.475-10.098-30.064-10.098-41.386,0L6.943,254.788 c-11.475,10.098-8.415,18.284,6.885,18.284h75.964v221.773c0,12.087,9.945,22.108,22.108,22.108h92.947V371.067 c0-12.087,9.945-22.108,22.109-22.108h93.865c12.239,0,22.108,9.792,22.108,22.108v145.886h92.947 c12.24,0,22.108-9.945,22.108-22.108v-221.85h75.965C549.021,272.995,552.081,264.886,540.76,254.788z"></path></g>
@@ -218,32 +218,29 @@ document.addEventListener('DOMContentLoaded', function() {
       <div class="ms-1 form-check form-switch">
         <input type="checkbox" class="form-check-input" id="darkSwitch">
       </div>
-      <a href="/assets/common/ttsHelp.html" class="text-reset text-decoration-none text-muted">?</a>
+      <a href="/assets/common/ttsHelp.html" class="text-reset text-decoration-none text-muted ms-2">?</a>
     </div>
 
-<label class="sr-only dropup rounded-pill" for="paliauto"></label>
-
-    <!-- Форма поиска slug -->
-
-<form id="slugForm" class="d-flex align-items-center flex-nowrap" onsubmit="return goToSlug();">
-  <input type="text" class="form-control form-control-sm rounded-pill me-1 flex-grow-1" 
-         id="paliauto" name="q" value="<?= htmlspecialchars($slug) ?>" 
-         placeholder="e.g. an3.76" style="min-width: 100px;">
-  <button type="submit" class="btn btn-sm btn-outline-secondary rounded-circle p-1 flex-shrink-0" style="width: 40px;">
-    Go
-  </button>
-</form>
-
-
-    <!-- Языковой переключатель -->
-    <div class="d-inline-flex align-items-center lang-switcher">
+    <!-- Lang (order 2 на моб, order 3 на десктопе) -->
+    <div class="d-inline-flex align-items-center lang-switcher order-2 order-sm-3 mb-2 mb-sm-0">
       <span class="btn btn-sm btn-primary rounded-pill">en</span>
       <a class="btn btn-sm btn-outline-secondary rounded-pill text-decoration-none ms-1" href="#" onclick="setLanguage('ru'); return false;">ru</a>
       <a class="btn btn-sm btn-outline-secondary rounded-pill text-decoration-none ms-1" href="#" onclick="setLanguage('pi'); return false;">pi</a>
     </div>
 
+    <!-- Form (order 3 на моб, order 2 на десктопе) -->
+    <form id="slugForm" class="d-flex align-items-center flex-nowrap order-3 order-sm-2 flex-grow-1" onsubmit="return goToSlug();" style="min-width: 200px; max-width: 400px;">
+      <input type="text" class="form-control form-control-sm rounded-pill me-1 flex-grow-1" 
+             id="paliauto" name="q" value="<?= htmlspecialchars($slug) ?>" 
+             placeholder="e.g. an3.76" style="min-width: 100px;">
+      <button type="submit" class="btn btn-sm btn-outline-secondary rounded-circle p-1 flex-shrink-0" style="width: 40px;">
+        Go
+      </button>
+    </form>
+
   </div>
 </div>
+
 
 
   <div class="text-content mt-3"><?= htmlspecialchars($content) ?></div>
