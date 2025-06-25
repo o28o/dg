@@ -166,8 +166,8 @@ function updateLanguageSwitcher(lang) {
 
     if (lang === 'ru') {
         switcher.innerHTML = `
-             <a class="btn btn-sm btn-outline-secondary rounded-pill text-decoration-none ms-1" href="#" onclick="setLanguage('pi'); return false;">pi</a>
-            <a class="btn btn-sm btn-outline-secondary rounded-pill text-decoration-none" href="#" onclick="setLanguage('en'); return false;">en</a>
+             <a class="btn btn-sm btn-outline-secondary rounded-pill text-decoration-none " href="#" onclick="setLanguage('pi'); return false;">pi</a>
+            <a class="btn btn-sm btn-outline-secondary rounded-pill text-decoration-none ms-1" href="#" onclick="setLanguage('en'); return false;">en</a>
             <span class="btn btn-sm btn-primary rounded-pill ms-1">ru</span>
         `;
     } 
@@ -175,15 +175,15 @@ function updateLanguageSwitcher(lang) {
     else if (lang === 'pi') {
         switcher.innerHTML = `
        <!-- <span class="btn btn-sm btn-primary rounded-pill ms-1">pi</span> -->
-        <a class="btn btn-sm btn-primary rounded-pill ms-1" href="#" onclick="togglePaliScript(); return false;">pi</a>
-            <a class="btn btn-sm btn-outline-secondary rounded-pill text-decoration-none" href="#" onclick="setLanguage('en'); return false;">en</a>
+        <a class="btn btn-sm btn-primary rounded-pill" href="#" onclick="togglePaliScript(); return false;">pi</a>
+            <a class="btn btn-sm btn-outline-secondary rounded-pill text-decoration-none ms-1" href="#" onclick="setLanguage('en'); return false;">en</a>
             <a class="btn btn-sm btn-outline-secondary rounded-pill text-decoration-none ms-1" href="#" onclick="setLanguage('ru'); return false;">ru</a>
         `;
     }
     else {
         switcher.innerHTML = `
-            <a class="btn btn-sm btn-outline-secondary rounded-pill text-decoration-none ms-1" href="#" onclick="setLanguage('pi'); return false;">pi</a> 
-            <span class="btn btn-sm btn-primary rounded-pill">en</span>
+            <a class="btn btn-sm btn-outline-secondary rounded-pill text-decoration-none " href="#" onclick="setLanguage('pi'); return false;">pi</a> 
+            <span class="btn btn-sm btn-primary rounded-pill ms-1">en</span>
             <a class="btn btn-sm btn-outline-secondary rounded-pill text-decoration-none ms-1" href="#" onclick="setLanguage('ru'); return false;">ru</a>
         `;
     }
@@ -251,9 +251,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
     <!-- Lang (order 2 на моб, order 3 на десктопе) -->
     <div class="d-inline-flex align-items-center lang-switcher order-2 order-sm-3 mb-2 mb-sm-0">
-      <span class="btn btn-sm btn-primary rounded-pill">en</span>
+              <a class="btn btn-sm btn-outline-secondary rounded-pill text-decoration-none" href="#" onclick="setLanguage('pi'); return false;">pi</a>
+      <span class="btn btn-sm btn-primary rounded-pill ms-1">en</span>
       <a class="btn btn-sm btn-outline-secondary rounded-pill text-decoration-none ms-1" href="#" onclick="setLanguage('ru'); return false;">ru</a>
-      <a class="btn btn-sm btn-outline-secondary rounded-pill text-decoration-none ms-1" href="#" onclick="setLanguage('pi'); return false;">pi</a>
+
     </div>
 
     <!-- Form (order 3 на моб, order 2 на десктопе) -->
