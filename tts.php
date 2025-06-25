@@ -225,14 +225,14 @@ document.addEventListener('DOMContentLoaded', function() {
 
     <!-- Форма поиска slug -->
 
-    <form id="slugForm" class="d-flex align-items-center" onsubmit="return goToSlug();">
-      <input type="text" class="form-control searchinput form-control-sm rounded-pill me-1" 
-             id="paliauto" name="q" value="<?= htmlspecialchars($slug) ?>" 
-             placeholder="e.g. an3.76" style="max-width: 160px;">
-      <button type="submit" class="btn btn-sm btn-outline-secondary rounded-circle p-1">
-        Go
-      </button>
-    </form>
+<form id="slugForm" class="d-flex align-items-center flex-nowrap" onsubmit="return goToSlug();">
+  <input type="text" class="form-control form-control-sm rounded-pill me-1 flex-grow-1" 
+         id="paliauto" name="q" value="<?= htmlspecialchars($slug) ?>" 
+         placeholder="e.g. an3.76" style="min-width: 100px;">
+  <button type="submit" class="btn btn-sm btn-outline-secondary rounded-circle p-1 flex-shrink-0" style="width: 40px;">
+    Go
+  </button>
+</form>
 
 
     <!-- Языковой переключатель -->
