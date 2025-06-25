@@ -229,7 +229,7 @@ document.addEventListener('DOMContentLoaded', function() {
     </div>
 
     <!-- Form (order 3 на моб, order 2 на десктопе) -->
-    <form id="slugForm" class="d-flex align-items-center flex-nowrap order-3 order-sm-2 flex-grow-1" onsubmit="return goToSlug();" style="min-width: 200px; max-width: 400px;">
+    <form id="slugForm" class="d-flex align-items-center flex-nowrap order-3 order-sm-2 flex-grow-1" onsubmit="return goToSlug();" style="min-width: 140px; max-width: 250px;">
       <input type="text" class="form-control form-control-sm rounded-pill me-1 flex-grow-1" 
              id="paliauto" name="q" value="<?= htmlspecialchars($slug) ?>" 
              placeholder="e.g. an3.76" style="min-width: 100px;">
