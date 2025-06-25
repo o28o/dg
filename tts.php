@@ -168,14 +168,14 @@ function updateLanguageSwitcher(lang) {
         switcher.innerHTML = `
              <a class="btn btn-sm btn-outline-secondary rounded-pill text-decoration-none " href="#" onclick="setLanguage('pi'); return false;">pi</a>
             <a class="btn btn-sm btn-outline-secondary rounded-pill text-decoration-none ms-1" href="#" onclick="setLanguage('en'); return false;">en</a>
-            <span class="btn btn-sm btn-primary rounded-pill ms-1">ru</span>
+            <a class="btn btn-sm btn-primary rounded-pill btn-outline-secondary active ms-1">ru</a>
         `;
     } 
     
     else if (lang === 'pi') {
         switcher.innerHTML = `
        <!-- <span class="btn btn-sm btn-primary rounded-pill ms-1">pi</span> -->
-        <a class="btn btn-sm btn-primary rounded-pill" href="#" onclick="togglePaliScript(); return false;">pi</a>
+            <a class="btn btn-sm btn-primary rounded-pill btn-outline-secondary active" href="#" onclick="togglePaliScript(); return false;">pi</a>
             <a class="btn btn-sm btn-outline-secondary rounded-pill text-decoration-none ms-1" href="#" onclick="setLanguage('en'); return false;">en</a>
             <a class="btn btn-sm btn-outline-secondary rounded-pill text-decoration-none ms-1" href="#" onclick="setLanguage('ru'); return false;">ru</a>
         `;
@@ -183,7 +183,7 @@ function updateLanguageSwitcher(lang) {
     else {
         switcher.innerHTML = `
             <a class="btn btn-sm btn-outline-secondary rounded-pill text-decoration-none " href="#" onclick="setLanguage('pi'); return false;">pi</a> 
-            <span class="btn btn-sm btn-primary rounded-pill ms-1">en</span>
+            <span class="btn btn-sm btn-primary rounded-pill btn-outline-secondary active ms-1">en</span>
             <a class="btn btn-sm btn-outline-secondary rounded-pill text-decoration-none ms-1" href="#" onclick="setLanguage('ru'); return false;">ru</a>
         `;
     }
@@ -262,7 +262,7 @@ document.addEventListener('DOMContentLoaded', function() {
   <input type="text" class="form-control form-control-sm rounded-pill me-1 flex-grow-1" 
          id="paliauto" name="q" value="<?= htmlspecialchars($slug) ?>" 
          placeholder="e.g. an3.76" style="min-width: 100px;">
-  <button type="submit" class="btn btn-sm btn-outline-secondary rounded-circle p-1 flex-shrink-0" style="width: 40px;">
+  <button type="submit" class="btn btn-sm btn-outline-secondary rounded-circle p-1 flex-shrink-0">
     Go
   </button>
 </form>
