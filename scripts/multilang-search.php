@@ -93,8 +93,6 @@ if (preg_match('/dictLookup/', $p) || preg_match('/dictLookup/', $extra)) {
     } else {
         echo "<script>
             setTimeout(function() {
-                // Устанавливаем режим словаря
-                localStorage.setItem('selectedDict', '{$dictMode}');
                 
                 // Показываем popup
                 const popup = document.querySelector('.popup');
