@@ -74,7 +74,7 @@ if (preg_match('/dictLookup/', $p) || preg_match('/dictLookup/', $extra)) {
     
     // Определяем язык
     $isRussian = preg_match('/\/ru/', $actual_link);
-    $dictMode = $isRussian ? "standalonebwru" : "standalonebw";
+    $dictMode = $isRussian ? "dpdFullRu" : "dpdFull";
     
     // Устанавливаем слово по умолчанию
     if (empty($stringForWord) || $stringForWord === '""') {
