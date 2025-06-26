@@ -72,6 +72,21 @@ return $file
         $file = trim(shell_exec($cmd));
         return $file ? shell_exec("cat ".escapeshellarg($file)." | jq -r '.[]'") : "English translation not found for: $slug";
     }
+	
+	if ($content && $type === 'pali') {
+        $content = preg_replace([
+            '/[-—–]/u',
+            '/[:;“”‘’,"\']/u',
+            '/[.?!]/u'
+        ], [
+            ' ',
+            '',
+            ' | '
+        ], $content);
+    }
+
+    return $content;
+
 }
 
 // Если передан slug, загружаем контент автоматически
