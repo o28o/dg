@@ -1395,9 +1395,9 @@ var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
 
 </script>
 
-<!-- 
+<!--  -->
 <script src="/assets/js/paliLookup.js"></script>
--->
+
 <script defer>
   window.addEventListener('DOMContentLoaded', function() {
     setTimeout(function() {

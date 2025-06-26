@@ -70,34 +70,47 @@ if (file_put_contents($filePath, $cleanedUrl . PHP_EOL) === false) {
 
 // Режим Словаря 
 if (preg_match('/dictLookup/', $p) || preg_match('/dictLookup/', $extra)) {
-    $stringForWord = urlencode(htmlspecialchars(strtolower($stringForWord), ENT_QUOTES));
-    $dictType = 'https://dict.dhamma.gift';
+    $stringForWord = htmlspecialchars(strtolower($stringForWord), ENT_QUOTES);
     
-    if (preg_match('/\/ru/', $actual_link)) {
-        $outputlang = "-oru";
-        $langinurl = "/ru";
-    } else {
-        $outputlang = "";
-        $langinurl = "";
-    }
-
+    // Определяем язык
+    $isRussian = preg_match('/\/ru/', $actual_link);
+    $dictMode = $isRussian ? "standalonebwru" : "standalonebw";
+    
+    // Устанавливаем слово по умолчанию
     if (empty($stringForWord) || $stringForWord === '""') {
         $stringForWord = "dukkha";
     }
-
+    
+    // Для локального сервера используем dictTango, для остальных - iframe
     $server_name = $_SERVER['SERVER_NAME'];
     if ($server_name === 'localhost' || $server_name === '127.0.0.1') {
-        $dictUrl = "dttp://app.dicttango/WordLookup?word="; // Исправлен протокол
+        echo "<script>
+            setTimeout(function() {
+                window.location.href = 'dttp://app.dicttango/WordLookup?word=' + encodeURIComponent('{$stringForWord}');
+                document.getElementById('spinner').style.display = 'none';
+            }, 100);
+        </script>";
     } else {
-        $dictUrl = "/assets/openDDG.html?url={$dictType}{$langinurl}/search_html?q=";  
+        echo "<script>
+            setTimeout(function() {
+                // Устанавливаем режим словаря
+                localStorage.setItem('selectedDict', '{$dictMode}');
+                
+                // Показываем popup
+                const popup = document.querySelector('.popup');
+                const overlay = document.querySelector('.overlay');
+                const iframe = document.querySelector('.popup iframe');
+                
+                popup.style.display = 'block';
+                overlay.style.display = 'block';
+                
+                // Загружаем слово в словарь
+                handleWordLookup('{$stringForWord}', { clientX: window.innerWidth/2, clientY: window.innerHeight/2 });
+                
+                document.getElementById('spinner').style.display = 'none';
+            }, 100);
+        </script>";
     }
-    
-   echo "<script>
-setTimeout(function() {
-    window.location.href = '{$dictUrl}' + '{$stringForWord}';
-    document.getElementById('spinner').style.display = 'none';
-}, 100);
-</script>";
     return;
 }
 
