@@ -92,12 +92,12 @@ if (preg_match('/dictLookup/', $p) || preg_match('/dictLookup/', $extra)) {
         $dictUrl = "/assets/openDDG.html?url={$dictType}{$langinurl}/search_html?q=";  
     }
     
-    echo "<script>
-    setTimeout(function() {
-        window.open('{$dictUrl}' + '{$stringForWord}');
-        document.getElementById('spinner').style.display = 'none';
-    }, 100);
-    </script>";
+   echo "<script>
+setTimeout(function() {
+    window.location.href = '{$dictUrl}' + '{$stringForWord}';
+    document.getElementById('spinner').style.display = 'none';
+}, 100);
+</script>";
     return;
 }
 
