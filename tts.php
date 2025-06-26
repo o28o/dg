@@ -34,8 +34,8 @@ $title = htmlspecialchars(
 
 // Загрузка контента по slug (обновленная версия)
 function loadContent($slug, $type) {
-  include_once('config/config.php');
-  
+    include_once('config/config.php');
+    
     // Старая логика (для демонстрации)
     if (!in_array($type, ['pali', 'ru', 'en'])) {
         if ($type === 'trn') {
@@ -46,21 +46,32 @@ function loadContent($slug, $type) {
 
     // Новая логика загрузки из файлов
     if ($type === 'pali') {
-        //$cmd = "find ../suttacentral.net/sc-data/sc_bilara_data/root/pli/ms/ -name \"${slug}_*\" -print -quit";
-        
-   $script = $_GET['script'] ?? 'dev'; // по умолчанию деванагари
+        $script = $_GET['script'] ?? 'dev'; // по умолчанию деванагари
 
-if ($script === 'lat') {
-    $cmd = "find $basedir/suttacentral.net/sc-data/sc_bilara_data/root/pli/ms/ -name \"{$slug}_*\" -print -quit";
-} else {
-    $cmd = "find $basedir/assets/texts/devanagari/root/pli/ms/ -name \"{$slug}_*\" -print -quit";
-}    
-//echo $cmd;
-$file = shell_exec($cmd);
-$file = is_string($file) ? trim($file) : '';
-return $file
-    ? shell_exec("cat " . escapeshellarg($file) . " | jq -r '.[]'")
-    : "Pali text not found for: $slug";
+        if ($script === 'lat') {
+            $cmd = "find $basedir/suttacentral.net/sc-data/sc_bilara_data/root/pli/ms/ -name \"{$slug}_*\" -print -quit";
+        } else {
+            $cmd = "find $basedir/assets/texts/devanagari/root/pli/ms/ -name \"{$slug}_*\" -print -quit";
+        }
+        
+        $file = shell_exec($cmd);
+        $file = is_string($file) ? trim($file) : '';
+        $content = $file ? shell_exec("cat " . escapeshellarg($file) . " | jq -r '.[]'") : "Pali text not found for: $slug";
+        
+        // Обработка пунктуации только для палийского текста
+        if ($content && $type === 'pali') {
+            $content = preg_replace([
+                '/[-—–]/u',
+                '/[:;“”‘’,"\']/u',
+                '/[.?!]/u'
+            ], [
+                ' ',
+                '',
+                ' | '
+            ], $content);
+        }
+        
+        return $content;
     }
     elseif ($type === 'ru') {
         $cmd = "find $basedir/assets/texts/sutta ../assets/texts/vinaya -name \"{$slug}_*\" -print -quit";
@@ -72,21 +83,6 @@ return $file
         $file = trim(shell_exec($cmd));
         return $file ? shell_exec("cat ".escapeshellarg($file)." | jq -r '.[]'") : "English translation not found for: $slug";
     }
-	
-	if ($content && $type === 'pali') {
-        $content = preg_replace([
-            '/[-—–]/u',
-            '/[:;“”‘’,"\']/u',
-            '/[.?!]/u'
-        ], [
-            ' ',
-            '',
-            ' | '
-        ], $content);
-    }
-
-    return $content;
-
 }
 
 // Если передан slug, загружаем контент автоматически
