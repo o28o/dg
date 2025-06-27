@@ -36,7 +36,7 @@ $title = htmlspecialchars(
 function loadContent($slug, $type) {
     include_once('config/config.php');
     
-    // Старая логика (для демонстрации)
+$jq = 'jq -r \'to_entries[] | "<a id=\"\(.key)\"></a><span>\(.value)</span>"\' | sed "s/' . $slug . '://"';    // Старая логика (для демонстрации)
     if (!in_array($type, ['pali', 'ru', 'en'])) {
         if ($type === 'trn') {
             return "Это перевод для: $slug";
@@ -56,32 +56,41 @@ function loadContent($slug, $type) {
         
         $file = shell_exec($cmd);
         $file = is_string($file) ? trim($file) : '';
-        $content = $file ? shell_exec("cat " . escapeshellarg($file) . " | jq -r '.[]'") : "Pali text not found for: $slug";
+        $content = $file ? shell_exec("cat " . escapeshellarg($file) . " | $jq") : "Pali text not found for: $slug";
         
         // Обработка пунктуации только для палийского текста
-        if ($content && $type === 'pali') {
-            $content = preg_replace([
-                '/[-—–]/u',
-                '/[:;“”‘’,"\']/u',
-                '/[.?!]/u'
-            ], [
-                ' ',
-                '',
-                ' | '
-            ], $content);
-        }
-        
+if ($content && $type === 'pali') {
+    $content = preg_replace_callback(
+        '/(<a\b[^>]*>.*?<\/a>)|([-—–:;“”‘’",\'.?!])/u',
+        function($matches) {
+            if ($matches[1] !== '') {
+                // 1. Если это <a>...</a> — оставляем без изменений
+                return $matches[1];
+            } else {
+                // 2. Если это пунктуация вне <a> — заменяем
+                if (preg_match('/[.?!]/u', $matches[2])) {
+                    return ' | ';
+                } elseif (preg_match('/[-—–]/u', $matches[2])) {
+                    return ' ';
+                } else {
+                    return ''; // Удаляем :;“”‘’",
+                }
+            }
+        },
+        $content
+    );
+}
         return $content;
     }
     elseif ($type === 'ru') {
         $cmd = "find $basedir/assets/texts/sutta ../assets/texts/vinaya -name \"{$slug}_*\" -print -quit";
         $file = trim(shell_exec($cmd));
-        return $file ? shell_exec("cat ".escapeshellarg($file)." | jq -r '.[]'") : "Russian translation not found for: $slug";
+        return $file ? shell_exec("cat ".escapeshellarg($file)." | $jq") : "Russian translation not found for: $slug";
     }
     else { // en
         $cmd = "find $basedir/suttacentral.net/sc-data/sc_bilara_data/translation/en/ -name \"{$slug}_*\" -print -quit";
         $file = trim(shell_exec($cmd));
-        return $file ? shell_exec("cat ".escapeshellarg($file)." | jq -r '.[]'") : "English translation not found for: $slug";
+        return $file ? shell_exec("cat ".escapeshellarg($file)." | $jq") : "English translation not found for: $slug";
     }
 }
 
@@ -287,8 +296,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
   </div>
 </div>
-
-  <div class="text-content mt-3 pli-lang" lang="pi"><?= htmlspecialchars($content) ?></div>
+<!-- // <?= htmlspecialchars($content) ?> -->
+  <div class="text-content mt-3 pli-lang" lang="pi"><?= $content ?></div>
 
   <script src="/assets/js/dark-mode-switch/dark-mode-switch.js"></script>
 
