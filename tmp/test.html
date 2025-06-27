@@ -1,0 +1,26 @@
+<!DOCTYPE html>   <head> <title></title>
+    <script>  
+
+function greet(country) {  // Receives a country code. We need it for determining which language/greeting pair
+should be used based on the user's locale (browser settings).
+      let phrases = greetings[country];
+       if (!phrases){             // If no matching phrase found in russia’s array, use its English equivalent.
+
+         phrases= greetings['england'];  }            return(`${phrases[0]} ${phrases[1]}, how are you
+today?<br/>Welcome to our page!`);   // Default welcome message in english      };    if (country === 'en')
+{return('Hello, How can I assist You Today?')};
+        return(greetingPhrase.replace(/Hi|Hell/, "How are you"));         }  
+        
+    </ script >
+        <style id  = styling here, for better user experience.  You will see in the end of this webpage that we're
+using a function to get our text based on browser language setting and display it appropriately with English by
+default if no suitable phrase found as fallback option or else Russian version is used when available otherwise
+english one gets displayed>
+</head>
+   body {  background-color: lavender; padding :10px ; }     //background color for the page. You can change this
+to anything you like, it's just a design choice here    greetingSpan = document .createElement ('span') ,//create
+span element where our text will be inserted into
+document body ’> appendChild(greetings (browser language))   //insert above line of code inside the paragraph.
+This is how you are doing it using pure JavaScript as there's no need for a server-side scripting to get browser
+locale info and display this on client side with just HTML/JS
+< / body > < / html> 
