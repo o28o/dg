@@ -184,7 +184,7 @@ echo '<!--
 <a title="ИИ-помощники, Словари Пали и Санскрит" class="dropdown text-decoration-none mx-1 d-md-inline-block" id="MenuDict" data-bs-toggle="dropdown" aria-expanded="false" href="#">
   <figure class="figure d-md-inline-block">
     <i class="menu-icon fa-solid fa-book-atlas"></i>
-    <figcaption class="horiz-menu-item figure-caption text-center">ИИ & Словари</figcaption>   
+    <figcaption class="horiz-menu-item figure-caption text-center">ИИ, Словари</figcaption>   
   </figure>	  
 </a>
 
