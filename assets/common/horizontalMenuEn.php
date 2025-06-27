@@ -156,7 +156,7 @@ echo '<!--
 <a title="Dictionaries Pali and Sanskrit" class="dropdown text-decoration-none mx-1 d-md-inline-block" id="MenuDict" data-bs-toggle="dropdown" aria-expanded="false" href="#">
   <figure class="figure d-md-inline-block">
     <i class="menu-icon fa-solid fa-book-atlas"></i>
-    <figcaption class="horiz-menu-item figure-caption text-center">Dictionaries</figcaption>   
+    <figcaption class="horiz-menu-item figure-caption text-center">AI and Dicts</figcaption>   
   </figure>	  
 </a>
 
@@ -182,20 +182,36 @@ echo '<!--
    <li><a class="dropdown-item" target="_blank" href="http://dictionary.tamilcube.com/pali-dictionary.aspx">Eng-Pali Dictionary</a></li>
 
       <li>
-         <div class="dropdown-item "> Skr
+         <div class="dropdown-item "> Skr-En
         <a class="text-reset" target="_blank"   href="https://www.sanskrit-lexicon.uni-koeln.de/">Many dicts</a>
 		<a class="text-reset" target="_blank"   href="https://sanskritdictionary.com/?iencoding=iast&q=&lang=sans&action=Search">link 2</a>
 		<a class="text-reset" target="_blank"  href="https://www.learnsanskrit.cc/translate?search=&dir=au">Learnskr</a>  
        </div>
-         </li>  
+         </li>
+
+      <li>
+         <div class="dropdown-item "> Pali-Skr
+        <a class="text-reset" target="_blank"   href="https://sambhasha.ksu.ac.in/CompLing/pcl_1/html/Application%20home.html">Sambhasha Pali Tools</a>
+    <a class="text-reset" target="_blank" href="https://rephrasely.com/translate/translate-pali-to-sanskrit">Pl to SA AI</a>
+       </div>
+         </li>
+
+               <li>
+         <div class="dropdown-item ">
+         <a class="text-reset" target="_blank" href="https://chatgpt.com">ChatGPT</a>
+         <a class="text-reset" target="_blank" href="https://deepseek.com">DeepSeek</a>
+      <a class="text-reset" target="_blank" href="https://norbu-ai.org/">Norbu AI</a>
+           </div>
+         </li>
 
 <li><a class="dropdown-item" href="#" onclick="event.preventDefault(); [
 \'https://dsal.uchicago.edu/dictionaries/pali/\', 
 \'https://gandhari.org/dop\', 
 \'https://cpd.uni-koeln.de/search\', 
 \'https://dharmamitra.org/?target_lang=english-explained\', 
+\'https://sambhasha.ksu.ac.in/CompLing/pcl_1/html/pali_dict.html\', 
 \'https://www.wisdomlib.org/\'
-].forEach(url => window.open(url));">Open PTS, Cone, CPD, Mitra, Wisdomlib</a></li>		 		 
+].forEach(url => window.open(url));">Open PTS, Cone, CPD, Mitra, Wisdomlib, Pi-Skr</a></li>		 		 
 		 
 
 </ul>
@@ -325,16 +341,6 @@ echo '<!--
    
     
    <li><a class="dropdown-item" target="_blank" href="/cse.php">Google Custom Search</a></li>
-   
-
-      <li>
-         <div class="dropdown-item ">
-         <a class="text-reset" target="_blank" href="https://chatgpt.com">ChatGPT</a>
-         <a class="text-reset" target="_blank" href="https://deepseek.com">DeepSeek</a>
-      <a class="text-reset" target="_blank" href="https://norbu-ai.org/">Norbu AI</a>
-           </div>
-         </li>
-
    
               <li>
          <div class="dropdown-item ">PTS Converter

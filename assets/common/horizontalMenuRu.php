@@ -205,14 +205,29 @@ echo '<!--
        </div>
          </li> 
 
+     <li>
+         <div class="dropdown-item "> Pali-Skr
+        <a class="text-reset" target="_blank"   href="https://sambhasha.ksu.ac.in/CompLing/pcl_1/html/Application%20home.html">Sambhasha Pali Tools</a>
+    <a class="text-reset" target="_blank" href="https://rephrasely.com/translate/translate-pali-to-sanskrit">Pl to SA AI</a>
+       </div>
+         </li>
+
+               <li>
+         <div class="dropdown-item ">
+         <a class="text-reset" target="_blank" href="https://chatgpt.com">ChatGPT</a>
+         <a class="text-reset" target="_blank" href="https://deepseek.com">DeepSeek</a>
+      <a class="text-reset" target="_blank" href="https://norbu-ai.org/">Norbu AI</a>
+           </div>
+         </li>
+
 <li><a class="dropdown-item" href="#" onclick="event.preventDefault(); [
 \'https://dsal.uchicago.edu/dictionaries/pali/\', 
 \'https://gandhari.org/dop\', 
 \'https://cpd.uni-koeln.de/search\', 
 \'https://dharmamitra.org/?target_lang=english-explained\', 
+\'https://sambhasha.ksu.ac.in/CompLing/pcl_1/html/pali_dict.html\', 
 \'https://www.wisdomlib.org/\'
-].forEach(url => window.open(url));">Открыть PTS, Cone, CPD, Mitra, Wisdomlib</a></li>		 		 
-
+].forEach(url => window.open(url));">Open PTS, Cone, CPD, Mitra, Wisdomlib, Pi-Skr</a></li>        
 </ul>    
     
 <a title="Материалы для обучения и сайты" class="dropdown text-decoration-none mx-1 d-md-inline-block" id="materials" data-bs-toggle="dropdown" aria-expanded="false" href="#">
@@ -339,15 +354,6 @@ echo '<!--
    <li><a class="dropdown-item" target="_blank" href="https://www.aksharamukha.com/converter"> <i class="' . $iconimportant . '"></i> Aksharamukha текстовый конвертер</a></li>
    <li><a class="dropdown-item" target="_blank" href="/cse.php">Google Custom Search</a></li>
 
-
-      <li>
-         <div class="dropdown-item ">
-         <a class="text-reset" target="_blank" href="https://chatgpt.com">ChatGPT</a>
-         <a class="text-reset" target="_blank" href="https://deepseek.com">DeepSeek</a>
-      <a class="text-reset" target="_blank" href="https://norbu-ai.org/">Norbu AI</a>
-  
-         </div>
-         </li>
 
               <li>
          <div class="dropdown-item ">PTS Конвертер
