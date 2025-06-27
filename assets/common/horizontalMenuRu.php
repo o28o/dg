@@ -116,7 +116,17 @@ echo '<!--
 
            <li><a class="dropdown-item" target="_blank" href="/assets/materials/bipm_trn_by_chatsumarn_kabilsingh.pdf">Patimokkha Bi пер. Ch Kabilsingh</a></li>
    
-	  
+	           <li>
+         <div class="dropdown-item ">    
+  <a class="text-reset" href="/san/d/mg.php" >Prātimokṣa</a>
+    <a class="text-reset" href="/san/sarv.php" >sarv</a>
+    <a class="text-reset" href="/san/mg.php" >mg</a>
+    <a class="text-reset" href="/san/lo.php" >lo</a>
+    <a class="text-reset" href="/san/mu2.php" >mu2</a>
+    <a class="text-reset" href="/san/mu3.php" >mu3</a>
+         </div>
+         </li>
+    
         <li><a class="dropdown-item" target="_blank" href="' . $linknoblasc . '">Статьи на Dhammadana.org</a></li>
 
   </ul>
@@ -193,7 +203,6 @@ echo '<!--
    <li><a class="dropdown-item" target="_blank" href="https://cpd.uni-koeln.de/search">Cловарь Critical Pali Dict CPD</a></li>   
    <li><a class="dropdown-item" target="_blank" href="https://gandhari.org/dop">Cловарь M. Cone Gandhari.org</a></li>   
    <li><a class="dropdown-item" target="_blank" href="https://dsal.uchicago.edu/dictionaries/pali/">Cловарь R. Davids, W. Stede PTS</a></li>          
-  <li><a class="dropdown-item" target="_blank" href="http://dictionary.tamilcube.com/pali-dictionary.aspx">Англ-Пали Словарь</a></li>
 
    <li>
          <div class="dropdown-item "> Skr
@@ -210,13 +219,15 @@ echo '<!--
        </div>
          </li>
 
-               <li>
+          <li>
          <div class="dropdown-item ">
          <a class="text-reset" target="_blank" href="https://chatgpt.com">ChatGPT</a>
          <a class="text-reset" target="_blank" href="https://deepseek.com">DeepSeek</a>
       <a class="text-reset" target="_blank" href="https://norbu-ai.org/">Norbu AI</a>
            </div>
          </li>
+
+  <li><a class="dropdown-item" target="_blank" href="http://dictionary.tamilcube.com/pali-dictionary.aspx">Англ-Пали Словарь</a></li>
 
           <li><a class="dropdown-item" target="_blank" href="https://Wisdomlib.org">Wisdomlib.org</a></li>
 
@@ -340,16 +351,7 @@ echo '<!--
          </div>
          </li>
 
-         <li>
-         <div class="dropdown-item ">    
-  <a class="text-reset" href="/san/d/mg.php" >Prātimokṣa</a>
-    <a class="text-reset" href="/san/sarv.php" >sarv</a>
-    <a class="text-reset" href="/san/mg.php" >mg</a>
-    <a class="text-reset" href="/san/lo.php" >lo</a>
-    <a class="text-reset" href="/san/mu2.php" >mu2</a>
-    <a class="text-reset" href="/san/mu3.php" >mu3</a>
-         </div>
-         </li>
+
 
    <li><a class="dropdown-item" target="_blank" href="/assets/common/lunarRu.html"> <i class="' . $iconimportant . '"></i> Дни Упосаттхи по Суттам</a></li>
    <li><a class="dropdown-item" target="_blank" href="https://www.aksharamukha.com/converter"> <i class="' . $iconimportant . '"></i> Aksharamukha текстовый конвертер</a></li>

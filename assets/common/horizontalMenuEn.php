@@ -117,6 +117,17 @@ echo '<!--
   <li><a class="dropdown-item" target="" href="/assets/materials/bipm_trn_by_chatsumarn_kabilsingh.pdf">Patimokkha Bi trans. by Ch Kabilsingh</a></li>
         
 
+         <li>
+         <div class="dropdown-item ">    
+  <a class="text-reset" href="/san/d/mg.php" >Prātimokṣa</a>
+    <a class="text-reset" href="/san/sarv.php" >sarv</a>
+    <a class="text-reset" href="/san/mg.php" >mg</a>
+    <a class="text-reset" href="/san/lo.php" >lo</a>
+    <a class="text-reset" href="/san/mu2.php" >mu2</a>
+    <a class="text-reset" href="/san/mu3.php" >mu3</a>
+         </div>
+         </li>
+         
           <li><a class="dropdown-item" target="_blank" href="' . $linknoblasc . '">' . $anameasc . '</a></li>
 
         
@@ -177,7 +188,6 @@ echo '<!--
    <li><a class="dropdown-item" target="_blank" href="https://gandhari.org/dop">M. Cone dictionary Gandhari.org </a></li>   
    <li><a class="dropdown-item" target="_blank" href="https://dsal.uchicago.edu/dictionaries/pali/">R. Davids, W. Stede dictionary PTS</a></li> 
    
-   <li><a class="dropdown-item" target="_blank" href="http://dictionary.tamilcube.com/pali-dictionary.aspx">Eng-Pali Dictionary</a></li>
 
       <li>
          <div class="dropdown-item "> Skr-En
@@ -201,6 +211,8 @@ echo '<!--
       <a class="text-reset" target="_blank" href="https://norbu-ai.org/">Norbu AI</a>
            </div>
          </li>
+
+   <li><a class="dropdown-item" target="_blank" href="http://dictionary.tamilcube.com/pali-dictionary.aspx">Eng-Pali Dictionary</a></li>
 
           <li><a class="dropdown-item" target="_blank" href="https://Wisdomlib.org">Wisdomlib.org</a></li>
 
