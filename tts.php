@@ -296,7 +296,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   </div>
 </div>
-<!-- // <?= htmlspecialchars($content) ?> -->
+<!-- htmlspecialchars($content) -->
   <div class="text-content mt-3 pli-lang" lang="pi"><?= $content ?></div>
 
   <script src="/assets/js/dark-mode-switch/dark-mode-switch.js"></script>
