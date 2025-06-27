@@ -127,7 +127,7 @@ echo '<!--
     <a class="text-reset" href="/san/mu3.php" >mu3</a>
          </div>
          </li>
-         
+
           <li><a class="dropdown-item" target="_blank" href="' . $linknoblasc . '">' . $anameasc . '</a></li>
 
         
@@ -164,7 +164,7 @@ echo '<!--
 </a> 
     -->
 
-<a title="Dictionaries Pali and Sanskrit" class="dropdown text-decoration-none mx-1 d-md-inline-block" id="MenuDict" data-bs-toggle="dropdown" aria-expanded="false" href="#">
+<a title="AI-assistants, Dictionaries Pali and Sanskrit" class="dropdown text-decoration-none mx-1 d-md-inline-block" id="MenuDict" data-bs-toggle="dropdown" aria-expanded="false" href="#">
   <figure class="figure d-md-inline-block">
     <i class="menu-icon fa-solid fa-book-atlas"></i>
     <figcaption class="horiz-menu-item figure-caption text-center">AI and Dicts</figcaption>   
@@ -303,7 +303,7 @@ echo '<!--
 
 <div class="d-inline-flex align-items-center gap-1">
 
-<a title="AI-assistants, converters and other useful tools" class="dropdown text-decoration-none mx-1 d-md-inline-block" id="tools" data-bs-toggle="dropdown" aria-expanded="false" href="#">
+<a title="Converters and other useful tools" class="dropdown text-decoration-none mx-1 d-md-inline-block" id="tools" data-bs-toggle="dropdown" aria-expanded="false" href="#">
 
 <figure class="figure d-md-inline-block">
 

@@ -126,7 +126,7 @@ echo '<!--
     <a class="text-reset" href="/san/mu3.php" >mu3</a>
          </div>
          </li>
-    
+
         <li><a class="dropdown-item" target="_blank" href="' . $linknoblasc . '">Статьи на Dhammadana.org</a></li>
 
   </ul>
@@ -181,10 +181,10 @@ echo '<!--
   
     -->
 
-<a title="Словари Пали и Санскрит" class="dropdown text-decoration-none mx-1 d-md-inline-block" id="MenuDict" data-bs-toggle="dropdown" aria-expanded="false" href="#">
+<a title="ИИ-помощники, Словари Пали и Санскрит" class="dropdown text-decoration-none mx-1 d-md-inline-block" id="MenuDict" data-bs-toggle="dropdown" aria-expanded="false" href="#">
   <figure class="figure d-md-inline-block">
     <i class="menu-icon fa-solid fa-book-atlas"></i>
-    <figcaption class="horiz-menu-item figure-caption text-center">Словари</figcaption>   
+    <figcaption class="horiz-menu-item figure-caption text-center">ИИ, Словари</figcaption>   
   </figure>	  
 </a>
 
@@ -327,7 +327,7 @@ echo '<!--
   
 <div class="d-inline-flex align-items-center gap-1">
 
-<a title="ИИ-помощники, конвертеры и др полезные инструменты" class="dropdown text-decoration-none mx-1 d-md-inline-block" id="tools" data-bs-toggle="dropdown" aria-expanded="false" href="#">
+<a title="Конвертеры и др полезные инструменты" class="dropdown text-decoration-none mx-1 d-md-inline-block" id="tools" data-bs-toggle="dropdown" aria-expanded="false" href="#">
 
 <figure class="figure d-md-inline-block">
 
