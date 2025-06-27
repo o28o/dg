@@ -182,8 +182,6 @@ echo '<!--
 
          <li><a class="dropdown-item" target="_blank" href="https://dharmamitra.org/">Mitra Translator</a></li>
 
-   <li><a class="dropdown-item" target="_blank" href="https://Wisdomlib.org">Wisdomlib.org</a></li>
-
                <li>
          <div class="dropdown-item ">
                       <i class="' . $iconimportant . '"></i>        <a class="text-reset" target="_blank"  href="https://dict.dhamma.gift/ru/">Digital Pāḷi Dict</a> 
@@ -219,6 +217,9 @@ echo '<!--
       <a class="text-reset" target="_blank" href="https://norbu-ai.org/">Norbu AI</a>
            </div>
          </li>
+
+          <li><a class="dropdown-item" target="_blank" href="https://Wisdomlib.org">Wisdomlib.org</a></li>
+
 
 <li><a class="dropdown-item" href="#" onclick="event.preventDefault(); [
 \'https://dsal.uchicago.edu/dictionaries/pali/\', 

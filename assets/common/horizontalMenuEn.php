@@ -164,8 +164,6 @@ echo '<!--
 
          <li><a class="dropdown-item" target="_blank" href="https://dharmamitra.org/">Mitra Translator</a></li>
 
-   <li><a class="dropdown-item" target="_blank" href="https://Wisdomlib.org">Wisdomlib.org</a></li>
-
                <li>
          <div class="dropdown-item ">
                       <i class="' . $iconimportant . '"></i>        <a class="text-reset" target="_blank"  href="https://dict.dhamma.gift/">Digital Pāḷi Dict</a> 
@@ -204,6 +202,9 @@ echo '<!--
            </div>
          </li>
 
+          <li><a class="dropdown-item" target="_blank" href="https://Wisdomlib.org">Wisdomlib.org</a></li>
+
+
 <li><a class="dropdown-item" href="#" onclick="event.preventDefault(); [
 \'https://dsal.uchicago.edu/dictionaries/pali/\', 
 \'https://gandhari.org/dop\', 
@@ -212,7 +213,6 @@ echo '<!--
 \'https://sambhasha.ksu.ac.in/CompLing/pcl_1/html/pali_dict.html\', 
 \'https://www.wisdomlib.org/\'
 ].forEach(url => window.open(url));">Open PTS, Cone, CPD, Mitra, Wisdomlib, Pi-Skr</a></li>		 		 
-		 
 
 </ul>
 
