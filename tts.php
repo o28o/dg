@@ -94,12 +94,16 @@ if ($content && $type === 'pali') {
     }
 }
 
-// Извлекаем имя файла без пути
 $basename = basename($file, '.json');
-
-// Разбиваем по дефису и берём последний элемент
 $parts = explode('-', $basename);
 $translator = end($parts);
+
+// Определяем текст подписи
+if ($lang === 'pi') {
+    $sourceInfo = 'Mahāsaṅgīti Pāḷi';
+} else {
+    $sourceInfo = $lang === 'ru' ? "Перевод: $translator" : "Translator: $translator";
+}
 
 
 // Если передан slug, загружаем контент автоматически
@@ -306,7 +310,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </div>
 
 <div class="text-end text-muted small mt-2">
-  <?= $lang === 'ru' ? "Перевод: $translator" : "Translator: $translator" ?>
+  <?= $sourceInfo ?>
 </div>
 <!-- htmlspecialchars($content) -->
 
