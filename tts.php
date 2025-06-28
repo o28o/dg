@@ -328,7 +328,7 @@ document.addEventListener('DOMContentLoaded', function() {
 	  <script src="/assets/js/smoothScroll.js" defer></script>
       <script src="/assets/js/paliLookup.js"></script>
       <script src="/assets/js/settings.js"></script>
-      <script src="https://code.responsivevoice.org/responsivevoice.js?key=X8U4dR8x"></script>
+<!--      <script src="https://code.responsivevoice.org/responsivevoice.js?key=X8U4dR8x"></script> -->
 
 </body>
 </html>
