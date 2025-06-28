@@ -94,6 +94,14 @@ if ($content && $type === 'pali') {
     }
 }
 
+// Извлекаем имя файла без пути
+$basename = basename($file, '.json');
+
+// Разбиваем по дефису и берём последний элемент
+$parts = explode('-', $basename);
+$translator = end($parts);
+
+
 // Если передан slug, загружаем контент автоматически
 $content = $slug ? loadContent($slug, $content_type) : htmlspecialchars($_POST['content'] ?? '');
 ?>
@@ -187,25 +195,25 @@ function updateLanguageSwitcher(lang) {
 
     if (lang === 'ru') {
         switcher.innerHTML = `
-             <a class="btn btn-sm btn-outline-secondary rounded-pill text-decoration-none " href="#" onclick="setLanguage('pi'); return false;">pi</a>
-            <a class="btn btn-sm btn-outline-secondary rounded-pill text-decoration-none ms-1" href="#" onclick="setLanguage('en'); return false;">en</a>
-            <a class="btn btn-sm btn-primary rounded-pill btn-outline-secondary active ms-1">ru</a>
+             <a class="btn btn-sm btn-outline-secondary rounded-pill text-decoration-none " href="#" title="Devanagari / Roman Script" onclick="setLanguage('pi'); return false;">pi</a>
+            <a class="btn btn-sm btn-outline-secondary rounded-pill text-decoration-none ms-1" title="English" href="#" onclick="setLanguage('en'); return false;">en</a>
+            <a class="btn btn-sm btn-primary rounded-pill btn-outline-secondary active ms-1" title="Russian">ru</a>
         `;
     } 
     
     else if (lang === 'pi') {
         switcher.innerHTML = `
        <!-- <span class="btn btn-sm btn-primary rounded-pill ms-1">pi</span> -->
-            <a class="btn btn-sm btn-primary rounded-pill btn-outline-secondary active" href="#" onclick="togglePaliScript(); return false;">pi</a>
-            <a class="btn btn-sm btn-outline-secondary rounded-pill text-decoration-none ms-1" href="#" onclick="setLanguage('en'); return false;">en</a>
-            <a class="btn btn-sm btn-outline-secondary rounded-pill text-decoration-none ms-1" href="#" onclick="setLanguage('ru'); return false;">ru</a>
+            <a class="btn btn-sm btn-primary rounded-pill btn-outline-secondary active" href="#" onclick="togglePaliScript(); return false;" title="Devanagari / Roman Script">pi</a>
+            <a class="btn btn-sm btn-outline-secondary rounded-pill text-decoration-none ms-1" href="#" onclick="setLanguage('en'); return false;" title="English">en</a>
+            <a class="btn btn-sm btn-outline-secondary rounded-pill text-decoration-none ms-1" href="#" onclick="setLanguage('ru'); return false;" title="Russian">ru</a>
         `;
     }
     else {
         switcher.innerHTML = `
-            <a class="btn btn-sm btn-outline-secondary rounded-pill text-decoration-none " href="#" onclick="setLanguage('pi'); return false;">pi</a> 
-            <span class="btn btn-sm btn-primary rounded-pill btn-outline-secondary active ms-1">en</span>
-            <a class="btn btn-sm btn-outline-secondary rounded-pill text-decoration-none ms-1" href="#" onclick="setLanguage('ru'); return false;">ru</a>
+            <a class="btn btn-sm btn-outline-secondary rounded-pill text-decoration-none " href="#" onclick="setLanguage('pi'); return false;" title="Devanagari / Roman Script">pi</a> 
+            <span class="btn btn-sm btn-primary rounded-pill btn-outline-secondary active ms-1" title="English">en</span>
+            <a class="btn btn-sm btn-outline-secondary rounded-pill text-decoration-none ms-1" href="#" onclick="setLanguage('ru'); return false;" title="Russian">ru</a>
         `;
     }
 }
@@ -296,8 +304,14 @@ document.addEventListener('DOMContentLoaded', function() {
 
   </div>
 </div>
+
+<div class="text-end text-muted small mt-2">
+  <?= $lang === 'ru' ? "Перевод: $translator" : "Translator: $translator" ?>
+</div>
 <!-- htmlspecialchars($content) -->
-  <div class="text-content mt-3 pli-lang" id="voiceTextContent" lang="pi"><?= $content ?></div>
+
+
+      <div class="text-content mt-3 pli-lang" id="voiceTextContent" lang="pi"><?= $content ?></div>
 
   <script src="/assets/js/dark-mode-switch/dark-mode-switch.js"></script>
 
