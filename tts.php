@@ -36,78 +36,115 @@ $title = htmlspecialchars(
 function loadContent($slug, $type) {
     include_once('config/config.php');
     
-$jq = 'jq -r \'to_entries[] | "<a id=\"\(.key)\"></a><span>\(.value)</span>"\' | sed "s/' . $slug . '://"';    // Старая логика (для демонстрации)
+    $jq = 'jq -r \'to_entries[] | "<a id=\"\(.key)\"></a><span>\(.value)</span>"\' | sed "s/' . $slug . '://"';
+
     if (!in_array($type, ['pali', 'ru', 'en'])) {
         if ($type === 'trn') {
-            return "Это перевод для: $slug";
+            return ['content' => "Это перевод для: $slug", 'file' => '', 'translator' => ''];
         }
-        return $type === 'pali' ? "Это палийский текст для: $slug" : "Контент для: $slug";
+        return ['content' => ($type === 'pali' ? "Это палийский текст для: $slug" : "Контент для: $slug"), 'file' => '', 'translator' => ''];
     }
 
-    // Новая логика загрузки из файлов
     if ($type === 'pali') {
-        $script = $_GET['script'] ?? 'dev'; // по умолчанию деванагари
+        $script = $_GET['script'] ?? 'dev';
 
         if ($script === 'lat') {
             $cmd = "find $basedir/suttacentral.net/sc-data/sc_bilara_data/root/pli/ms/ -name \"{$slug}_*\" -print -quit";
         } else {
             $cmd = "find $basedir/assets/texts/devanagari/root/pli/ms/ -name \"{$slug}_*\" -print -quit";
         }
-        
+
         $file = shell_exec($cmd);
         $file = is_string($file) ? trim($file) : '';
-        $content = $file ? shell_exec("cat " . escapeshellarg($file) . " | $jq") : "Pali text not found for: $slug";
-        
-        // Обработка пунктуации только для палийского текста
-if ($content && $type === 'pali') {
-    $content = preg_replace_callback(
-        '/(<a\b[^>]*>.*?<\/a>)|([-—–:;“”‘’",\'.?!])/u',
-        function($matches) {
-            if ($matches[1] !== '') {
-                // 1. Если это <a>...</a> — оставляем без изменений
-                return $matches[1];
-            } else {
-                // 2. Если это пунктуация вне <a> — заменяем
-                if (preg_match('/[.?!]/u', $matches[2])) {
-                    return ' | ';
-                } elseif (preg_match('/[-—–]/u', $matches[2])) {
-                    return ' ';
-                } else {
-                    return ''; // Удаляем :;“”‘’",
-                }
-            }
-        },
-        $content
-    );
-}
-        return $content;
+
+        if (!$file) {
+            return ['content' => "Pali text not found for: $slug", 'file' => '', 'translator' => ''];
+        }
+
+        $content = shell_exec("cat " . escapeshellarg($file) . " | $jq");
+
+        // Обработка пунктуации
+        if ($content && $type === 'pali') {
+            $content = preg_replace_callback(
+                '/(<a\b[^>]*>.*?<\/a>)|([-—–:;“”‘’",\'.?!])/u',
+                function($matches) {
+                    if (!empty($matches[1])) {
+                        return $matches[1];
+                    }
+                    if (preg_match('/[.?!]/u', $matches[2])) {
+                        return ' | ';
+                    } elseif (preg_match('/[-—–]/u', $matches[2])) {
+                        return ' ';
+                    } else {
+                        return '';
+                    }
+                },
+                $content
+            );
+        }
+
+        // Вычисляем translator из имени файла
+        $basename = basename($file, '.json');
+        $parts = explode('-', $basename);
+        $translator = end($parts);
+
+        return ['content' => $content, 'file' => $file, 'translator' => $translator];
     }
     elseif ($type === 'ru') {
         $cmd = "find $basedir/assets/texts/sutta ../assets/texts/vinaya -name \"{$slug}_*\" -print -quit";
         $file = trim(shell_exec($cmd));
-        return $file ? shell_exec("cat ".escapeshellarg($file)." | $jq") : "Russian translation not found for: $slug";
+        if (!$file) {
+            return ['content' => "Russian translation not found for: $slug", 'file' => '', 'translator' => ''];
+        }
+        $content = shell_exec("cat " . escapeshellarg($file) . " | $jq");
+
+        $basename = basename($file, '.json');
+        $parts = explode('-', $basename);
+        $translator = end($parts);
+
+        return ['content' => $content, 'file' => $file, 'translator' => $translator];
     }
     else { // en
         $cmd = "find $basedir/suttacentral.net/sc-data/sc_bilara_data/translation/en/ -name \"{$slug}_*\" -print -quit";
         $file = trim(shell_exec($cmd));
-        return $file ? shell_exec("cat ".escapeshellarg($file)." | $jq") : "English translation not found for: $slug";
+        if (!$file) {
+            return ['content' => "English translation not found for: $slug", 'file' => '', 'translator' => ''];
+        }
+        $content = shell_exec("cat " . escapeshellarg($file) . " | $jq");
+
+        $basename = basename($file, '.json');
+        $parts = explode('-', $basename);
+        $translator = end($parts);
+
+        return ['content' => $content, 'file' => $file, 'translator' => $translator];
     }
 }
 
-$basename = basename($file, '.json');
-$parts = explode('-', $basename);
-$translator = end($parts);
+if ($slug) {
+    $result = loadContent($slug, $content_type);
+    $content = $result['content'];
+    $translator = $result['translator'] ?: '';
+} else {
+    $content = htmlspecialchars($_POST['content'] ?? '');
+    $translator = '';
+}
 
-// Определяем текст подписи
+// Формируем подпись
 if ($lang === 'pi') {
-    $sourceInfo = 'Mahāsaṅgīti Pāḷi';
+    $sourceInfo = 'महासङ्गीति पाळि';
+
+    $script = $_GET['script'] ?? 'dev';
+
+        if ($script === 'lat') {
+            $sourceInfo = 'Mahāsaṅgīti Pāḷi';
+        } 
 } else {
     $sourceInfo = $lang === 'ru' ? "Перевод: $translator" : "Translator: $translator";
 }
 
 
 // Если передан slug, загружаем контент автоматически
-$content = $slug ? loadContent($slug, $content_type) : htmlspecialchars($_POST['content'] ?? '');
+//$content = $slug ? loadContent($slug, $content_type) : htmlspecialchars($_POST['content'] ?? '');
 ?>
 <!DOCTYPE html>
 <html lang="<?= $lang ?>">
@@ -310,13 +347,11 @@ document.addEventListener('DOMContentLoaded', function() {
 </div>
 
 <div class="text-end text-muted small mt-2">
-  <?= $sourceInfo ?>
+  <?= htmlspecialchars($sourceInfo) ?>
 </div>
+<div class="text-content mt-3 pli-lang" id="voiceTextContent" lang="pi"><?= $content ?></div>
+
 <!-- htmlspecialchars($content) -->
-
-
-      <div class="text-content mt-3 pli-lang" id="voiceTextContent" lang="pi"><?= $content ?></div>
-
   <script src="/assets/js/dark-mode-switch/dark-mode-switch.js"></script>
 
   <script>
