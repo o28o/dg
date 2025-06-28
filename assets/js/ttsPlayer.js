@@ -1,5 +1,3 @@
-[200~// responsiveVoicePlayer.js (или ttsPlayer.js)
-
 document.addEventListener('DOMContentLoaded', function() {
     // Получаем элемент div, который должен содержать текст для озвучивания
     const voiceTextContent = document.getElementById('voiceTextContent');
@@ -87,4 +85,4 @@ document.addEventListener('DOMContentLoaded', function() {
     //     btn.style.cursor = 'pointer';
     // });
 }); 
-}[201~
+}
