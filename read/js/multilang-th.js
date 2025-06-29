@@ -88,6 +88,7 @@ const onlynumber = slug.replace(/[a-zA-Z]/g, '');
 let snranges = ['sn12.2', 'sn15.3', 'sn22.59', 'sn35.28', 'sn56.11'];
 let dnranges = ['dn22'];
 let anranges = ['an3.107', 'an10.46'];
+let otrnranges = ['sn56.11'];
 
 var rootpath = `/assets/texts/${pathLang}/root/pli/ms/${texttype}/${slugReady}_root${pathLang}-pli-ms.json`;
 console.log('thai rootpath ' + rootpath);
@@ -101,7 +102,6 @@ if ( texttype === "vinaya")
   var engtrnpath = `${Sccopy}/sc-data/sc_bilara_data/translation/en/brahmali/vinaya/${slugReady}_translation-en-brahmali.json`;
 }
 
-let otrnranges = ['sn56.11'];
 
 else if (otrnranges.indexOf(slug) !== -1) { 
     var engtrnpath = `/assets/texts/en/${texttype}/${slugReady}_translation-en-o.json`;

@@ -97,6 +97,9 @@ var rootpath = `${Sccopy}/sc-data/sc_bilara_data/root/pli/ms/${texttype}/${slugR
     texttype === "vinaya";
       let language = "pli";
 	  
+    let otrnranges = ['sn56.11'];
+
+
  if (( script === "devanagari" ) || ( savedScript === "Devanagari" ) ) {
 //	     var rootpath = `/assets/texts/${texttype}/${slug}_root-pli-ms.json`;
 var rootpath = `/assets/texts/devanagari/root/pli/ms/${texttype}/${slug}_rootd-pli-ms.json`
@@ -111,7 +114,6 @@ var rootpath = `${Sccopy}/sc-data/sc_bilara_data/root/pli/ms/${texttype}/${slug}
     var htmlpath = `/assets/html/${texttype}/${slug}_html.json`;
   //  console.log(rootpath, trnpath, htmlpath);
 } 
-let otrnranges = ['sn56.11'];
 
 else if (otrnranges.indexOf(slug) !== -1) { 
     var trnpath = `/assets/texts/en/${texttype}/${slugReady}_translation-en-o.json`;
