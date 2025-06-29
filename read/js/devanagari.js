@@ -414,7 +414,11 @@ if (translator === "o") {
 
 //const translatorCapitalized = translator.charAt(0).toUpperCase() + translator.slice(1);
 
-    const translatorByline = "";
+     const translatorByline = `<div class="byline">
+     <p>
+    <span class="pli-lang" lang="pi">Pāḷi <a class="text-decoration-none text-reset" href="/assets/texts/abbr.html?s=ms" title="Mahāsaṅgīti Pāḷi">Mahāsaṅgīti</a> </span>
+     </p>
+     </div>`;
     
      
       const scButton = `<a href="https://suttacentral.net/${slug}/en/${translator}">Читать на SC</a>`;
