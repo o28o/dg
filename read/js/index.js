@@ -79,7 +79,10 @@ var rootpath = `${Sccopy}/sc-data/sc_bilara_data/root/pli/ms/${texttype}/${slugR
  }
 
    var htmlpath = `${Sccopy}/sc-data/sc_bilara_data/html/pli/ms/${texttype}/${slugReady}_html.json`;
-   
+ 
+     let otrnranges = ['sn56.11'];
+
+  
   if (slug.match(/ja/)) {
   let language = "pli";
   let slugNumber = parseInt(slug.replace(/\D/g, ''), 10); // Извлекаем число из slug
@@ -96,9 +99,6 @@ var rootpath = `${Sccopy}/sc-data/sc_bilara_data/root/pli/ms/${texttype}/${slugR
     let translator = "brahmali";
     texttype === "vinaya";
       let language = "pli";
-	  
-    let otrnranges = ['sn56.11'];
-
 
  if (( script === "devanagari" ) || ( savedScript === "Devanagari" ) ) {
 //	     var rootpath = `/assets/texts/${texttype}/${slug}_root-pli-ms.json`;
