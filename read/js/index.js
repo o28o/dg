@@ -115,7 +115,7 @@ var rootpath = `${Sccopy}/sc-data/sc_bilara_data/root/pli/ms/${texttype}/${slug}
   //  console.log(rootpath, trnpath, htmlpath);
 } 
 else if (otrnranges.indexOf(slug) !== -1) { 
-    var trnpath = `/assets/texts/en/${texttype}/${slug}_translation-en-o.json`;
+    var trnpath = `/assets/texts/en/${texttype}/${slugReady}_translation-en-o.json`;
         let translator = "o";
 
 }
