@@ -80,6 +80,9 @@ var rootpath = `${Sccopy}/sc-data/sc_bilara_data/root/pli/ms/${texttype}/${slugR
 
    var htmlpath = `${Sccopy}/sc-data/sc_bilara_data/html/pli/ms/${texttype}/${slugReady}_html.json`;
    
+let otrnranges = ['sn56.11'];
+
+
   if (slug.match(/ja/)) {
   let language = "pli";
   let slugNumber = parseInt(slug.replace(/\D/g, ''), 10); // Извлекаем число из slug
@@ -110,7 +113,14 @@ var rootpath = `${Sccopy}/sc-data/sc_bilara_data/root/pli/ms/${texttype}/${slug}
     var trnpath = `${Sccopy}/sc-data/sc_bilara_data/translation/en/brahmali/${texttype}/${slug}_translation-en-brahmali.json`;
     var htmlpath = `/assets/html/${texttype}/${slug}_html.json`;
   //  console.log(rootpath, trnpath, htmlpath);
-} else {
+} 
+else if (otrnranges.indexOf(slug) !== -1) { 
+    var trnpath = `/assets/texts/en/${texttype}/${slug}_translation-en-o.json`;
+        let translator = "o";
+
+}
+
+else {
   var trnpath = `${Sccopy}/sc-data/sc_bilara_data/translation/${pathLang}/${translator}/${texttype}/${slugReady}_translation-${pathLang}-${translator}.json`;
 }
 
