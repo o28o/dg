@@ -80,9 +80,6 @@ var rootpath = `${Sccopy}/sc-data/sc_bilara_data/root/pli/ms/${texttype}/${slugR
 
    var htmlpath = `${Sccopy}/sc-data/sc_bilara_data/html/pli/ms/${texttype}/${slugReady}_html.json`;
    
-let otrnranges = ['sn56.11'];
-
-
   if (slug.match(/ja/)) {
   let language = "pli";
   let slugNumber = parseInt(slug.replace(/\D/g, ''), 10); // Извлекаем число из slug
@@ -114,10 +111,11 @@ var rootpath = `${Sccopy}/sc-data/sc_bilara_data/root/pli/ms/${texttype}/${slug}
     var htmlpath = `/assets/html/${texttype}/${slug}_html.json`;
   //  console.log(rootpath, trnpath, htmlpath);
 } 
+let otrnranges = ['sn56.11'];
+
 else if (otrnranges.indexOf(slug) !== -1) { 
     var trnpath = `/assets/texts/en/${texttype}/${slugReady}_translation-en-o.json`;
         translator = "o";
-        console.log('change translator to o');
 }
 
 else {
@@ -276,7 +274,7 @@ ${varData[segment].trim()}${linkToCopy}
 
 //console.log('texttype ' + texttype + ' translator ' + translator);
 if (translator === "o") {
-  translatorforuser = '<a href=/assets/common/o.html>o</a> from Pali';
+  translatorforuser = '<a href=/assets/common/o-en.html>o</a> from Pali';
 } else if (translator === "sv") {
   translatorforuser = 'SV theravada.ru from Eng';
 } else if ((translator === "" && texttype === "sutta" ) || (translator === "sujato" )) {
@@ -286,11 +284,11 @@ if (translator === "o") {
 } else if (translator === "syrkin" ) {
   translatorforuser = 'A.Y. Syrkin from Pali';
 } else if (translator === "syrkin+edited+o" ) {
-  translatorforuser = 'A.Y. Syrkin from Pali, edited by <a href=/assets/common/o.html>o</a>';
+  translatorforuser = 'A.Y. Syrkin from Pali, edited by <a href=/assets/common/o-en.html>o</a>';
 } else if (translator === "sv+edited+o" ) {
-  translatorforuser = 'SV theravada.ru from Eng, ed. <a href=/assets/common/o.html>o</a>';
+  translatorforuser = 'SV theravada.ru from Eng, ed. <a href=/assets/common/o-en.html>o</a>';
 } else if (translator === "o+in+progress" ) {
-  translatorforuser = '<a href=/assets/common/o.html>o</a>, in progress';
+  translatorforuser = '<a href=/assets/common/o-en.html>o</a>, in progress';
 } else {
 	translatorforuser = translator ;
 }
@@ -301,7 +299,7 @@ if (translator === "o") {
 
      const translatorByline = `<div class="byline">
      <p>
-    <span class="pli-lang" lang="pi">Pāḷi <a class="text-decoration-none text-reset" href="/assets/texts/abbr.html?s=ms" title="Mahāsaṅgīti Pāḷi">MS</a> </span> <span class="rus-lang" lang="ru">Trans. by ${translatorforuser}</span>
+    <span class="pli-lang" lang="pi">Pāḷi <a class="text-decoration-none text-reset" href="/assets/texts/abbr.html?s=ms" title="Mahāsaṅgīti Pāḷi">MS</a> </span> <span class="rus-lang" lang="ru">Translator: ${translatorforuser}</span>
      </p>
      </div>`;
      

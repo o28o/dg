@@ -99,7 +99,16 @@ var rustrnpath = `/assets/texts/${texttype}/${slugReady}_translation-${pathLang}
 if ( texttype === "vinaya")
 {
   var engtrnpath = `${Sccopy}/sc-data/sc_bilara_data/translation/en/brahmali/vinaya/${slugReady}_translation-en-brahmali.json`;
-} else {
+} 
+
+let otrnranges = ['sn56.11'];
+
+else if (otrnranges.indexOf(slug) !== -1) { 
+    var engtrnpath = `/assets/texts/en/${texttype}/${slugReady}_translation-en-o.json`;
+        translator = "o";
+}
+
+else {
 //var engtrnpath = `${Sccopy}/sc-data/sc_bilara_data/translation/${pathLang}/${translator}/${texttype}/${slugReady}_translation-${pathLang}-${translator}.json`;
   var engtrnpath = `${Sccopy}/sc-data/sc_bilara_data/translation/en/sujato/${texttype}/${slugReady}_translation-en-sujato.json`;
 }

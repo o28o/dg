@@ -99,7 +99,15 @@ var theditedtrnpath = `/assets/texts/${pathLang}/translation/${texttype}/${slugR
 if ( texttype === "vinaya")
 {
   var engtrnpath = `${Sccopy}/sc-data/sc_bilara_data/translation/en/brahmali/vinaya/${slugReady}_translation-en-brahmali.json`;
-} else {
+}
+
+let otrnranges = ['sn56.11'];
+
+else if (otrnranges.indexOf(slug) !== -1) { 
+    var engtrnpath = `/assets/texts/en/${texttype}/${slugReady}_translation-en-o.json`;
+        translator = "o";
+}
+ else {
 //var engtrnpath = `${Sccopy}/sc-data/sc_bilara_data/translation/${pathLang}/${translator}/${texttype}/${slugReady}_translation-${pathLang}-${translator}.json`;
   var engtrnpath = `${Sccopy}/sc-data/sc_bilara_data/translation/en/sujato/${texttype}/${slugReady}_translation-en-sujato.json`;
 }
@@ -469,7 +477,7 @@ ${varData[segment].trim()}${linkToCopy}
     });
 
 if (translator === "o") {
-  translatorforuser = '<a href=/assets/common/o.html>o</a> с Пали';
+  translatorforuser = '<a href=/assets/common/o-en.html>o</a> from Pali';
 } else if (translator === "sv") {
   translatorforuser = 'SV theravada.ru с Англ';
 }
@@ -492,11 +500,11 @@ else if ((translator === "" && texttype === "vinaya") || (translator === "brahma
 } else if (translator === "syrkin" ) {
   translatorforuser = 'А.Я. Сыркин с Пали';
 } else if (translator === "syrkin+edited+o" ) {
-  translatorforuser = 'А.Я. Сыркин с Пали, ред. <a href=/assets/common/o.html>o</a>';
+  translatorforuser = 'А.Я. Сыркин с Пали, ed. by <a href=/assets/common/o-en.html>o</a>';
 } else if (translator === "sv+edited+o" ) {
-  translatorforuser = 'SV theravada.ru с Англ, ред. <a href=/assets/common/o.html>o</a>';
+  translatorforuser = 'SV theravada.ru from Eng, ed. by <a href=/assets/common/o-en.html>o</a>';
 } else if (translator === "o+in+progress" ) {
-  translatorforuser = '<a href=/assets/common/o.html>o</a>, в процессе';
+  translatorforuser = '<a href=/assets/common/o-en.html>o</a>, in progress';
 } else {
 	translatorforuser = translator ;
 }
@@ -506,7 +514,7 @@ else if ((translator === "" && texttype === "vinaya") || (translator === "brahma
 
      const translatorByline = `<div class="byline">
      <p>
-    <span class="pli-lang" lang="pi">Pāḷi <a class="text-decoration-none text-reset" href="/assets/texts/abbr.html?s=ms" title="Mahāsaṅgīti Pāḷi">MS</a> </span> <span class="rus-lang" lang="ru">Trans. by ${translatorforuser}</span>
+    <span class="pli-lang" lang="pi">Pāḷi <a class="text-decoration-none text-reset" href="/assets/texts/abbr.html?s=ms" title="Mahāsaṅgīti Pāḷi">MS</a> </span> <span class="rus-lang" lang="ru">Translator: ${translatorforuser}</span>
      </p>
      </div>`;
      
