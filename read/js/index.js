@@ -266,7 +266,7 @@ ${varData[segment].trim()}${linkToCopy}
 
 //console.log('texttype ' + texttype + ' translator ' + translator);
 if (translator === "o") {
-  translatorforuser = '<a href=/assets/texts/o.html>o</a> from Pali';
+  translatorforuser = '<a href=/assets/common/o.html>o</a> from Pali';
 } else if (translator === "sv") {
   translatorforuser = 'SV theravada.ru from Eng';
 } else if ((translator === "" && texttype === "sutta" ) || (translator === "sujato" )) {
@@ -276,11 +276,11 @@ if (translator === "o") {
 } else if (translator === "syrkin" ) {
   translatorforuser = 'A.Y. Syrkin from Pali';
 } else if (translator === "syrkin+edited+o" ) {
-  translatorforuser = 'A.Y. Syrkin from Pali, edited by <a href=/assets/texts/o.html>o</a>';
+  translatorforuser = 'A.Y. Syrkin from Pali, edited by <a href=/assets/common/o.html>o</a>';
 } else if (translator === "sv+edited+o" ) {
-  translatorforuser = 'SV theravada.ru from Eng, ed. <a href=/assets/texts/o.html>o</a>';
+  translatorforuser = 'SV theravada.ru from Eng, ed. <a href=/assets/common/o.html>o</a>';
 } else if (translator === "o+in+progress" ) {
-  translatorforuser = '<a href=/assets/texts/o.html>o</a>, in progress';
+  translatorforuser = '<a href=/assets/common/o.html>o</a>, in progress';
 } else {
 	translatorforuser = translator ;
 }

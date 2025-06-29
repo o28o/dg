@@ -393,7 +393,7 @@ html += `${openHtml}<span id="${anchor}"><span class="pli-lang inputscript-ISOPa
 //console.log('before ' + translator) ;
 
 if (translator === "o") {
-  translatorforuser = '<a href=/assets/texts/o.html>o</a> с Пали';
+  translatorforuser = '<a href=/assets/common/o.html>o</a> с Пали';
 } else if (translator === "sv") {
   translatorforuser = 'SV theravada.ru с Англ';
 } else if ((translator === "" && texttype === "sutta" ) || (translator === "sujato" )) {
@@ -403,14 +403,14 @@ if (translator === "o") {
 } else if (translator === "syrkin" ) {
   translatorforuser = '<a href=/assets/texts/syrkin.html>А.Я. Сыркин</a> с Пали';
 } else if (translator === "syrkin+edited+o" ) {
-  translatorforuser = '<a href=/assets/texts/syrkin.html>А.Я. Сыркин</a> с Пали, ред. <a href=/assets/texts/o.html>o</a>';
+  translatorforuser = '<a href=/assets/texts/syrkin.html>А.Я. Сыркин</a> с Пали, ред. <a href=/assets/common/o.html>o</a>';
 } else if (translator === "sv+edited+o" ) {
-  translatorforuser = 'SV theravada.ru с Англ, ред. <a href=/assets/texts/o.html>o</a>';
+  translatorforuser = 'SV theravada.ru с Англ, ред. <a href=/assets/common/o.html>o</a>';
 } else if (translator === "myagkih+edited+tr" ) {
   translatorforuser = 'К. Мягких с Англ, ред. ТР';
 }
 else if (translator === "o+in+progress" ) {
-  translatorforuser = '<a href=/assets/texts/o.html>o</a>, в процессе';
+  translatorforuser = '<a href=/assets/common/o.html>o</a>, в процессе';
 } else {
 	translatorforuser = translator ;
 }
