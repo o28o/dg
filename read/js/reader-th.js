@@ -436,7 +436,7 @@ else if ((translator === "" && texttype === "sutta" ) || (translator === "sujato
 
      const translatorByline = `<div class="byline">
      <p>
-    <span class="pli-lang" lang="pi">Pāḷi <a class="text-decoration-none text-reset" href="/assets/texts/abbr.html?s=ms" title="Mahāsaṅgīti Pāḷi">MS</a> </span> <span class="rus-lang" lang="ru">Trans. by ${translatorforuser}</span>
+    <span class="pli-lang" lang="pi">Pāḷi <a class="text-decoration-none text-reset" href="/assets/texts/abbr.html?s=ms" title="Mahāsaṅgīti Pāḷi">MS</a> </span> <span class="rus-lang" lang="ru">Trn: ${translatorforuser}</span>
      </p>
      </div>`;
   
