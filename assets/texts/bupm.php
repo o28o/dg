@@ -52,7 +52,7 @@ Vajjanīyā ca puggalā tasmiṁ na honti, “pattakalla”nti vuccati.
             <div class="mt-3">
    
 <div class="level4 my-3">
-  </br> </br><audio controls class="lazy-audio" preload="none"><source src='/assets/audio/bu-pm/Bu-nid.m4a' type='audio/mp4'>Browser is not supported.</audio></br> </br>
+  <audio controls class="lazy-audio" preload="none"><source src='/assets/audio/bu-pm/Bu-nid.m4a' type='audio/mp4'>Browser is not supported.</audio></br> </br>
  <span class="level5 pli-lang">Suṇātu me bhante saṅgho.
 Ajjuposatho pannaraso,
 yadi saṅghassa pattakallaṁ, saṅgho uposathaṁ kareyya, pātimokkhaṁ uddiseyya. </span>
@@ -98,7 +98,7 @@ parisuddhetthāyasmanto, tasmā tuṇhī, evametaṁ dhārayāmīti. </span>
    
            <div class="level4 my-3">
             <audio controls class="lazy-audio" preload="none"><source src='/assets/audio/bu-pm/Bu-pj.m4a' type='audio/mp4'>Browser is not supported.</audio>
-
+</br> </br>
  <span class="level5 pli-lang">Tatrime cattāro pārājikā dhammā uddesaṁ āgacchanti. </span>
 </div>              
               
