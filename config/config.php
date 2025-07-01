@@ -219,6 +219,11 @@ $ctaButtons =' <div class="d-flex flex-column flex-md-row justify-content-center
 	<a class="ms-2 mb-2" href="https://chromewebstore.google.com/detail/dhammagift-search-and-wor/dnnogjdcmhbiobpnkhdbfnfjnjlikabd">
         <img src="/assets/img/buttons/chrome-cta.png" style="width: 200px;" alt="Download from Chrome Web Store">
     </a>
+
+    <a class="ms-2 mb-2" href="https://addons.mozilla.org/en-US/firefox/addon/dhamma-gift/">
+        <img src="/assets/img/buttons/firefox-cta.png" style="width: 200px;" alt="Download from Firefox Add-ons">
+    </a>
+
     <a class="ms-2 mb-2" href="https://microsoftedge.microsoft.com/addons/detail/dhammagift-search-and-wo/aokegkhdaijkikbdocanadeghllhfmhj">
         <img src="/assets/img/buttons/edge-cta.png" style="width: 200px;" alt="Download from Microsoft Edge Store">
     </a>
