@@ -80,8 +80,7 @@ var rootpath = `${Sccopy}/sc-data/sc_bilara_data/root/pli/ms/${texttype}/${slugR
 
    var htmlpath = `${Sccopy}/sc-data/sc_bilara_data/html/pli/ms/${texttype}/${slugReady}_html.json`;
  
-     let otrnranges = ['sn56.11'];
-
+   //  //  let otrnranges = ['sn56.11', 'sn12.2'];
   
   if (slug.match(/ja/)) {
   let language = "pli";
