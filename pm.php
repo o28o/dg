@@ -69,6 +69,8 @@ include './scripts/opentexts.php';
  <div class="simple-audio-player" id="simp" data-config='{"shide_top":true,"shide_btm":false,"auto_load":false,"simp-plext":true}'>
   <div class="simp-playlist">
     <ul>
+  <li><span class=simp-source data-src=/assets/audio/bu-pm/Bu-pbkrn.m4a>0.1 Pubbakarana</span><span class=simp-desc>Bhikkhupātimokkha</span></li>
+  <li><span class=simp-source data-src=/assets/audio/bu-pm/Bu-nid.m4a>0.2 Nidana</span><span class=simp-desc>Bhikkhupātimokkha</span></li>
   <li><span class=simp-source data-src=/assets/audio/bu-pm/Bu-pj.m4a>1. Bu-pj</span><span class=simp-desc>Bhikkhupātimokkha</span></li>
 <li><span class=simp-source data-src=/assets/audio/bu-pm/Bu-ss.m4a>2. Bu-ss</span><span class=simp-desc>Bhikkhupātimokkha</span></li>                                                  <li><span class=simp-source data-src=/assets/audio/bu-pm/Bu-ay.m4a>3. Bu-ay</span><span class=simp-desc>Bhikkhupātimokkha</span></li>
 <li><span class=simp-source data-src=/assets/audio/bu-pm/Bu-np1vag.m4a>4. Bu-np1vag</span><span class=simp-desc>Bhikkhupātimokkha</span></li>                                          <li><span class=simp-source data-src=/assets/audio/bu-pm/Bu-np2vag.m4a>5. Bu-np2vag</span><span class=simp-desc>Bhikkhupātimokkha</span></li>
