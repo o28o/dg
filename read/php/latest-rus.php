@@ -50,7 +50,7 @@ if [[ \"\$mndir\" == \"\$mnrangeInFile\" ]] ; then
 echo MN no updates
 else
 echo MN updated to \$mndir
-sed -i \"s@let mnranges =.*@let mnranges = \$mndir;@g\" $basedir/read/js/reader-rus-translations.js $basedir/read/js/multilang.js $basedir/read/js/multilangrev.js $basedir/read/js/multilangfullrev.js 
+sed -i \"s@let mnranges =.*@let mnranges = \$mndir;@g\" $basedir/read/js/ranges.js 
 fi
 ");
 echo "<h2 style='text-align: center;'>
@@ -76,7 +76,7 @@ echo SN no updates
 else
 echo SN updated to \$sndir
 
-sed -i 's@let snranges =.*@let snranges = '\"\$sndir\"';@g' $basedir/read/js/reader-rus-translations.js $basedir/read/js/multilang.js $basedir/read/js/multilangrev.js $basedir/read/js/multilangfullrev.js $basedir/read/js/memorize.js 
+sed -i 's@let snranges =.*@let snranges = '\"\$sndir\"';@g' $basedir/read/js/ranges.js 
 
 fi
 ");
@@ -97,7 +97,7 @@ if [[ \"\$dndir\" == \"\$dnrangeInFile\" ]] ; then
 echo DN no updates
 else
 echo DN updated to \$dndir
-sed -i \"s@let dnranges =.*@let dnranges = \$dndir;@g\" $basedir/read/js/reader-rus-translations.js $basedir/read/js/multilang.js $basedir/read/js/multilangrev.js $basedir/read/js/multilangfullrev.js 
+sed -i \"s@let dnranges =.*@let dnranges = \$dndir;@g\" $basedir/read/js/ranges.js 
 fi
 ");
 echo "<h2 style='text-align: center;'>
@@ -119,7 +119,7 @@ if [[ \"\$andir\" == \"\$anrangeInFile\" ]] ; then
 echo AN no updates
 else
 echo AN updated to \$andir
-sed -i \"s@let anranges =.*@let anranges = \$andir;@g\" $basedir/read/js/reader-rus-translations.js $basedir/read/js/multilang.js $basedir/read/js/multilangrev.js $basedir/read/js/multilangfullrev.js
+sed -i \"s@let anranges =.*@let anranges = \$andir;@g\" $basedir/read/js/ranges.js 
 fi
 ");  
 echo "<h2 style='text-align: center;'>
@@ -142,7 +142,7 @@ if [[ \"\$kndir\" == \"\$knrangeInFile\" ]] ; then
 echo KN no updates
 else
 echo KN updated to \$kndir
-sed -i \"s@let knranges =.*@let knranges = \$kndir;@g\" $basedir/read/js/reader-rus-translations.js $basedir/read/js/multilang.js $basedir/read/js/multilangrev.js $basedir/read/js/multilangfullrev.js  $basedir/read/js/memorize.js 
+sed -i \"s@let knranges =.*@let knranges = \$kndir;@g\" $basedir/read/js/ranges.js 
 fi
 ");
 */
@@ -173,8 +173,7 @@ echo Vinaya no updates
 else
 echo Vinaya updated to \$vinayadir
 
-sed -i 's@let vinayaranges =.*@let vinayaranges = '\"\$vinayadir\"';@g' $basedir/read/js/reader-rus-translations.js $basedir/read/js/multilang.js $basedir/read/js/multilangrev.js $basedir/read/js/multilangfullrev.js $basedir/read/js/memorize.js 
-
+sed -i 's@let vinayaranges =.*@let vinayaranges = '\"\$vinayadir\"';@g' $basedir/read/js/ranges.js 
 fi
 ");
 
