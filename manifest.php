@@ -151,7 +151,7 @@ echo json_encode([
     "shortcuts" => [
         [
             "name" => "DG Read",
-            "url" => $mainpagenoslash . "/assets/openDDG.html?url=https://dhamma.gift" . $mainpagenoslash . "/read.php",
+            "url" => $mainpagenoslash . "/read.php",
             "icons" => [
                 [
                     "src" => "/assets/img/maniIcon.png",
