@@ -70,6 +70,8 @@ $tooltipsearchbar = '
 <br>
 <strong>Ctrl + 2</strong> Главная Чтения Оглавление Рус / Англ.
 <br>
+<strong>Ctrl + 3</strong> Открыть Dict.Dhamma.Gift.
+<br>
 <strong>Alt + 1</strong> Интерфейс для чтения Рус / Англ.
 ';
 
@@ -834,6 +836,8 @@ $tooltipsearchbar = '<strong>Autosuggestions</strong>: Start typing at least 3 c
 <strong>Ctrl + 1</strong> Main Search Page toggle (En / Ru).
 <br>
 <strong>Ctrl + 2</strong> Main Reading Page Table of Contents (En / Ru).
+<br>
+<strong>Ctrl + 3</strong> Open Dict.Dhamma.Gift.
 <br>
 <strong>Alt + 1</strong> Reading Interface (En / Ru).
 ';
