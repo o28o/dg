@@ -783,20 +783,6 @@ document.addEventListener('keydown', (event) => {
   }
 });
 
-  if (event.ctrlKey && event.code === 'Digit3') {
-    event.preventDefault();
-
-    const currentUrl = window.location.href;
-    let targetUrl;
-
-    if (currentUrl.includes('/ru/') || currentUrl.includes('/r/') || currentUrl.includes('/ml/')) {
-      targetUrl = 'https://dict.dhamma.gift/ru/';
-    } else {
-      targetUrl = 'https://dict.dhamma.gift/';
-    }
-
-    window.location.href = targetUrl;
-  }
 
 document.addEventListener('keydown', (event) => {
   // Для отладки: смотри, что нажимается
@@ -812,6 +798,22 @@ document.addEventListener('keydown', (event) => {
   }
 });
 
+document.addEventListener('keydown', function(event) {
+  if (event.ctrlKey && event.code === 'Digit3') {
+    event.preventDefault();
+
+    const currentUrl = window.location.href;
+    let targetUrl;
+
+    if (currentUrl.includes('/ru/') || currentUrl.includes('/r/') || currentUrl.includes('/ml/')) {
+      targetUrl = 'https://dict.dhamma.gift/ru/';
+    } else {
+      targetUrl = 'https://dict.dhamma.gift/';
+    }
+
+    window.location.href = targetUrl;
+  }
+});
 
 
 document.addEventListener("keydown", function (event) {
