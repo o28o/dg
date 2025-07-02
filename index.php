@@ -234,7 +234,7 @@ function updateURL(params) {
                 <!-- Masthead Heading-->
 <div class="hideOnMobile">
 <h1 class="masthead-heading mb-5">
-    <div data-bs-toggle="tooltip" data-bs-placement="bottom" title="<?php echo $tooltiptitle;?>">
+    <div data-bs-toggle="tooltip" style="cursor: pointer;" data-bs-placement="bottom" title="<?php echo $tooltiptitle;?>">
         <?php echo $title;?>
     </div>
 </h1>
@@ -278,7 +278,7 @@ if (isset($_GET['q'])) {
 <i class="fas fa-search fa-flip-horizontal" aria-hidden="true"></i>
     <span class="visually-hidden"><?php echo $searchcaption;?></span>
 </button>
- <div class="text-start text-muted form-check-inline" data-bs-toggle="tooltip" data-bs-placement="bottom" title="<?php echo $tooltipsearchbar;?>">*</div>
+ <div class="text-start text-muted form-check-inline" data-bs-toggle="tooltip" style="cursor: pointer;" data-bs-placement="bottom" title="<?php echo $tooltipsearchbar;?>">*</div>
 </div>
 
 </div>
@@ -295,7 +295,7 @@ if (isset($_GET['q'])) {
         <option value="-tru" <?php if (isset($p) && $p == "-tru") echo "selected";?> ><?php echo $radiotru;?></option>        
     </select>
 
-    <div class="text-start text-muted form-check-inline me-0" data-bs-toggle="tooltip" data-bs-placement="bottom" title="<?php echo $tooltiptextype;?>">*</div>
+    <div class="text-start text-muted form-check-inline me-0" data-bs-toggle="tooltip" style="cursor: pointer;" data-bs-placement="bottom" title="<?php echo $tooltiptextype;?>">*</div>
 
     <select class="dropdown droponmain rounded-pill text-muted border-2 border-primary text-center flex-shrink-1" id="extraOptions" name="extra">
         <option value="" <?php if (isset($extra)) echo "selected";?> ><?php echo "$liststd";?></option>
@@ -308,7 +308,7 @@ if (isset($_GET['q'])) {
         <option value="-nm5" <?php if (isset($extra) && $extra == "-nm5") echo "selected";?> ><?php echo "$listnm";?></option>
     </select>
 
-    <div class="text-muted text-decoration-none me-0 form-check-inline" data-bs-toggle="tooltip" data-bs-placement="bottom" title="<?php echo $tooltipsearchtype;?>">*</div>
+    <div class="text-muted text-decoration-none me-0 form-check-inline" data-bs-toggle="tooltip" style="cursor: pointer;" data-bs-placement="bottom" title="<?php echo $tooltipsearchtype;?>">*</div>
 
     <div id="gear" class="text-white ms-1 flex-shrink-0" data-bs-toggle="collapse" href="#collapseSettings" role="button" aria-expanded="false" aria-controls="collapseSettings">
         <i class="fa-solid fa-gear fa-lg"></i>
@@ -370,14 +370,14 @@ Add <strong>Dhamma.gift</strong> to your Home Screen?
 
  <div class="form-check form-check-inline">
         <input class="form-check-input" type="checkbox" id="onlCheckbox" name="extra" <?php if (isset($extra) && $extra=="-anyd ") echo "checked";?>  value="-anyd">
-  <div data-bs-toggle="tooltip" data-bs-placement="bottom" title='<?php echo $tooltiponl;?>'><?php echo $checkboxonl;?><span class="text-muted">*</span></div>
+  <div data-bs-toggle="tooltip" style="cursor: pointer;" data-bs-placement="bottom" title='<?php echo $tooltiponl;?>'><?php echo $checkboxonl;?><span class="text-muted">*</span></div>
   </div>
 
   
   
 <div class="form-check form-check-inline">
   <input class="form-check-input" type="checkbox" id="laCheckbox" name="la" <?php if (isset($extra) && $extra=="-la$defaultla -lb$defaultla") echo "checked";?>  value='<?php echo "-la$defaultla -lb$defaultla"?>'>
-  <div data-bs-toggle="tooltip" data-bs-placement="bottom" title='<?php echo $tooltipla;?>'><?php echo $checkboxla;?><span class="text-muted">*</span></div>
+  <div data-bs-toggle="tooltip" style="cursor: pointer;" data-bs-placement="bottom" title='<?php echo $tooltipla;?>'><?php echo $checkboxla;?><span class="text-muted">*</span></div>
   </div>
   
          <div style="max-width: 300px;" class="my-2"> 
@@ -760,7 +760,7 @@ foreach ($slides as $index => $slide) {
 <div class="row justify-content-center">
 
 <div style="max-width: 600px;" class="container-lg">
-<div data-bs-toggle="tooltip" data-bs-placement="bottom" title="<?php echo $howtosearchquotetooltip;?>"></div>
+<div data-bs-toggle="tooltip" style="cursor: pointer;" data-bs-placement="bottom" title="<?php echo $howtosearchquotetooltip;?>"></div>
 <?php echo $howtosearchquote;?>
 
 </div>
@@ -1155,7 +1155,7 @@ foreach ($slides as $index => $slide) {
 
 <p class="lead mt-4">
 <?php echo $poweredby; ?>
- <a class="text-white text-decoration-none me-0" data-bs-html="true" data-bs-toggle="tooltip" data-bs-placement="top" title="<?php echo $tooltippoweredby;?>"> *</a></p>
+ <a class="text-white text-decoration-none me-0" data-bs-html="true" data-bs-toggle="tooltip" style="cursor: pointer;" data-bs-placement="top" title="<?php echo $tooltippoweredby;?>"> *</a></p>
 
                     </div>
                 </div>
