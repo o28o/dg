@@ -1,0 +1,174 @@
+{
+    "name": "Dhamma.Gift",
+    "short_name": "Dhamma.Gift",
+    "description": "Sutta & Vinaya Search. Read. Multi-Tool.",
+    "id": "DG",
+    "lang": "en",
+    "handle_links": "auto",
+    "launch_handler": {
+        "client_mode": "focus-existing"
+    },
+    "icons": [
+        {
+            "src": "/assets/img/pwa-bold-monocolor-192.png",
+            "type": "image/png",
+            "sizes": "192x192"
+        },
+        {
+            "src": "/assets/img/pwa-bold-monocolor-512.png",
+            "type": "image/png",
+            "sizes": "512x512"
+        }
+    ],
+    "screenshots": [
+        {
+            "src": "/assets/img/android/1.jpg",
+            "type": "image/jpeg",
+            "sizes": "1080x1920",
+            "label": "Main"
+        },
+        {
+            "src": "/assets/img/android/2.jpg",
+            "type": "image/jpeg",
+            "sizes": "1080x1920",
+            "label": "Flexible Tables"
+        },
+        {
+            "src": "/assets/img/android/3.jpg",
+            "type": "image/jpeg",
+            "sizes": "1080x1920",
+            "label": "Autocomplete"
+        },
+        {
+            "src": "/assets/img/android/4.jpg",
+            "type": "image/jpeg",
+            "sizes": "1080x1920",
+            "label": "Share to Search"
+        },
+        {
+            "src": "/assets/img/android/5.jpg",
+            "type": "image/jpeg",
+            "sizes": "1080x1920",
+            "label": "Dhamma.Gift Read"
+        },
+        {
+            "src": "/assets/img/android/6.jpg",
+            "type": "image/jpeg",
+            "sizes": "1080x1920",
+            "label": "shortcuts"
+        },
+        {
+            "src": "/assets/img/android/7.jpg",
+            "type": "image/jpeg",
+            "sizes": "1080x1920",
+            "label": "Build-in Pali Dictionary"
+        },
+        {
+            "src": "/assets/img/android/8.jpg",
+            "type": "image/jpeg",
+            "sizes": "1080x1920",
+            "label": "Dhamma Multi-Tool"
+        }
+    ],
+    "categories": [
+        "education",
+        "books",
+        "spirituality"
+    ],
+    "dir": "ltr",
+    "iarc_rating_id": "e",
+    "prefer_related_applications": false,
+    "related_applications": [],
+    "scope_extensions": [
+        {
+            "origin": "*.dhamma.gift.com"
+        },
+        {
+            "origin": "dict.dhamma.gift"
+        },
+        {
+            "origin": "*.dict.dhamma.gift"
+        }
+    ],
+    "start_url": "/?source=pwa",
+    "scope": "/",
+    "display": "minimal-ui",
+    "background_color": "#2E3E50",
+    "theme_color": "#2E3E50",
+    "share_target": {
+        "action": "//",
+        "method": "GET",
+        "enctype": "application/x-www-form-urlencoded",
+        "params": {
+            "text": "q"
+        }
+    },
+    "shortcuts": [
+        {
+            "name": "DG Read",
+            "url": "//read.php",
+            "icons": [
+                {
+                    "src": "/assets/img/maniIcon.png",
+                    "type": "image/png",
+                    "sizes": "192x192"
+                }
+            ]
+        },
+        {
+            "name": "Dict.Dhamma.Gift",
+            "url": "//assets/openDDG.html",
+            "icons": [
+                {
+                    "src": "/assets/svg/dpd-logo-dark.svg",
+                    "type": "image/svg+xml",
+                    "sizes": "192x192"
+                }
+            ]
+        },
+        {
+            "name": "Bhikkhu Patimokkha",
+            "url": "//pm.php?expand=true",
+            "icons": [
+                {
+                    "src": "/assets/img/monkIcon.png",
+                    "type": "image/png",
+                    "sizes": "192x192"
+                }
+            ]
+        },
+        {
+            "name": "Bhikkhuni Patimokkha",
+            "url": "//bipm.php?expand=true",
+            "icons": [
+                {
+                    "src": "/assets/img/nunIcon.png",
+                    "type": "image/png",
+                    "sizes": "192x192"
+                }
+            ]
+        },
+        {
+            "name": "Aksharamukha.com",
+            "url": "//assets/openDDG.html?url=https://www.aksharamukha.com/converter",
+            "icons": [
+                {
+                    "src": "/assets/img/maniIcon.png",
+                    "type": "image/png",
+                    "sizes": "192x192"
+                }
+            ]
+        },
+        {
+            "name": "Dharmamitra.org",
+            "url": "//assets/openDDG.html?url=https://dharmamitra.org/",
+            "icons": [
+                {
+                    "src": "/assets/img/maniIcon.png",
+                    "type": "image/png",
+                    "sizes": "192x192"
+                }
+            ]
+        }
+    ]
+}
