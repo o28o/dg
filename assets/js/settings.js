@@ -796,7 +796,7 @@ document.addEventListener('keydown', function(event) {
       targetUrl = 'https://dict.dhamma.gift/';
     }
 
-    window.open(targetUrl); // или просто window.location.href = targetUrl;
+    window.location.href = targetUrl;
   }
 });
 
