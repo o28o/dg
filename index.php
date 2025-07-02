@@ -14,8 +14,10 @@ include 'scripts/search-handler.php';
 //echo basename($_SERVER['REQUEST_URI']);
 ?>
 <html lang="<?php echo $htmllang;?>" data-bs-theme="dark">
-  <meta name="theme-color" content="#1a1a1a" media="(prefers-color-scheme: dark)">
-<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#2E3E50">
+
+  <meta name="theme-color" content="#2E3E50" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#2E3E50" media="(prefers-color-scheme: light)">
     <head>
       <meta charset="UTF-8">
 
