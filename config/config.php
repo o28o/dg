@@ -205,27 +205,27 @@ if (savedReader) {
 $ctaButtons =' <div class="d-flex flex-wrap flex-column flex-sm-row justify-content-center align-items-center my-3 mb-2">
     
     <button class="ms-2 mb-2 p-0 border-0 bg-transparent" id="installPWA" style="cursor:pointer;">
-        <img src="/assets/img/buttons/pwa-cta.png" class="img-fluid" style="max-width: 200px;" alt="Install Dhamma.gift as progressive web app">
+        <img src="/assets/img/buttons/pwa-cta.png" class="img-fluid" style="max-width: 200px;" title="Install Dhamma.gift as progressive web app">
     </button>
 
     <a class="ms-2 mb-2" href="https://t.me/dgift_bot">
-        <img src="/assets/img/buttons/telegram-cta.png" class="img-fluid" style="max-width: 200px;" alt="Open DGift_bot">
+        <img src="/assets/img/buttons/telegram-cta.png" class="img-fluid" style="max-width: 200px;" title="Open DGift_bot">
     </a>
 
     <a class="ms-2 mb-2" href="https://play.google.com/store/apps/details?id=gift.dhamma.twa">
-        <img src="/assets/img/buttons/google-play-cta.png" class="img-fluid" style="max-width: 200px;" alt="Download from Google Play">
+        <img src="/assets/img/buttons/google-play-cta.png" class="img-fluid" style="max-width: 200px;" title="Download from Google Play">
     </a>
     
     <a class="ms-2 mb-2" href="https://chromewebstore.google.com/detail/dhammagift-search-and-wor/dnnogjdcmhbiobpnkhdbfnfjnjlikabd">
-        <img src="/assets/img/buttons/chrome-cta.png" class="img-fluid" style="max-width: 200px;" alt="Download from Chrome Web Store">
+        <img src="/assets/img/buttons/chrome-cta.png" class="img-fluid" style="max-width: 200px;" title="Download from Chrome Web Store">
     </a>
 
     <a class="ms-2 mb-2" href="https://addons.mozilla.org/en-US/firefox/addon/dhamma-gift/">
-        <img src="/assets/img/buttons/firefox-cta.png" class="img-fluid" style="max-width: 200px;" alt="Download from Firefox Add-ons">
+        <img src="/assets/img/buttons/firefox-cta.png" class="img-fluid" style="max-width: 200px;" title="Download from Firefox Add-ons">
     </a>
 
     <a class="ms-2 mb-2" href="https://microsoftedge.microsoft.com/addons/detail/dhammagift-search-and-wo/aokegkhdaijkikbdocanadeghllhfmhj">
-        <img src="/assets/img/buttons/edge-cta.png" class="img-fluid" style="max-width: 200px;" alt="Download from Microsoft Edge Store">
+        <img src="/assets/img/buttons/edge-cta.png" class="img-fluid" style="max-width: 200px;" title="Download from Microsoft Edge Store">
     </a>
     
 </div>
