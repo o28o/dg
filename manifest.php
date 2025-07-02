@@ -141,7 +141,7 @@ echo json_encode([
     "background_color" => "#2E3E50",
     "theme_color" => "#2E3E50",
     "share_target" => [
-        "action" => $mainpagenoslash . "/assets/openDDG.html?url=https://dhamma.gift/",
+        "action" => $mainpagenoslash . "/assets/openDDG.html?url=https://dhamma.gift/" . $mainpagenoslash . "/",
         "method" => "GET",
          "enctype" => "application/x-www-form-urlencoded",
         "params" => [
@@ -173,7 +173,7 @@ echo json_encode([
         ],
         [
             "name" => "Bhikkhu Patimokkha",
-            "url" => $mainpagenoslash . "/assets/openDDG.html?url=https://dhamma.gift/pm.php?expand=true",
+            "url" => $mainpagenoslash . "/assets/openDDG.html?url=https://dhamma.gift" . $mainpagenoslash . "/pm.php?expand=true",
             "icons" => [
                 [
                     "src" => "/assets/img/monkIcon.png",
@@ -184,7 +184,7 @@ echo json_encode([
         ],
         [
             "name" => "Bhikkhuni Patimokkha",
-            "url" => $mainpagenoslash . "/assets/openDDG.html?url=https://dhamma.gift/bipm.php?expand=true",
+            "url" => $mainpagenoslash . "/assets/openDDG.html?url=https://dhamma.gift" . $mainpagenoslash . "/bipm.php?expand=true",
             "icons" => [
                 [
                     "src" => "/assets/img/nunIcon.png",
