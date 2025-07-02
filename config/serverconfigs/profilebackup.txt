@@ -47,6 +47,7 @@ alias tunnel1="ssh -p1001 -L 8888:localhost:8888 root@find.dhamma.gift"
 alias comsshpull="commit_and_push && sshpull"
 alias sclpull="sshcommit && git pull"
 alias gp="git pull"
+alias gpall='find . -type d -name ".git" -execdir sh -c "echo \">> Updating \$(pwd)\"; git pull" \;'
 
 #Text convertion related
 alias aksa="python3.12 $basedir/scripts/aksharamukha-adapter.py"

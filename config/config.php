@@ -217,7 +217,7 @@ $ctaButtons =' <div class="d-flex flex-wrap flex-column flex-sm-row justify-cont
     </a>
     
     <a class="ms-2 mb-2" href="https://chromewebstore.google.com/detail/dhammagift-search-and-wor/dnnogjdcmhbiobpnkhdbfnfjnjlikabd">
-        <img src="/assets/img/buttons/chrome-cta.png" class="img-fluid" style="max-width: 200px;" title="Download from Chrome Web Store">
+        <img src="/assets/img/buttons/chrome-cta.png" class="img-fluid" style="max-width: 200px;" title="Download from Chrome Web Store. Works with Chrome, Edge, Opera, Brave, Vivaldi, and Yandex Browser.">
     </a>
 
     <a class="ms-2 mb-2" href="https://addons.mozilla.org/en-US/firefox/addon/dhamma-gift/">
