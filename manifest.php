@@ -141,7 +141,7 @@ echo json_encode([
     "background_color" => "#2E3E50",
     "theme_color" => "#2E3E50",
     "share_target" => [
-        "action" => $mainpagenoslash . "/assets/openDDG.html?url=https://dhamma.gift/" . $mainpagenoslash . "/",
+        "action" => $mainpagenoslash . "/assets/openDDG.html?url=https://dhamma.gift" . $mainpagenoslash . "/",
         "method" => "GET",
          "enctype" => "application/x-www-form-urlencoded",
         "params" => [
