@@ -25,10 +25,10 @@ if (strpos($referer_path, '/read.php') !== false) {
         : "/read.php?source=pwa";
 } elseif ($is_russian) {
     // Для русского раздела
-    $start_url = "/assets/openDDG.html?url=https://dhamma.gift/ru/?source=pwa";
+    $start_url = "/ru/?source=pwa";
 } else {
     // Для всех остальных случаев (английский)
-    $start_url = "/assets/openDDG.html?url=https://dhamma.gift/?source=pwa";
+    $start_url = "/?source=pwa";
 }
 
 // Добавляем оригинальные query параметры (если есть)
@@ -107,7 +107,7 @@ echo json_encode([
             "type" => "image/jpeg",
             "sizes" => "1080x1920",
             "label" => "shortcuts"
-        ],	
+        ],  
         [
             "src" => "/assets/img/android/7.jpg",
             "type" => "image/jpeg",
@@ -141,11 +141,11 @@ echo json_encode([
     "background_color" => "#2E3E50",
     "theme_color" => "#2E3E50",
     "share_target" => [
-        "action" => $mainpagenoslash . "/assets/openDDG.html?url=https://dhamma.gift" . $mainpagenoslash . "/",
+        "action" => $mainpagenoslash . "/",
         "method" => "GET",
          "enctype" => "application/x-www-form-urlencoded",
         "params" => [
-            "text" => "q"            
+            "text" => "q"
         ]
     ],
     "shortcuts" => [
@@ -173,7 +173,7 @@ echo json_encode([
         ],
         [
             "name" => "Bhikkhu Patimokkha",
-            "url" => $mainpagenoslash . "/assets/openDDG.html?url=https://dhamma.gift" . $mainpagenoslash . "/pm.php?expand=true",
+            "url" => $mainpagenoslash . "/pm.php?expand=true",
             "icons" => [
                 [
                     "src" => "/assets/img/monkIcon.png",
@@ -184,7 +184,7 @@ echo json_encode([
         ],
         [
             "name" => "Bhikkhuni Patimokkha",
-            "url" => $mainpagenoslash . "/assets/openDDG.html?url=https://dhamma.gift" . $mainpagenoslash . "/bipm.php?expand=true",
+            "url" => $mainpagenoslash . "/bipm.php?expand=true",
             "icons" => [
                 [
                     "src" => "/assets/img/nunIcon.png",
