@@ -238,7 +238,7 @@ if (isset($_GET['q'])) {
   <span class="visually-hidden"><?php echo $searchcaption;?></span>
   </div> 
 
- <div class="text-start text-muted form-check-inline" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true" title="<?php echo $tooltipsearchbar;?>">*</div>
+ <div class="text-start text-muted form-check-inline" data-bs-toggle="tooltip" style="cursor: pointer;" data-bs-placement="bottom" data-bs-html="true" title="<?php echo $tooltipsearchbar;?>">*</div>
 </div>
 
 
@@ -283,7 +283,7 @@ $(document).ready(function() {
         <option value="-b" <?php if (isset($p) && $p == "-b") echo "selected";?> ><?php echo $radiotbw;?></option>
         <option value="-en" <?php if (isset($p) && $p == "-en") echo "selected";?> ><?php echo $radioen;?></option>
     </select>
-       <div class="text-start text-muted form-check-inline me-0" data-bs-html="true" data-bs-toggle="tooltip" data-bs-placement="bottom" title="<?php echo $tooltiptextype;?>">*</div>
+       <div class="text-start text-muted form-check-inline me-0" data-bs-html="true" data-bs-toggle="tooltip" style="cursor: pointer;" data-bs-placement="bottom" title="<?php echo $tooltiptextype;?>">*</div>
 
     <select class="dropdown droponmain rounded-pill text-muted border-2 border-primary text-center input-group-append" id="extraOptions" name="extra">
         <option value="" <?php if (isset($extra) && $p == "") echo "selected";?> ><?php echo "$liststd";?></option>
@@ -295,7 +295,7 @@ $(document).ready(function() {
         <option value="-nm10" <?php if (isset($extra) && $extra == "-nm10") echo "selected";?> ><?php echo "$listnm10";?></option>
       <option value="-nm5" <?php if (isset($extra) && $extra == "-nm5") echo "selected";?> ><?php echo "$listnm";?></option>
     </select>
-	  <div class="text-muted text-decoration-none me-1 form-check-inline" data-bs-html="true" data-bs-toggle="tooltip" data-bs-placement="bottom" title="<?php echo $tooltipsearchtype;?>">*</div>
+	  <div class="text-muted text-decoration-none me-1 form-check-inline" data-bs-html="true" data-bs-toggle="tooltip" style="cursor: pointer;" data-bs-placement="bottom" title="<?php echo $tooltipsearchtype;?>">*</div>
 </div>
   <!--  <label for="pOptions"></label> -->
   <!-- extra options -->
@@ -303,12 +303,12 @@ $(document).ready(function() {
          <div style="max-width: 300px;" class="my-2"> 
      <div class="form-check form-check-inline">
         <input class="form-check-input" type="checkbox" id="onlCheckbox" name="extra" <?php if (isset($extra) && $extra=="-anyd ") echo "checked";?>  value="-anyd">
-  <div data-bs-toggle="tooltip" data-bs-placement="bottom" title='<?php echo $tooltiponl;?>'><?php echo $checkboxonl;?></div>
+  <div data-bs-toggle="tooltip" style="cursor: pointer;" data-bs-placement="bottom" title='<?php echo $tooltiponl;?>'><?php echo $checkboxonl;?></div>
   </div>
   
 <div class="form-check form-check-inline">
   <input class="form-check-input" type="checkbox" id="laCheckbox" name="la" <?php if (isset($extra) && $extra=="-la$defaultla ") echo "checked";?>  value='<?php echo "-la$defaultla"?>'>
-  <div data-bs-toggle="tooltip" data-bs-placement="bottom" title='<?php echo $tooltipla;?>'><?php echo $checkboxla;?></div>
+  <div data-bs-toggle="tooltip" style="cursor: pointer;" data-bs-placement="bottom" title='<?php echo $tooltipla;?>'><?php echo $checkboxla;?></div>
   </div>
   
 <div class="align-items-center form-check-inline mt-3">
@@ -18453,7 +18453,7 @@ clearBtn.style.display = 'block';
   <a href="#" data-bs-toggle="collapse" data-bs-target="#knCollapse">Khuddaka Nikāya</a>
   <span style="font-size: 0.6em; vertical-align: middle;" 
         data-bs-html="true" 
-        data-bs-toggle="tooltip" 
+        data-bs-toggle="tooltip" style="cursor: pointer;" 
         data-bs-placement="bottom" 
         title="<?php echo $tooltipknread;?>">*</span>
 </h2>
@@ -21588,7 +21588,7 @@ include $basedir . "/assets/texts/bipm.php";
 <div class="row justify-content-center">
 
 <div style="max-width: 600px;" class="container-lg">
-<div data-bs-toggle="tooltip" data-bs-placement="bottom" title="<?php echo $howtosearchquotetooltip;?>"></div>
+<div data-bs-toggle="tooltip" style="cursor: pointer;" data-bs-placement="bottom" title="<?php echo $howtosearchquotetooltip;?>"></div>
 <?php echo $howtosearchquote;?>
 
 </div>
@@ -21920,7 +21920,7 @@ include $basedir . "/assets/texts/bipm.php";
 
 <p class="lead mt-4">
 <?php echo $poweredby; ?>
- <a class="text-white text-decoration-none me-0" data-bs-html="true" data-bs-toggle="tooltip" data-bs-placement="top" title="<?php echo $tooltippoweredby;?>"> *</a></p>
+ <a class="text-white text-decoration-none me-0" data-bs-html="true" data-bs-toggle="tooltip" style="cursor: pointer;" data-bs-placement="top" title="<?php echo $tooltippoweredby;?>"> *</a></p>
 
                     </div>
                 </div>
