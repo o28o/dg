@@ -48,43 +48,42 @@ include 'scripts/search-handler.php';
 
 <!-- для PWA где нет адресной строки, но нужно установить язык по умолчанию. --> 
 <script>
-// Проверяем, есть ли параметр source=pwa в URL
+// Получаем текущие параметры URL
 const urlParams = new URLSearchParams(window.location.search);
 const isPWA = urlParams.get('source') === 'pwa';
-const qParam = urlParams.get('q'); // Сохраняем параметр q
 
-// Если это PWA или TWA (и нужно принудительно задать язык)
+// Если это PWA и нужно принудительно задать язык
 if (isPWA) {
-    // Проверяем значение siteLanguage в localStorage
+    // Удаляем параметр source=pwa (чтобы он не дублировался после редиректа)
+    urlParams.delete('source');
+
+    // Сохраняем оставшиеся параметры в строку (если они есть)
+    const remainingQuery = urlParams.toString();
+    const queryString = remainingQuery ? `?${remainingQuery}` : '';
+
+    // Проверяем язык в localStorage или определяем его
     let siteLanguage = localStorage.getItem('siteLanguage');
 
-    // Если siteLanguage не задан, определяем язык по URL или браузеру
     if (!siteLanguage) {
         const currentPath = window.location.pathname;
         
-        // Если язык уже указан в URL, используем его
         if (currentPath.includes('/ru/')) {
             siteLanguage = 'ru';
         } else if (currentPath.includes('/th/')) {
             siteLanguage = 'th';
         } else {
-            // Если язык не в URL, берём язык браузера
             const browserLang = navigator.language || navigator.userLanguage;
             siteLanguage = browserLang.startsWith('ru') ? 'ru' : 
                           browserLang.startsWith('th') ? 'th' : 'en';
         }
-
-        // Сохраняем язык в localStorage
         localStorage.setItem('siteLanguage', siteLanguage);
     }
 
-    // Если текущий URL не соответствует выбранному языку, делаем редирект
+    // Получаем текущий путь и хэш
     const currentPath = window.location.pathname;
     const currentHash = window.location.hash;
-    
-    // Создаем строку с параметрами (добавляем q, если он есть)
-    const queryString = qParam ? `?q=${encodeURIComponent(qParam)}` : '';
 
+    // Делаем редирект с сохранением всех параметров (кроме source=pwa) и хэша
     if (siteLanguage === 'ru' && !currentPath.includes('/ru/')) {
         window.location.href = `/ru/${queryString}${currentHash}`;
     } else if (siteLanguage === 'th' && !currentPath.includes('/th/')) {
