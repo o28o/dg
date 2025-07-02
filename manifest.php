@@ -25,10 +25,10 @@ if (strpos($referer_path, '/read.php') !== false) {
         : "/read.php?source=pwa";
 } elseif ($is_russian) {
     // Для русского раздела
-    $start_url = "/ru/?source=pwa";
+    $start_url = "/assets/openDDG.html?url=https://dhamma.gift/ru/?source=pwa";
 } else {
     // Для всех остальных случаев (английский)
-    $start_url = "/?source=pwa";
+    $start_url = "/assets/openDDG.html?url=https://dhamma.gift/?source=pwa";
 }
 
 // Добавляем оригинальные query параметры (если есть)
@@ -141,7 +141,7 @@ echo json_encode([
     "background_color" => "#2E3E50",
     "theme_color" => "#2E3E50",
     "share_target" => [
-        "action" => $mainpagenoslash . "/",
+        "action" => $mainpagenoslash . "/assets/openDDG.html?url=https://dhamma.gift/",
         "method" => "GET",
          "enctype" => "application/x-www-form-urlencoded",
         "params" => [
@@ -151,7 +151,7 @@ echo json_encode([
     "shortcuts" => [
         [
             "name" => "DG Read",
-            "url" => $mainpagenoslash . "/read.php",
+            "url" => $mainpagenoslash . "/assets/openDDG.html?url=https://dhamma.gift" . $mainpagenoslash . "/read.php",
             "icons" => [
                 [
                     "src" => "/assets/img/maniIcon.png",
@@ -173,7 +173,7 @@ echo json_encode([
         ],
         [
             "name" => "Bhikkhu Patimokkha",
-            "url" => $mainpagenoslash . "/pm.php?expand=true",
+            "url" => $mainpagenoslash . "/assets/openDDG.html?url=https://dhamma.gift/pm.php?expand=true",
             "icons" => [
                 [
                     "src" => "/assets/img/monkIcon.png",
@@ -184,7 +184,7 @@ echo json_encode([
         ],
         [
             "name" => "Bhikkhuni Patimokkha",
-            "url" => $mainpagenoslash . "/bipm.php?expand=true",
+            "url" => $mainpagenoslash . "/assets/openDDG.html?url=https://dhamma.gift/bipm.php?expand=true",
             "icons" => [
                 [
                     "src" => "/assets/img/nunIcon.png",
