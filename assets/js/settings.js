@@ -783,7 +783,6 @@ document.addEventListener('keydown', (event) => {
   }
 });
 
-document.addEventListener('keydown', function(event) {
   if (event.ctrlKey && event.code === 'Digit3') {
     event.preventDefault();
 
@@ -798,8 +797,6 @@ document.addEventListener('keydown', function(event) {
 
     window.location.href = targetUrl;
   }
-});
-
 
 document.addEventListener('keydown', (event) => {
   // Для отладки: смотри, что нажимается
