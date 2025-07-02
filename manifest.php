@@ -145,7 +145,8 @@ echo json_encode([
         "method" => "GET",
          "enctype" => "application/x-www-form-urlencoded",
         "params" => [
-            "text" => "q"
+            "text" => "q",
+            "source" => "pwa"            
         ]
     ],
     "shortcuts" => [

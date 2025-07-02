@@ -51,6 +51,7 @@ include 'scripts/search-handler.php';
 // Проверяем, есть ли параметр source=pwa в URL
 const urlParams = new URLSearchParams(window.location.search);
 const isPWA = urlParams.get('source') === 'pwa';
+const qParam = urlParams.get('q'); // Сохраняем параметр q
 
 // Если это PWA или TWA (и нужно принудительно задать язык)
 if (isPWA) {
@@ -80,13 +81,16 @@ if (isPWA) {
     // Если текущий URL не соответствует выбранному языку, делаем редирект
     const currentPath = window.location.pathname;
     const currentHash = window.location.hash;
+    
+    // Создаем строку с параметрами (добавляем q, если он есть)
+    const queryString = qParam ? `?q=${encodeURIComponent(qParam)}` : '';
 
     if (siteLanguage === 'ru' && !currentPath.includes('/ru/')) {
-        window.location.href = '/ru/' + currentHash;
+        window.location.href = `/ru/${queryString}${currentHash}`;
     } else if (siteLanguage === 'th' && !currentPath.includes('/th/')) {
-        window.location.href = '/th/' + currentHash;
+        window.location.href = `/th/${queryString}${currentHash}`;
     } else if (siteLanguage === 'en' && currentPath !== '/') {
-        window.location.href = '/' + currentHash;
+        window.location.href = `/${queryString}${currentHash}`;
     }
 }
 </script>
