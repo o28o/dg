@@ -99,7 +99,8 @@ if (savedDict.includes("dpd")) {
   }
   
   if (savedDict.includes("full")) {
-    dictUrl += "/search_html?source=pwa&q=";
+    //    dictUrl += "/search_html?source=pwa&q=";
+    dictUrl += "/search_html?q=";
   } else if (savedDict.includes("compact")) {
     dictUrl += "/gd?search=";
   }
