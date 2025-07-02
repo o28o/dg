@@ -28,7 +28,7 @@ include 'scripts/search-handler.php';
 <meta name="keywords" content="<?php echo $metakeywords;?>">
 <meta property="og:locale" content="<?php echo $oglocale;?>" />
 <meta property="og:type" content="website" />
-<meta property="og:title" content="Dhamma.gift" />
+<meta property="og:title" content="Dhamma.Gift" />
 <meta property="og:description" content="<?php echo $ogdesc;?>" />
 
 <style>
@@ -96,8 +96,8 @@ if (isPWA) {
 }
 </script>
 
-<meta property="og:url" content="https://Dhamma.gift" />
-<meta property="og:site_name" content="Dhamma.gift" />
+<meta property="og:url" content="https://Dhamma.Gift" />
+<meta property="og:site_name" content="Dhamma.Gift" />
 <meta property="og:image" content="<?php echo $ogshare;?>" />
 
 <meta name="twitter:card" content="summary_large_image">
@@ -199,7 +199,7 @@ function updateURL(params) {
    <img loading="lazy" alt="Precise search in Pali Suttas and Vinaya" src="/assets/img/dhammafindlogo.webp"  style="width:100px;"></a>
 
             
-                <a class="navbar-brand mobile-none" href="/">Dhamma.gift</a>
+                <a class="navbar-brand mobile-none" href="/">Dhamma.Gift</a>
                 <button class="navbar-toggler text-uppercase font-weight-bold bg-primary text-white rounded" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                    <?php echo $menu;?>
                     <i class="fas fa-bars"></i>
@@ -344,7 +344,7 @@ $(document).ready(function() {
  <?php
 if (strpos($_SERVER['REQUEST_URI'], "/ru") !== false){
 echo '<div style="max-width: 450px; display: none;" class="alert alert-primary alert-dismissible fade show mt-3" role="alert" id="infoUpdate">
-Добавить <strong>Dhamma.gift</strong> на Домашний Экран?
+Добавить <strong>Dhamma.Gift</strong> на Домашний Экран?
     <a class="btn btn-secondary installButton" id="" style="display:none;">' . $installpwalong . '</a>
    <br>
    <strong>iOS</strong> Safari: Поделиться -> добавить на Главную.<br> 
@@ -354,7 +354,7 @@ echo '<div style="max-width: 450px; display: none;" class="alert alert-primary a
 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>';
 } else {
 echo '<div style="max-width: 450px; display: none;" class="alert alert-primary alert-dismissible fade show mt-3" role="alert" id="infoUpdate">
-Add <strong>Dhamma.gift</strong> to your Home Screen?
+Add <strong>Dhamma.Gift</strong> to your Home Screen?
     <a class="btn btn-secondary installButton" id="" style="display:none;">' . $installpwalong . '</a>
    <br>
    <strong>iOS</strong> Safari: Share -> Add to Home Screen.<br>
@@ -890,9 +890,9 @@ foreach ($slides as $index => $slide) {
       <?php
       if ( $mode == "offline" ) {
         
-      echo '  <a href="https://Dhamma.gift/" style="z-index:1" class="list-group-item list-group-item-action active">
+      echo '  <a href="https://Dhamma.Gift/" style="z-index:1" class="list-group-item list-group-item-action active">
     <div class="d-flex w-100 justify-content-between">
-      <h5 class="mb-1">Dhamma.gift</h5>
+      <h5 class="mb-1">Dhamma.Gift</h5>
       <small class="text-muted">' . $detailonline . '</small>
     </div>
     <p class="mb-1">' . $pfdg . '</p>
@@ -1001,7 +1001,7 @@ foreach ($slides as $index => $slide) {
  <div class="list-group">
   <a target="" href="<?php echo $mainreadlink; ?>" class="list-group-item list-group-item-action active" aria-current="true">
     <div class="d-flex w-100 justify-content-between text-left">
-      <h5 class="mb-1">Dhamma.gift Read</h5>
+      <h5 class="mb-1">Dhamma.Gift Read</h5>
       <small><?php echo $detailonandoffline;?></small>
     </div>
     <p class="mb-1 text-left"><?php echo $psclight; ?></p>
@@ -1169,7 +1169,7 @@ foreach ($slides as $index => $slide) {
 		
         <!-- Copyright Section-->
 <div id="copyright" class="copyright py-4 text-center text-white " >
-<div class="container"> <a target="_blank" rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="/assets/img/88x31.png" loading="lazy" /></a> <small>Copyright <a class="text-white text-decoration-none" href="/assets/readylinebyline.html">&copy;</a> Dhamma.gift <?php echo $mode; ?> <a class="text-white text-decoration-none" href="/assets/countdowntable.php">2022</a>-<?php echo date("Y"); ?></small>  <small id="copyrightnote">
+<div class="container"> <a target="_blank" rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="/assets/img/88x31.png" loading="lazy" /></a> <small>Copyright <a class="text-white text-decoration-none" href="/assets/readylinebyline.html">&copy;</a> Dhamma.Gift <?php echo $mode; ?> <a class="text-white text-decoration-none" href="/assets/countdowntable.php">2022</a>-<?php echo date("Y"); ?></small>  <small id="copyrightnote">
  
 <p class="text-muted text-center mx-auto" style="max-width: 650px;">
    <?php echo $copyrightnote; ?> 
@@ -1346,9 +1346,9 @@ foreach ($slides as $index => $slide) {
 <img class="img-fluid rounded mb-5" src="assets/img/portfolio/submarine.png" alt="..." /> -->
 <!-- Portfolio Modal - Text-->
 <div class="embed-container mb-3">
-<a href="<?php echo $demovideolink;?>" target="_blank" ><img  class="imgonmain" src="<?php echo $demovideoimg;?>" title="How to search in Pali Suttas and Vinaya with Dhamma.gift" loading="lazy" ></a></div>
+<a href="<?php echo $demovideolink;?>" target="_blank" ><img  class="imgonmain" src="<?php echo $demovideoimg;?>" title="How to search in Pali Suttas and Vinaya with Dhamma.Gift" loading="lazy" ></a></div>
 
-<!-- <div class="embed-container"> <iframe src="<?php echo $demovideolink;?> " title="How to search in Pali Suttas and Vinaya with Dhamma.gift" frameborder="0" allowfullscreen></iframe>
+<!-- <div class="embed-container"> <iframe src="<?php echo $demovideolink;?> " title="How to search in Pali Suttas and Vinaya with Dhamma.Gift" frameborder="0" allowfullscreen></iframe>
 </div>-->
 
 <button class="btn btn-primary" data-bs-dismiss="modal">
