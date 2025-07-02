@@ -877,7 +877,7 @@ clearBtn.style.display = 'block';
 </div>
  
 <div class="mt-3">
-<span class="level5"><a class="setReader" href="<?php echo $readerPage;?>/?q=mn10">mn10</a> Satipaṭṭhānasutta</span>
+<span class="level5"><a class="setReader" href="<?php echo $readerPage;?>/?q=mn10">mn10</a> Satipaṭṭhānasutta <?php echo $ifRuLitTrn;?></span>
 </div>
  
 </div> <!-- close prev vagga div -->
