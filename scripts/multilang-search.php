@@ -68,49 +68,53 @@ if (file_put_contents($filePath, $cleanedUrl . PHP_EOL) === false) {
 } 
 //else { echo "Очищенный URL успешно записан: $cleanedUrl"; }
 
-// Режим Словаря 
-if (preg_match('/dictLookup/', $p) || preg_match('/dictLookup/', $extra)) {
-    $stringForWord = htmlspecialchars(strtolower($stringForWord), ENT_QUOTES);
-    
-    // Определяем язык
-    $isRussian = preg_match('/\/ru/', $actual_link);
-    $dictMode = $isRussian ? "dpdFullRu" : "dpdFull";
-    
-    // Устанавливаем слово по умолчанию
-    if (empty($stringForWord) || $stringForWord === '""') {
-        $stringForWord = "dukkha";
+    // Режим Словаря 
+    if (preg_match('/dictLookup/', $p) || preg_match('/dictLookup/', $extra)) {
+        $stringForWord = htmlspecialchars(strtolower($stringForWord), ENT_QUOTES);
+        
+        // Определяем язык
+        $isRussian = preg_match('/\/ru/', $actual_link);
+        $dictMode = $isRussian ? "dpdFullru" : "dpdFull";
+        
+        // Устанавливаем слово по умолчанию
+        if (empty($stringForWord) || $stringForWord === '""') {
+            $stringForWord = "dukkha";
+        }
+        
+        // Для локального сервера используем dictTango, для остальных - iframe
+        $server_name = $_SERVER['SERVER_NAME'];
+        if ($server_name === 'localhost' || $server_name === '127.0.0.1') {
+            echo "<script>
+                setTimeout(function() {
+                    window.location.href = 'dttp://app.dicttango/WordLookup?word=' + encodeURIComponent('{$stringForWord}');
+                    document.getElementById('spinner').style.display = 'none';
+                }, 100);
+            </script>";
+        } else {
+            echo "<script>
+                setTimeout(function() {
+                    
+                    // Показываем popup
+                    const popup = document.querySelector('.popup');
+                    const overlay = document.querySelector('.overlay');
+                    const iframe = document.querySelector('.popup iframe');
+                    
+                    popup.style.display = 'block';
+                    overlay.style.display = 'block';
+                    
+                    // Загружаем слово в словарь с правильным режимом
+                    handleWordLookup('{$stringForWord}', { 
+                        clientX: window.innerWidth/2, 
+                        clientY: window.innerHeight/2,
+                        dictMode: '{$dictMode}'
+                    });
+                    
+                    document.getElementById('spinner').style.display = 'none';
+                }, 100);
+            </script>";
+        }
+        return;
     }
-    
-    // Для локального сервера используем dictTango, для остальных - iframe
-    $server_name = $_SERVER['SERVER_NAME'];
-    if ($server_name === 'localhost' || $server_name === '127.0.0.1') {
-        echo "<script>
-            setTimeout(function() {
-                window.location.href = 'dttp://app.dicttango/WordLookup?word=' + encodeURIComponent('{$stringForWord}');
-                document.getElementById('spinner').style.display = 'none';
-            }, 100);
-        </script>";
-    } else {
-        echo "<script>
-            setTimeout(function() {
-                
-                // Показываем popup
-                const popup = document.querySelector('.popup');
-                const overlay = document.querySelector('.overlay');
-                const iframe = document.querySelector('.popup iframe');
-                
-                popup.style.display = 'block';
-                overlay.style.display = 'block';
-                
-                // Загружаем слово в словарь
-                handleWordLookup('{$stringForWord}', { clientX: window.innerWidth/2, clientY: window.innerHeight/2 });
-                
-                document.getElementById('spinner').style.display = 'none';
-            }, 100);
-        </script>";
-    }
-    return;
-}
 
 
 // Проверка условий
@@ -463,6 +467,4 @@ if ( preg_match('/(|-en|-b)/', $p ) && ( preg_match('/(-not-in-|-net-v-)/', $che
 $outforjs .= $output; 
 }	
 */
-?>	
-
-
+?>
