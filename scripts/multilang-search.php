@@ -68,53 +68,38 @@ if (file_put_contents($filePath, $cleanedUrl . PHP_EOL) === false) {
 } 
 //else { echo "Очищенный URL успешно записан: $cleanedUrl"; }
 
-    // Режим Словаря 
-    if (preg_match('/dictLookup/', $p) || preg_match('/dictLookup/', $extra)) {
-        $stringForWord = htmlspecialchars(strtolower($stringForWord), ENT_QUOTES);
-        
-        // Определяем язык
-        $isRussian = preg_match('/\/ru/', $actual_link);
-        $dictMode = $isRussian ? "dpdFullru" : "dpdFull";
-        
-        // Устанавливаем слово по умолчанию
-        if (empty($stringForWord) || $stringForWord === '""') {
-            $stringForWord = "dukkha";
-        }
-        
-        // Для локального сервера используем dictTango, для остальных - iframe
-        $server_name = $_SERVER['SERVER_NAME'];
-        if ($server_name === 'localhost' || $server_name === '127.0.0.1') {
-            echo "<script>
-                setTimeout(function() {
-                    window.location.href = 'dttp://app.dicttango/WordLookup?word=' + encodeURIComponent('{$stringForWord}');
-                    document.getElementById('spinner').style.display = 'none';
-                }, 100);
-            </script>";
-        } else {
-            echo "<script>
-                setTimeout(function() {
-                    
-                    // Показываем popup
-                    const popup = document.querySelector('.popup');
-                    const overlay = document.querySelector('.overlay');
-                    const iframe = document.querySelector('.popup iframe');
-                    
-                    popup.style.display = 'block';
-                    overlay.style.display = 'block';
-                    
-                    // Загружаем слово в словарь с правильным режимом
-                    handleWordLookup('{$stringForWord}', { 
-                        clientX: window.innerWidth/2, 
-                        clientY: window.innerHeight/2,
-                        dictMode: '{$dictMode}'
-                    });
-                    
-                    document.getElementById('spinner').style.display = 'none';
-                }, 100);
-            </script>";
-        }
-        return;
+// Режим Словаря 
+if (preg_match('/dictLookup/', $p) || preg_match('/dictLookup/', $extra)) {
+    $stringForWord = urlencode(htmlspecialchars(strtolower($stringForWord), ENT_QUOTES));
+    $dictType = 'https://dict.dhamma.gift';
+    
+    if (preg_match('/\/ru/', $actual_link)) {
+        $outputlang = "-oru";
+        $langinurl = "/ru";
+    } else {
+        $outputlang = "";
+        $langinurl = "";
     }
+
+    if (empty($stringForWord) || $stringForWord === '""') {
+        $stringForWord = "dukkha";
+    }
+
+    $server_name = $_SERVER['SERVER_NAME'];
+    if ($server_name === 'localhost' || $server_name === '127.0.0.1') {
+        $dictUrl = "dttp://app.dicttango/WordLookup?word="; // Исправлен протокол
+    } else {
+        $dictUrl = "/assets/openDDG.html?url={$dictType}{$langinurl}/search_html?q=";  
+    }
+    
+    echo "<script>
+    setTimeout(function() {
+        window.open('{$dictUrl}' + '{$stringForWord}');
+        document.getElementById('spinner').style.display = 'none';
+    }, 100);
+    </script>";
+    return;
+}
 
 
 // Проверка условий
@@ -138,7 +123,7 @@ window.location.href='$langinurl/w.php?&d=an,sn,mn,dn,kn&s=$stringForWord';
 
 if (preg_match('/(-abhi )/', $q)) {
   $fdgscript = "./scripts/finddhamma.sh";
-      $q = trim(preg_replace('/-abhi/', ' ', $q));	  
+      $q = trim(preg_replace('/-abhi/', ' ', $q));    
 $p = "-abhi"; 
 } 
 
@@ -167,9 +152,9 @@ $fdgscript = "./scripts/finddhamma.sh";
 
 $output = shell_exec("bash $fdgscript $outputlang $la $extra $cb $p $string"); 
 
-$output = trim(preg_replace('/\s\s+/', ' ', $output));	
+$output = trim(preg_replace('/\s\s+/', ' ', $output));  
 $outforjs = $output . "<br>";
-	
+    
 }
 else if (preg_match('/[А-Яа-яЁё]/u', $string) ) {
 
@@ -184,21 +169,21 @@ $output = shell_exec("bash $fdgscript $outputlang $la $extra $cb $p $string");
 // sed -i 's@$fdgscript@$fdgscript@g' scripts/multilang-search.php
 
 //echo "<p class='mt-3'>$output</p>";
-$output = trim(preg_replace('/\s\s+/', ' ', $output));	
+$output = trim(preg_replace('/\s\s+/', ' ', $output));  
 $outforjs = $output . "<br>";
 
 
 $check = ru2lat( $output );
 
-		if ((( $p == "-ru" ) && ( preg_match('/(-not-in-|-net-v-)/', $check)  )) || ( ( $p != "-vin" ) && ( preg_match('/(-not-in-|-net-v-)/', $check)  )))	{
+        if ((( $p == "-ru" ) && ( preg_match('/(-not-in-|-net-v-)/', $check)  )) || ( ( $p != "-vin" ) && ( preg_match('/(-not-in-|-net-v-)/', $check)  ))) {
 
 $fdgscript = "./scripts/finddhamma.sh";
-	 $output = shell_exec("bash $fdgscript $outputlang $la $extra $cb -tru $string");
-//	 echo "<script>document.getElementById( 'spinner' ).style.display = 'none';</script>";
-	// echo                                                	"<p>$output</p>";
-	 $output = trim(preg_replace('/\s\s+/', ' ', $output));	
-	 $outforjs .= $output;
-			}	
+     $output = shell_exec("bash $fdgscript $outputlang $la $extra $cb -tru $string");
+//   echo "<script>document.getElementById( 'spinner' ).style.display = 'none';</script>";
+    // echo                                                 "<p>$output</p>";
+     $output = trim(preg_replace('/\s\s+/', ' ', $output)); 
+     $outforjs .= $output;
+            }   
 
 #Devanagari
 } else if (preg_match('/\p{Devanagari}/u', $string) || ( $p == "-dv" )) {
@@ -207,11 +192,11 @@ $fdgscript = "./scripts/finddhamma.sh";
   $command = escapeshellcmd("$adapterscriptlocation $string");
   $convertedStr = shell_exec($command);
  $output = $aksharatext . $convertedStr; 
- $output = trim(preg_replace('/\s\s+/', ' ', $output));	
+ $output = trim(preg_replace('/\s\s+/', ' ', $output)); 
  $outforjs .= $output . "<br>";
   $output = shell_exec("bash $fdgscript $outputlang -conv $la $extra $cb $convertedStr");
  // echo "<p>$output</p>";
- $output = trim(preg_replace('/\s\s+/', ' ', $output));	
+ $output = trim(preg_replace('/\s\s+/', ' ', $output)); 
 $outforjs .= $output . "<br>";
   
       } else {
@@ -226,21 +211,21 @@ curl_setopt($cURLConnection, CURLOPT_HTTPHEADER, array(
 $convertedStr = curl_exec($cURLConnection);
 curl_close($cURLConnection);
  $output = $aksharatext . $convertedStr; 
- $output = trim(preg_replace('/\s\s+/', ' ', $output));	
+ $output = trim(preg_replace('/\s\s+/', ' ', $output)); 
  $outforjs .= $output . "<br>";
   $output = shell_exec("bash $fdgscript $outputlang -conv $la $extra $cb $convertedStr");
 //  echo "<p>$output</p>";
-$output = trim(preg_replace('/\s\s+/', ' ', $output));	
+$output = trim(preg_replace('/\s\s+/', ' ', $output));  
 $outforjs .= $output . "<br>";
       }
    
       $output = shell_exec("bash $fdgscript $outputlang $la $extra $cb $p $string");
 //    echo "<p class='mt-3'>$output</p>";
-      $output = trim(preg_replace('/\s\s+/', ' ', $output));	
+      $output = trim(preg_replace('/\s\s+/', ' ', $output));    
 $outforjs .= $output . "<br>"; 
 
 //echo "<script>document.getElementById( 'spinner' ).style.display = 'none';</script>";
-			
+            
 } 
 
 #thai
@@ -250,11 +235,11 @@ else if (preg_match('/\p{Thai}/u', $string) || ( $p == "-th" )) {
   $command = escapeshellcmd("$adapterscriptlocation $string");
   $convertedStr = shell_exec($command);
  $output = $aksharatext . $convertedStr; 
- $output = trim(preg_replace('/\s\s+/', ' ', $output));	
+ $output = trim(preg_replace('/\s\s+/', ' ', $output)); 
  $outforjs .= $output . "<br>";
   $output = shell_exec("bash $fdgscript $outputlang -conv $la $extra $cb $convertedStr");
  // echo "<p>$output</p>";
- $output = trim(preg_replace('/\s\s+/', ' ', $output));	
+ $output = trim(preg_replace('/\s\s+/', ' ', $output)); 
 $outforjs .= $output . "<br>";
   
       } else {
@@ -269,21 +254,21 @@ curl_setopt($cURLConnection, CURLOPT_HTTPHEADER, array(
 $convertedStr = curl_exec($cURLConnection);
 curl_close($cURLConnection);
  $output = $aksharatext . $convertedStr; 
- $output = trim(preg_replace('/\s\s+/', ' ', $output));	
+ $output = trim(preg_replace('/\s\s+/', ' ', $output)); 
  $outforjs .= $output . "<br>";
   $output = shell_exec("bash $fdgscript $outputlang -conv $la $extra $cb $convertedStr");
 //  echo "<p>$output</p>";
-$output = trim(preg_replace('/\s\s+/', ' ', $output));	
+$output = trim(preg_replace('/\s\s+/', ' ', $output));  
 $outforjs .= $output . "<br>";
       }
    
       $output = shell_exec("bash $fdgscript $outputlang $la $extra $cb $p $string");
 //    echo "<p class='mt-3'>$output</p>";
-      $output = trim(preg_replace('/\s\s+/', ' ', $output));	
+      $output = trim(preg_replace('/\s\s+/', ' ', $output));    
 $outforjs .= $output . "<br>"; 
 
 //echo "<script>document.getElementById( 'spinner' ).style.display = 'none';</script>";
-			
+            
 } 
 #sinhala
 else if (preg_match('/\p{Sinhala}/u', $string) || ( $p == "-si" )) {
@@ -293,11 +278,11 @@ else if (preg_match('/\p{Sinhala}/u', $string) || ( $p == "-si" )) {
   $command = escapeshellcmd("$adapterscriptlocation $string");
   $convertedStr = shell_exec($command);
  $output = $aksharatext . $convertedStr; 
- $output = trim(preg_replace('/\s\s+/', ' ', $output));	
+ $output = trim(preg_replace('/\s\s+/', ' ', $output)); 
  $outforjs .= $output . "<br>";
   $output = shell_exec("bash $fdgscript $outputlang -conv $la $extra $cb $convertedStr");
  // echo "<p>$output</p>";
- $output = trim(preg_replace('/\s\s+/', ' ', $output));	
+ $output = trim(preg_replace('/\s\s+/', ' ', $output)); 
 $outforjs .= $output . "<br>";
   
       } else {
@@ -312,37 +297,37 @@ curl_setopt($cURLConnection, CURLOPT_HTTPHEADER, array(
 $convertedStr = curl_exec($cURLConnection);
 curl_close($cURLConnection);
  $output = $aksharatext . $convertedStr; 
- $output = trim(preg_replace('/\s\s+/', ' ', $output));	
+ $output = trim(preg_replace('/\s\s+/', ' ', $output)); 
  $outforjs .= $output . "<br>";
  echo "$outputlang $p -conv $la $extra $cb $convertedStr";
   $output = shell_exec("bash $fdgscript $outputlang -conv $la $extra $cb $convertedStr");
   
 //  echo "<p>$output</p>";
-$output = trim(preg_replace('/\s\s+/', ' ', $output));	
+$output = trim(preg_replace('/\s\s+/', ' ', $output));  
 $outforjs .= $output . "<br>";
       }
    
       $output = shell_exec("bash $fdgscript $outputlang $la $extra $cb $p $string");
 //    echo "<p class='mt-3'>$output</p>";
-      $output = trim(preg_replace('/\s\s+/', ' ', $output));	
+      $output = trim(preg_replace('/\s\s+/', ' ', $output));    
 $outforjs .= $output . "<br>"; 
 
 //echo "<script>document.getElementById( 'spinner' ).style.display = 'none';</script>";
-			
+            
 } 
 
 //english 
 else if ( $p == "-en" ) {
 $output = shell_exec("bash $fdgscript $outputlang $la -en $extra $cb $string");
-                                                            	//		echo "<p>$output</p>";
-      $output = trim(preg_replace('/\s\s+/', ' ', $output));	
+                                                                //      echo "<p>$output</p>";
+      $output = trim(preg_replace('/\s\s+/', ' ', $output));    
 $outforjs .= $output . "<br>"; 
 
 }
 else if ( $p == "-b" ) {
 $output = shell_exec("bash $fdgscript $outputlang $la -b $extra $cb $string");
-                                                            	//		echo "<p>$output</p>";
-      $output = trim(preg_replace('/\s\s+/', ' ', $output));	
+                                                                //      echo "<p>$output</p>";
+      $output = trim(preg_replace('/\s\s+/', ' ', $output));    
 $outforjs .= $output . "<br>"; 
 
 }
@@ -350,7 +335,7 @@ $outforjs .= $output . "<br>";
 /* Pali def*/  
 else if ( preg_match('/-def/', $p ) && preg_match('/-vin/', $p ))  {
 $output = shell_exec("bash $fdgscript $outputlang $la -def -vin $extra $cb $string");
-$output = trim(preg_replace('/\s\s+/', ' ', $output));	
+$output = trim(preg_replace('/\s\s+/', ' ', $output));  
 $outforjs .= $output . "<br>"; 
 }
 
@@ -358,42 +343,42 @@ else if ( preg_match('/-def/', $p ) && ( $p != "-vin" ))  {
 $output = shell_exec("bash $fdgscript $outputlang $la -def $extra $cb $string");
 //    echo "<p>$output</p>";
 $check = ru2lat( $output );
-      $output = trim(preg_replace('/\s\s+/', ' ', $output));	
+      $output = trim(preg_replace('/\s\s+/', ' ', $output));    
 $outforjs .= $output . "<br>"; 
 
 if ( preg_match('/-def/', $p ) && ( preg_match('/(-not-in-|-net-v-)/', $check)))  {
 $output = shell_exec("bash $fdgscript $outputlang $la -def -vin $extra $cb $string");
-      $output = trim(preg_replace('/\s\s+/', ' ', $output));	
+      $output = trim(preg_replace('/\s\s+/', ' ', $output));    
 $outforjs .= $output . "<br>"; 
-}	
+}   
 /* Pali */  
-}	else {
+}   else {
   
   $output = shell_exec("bash $fdgscript $outputlang $la $extra $cb $p $string"); 
-	//		echo "<p class='mt-3'>$output</p>";
-      $output = trim(preg_replace('/\s\s+/', ' ', $output));	
+    //      echo "<p class='mt-3'>$output</p>";
+      $output = trim(preg_replace('/\s\s+/', ' ', $output));    
 $outforjs .= $output . "<br>"; 
 
 
-		$check = ru2lat( $output );
-		
-		
+        $check = ru2lat( $output );
+        
+        
 if ( preg_match('/(|-en)/', $p ) && ( preg_match('/(-not-in-|-net-v-)/', $check) ) && ( $p != "-vin" ) && ( $p != "-def" ))  {
   $fdgscript = "./new/finddhamma2.sh";
 $output = shell_exec("bash $fdgscript $outputlang $la -vin $extra $cb $string");
-//                                                          		echo "<p>$output</p>";
-      $output = trim(preg_replace('/\s\s+/', ' ', $output));	
+//                                                                  echo "<p>$output</p>";
+      $output = trim(preg_replace('/\s\s+/', ' ', $output));    
 $outforjs .= $output . "<br>"; 
 
-}	
+}   
 
 $check = ru2lat( $output );
 
 if ( preg_match('/(|-en)/', $p ) && ( preg_match('/(-not-in-|-net-v-)/', $check) ) && ( $p != "-vin" ) && ( $p != "-def" ))  {
   $fdgscript = "./new/finddhamma2.sh";
 $output = shell_exec("bash $fdgscript $outputlang $la -en -kn $extra $cb $string");
-//                                                          		echo "<p>$output</p>";
-      $output = trim(preg_replace('/\s\s+/', ' ', $output));	
+//                                                                  echo "<p>$output</p>";
+      $output = trim(preg_replace('/\s\s+/', ' ', $output));    
 $outforjs .= $output . "<br>"; 
 
 }
@@ -403,8 +388,8 @@ $check = ru2lat( $output );
 
 if ( preg_match('/(|-en)/', $p ) && ( preg_match('/(-not-in-|-net-v-)/', $check) ) && ( $p != "-def" ))  {
 $output = shell_exec("bash $fdgscript $outputlang $la -en -vin $extra $cb $string");
-//                                                          		echo "<p>$output</p>";
-      $output = trim(preg_replace('/\s\s+/', ' ', $output));	
+//                                                                  echo "<p>$output</p>";
+      $output = trim(preg_replace('/\s\s+/', ' ', $output));    
 $outforjs .= $output . "<br>"; 
 
 }
@@ -422,7 +407,7 @@ if (strpos($outputnonl, 'script') !== false || strpos($outputnonl, 'location.hre
 
     // Добавляем скрытие страницы перед выполнением скриптов
     echo '<script>document.body.style.display = "none";
-	</script>';
+    </script>';
 if (preg_match('/(-anyd)/', $extra)) {
   echo "<script>window.location.href='/result/r.html';
     addToSearchHistory();
@@ -463,8 +448,9 @@ if ($outputnonl !== '<br>' && !empty($outputnonl)) {
 if ( preg_match('/(|-en|-b)/', $p ) && ( preg_match('/(-not-in-|-net-v-)/', $check) )  && ( $p != "-vin" ) && ( $p != "-def" ))  {
    $output = shell_exec("bash $fdgscript $outputlang $la -b $extra $cb $string");
 //echo "<p>$output</p>";
-      $output = trim(preg_replace('/\s\s+/', ' ', $output));	
+      $output = trim(preg_replace('/\s\s+/', ' ', $output));    
 $outforjs .= $output; 
-}	
+}   
 */
-?>
+?>  
+
