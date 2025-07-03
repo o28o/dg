@@ -1,7 +1,7 @@
 <?php
 if (strpos($_SERVER['REQUEST_URI'], "/ru") !== false){
 $lang = "ru";
-$canonicalPage = "https://dhamma.gift/ru/";
+$canonicalPage = "https://Dhamma.Gift/ru/";
 $installpwa = "Установить DG";
 $installpwalong = "Установить DG";
 $htmllang = "ru";
@@ -23,13 +23,13 @@ $linktextbook = "$linktextbookru";
 $siteAnnounce = '<div style="max-width: 450px; " class="alert alert-primary alert-dismissible fade show mt-3" role=alert id=infoUpdate><strong>Отличная новость.</strong> Поиск на пали и англ стал намного быстрее. В процессе поиск на русском. Пока, поиск доступен только по всем совпадениям. Если вы обнаружите ошибки в работе, пожалуйста <a class="alert-link" href="#contacts">сообщите <i class="fa-regular fa-comment"></i></a><button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>';
 
 
-$maintitle = 'Точный поиск в Пали Суттах и Винае. Будда Дхамма';
+$maintitle = 'Точный поиск в Пали Суттах и Винае';
 $metadesc = 'Точный поиск в Учении Будды, в Пали Суттах и Винае. Поисковый Сайт Освобождения. Полезные Дхамма Ресурсы. Материалы для изучения Сутт, Дхаммы, Пали, Санскрита';
 $metakeywords = 'Будда, Buddha, Дхамма, Дхарма, Виная, поиск, Сутта, Сутты, Суттапитака, Винаяпитака, suttapitaka, vinayapitaka Пали, Палийский канон, буддизм, dhamma, sutta, Buddhism, pali Canon, патимоккха, пратимокша, patimokkha, pratimoksasutra, ';
 $titletwit = 'Точный поиск в Учении Будды, в Пали Суттах и Винае. ';
 $ogdesc = 'Поисковая Система Освобождения. Учение Будды. Поиск в Суттах и Винае на Пали, Русском, Английском и Тайском. Дхамма Будды.';
 $oglocale = 'ru_RU';
-$ogshare = 'https://dhamma.gift/assets/img/social_sharing_gift_rus.jpg';
+$ogshare = 'https://Dhamma.Gift/assets/img/social_sharing_gift_rus.jpg';
 $menu = 'Меню';
 $menumain = 'Главная';
 $menuread = 'Читать';
@@ -172,7 +172,7 @@ $regexMemo = '<p style="text-align: left;">
         </p>     ';
 $titlehowtovideo = 'Как пользоваться?';  
 $linkhowtovideo = 'https://youtu.be/XXa-K2fQ0Is?si=DDkT-2ZJo6B9bOAA';
-$titledeschowtovideo = 'How to search in Pali Suttas and Vinaya with dhamma.gift'; 
+$titledeschowtovideo = 'How to search in Pali Suttas and Vinaya with Dhamma.Gift'; 
 
 $randomNumber = rand(1, 2); // Генерируем случайное число, например, 1 или 2
 // Логика выбора пары
@@ -336,10 +336,10 @@ $anamesdiff = 'Сравнить Две Сутты';
 $anametools = 'Инстр.';
 
 $aboutheader = 'О Проекте';
-$aboutprp = '<div class="col-lg-4 ms-auto"><p class="lead">Dhamma.gift это поисковая система Освобождения. Точный Поиск в текстах Дхаммы и Винаи Палийского Канона с результатами в удобных таблицах с построчными переводами и ссылками на другие сайты. Вы можете искать понятия, определения, метафоры, объяснения, людей, места и другое описанное в Суттах и Винае на Пали, Русском, Тайском и Английском.</p></div>
+$aboutprp = '<div class="col-lg-4 ms-auto"><p class="lead">Dhamma.Gift это поисковая система Освобождения. Точный Поиск в текстах Дхаммы и Винаи Палийского Канона с результатами в удобных таблицах с построчными переводами и ссылками на другие сайты. Вы можете искать понятия, определения, метафоры, объяснения, людей, места и другое описанное в Суттах и Винае на Пали, Русском, Тайском и Английском.</p></div>
 <div class="col-lg-4 me-auto"><p class="lead">Если вы разработчик или просто хотите помочь с развитием сайта - будем вам крайне рады.<br><br>Проект не нуждается, в материальной помощи, но если вы хотите поучаствовать в оплате за доменное имя, пожалуйста, свяжитесь через Telegram, по почте или через Github - ссылки внизу страницы, блок "Контакты". </p></div>';
 $prongh = ' Проект на GitHub';
-$premail = ' Особенности Dhamma.gift';
+$premail = ' Особенности Dhamma.Gift';
 $prekeyfeatures = 'keyFeaturesRu.html';
 
 $headerexamples = 'Примеры';
@@ -412,7 +412,7 @@ $basicscontent = '<p class="mb-4"><strong>Совет #0</strong><br>
 									<strong>Совет #9</strong><br>
 Если запрос завершается ошибкой из-за таймаута, попробуйте более длинный поисковый запрос или более специфичное слово.  <br><br>
 	<strong>Совет #10 Быстрые переходы</strong><br>
-   Также как на <a href="https://dhamma.gift/r/">Dhamma.gift Read</a> или <a href="https://dhamma.gift/read">dhamma.gift/read</a> вы можете вводить идентификаторы сутт так как они используются на suttacentral.net и вместо поиска вы перейдете в Палийский текст сутты, с возможностью быстрого переключения на построчный Английский перевод.<br>
+   Также как на <a href="https://Dhamma.Gift/r/">Dhamma.Gift Read</a> или <a href="https://Dhamma.Gift/read">Dhamma.Gift/read</a> вы можете вводить идентификаторы сутт так как они используются на suttacentral.net и вместо поиска вы перейдете в Палийский текст сутты, с возможностью быстрого переключения на построчный Английский перевод.<br>
    Через строку поиска можно перейти в сутты dn, mn, sn, an, ud из kn и тексты Винаи. <br><br>
 <!--								  <strong>Совет #11</strong><br>
                                    !!!Временно отключён!!! Если запрос завершается ошибкой из-за таймаута и вы не можете использовать  более длинный поисковый запрос, попробуйте <a href="./bg.php">Фоновый Режим</a>. Он может помочь.<br><br>  -->
@@ -477,7 +477,7 @@ $detailapp = 'приложение';
 $detailtable = 'таблица';
 $detailtextbook = 'учебник';
 
-$header5fdgoffline = 'dhamma.gift Оффлайн Версия';
+$header5fdgoffline = 'Dhamma.Gift Оффлайн Версия';
 
 $pfdg = 'Точный поиск по Суттам и Винае';
 $pfdgoffline = 'Оффлайн версия и инструкция по установке. Android, Linux, Windows';
@@ -531,7 +531,7 @@ $smdpd = 'Доступны версии: Онлайн, ПК, Linux, Mac, Android
 $head5pts = 'Словарь Pali Text Society';
 $ppts = 'Один из самых известных Пали-Англ словарей';
 
-$head5cse = 'Google от dhamma.gift';
+$head5cse = 'Google от Dhamma.Gift';
 $psce = 'Google поиск по рекомендованным ресурсам';
 $smcse = 'Особенно удобен для поисков на Wisdomlib';
 
@@ -546,7 +546,7 @@ $head5makelist = 'Сделать список из  строки';
 $pmakelist = 'Создавайте списки феноменов, учений, переводов и т.п.'; 
 
 $pt2s = 'Преобразование Русс и Англ текстов в речь';
-$smt2s = 'для прослушивания текстов Dhamma.gift Read, theravada.ru и др.';
+$smt2s = 'для прослушивания текстов Dhamma.Gift Read, theravada.ru и др.';
 
 $pscvoice = 'Преобразование Пали и Англ текстов в речь';
 $smscvoice = 'для прослушивания текстов suttacentral.net';
@@ -770,7 +770,7 @@ $defaults = '
 else {
 $lang = "en";
 $installpwa = "Install DG";
-$canonicalPage = "https://dhamma.gift/";
+$canonicalPage = "https://Dhamma.Gift/";
 $installpwalong = "Install DG";
 $htmllang = "en";
 $mainpage = '/';
@@ -787,13 +787,13 @@ $copyrightnote = 'The materials on this website are distributed under the <a cla
 $ifRuLitTrn = '';
 $gearbutton = 'extra settings';
 
-$maintitle = 'Precise Search in Buddha Dhamma in Pali Suttas and Vinaya';
+$maintitle = 'Precise Search in Pali Suttas and Vinaya';
 $metadesc = 'Precise Search in Buddhas Teaching in Pali Suttas and Vinaya. Liberation Search Engine. All-Round Perspective on Dhamma of the Noble One Search in Pali Suttanta and Vinaya. Find Different Translations. ';
 $metakeywords = 'Buddha, dhamma, pitaka, sutta, suttas, vinaya, patimokkha, pratimoksa, Buddhism, pali Canon, dharma';
 $titletwit = 'Precise Search in Buddha Dhamma, in Pali Suttas and Vinaya. ';
 $ogdesc = 'Liberation Search Engine. Search in Buddha Dhamma, Suttas and Vinaya in Pali, English, Russian and Thai';
 $oglocale = 'en_US';
-$ogshare = 'https://dhamma.gift/assets/img/social_sharing_gift.jpg';
+$ogshare = 'https://Dhamma.Gift/assets/img/social_sharing_gift.jpg';
 
 $linksothermat = 'https://drive.google.com/drive/folders/1nrNtb_4s27nJGq61tpigf_b2sO_KOnVG';
 
@@ -938,7 +938,7 @@ $regexMemo = '
 </p>          ';
 $titlehowtovideo = 'How-To Video';
 $linkhowtovideo = 'https://youtu.be/Jle0XDs_roc?si=-FJFTpdOwZ4lIdo3';
-$titledeschowtovideo = 'How to search in Pali Suttas and Vinaya with dhamma.gift';
+$titledeschowtovideo = 'How to search in Pali Suttas and Vinaya with Dhamma.Gift';
 
 $carouseltitle = 'Top Interesting Queries';
 
@@ -1070,14 +1070,14 @@ $anamesdiff = 'Sutta Difference';
 $anametools = 'Tools';
 
 $aboutheader = 'About Project';
-$aboutprp = '<div class="col-lg-4 ms-auto"><p class="lead">Dhamma.gift is a Liberation Search Engine for Dhamma and Vinaya, core of the Pali Canon. </br></br>Search results in informative tables with line by line translations and external links. You can search in Pali, English, Russian, Thai for meanings, definitions, metaphors, explanations, people, places, and more as described in the Suttas and Vinaya. </p></div>
+$aboutprp = '<div class="col-lg-4 ms-auto"><p class="lead">Dhamma.Gift is a Liberation Search Engine for Dhamma and Vinaya, core of the Pali Canon. </br></br>Search results in informative tables with line by line translations and external links. You can search in Pali, English, Russian, Thai for meanings, definitions, metaphors, explanations, people, places, and more as described in the Suttas and Vinaya. </p></div>
 <div class="col-lg-4 me-auto"><p class="lead">
 Software developers, contributors, or anyone willing to help are warmly welcomed.
 <br><br>
 The project does not require financial support, but if you would like to contribute toward domain name expenses or contribute with your help in website development, feel free to reach out using any of the contacts listed in the "Contacts" section below.
 </p></div>';
 $prongh = ' Project on GitHub';
-$premail = ' Dhamma.gift key features';
+$premail = ' Dhamma.Gift key features';
 $prekeyfeatures = 'keyFeatures.html';
 
 $headerexamples = 'Examples';
@@ -1331,7 +1331,7 @@ $detailapp = 'app';
 $detailtable = 'table';
 $detailtextbook = 'textbook';
 
-$header5fdgoffline = 'dhamma.gift Offline Edition';
+$header5fdgoffline = 'Dhamma.Gift Offline Edition';
 $pfdg = 'All encompassing search within all Suttas and Vinaya';
 $pfdgoffline = 'Offline version & setup instruction. Android, Linux, Windows';
 
@@ -1377,7 +1377,7 @@ $pwords = 'In alphabetical order with count number';
 $pwids = 'Big online collection of dictionaries. Not only Pali, but multiple spiritual traditions of India';
 $smwisd = 'Very helpful for difficult terms';
 
-$head5cse = 'Google from dhamma.gift';
+$head5cse = 'Google from Dhamma.Gift';
 $psce = 'Search with Google within recommended resources';
 $smcse = 'Especially convenient for Wisdomlib';
 
@@ -1405,7 +1405,7 @@ $pmakelist = 'Create Lists of phenomena, teachings, translations etc';
 
 
 $pt2s = 'Text-to-Speech generator for English and Russian';
-$smt2s = 'Listen to Dhamma.gift Read, theravada.ru & other';
+$smt2s = 'Listen to Dhamma.Gift Read, theravada.ru & other';
 $pscvoice = 'Generates Pali & English text-to-speech';
 $smscvoice = 'for suttacentral.net texts';
 
