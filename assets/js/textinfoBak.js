@@ -1307,7 +1307,7 @@
 "mn7":{"pi":"Vatthasutta ","en":"The Simile of the Cloth ","mtph":4,"ru":"Пример с тканью "},
 "mn8":{"pi":"Sallekhasutta ","en":"Self-Effacement ","mtph":2,"ru":"Стирание (o)"},
 "mn9":{"pi":"Sammādiṭṭhisutta ","en":"Right View ","mtph":"","ru":"Правильный взгляд "},
-"mn10":{"pi":"Satipaṭṭhānasutta ","en":"Mindfulness Meditation ","mtph":7,"ru":"Основы осознанности"},
+"mn10":{"pi":"Satipaṭṭhānasutta ","en":"Mindfulness Meditation ","mtph":7,"ru":"Основы осознанности (o)"},
 "mn11":{"pi":"Cūḷasīhanādasutta ","en":"The Shorter Discourse on the Lion’s Roar ","mtph":"","ru":"Малое наставление о львином рыке "},
 "mn12":{"pi":"Mahāsīhanādasutta ","en":"The Longer Discourse on the Lion’s Roar ","mtph":29,"ru":"Большое наставление о львином рыке"},
 "mn13":{"pi":"Mahādukkhakkhandhasutta ","en":"The Longer Discourse on the Mass of Suffering ","mtph":1,"ru":"Большое наставление о груде боли "},

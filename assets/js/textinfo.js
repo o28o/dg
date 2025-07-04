@@ -1868,7 +1868,7 @@
 "sn14.28":{"pi":"Aṭṭhaṅgikasutta ","en":"The Eightfold Path ","mtph":"","ru":"Восемь Аспектов"},
 "sn14.29":{"pi":"Dasaṅgasutta ","en":"Ten Factored Path ","mtph":"","ru":"Десятиспектный"},
 "sn14.30":{"pi":"Catudhātusutta ","en":"Four Elements ","mtph":"","ru":"Четыре Дхату"},
-"sn14.31":{"pi":"Pubbesambodhasutta ","en":"Before Awakening ","mtph":"","ru":"До Пробуждения"},
+"sn14.31":{"pi":"Pubbesambodhasutta ","en":"Before Awakening ","mtph":"","ru":"До Пробуждения (o)"},
 "sn14.32":{"pi":"Acariṁsutta ","en":"In Search of Gratification ","mtph":"","ru":"Проследовал"},
 "sn14.33":{"pi":"Nocedaṁsutta ","en":"If There Was No ","mtph":"","ru":"Если бы Не Так"},
 "sn14.34":{"pi":"Ekantadukkhasutta ","en":"Exclusively Painful ","mtph":"","ru":"Только Болезненный"},
