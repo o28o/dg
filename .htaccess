@@ -48,11 +48,11 @@ RewriteRule ^ru/(an|sn|ud|snp|thig|thag)(\d+)$ /ru/read.php?q=$1$2 [R=301,L,QSA]
 
 # Правило для запросов pm без /ru/
 RewriteCond %{REQUEST_URI} !^/ru/
-RewriteRule ^(pm)$ /$1.php [R=301,L,QSA]
+RewriteRule ^(pm)$ /$1.php?expand=true [R=301,L,QSA]
 
 # Обрабатываем запросы pm с /ru/
 RewriteCond %{REQUEST_URI} ^/ru/
-RewriteRule ^ru/(pm)$ /ru/$1.php [R=301,L,QSA]
+RewriteRule ^ru/(pm)$ /ru/$1.php?expand=true [R=301,L,QSA]
 
 
 Redirect 301 /ru.php /ru/
