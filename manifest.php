@@ -139,7 +139,7 @@ echo json_encode([
     "scope" => "/",
     "display" => "minimal-ui",
     "background_color" => "#2E3E50",
-    "theme_color" => "#2E3E50",
+    "theme_color" => "#000000",
     "share_target" => [
         "action" => $mainpagenoslash . "/",
         "method" => "GET",
