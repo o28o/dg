@@ -23,6 +23,71 @@ $linktextbook = "$linktextbookru";
 $siteAnnounce = '<div style="max-width: 450px; " class="alert alert-primary alert-dismissible fade show mt-3" role=alert id=infoUpdate><strong>Отличная новость.</strong> Поиск на пали и англ стал намного быстрее. В процессе поиск на русском. Пока, поиск доступен только по всем совпадениям. Если вы обнаружите ошибки в работе, пожалуйста <a class="alert-link" href="#contacts">сообщите <i class="fa-regular fa-comment"></i></a><button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>';
 
 
+$ctaButtons =' <div class="d-flex flex-wrap flex-column flex-sm-row justify-content-center align-items-center my-3 mb-2">
+    
+    <button class="ms-2 mb-2 p-0 border-0 bg-transparent" id="installPWA" style="cursor:pointer;">
+        <img src="/assets/img/buttons/pwa-cta.png" class="img-fluid" style="max-width: 200px;" title="Установить Dhamma.gift как Прогрессивное Веб-Приложение (PWA)">
+    </button>
+
+    <a class="ms-2 mb-2" href="https://t.me/dgift_bot">
+        <img src="/assets/img/buttons/telegram-cta.png" class="img-fluid" style="max-width: 200px;" title="Открыть DGift_bot. Или наберите @DGift_bot в любом Телеграм чате или группе">
+    </a>
+
+
+    <a class="ms-2 mb-2" href="/assets/apk/dhamma.gift.ru-latest.apk">
+        <img src="/assets/img/buttons/apk-cta.png" class="img-fluid" style="max-width: 200px;" title="Скачать APK. В нем будет встроенный поиск и опция поделиться, как в браузере, в отличие от версии на Play Market">
+    </a>
+
+
+    <a class="ms-2 mb-2" href="https://play.google.com/store/apps/details?id=gift.dhamma.twa">
+        <img src="/assets/img/buttons/google-play-cta.png" class="img-fluid" style="max-width: 200px;" title="Скачать с Google Play">
+    </a>
+    
+    <a class="ms-2 mb-2" href="https://chromewebstore.google.com/detail/dhammagift-search-and-wor/dnnogjdcmhbiobpnkhdbfnfjnjlikabd">
+        <img src="/assets/img/buttons/chrome-cta.png" class="img-fluid" style="max-width: 200px;" title="Скачать из Chrome Web Store. Поддерживается в Chrome, Edge, Opera, Brave, Vivaldi и Yandex Browser.">
+    </a>
+
+    <a class="ms-2 mb-2" href="https://addons.mozilla.org/en-US/firefox/addon/dhamma-gift/">
+        <img src="/assets/img/buttons/firefox-cta.png" class="img-fluid" style="max-width: 200px;" title="Скачать из Firefox Add-ons">
+    </a>
+
+    <a class="ms-2 mb-2" href="https://microsoftedge.microsoft.com/addons/detail/dhammagift-search-and-wo/aokegkhdaijkikbdocanadeghllhfmhj">
+        <img src="/assets/img/buttons/edge-cta.png" class="img-fluid" style="max-width: 200px;" title="Скачать из Microsoft Edge Store">
+    </a>
+    
+</div>
+
+
+<script>
+let deferredPrompt;
+
+window.addEventListener(\'beforeinstallprompt\', (e) => {
+// Prevent automatic banner display
+e.preventDefault();
+deferredPrompt = e;
+
+// Show the button
+const installBtn = document.getElementById(\'installPWA\');
+installBtn.style.display = \'inline-block\';
+
+installBtn.addEventListener(\'click\', () => {
+if (deferredPrompt) {
+deferredPrompt.prompt();
+deferredPrompt.userChoice.then((choiceResult) => {
+if (choiceResult.outcome === \'accepted\') {
+console.log(\'Installation accepted\');
+} else {
+console.log(\'Installation declined\');
+}
+deferredPrompt = null;
+});
+}
+});
+});
+</script>';
+
+
+
 $maintitle = 'Точный поиск в Пали Суттах и Винае';
 $metadesc = 'Точный поиск в Учении Будды, в Пали Суттах и Винае. Поисковый Сайт Освобождения. Полезные Дхамма Ресурсы. Материалы для изучения Сутт, Дхаммы, Пали, Санскрита';
 $metakeywords = 'Будда, Buddha, Дхамма, Дхарма, Виная, поиск, Сутта, Сутты, Суттапитака, Винаяпитака, suttapitaka, vinayapitaka Пали, Палийский канон, буддизм, dhamma, sutta, Buddhism, pali Canon, патимоккха, пратимокша, patimokkha, pratimoksasutra, ';
@@ -1165,6 +1230,73 @@ Create an issue on github or send an email, if you\'ll find other criteria.
 <br><br>
 </p>';
 
+
+$ctaButtons =' <div class="d-flex flex-wrap flex-column flex-sm-row justify-content-center align-items-center my-3 mb-2">
+    
+    <button class="ms-2 mb-2 p-0 border-0 bg-transparent" id="installPWA" style="cursor:pointer;">
+        <img src="/assets/img/buttons/pwa-cta.png" class="img-fluid" style="max-width: 200px;" title="Install Dhamma.gift as progressive web app">
+    </button>
+
+    <a class="ms-2 mb-2" href="https://t.me/dgift_bot">
+        <img src="/assets/img/buttons/telegram-cta.png" class="img-fluid" style="max-width: 200px;" title="Open DGift_bot. Or type @DGift_bot in any Telegram chat or group">
+    </a>
+
+
+    <a class="ms-2 mb-2" href="/assets/apk/dhamma.gift-latest.apk">
+        <img src="/assets/img/buttons/apk-cta.png" class="img-fluid" style="max-width: 200px;" title="Download APK. If you need browser search and share function, which is missing in the Play Market">
+    </a>
+
+
+    <a class="ms-2 mb-2" href="https://play.google.com/store/apps/details?id=gift.dhamma.twa">
+        <img src="/assets/img/buttons/google-play-cta.png" class="img-fluid" style="max-width: 200px;" title="Download from Google Play">
+    </a>
+    
+    <a class="ms-2 mb-2" href="https://chromewebstore.google.com/detail/dhammagift-search-and-wor/dnnogjdcmhbiobpnkhdbfnfjnjlikabd">
+        <img src="/assets/img/buttons/chrome-cta.png" class="img-fluid" style="max-width: 200px;" title="Download from Chrome Web Store. Supports Chrome, Edge, Opera, Brave, Vivaldi, and Yandex Browser.">
+    </a>
+
+    <a class="ms-2 mb-2" href="https://addons.mozilla.org/en-US/firefox/addon/dhamma-gift/">
+        <img src="/assets/img/buttons/firefox-cta.png" class="img-fluid" style="max-width: 200px;" title="Download from Firefox Add-ons">
+    </a>
+
+    <a class="ms-2 mb-2" href="https://microsoftedge.microsoft.com/addons/detail/dhammagift-search-and-wo/aokegkhdaijkikbdocanadeghllhfmhj">
+        <img src="/assets/img/buttons/edge-cta.png" class="img-fluid" style="max-width: 200px;" title="Download from Microsoft Edge Store">
+    </a>
+    
+</div>
+
+
+<script>
+let deferredPrompt;
+
+window.addEventListener(\'beforeinstallprompt\', (e) => {
+// Prevent automatic banner display
+e.preventDefault();
+deferredPrompt = e;
+
+// Show the button
+const installBtn = document.getElementById(\'installPWA\');
+installBtn.style.display = \'inline-block\';
+
+installBtn.addEventListener(\'click\', () => {
+if (deferredPrompt) {
+deferredPrompt.prompt();
+deferredPrompt.userChoice.then((choiceResult) => {
+if (choiceResult.outcome === \'accepted\') {
+console.log(\'Installation accepted\');
+} else {
+console.log(\'Installation declined\');
+}
+deferredPrompt = null;
+});
+}
+});
+});
+</script>';
+
+
+
+
 $advanced = 'Advanced';
 $advancedcontent = '<strong>Tip #1</strong><br>
 If you want to find some word in particular sutta, samyutta or nikaya run search like this: Sn17.*seyyathāpi
@@ -1447,4 +1579,36 @@ $readerPage = $mainpage . '/read';
 $mainreadlink = '/th/read.php';
 }
 $menuuseful = 'Search,MenuRead,MenuEnglish,history,MenuDict,MenuRussian,tools,materials';
+
+
+$ctaButtons .='<script>
+let deferredPrompt;
+
+window.addEventListener(\'beforeinstallprompt\', (e) => {
+// Prevent automatic banner display
+e.preventDefault();
+deferredPrompt = e;
+
+// Show the button
+const installBtn = document.getElementById(\'installPWA\');
+installBtn.style.display = \'inline-block\';
+
+installBtn.addEventListener(\'click\', () => {
+if (deferredPrompt) {
+deferredPrompt.prompt();
+deferredPrompt.userChoice.then((choiceResult) => {
+if (choiceResult.outcome === \'accepted\') {
+console.log(\'Installation accepted\');
+} else {
+console.log(\'Installation declined\');
+}
+deferredPrompt = null;
+});
+}
+});
+});
+</script>';
+
+
+
 ?>
