@@ -236,6 +236,7 @@ $carouseltitle = 'Интересные Запросы';
 
 $slides = [
          
+
           [
         'title' => 'Три вида Зависимого Возникновения',
         'desc' => 'Последовательности из <span title="dn15">10</span>, <span title="dn14, sn12.65, sn12.67">11</span> и <span title="как в sn12.2, самая известная и распространненная схема">12</span> условий',
@@ -956,7 +957,7 @@ $slides = [
     'title' => 'Three Types of Dependent Origination',
     'desc' => 'Sequences of <span title="dn15">10</span>, <span title="dn14, sn12.65, sn12.67">11</span> and <span title="as in sn12.2, the most well-known and common formula">12</span> conditions',
     'link' => '/en/?q=%28N%C4%81mar%C5%ABpapaccay%C4%81+vi%C3%B1%C3%B1%C4%81%E1%B9%87a%7Csn12.2.%2AVibha%E1%B9%85gasutt%29&p=-kn',
-]       
+],       
            [
         'title' => 'Tathagata didn\'t claim the Highest Awakening as long as...',
         'desc' => 'For all those aspiring for Liberation',
