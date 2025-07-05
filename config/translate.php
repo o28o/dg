@@ -235,6 +235,12 @@ $mainscrollmodal = '<p >Из <a href=/r/?q=dn22&s=dukkha&lang=pli-rus#18.18>dn22
 $carouseltitle = 'Интересные Запросы';
 
 $slides = [
+         
+          [
+        'title' => 'Три вида Зависимого Возникновения',
+        'desc' => 'Последовательности из 10, 11 и 12 условий',
+        'link' => '/ru/?q=%28N%C4%81mar%C5%ABpapaccay%C4%81+vi%C3%B1%C3%B1%C4%81%E1%B9%87a%7Csn12.2.%2AVibha%E1%B9%85gasutt%29&p=-kn',
+    ],         
           [
         'title' => 'Татхагата не признавал, что Пробудился в наивысшее, пока не...',
         'desc' => 'Список для самопроверки ищущим Пробуждение',
@@ -946,6 +952,11 @@ $titledeschowtovideo = 'How to search in Pali Suttas and Vinaya with Dhamma.Gift
 $carouseltitle = 'Top Interesting Queries';
 
 $slides = [
+              [
+        'title' => 'Three types of Dependent Origination',
+        'desc' => 'Sequences of 10, 11 and 12 conditions',
+        'link' => '/?q=%28N%C4%81mar%C5%ABpapaccay%C4%81+vi%C3%B1%C3%B1%C4%81%E1%B9%87a%7Csn12.2.%2AVibha%E1%B9%85gasutt%29&p=-kn',
+    ],         
            [
         'title' => 'Tathagata didn\'t claim the Highest Awakening as long as...',
         'desc' => 'For all those aspiring for Liberation',
