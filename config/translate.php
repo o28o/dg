@@ -33,16 +33,14 @@ $ctaButtons =' <div class="d-flex flex-wrap flex-column flex-sm-row justify-cont
         <img src="/assets/img/buttons/telegram-cta.png" class="img-fluid" style="max-width: 200px;" title="Открыть DGift_bot. Или наберите @DGift_bot в любом Телеграм чате или группе">
     </a>
 
-
-    <a class="ms-2 mb-2" href="/assets/apk/dhamma.gift.ru-latest.apk">
-        <img src="/assets/img/buttons/apk-cta.png" class="img-fluid" style="max-width: 200px;" title="Скачать APK. В нем будет встроенный поиск и опция поделиться, как в браузере, в отличие от версии на Play Market">
-    </a>
-
-
     <a class="ms-2 mb-2" href="https://play.google.com/store/apps/details?id=gift.dhamma.twa">
         <img src="/assets/img/buttons/google-play-cta.png" class="img-fluid" style="max-width: 200px;" title="Скачать с Google Play">
     </a>
     
+    <a class="ms-2 mb-2" href="/assets/apk/dhamma.gift.ru-latest.apk">
+        <img src="/assets/img/buttons/apk-cta.png" class="img-fluid" style="max-width: 200px;" title="Скачать APK. В нем будет встроенный поиск и опция поделиться, как в браузере. По неизвесным причинам Google скрывает их в версии на Play Market">
+    </a>
+
     <a class="ms-2 mb-2" href="https://chromewebstore.google.com/detail/dhammagift-search-and-wor/dnnogjdcmhbiobpnkhdbfnfjnjlikabd">
         <img src="/assets/img/buttons/chrome-cta.png" class="img-fluid" style="max-width: 200px;" title="Скачать из Chrome Web Store. Поддерживается в Chrome, Edge, Opera, Brave, Vivaldi и Yandex Browser.">
     </a>
@@ -1241,14 +1239,12 @@ $ctaButtons =' <div class="d-flex flex-wrap flex-column flex-sm-row justify-cont
         <img src="/assets/img/buttons/telegram-cta.png" class="img-fluid" style="max-width: 200px;" title="Open DGift_bot. Or type @DGift_bot in any Telegram chat or group">
     </a>
 
-
-    <a class="ms-2 mb-2" href="/assets/apk/dhamma.gift-latest.apk">
-        <img src="/assets/img/buttons/apk-cta.png" class="img-fluid" style="max-width: 200px;" title="Download APK. If you need browser search and share function, which is missing in the Play Market">
-    </a>
-
-
     <a class="ms-2 mb-2" href="https://play.google.com/store/apps/details?id=gift.dhamma.twa">
         <img src="/assets/img/buttons/google-play-cta.png" class="img-fluid" style="max-width: 200px;" title="Download from Google Play">
+    </a>
+
+    <a class="ms-2 mb-2" href="/assets/apk/dhamma.gift-latest.apk">
+        <img src="/assets/img/buttons/apk-cta.png" class="img-fluid" style="max-width: 200px;" title="Download APK. If you need build-in browser search and share functions, which Google removes from Play Market version">
     </a>
     
     <a class="ms-2 mb-2" href="https://chromewebstore.google.com/detail/dhammagift-search-and-wor/dnnogjdcmhbiobpnkhdbfnfjnjlikabd">
